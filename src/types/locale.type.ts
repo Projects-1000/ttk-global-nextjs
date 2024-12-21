@@ -1,3 +1,3 @@
-import { locales } from "@/constants/locales.constant";
+import { locales } from '@/constants/configs.constant';
 
 export type LocaleProps = (typeof locales)[number];

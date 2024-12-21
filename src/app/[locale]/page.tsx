@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 
 const HomePage = () => {
   const t = useTranslations('HomePage');
-  return <div className="text-[1.6rem] text-red-500">{t('title')}</div>;
+  return <div className="h1-bold">{t('title')}</div>;
 };
 
 export function generateStaticParams() {

@@ -8,15 +8,17 @@ import { notFound } from 'next/navigation';
 import { ReduxProvider } from '@/redux/ReduxProvider';
 import { getURL } from '@/utils/helpers';
 import { TFunction } from '@/i18n/types';
+import { montserrat } from '@/constants/configs.constant';
 
 interface LocaleLayoutProps extends LocaleRouteParams {
   children: React.ReactNode;
 }
 
+//TODO: custom type for metadata
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;
-
+  
   return {
     title: t('LocaleLayout.title'),
     description: t('LocaleLayout.description'),
@@ -57,7 +59,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${montserrat.variable} font-sans`}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>{children}</ReduxProvider>
