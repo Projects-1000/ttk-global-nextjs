@@ -2,9 +2,6 @@
 interface TypoGroupProps {
   title: string;
 }
-interface ColorGroupProps {
-  name: string;
-}
 
 const DemoPage = () => {
   return (
@@ -29,18 +26,18 @@ const DemoPage = () => {
         <div className="flex flex-col gap-12">
           {/* Anzac */}
           <div className="flex items-center gap-12">
-            <p className="text-anzac-500 h2-bold capitalize">Anzac</p>
+            <p className="h2-bold capitalize text-anzac-500">Anzac</p>
             <div className="flex gap-10">
-              <div className="bg-anzac-50 size-16 rounded-md">50</div>
-              <div className="bg-anzac-100 size-16 rounded-md">100</div>
-              <div className="bg-anzac-200 size-16 rounded-md">200</div>
-              <div className="bg-anzac-300 size-16 rounded-md">300</div>
-              <div className="bg-anzac-400 size-16 rounded-md">400</div>
-              <div className="bg-anzac-500 size-16 rounded-md">500</div>
-              <div className="bg-anzac-600 size-16 rounded-md">600</div>
-              <div className="bg-anzac-700 size-16 rounded-md">700</div>
-              <div className="bg-anzac-800 size-16 rounded-md">800</div>
-              <div className="bg-anzac-900 size-16 rounded-md">900</div>
+              <div className="size-16 rounded-md bg-anzac-50">50</div>
+              <div className="size-16 rounded-md bg-anzac-100">100</div>
+              <div className="size-16 rounded-md bg-anzac-200">200</div>
+              <div className="size-16 rounded-md bg-anzac-300">300</div>
+              <div className="size-16 rounded-md bg-anzac-400">400</div>
+              <div className="size-16 rounded-md bg-anzac-500">500</div>
+              <div className="size-16 rounded-md bg-anzac-600">600</div>
+              <div className="size-16 rounded-md bg-anzac-700">700</div>
+              <div className="size-16 rounded-md bg-anzac-800">800</div>
+              <div className="size-16 rounded-md bg-anzac-900">900</div>
               <div className="bg-anzac-950 size-16 rounded-md">950</div>
             </div>
           </div>
@@ -49,7 +46,7 @@ const DemoPage = () => {
           <div className="flex items-center gap-12">
             <p className="h2-bold capitalize text-blue-500">blue</p>
             <div className="flex gap-10">
-              <div className="bg-blue-10 size-16 rounded-md"></div>
+              <div className="size-16 rounded-md bg-blue-10"></div>
               <div className="size-16 rounded-md bg-blue-50">50</div>
               <div className="size-16 rounded-md bg-blue-100">100</div>
               <div className="size-16 rounded-md bg-blue-200">200</div>
@@ -66,20 +63,20 @@ const DemoPage = () => {
 
           {/* Grey */}
           <div className="flex items-center gap-12">
-            <p className="h2-bold text-grey-500 capitalize">grey</p>
+            <p className="h2-bold capitalize text-grey-500">grey</p>
             <div className="flex gap-10">
               <div className="bg-grey-10 size-16 rounded-md"></div>
-              <div className="bg-grey-50 size-16 rounded-md">50</div>
-              <div className="bg-grey-100 size-16 rounded-md">100</div>
-              <div className="bg-grey-200 size-16 rounded-md">200</div>
-              <div className="bg-grey-300 size-16 rounded-md">300</div>
-              <div className="bg-grey-400 size-16 rounded-md">400</div>
-              <div className="bg-grey-500 size-16 rounded-md">500</div>
-              <div className="bg-grey-600 size-16 rounded-md">600</div>
-              <div className="bg-grey-700 size-16 rounded-md">700</div>
-              <div className="bg-grey-800 size-16 rounded-md">800</div>
-              <div className="bg-grey-900 size-16 rounded-md">900</div>
-              <div className="bg-grey-950 size-16 rounded-md">950</div>
+              <div className="size-16 rounded-md bg-grey-50">50</div>
+              <div className="size-16 rounded-md bg-grey-100">100</div>
+              <div className="size-16 rounded-md bg-grey-200">200</div>
+              <div className="size-16 rounded-md bg-grey-300">300</div>
+              <div className="size-16 rounded-md bg-grey-400">400</div>
+              <div className="size-16 rounded-md bg-grey-500">500</div>
+              <div className="size-16 rounded-md bg-grey-600">600</div>
+              <div className="size-16 rounded-md bg-grey-700">700</div>
+              <div className="size-16 rounded-md bg-grey-800">800</div>
+              <div className="size-16 rounded-md bg-grey-900">900</div>
+              <div className="size-16 rounded-md bg-grey-950">950</div>
             </div>
           </div>
 
@@ -142,53 +139,53 @@ const DemoPage = () => {
 
           {/* Primary */}
           <div className="flex items-center gap-12">
-            <p className="h2-bold text-primary-default capitalize">primary</p>
+            <p className="h2-bold capitalize text-primary-default">primary</p>
             <div className="flex gap-10">
               <div className="bg-yellow-10 size-16 rounded-md"></div>
-              <div className="bg-primary-default size-16 rounded-md">default</div>
-              <div className="bg-primary-subtle size-16 rounded-md">subtle</div>
-              <div className="bg-primary-lighter size-16 rounded-md">lighter</div>
-              <div className="bg-primary-darker size-16 rounded-md">darker</div>
-              <div className="bg-primary-label size-16 rounded-md">label</div>
+              <div className="size-16 rounded-md bg-primary-default">default</div>
+              <div className="size-16 rounded-md bg-primary-subtle">subtle</div>
+              <div className="size-16 rounded-md bg-primary-lighter">lighter</div>
+              <div className="size-16 rounded-md bg-primary-darker">darker</div>
+              <div className="size-16 rounded-md bg-primary-label">label</div>
             </div>
           </div>
 
           {/* secondary */}
           <div className="flex items-center gap-12">
-            <p className="h2-bold text-secondary-default capitalize">secondary</p>
+            <p className="h2-bold capitalize text-secondary-default">secondary</p>
             <div className="flex gap-10">
               <div className="bg-yellow-10 size-16 rounded-md"></div>
-              <div className="bg-secondary-default size-16 rounded-md">default</div>
-              <div className="bg-secondary-subtle size-16 rounded-md">subtle</div>
-              <div className="bg-secondary-lighter size-16 rounded-md">lighter</div>
-              <div className="bg-secondary-darker size-16 rounded-md">darker</div>
-              <div className="bg-secondary-label size-16 rounded-md">label</div>
+              <div className="size-16 rounded-md bg-secondary-default">default</div>
+              <div className="size-16 rounded-md bg-secondary-subtle">subtle</div>
+              <div className="size-16 rounded-md bg-secondary-lighter">lighter</div>
+              <div className="size-16 rounded-md bg-secondary-darker">darker</div>
+              <div className="size-16 rounded-md bg-secondary-label">label</div>
             </div>
           </div>
 
           {/* success */}
           <div className="flex items-center gap-12">
-            <p className="h2-bold text-success-default capitalize">success</p>
+            <p className="h2-bold capitalize text-success-default">success</p>
             <div className="flex gap-10">
               <div className="bg-yellow-10 size-16 rounded-md"></div>
-              <div className="bg-success-default size-16 rounded-md">default</div>
-              <div className="bg-success-subtle size-16 rounded-md">subtle</div>
-              <div className="bg-success-lighter size-16 rounded-md">lighter</div>
-              <div className="bg-success-darker size-16 rounded-md">darker</div>
-              <div className="bg-success-label size-16 rounded-md">label</div>
+              <div className="size-16 rounded-md bg-success-default">default</div>
+              <div className="size-16 rounded-md bg-success-subtle">subtle</div>
+              <div className="size-16 rounded-md bg-success-lighter">lighter</div>
+              <div className="size-16 rounded-md bg-success-darker">darker</div>
+              <div className="size-16 rounded-md bg-success-label">label</div>
             </div>
           </div>
 
           {/* error */}
           <div className="flex items-center gap-12">
-            <p className="h2-bold text-error-default capitalize">error</p>
+            <p className="h2-bold capitalize text-error-default">error</p>
             <div className="flex gap-10">
               <div className="bg-yellow-10 size-16 rounded-md"></div>
-              <div className="bg-error-default size-16 rounded-md">default</div>
-              <div className="bg-error-subtle size-16 rounded-md">subtle</div>
-              <div className="bg-error-lighter size-16 rounded-md">lighter</div>
-              <div className="bg-error-darker size-16 rounded-md">darker</div>
-              <div className="bg-error-label size-16 rounded-md">label</div>
+              <div className="size-16 rounded-md bg-error-default">default</div>
+              <div className="size-16 rounded-md bg-error-subtle">subtle</div>
+              <div className="size-16 rounded-md bg-error-lighter">lighter</div>
+              <div className="size-16 rounded-md bg-error-darker">darker</div>
+              <div className="size-16 rounded-md bg-error-label">label</div>
             </div>
           </div>
         </div>
@@ -210,12 +207,4 @@ const TypoGroup = ({ title }: TypoGroupProps) => {
   );
 };
 
-const ColorGroup = ({ name }: ColorGroupProps) => {
-  return (
-    <div className="flex gap-12">
-      <p className="text-anzac-600 h2-bold capitalize">{name}</p>
-      <div className="flex gap-6"></div>
-    </div>
-  );
-};
 export default DemoPage;
