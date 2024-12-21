@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const spacing = require('tailwindcss/defaultTheme').spacing;
 
 export default {
   content: [
@@ -125,6 +126,19 @@ export default {
         //   darker: colors.red[700],
         //   label: colors.red[500],
         // }
+      },
+      spacing: {
+        '3xs': spacing['0.5'],
+        '2xs': spacing['1'],
+        xs: spacing['1.5'],
+        s: spacing['2'],
+        m: spacing['3'],
+        l: spacing['4'],
+        xl: spacing['5'],
+        '2xl': spacing['6'],
+        '3xl': spacing['8'],
+        '4xl': spacing['10'],
+        full: '999px',
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans]
