@@ -9,7 +9,7 @@ import { ReduxProvider } from '@/redux/ReduxProvider';
 import { getURL } from '@/utils/helpers';
 import { TFunction } from '@/i18n/types';
 import { montserrat } from '@/constants/configs.constant';
-// import '../../styles/scss/_index.scss';
+import '../../styles/scss/_index.scss';
 
 interface LocaleLayoutProps extends LocaleRouteParams {
   children: React.ReactNode;
