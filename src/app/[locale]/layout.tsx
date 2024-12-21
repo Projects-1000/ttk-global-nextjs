@@ -9,6 +9,7 @@ import { ReduxProvider } from '@/redux/ReduxProvider';
 import { getURL } from '@/utils/helpers';
 import { TFunction } from '@/i18n/types';
 import { montserrat } from '@/constants/configs.constant';
+// import '../../styles/scss/_index.scss';
 
 interface LocaleLayoutProps extends LocaleRouteParams {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ interface LocaleLayoutProps extends LocaleRouteParams {
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;
-  
+
   return {
     title: t('LocaleLayout.title'),
     description: t('LocaleLayout.description'),
