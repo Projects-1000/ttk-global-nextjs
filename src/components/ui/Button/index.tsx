@@ -1,7 +1,7 @@
 import { ButtonProps } from '@/types/button.typs';
 import { Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { HTMLAttributes, HTMLProps, JSX, MouseEventHandler } from 'react';
+import { HTMLAttributes, HTMLProps, MouseEventHandler } from 'react';
 import './button.scss';
 
 interface SubmitButtonProps extends ButtonProps {
