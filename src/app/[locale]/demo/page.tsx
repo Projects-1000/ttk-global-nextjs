@@ -19,6 +19,7 @@ const DemoPage = () => {
           isSubmitting={false}
           iconPosition="end"
           icon={<CallMadeIcon />}
+          // props={{className: 'custom-class'}}
         />
         <SubmitButton
           isDirty={true}
@@ -52,6 +53,8 @@ const DemoPage = () => {
           isSubmitting={false}
           iconPosition="end"
           icon={<CallMadeIcon />}
+          classCustom='!bg-red-500 !text-primary-default'
+          props={{}}
         />
         <SubmitButton
           isDirty={true}

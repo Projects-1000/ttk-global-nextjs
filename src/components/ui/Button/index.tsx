@@ -1,12 +1,17 @@
 import { ButtonProps } from '@/types/button.typs';
 import { Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { MouseEventHandler } from 'react';
+import { HTMLAttributes, HTMLProps, JSX, MouseEventHandler } from 'react';
 import './button.scss';
 
 interface SubmitButtonProps extends ButtonProps {
   isSubmitting?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  classCustom?: HTMLProps<HTMLElement>['className'];
+  props?: Omit<
+    HTMLAttributes<HTMLButtonElement>,
+    'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
+  >;
 }
 
 export default function SubmitButton({
@@ -19,7 +24,9 @@ export default function SubmitButton({
   iconPosition,
   icon,
   isPill = false,
-  onClick
+  onClick,
+  classCustom,
+  props
 }: SubmitButtonProps) {
   const isDisabled = isDirty && !isSubmitting ? false : true;
   const sizeClass = `btn__${size} ${isPill ? `btn--pill` : ''}`;
@@ -30,9 +37,10 @@ export default function SubmitButton({
     <Button
       variant={variant}
       disabled={isDisabled}
-      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
       type="button"
       onClick={onClick}
+      {...props}
     >
       {iconPosition && icon}
       {iconPosition !== 'only' && text}
