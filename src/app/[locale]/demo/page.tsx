@@ -1,11 +1,14 @@
 'use client';
+
+import SubmitButton from '@/components/ui/Button';
+
 interface TypoGroupProps {
   title: string;
 }
 
 const DemoPage = () => {
   return (
-    <section className="container flex flex-col gap-24 px-[120px]">
+    <section className="phone:bg-red-500 tablet:bg-blue-500 laptop:bg-yellow-500 phone:flex-row tablet:flex-col container flex gap-24 px-[120px]">
       <div className="">
         <p className="h1-bold mb-8">Typography</p>
         <div className="flex flex-col gap-12">
@@ -21,7 +24,7 @@ const DemoPage = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className="text-se">
         <p className="h1-bold mb-8">Colors</p>
         <div className="flex flex-col gap-12">
           {/* Anzac */}
@@ -189,6 +192,10 @@ const DemoPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="">
+        <SubmitButton isDirty={true} />
       </div>
     </section>
   );
