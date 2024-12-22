@@ -1,15 +1,17 @@
+import { montserrat } from '@/configs/locales';
+import theme from '@/configs/theme';
 import { routing } from '@/i18n/routing';
+import { TFunction } from '@/i18n/types';
+import { ReduxProvider } from '@/redux/ReduxProvider';
 import '@/styles/globals.css';
-import '@/styles/scss/_config.scss';
+import '@/styles/scss/_index.scss';
 import { LocaleRouteParams } from '@/types/routeParams';
+import { getURL } from '@/utils/helpers';
+import { ThemeProvider } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { ReduxProvider } from '@/redux/ReduxProvider';
-import { getURL } from '@/utils/helpers';
-import { TFunction } from '@/i18n/types';
-import { montserrat } from '@/constants/configs.constant';
-import '../../styles/scss/_index.scss';
 
 interface LocaleLayoutProps extends LocaleRouteParams {
   children: React.ReactNode;
@@ -63,7 +65,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} className={`${montserrat.variable} font-sans`}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <ReduxProvider>{children}</ReduxProvider>
+          <ReduxProvider>
+            {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
+            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+              <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </AppRouterCacheProvider>
+          </ReduxProvider>
         </NextIntlClientProvider>
       </body>
     </html>

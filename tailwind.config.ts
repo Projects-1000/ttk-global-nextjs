@@ -138,12 +138,21 @@ export default {
         '2xl': spacing['6'],
         '3xl': spacing['8'],
         '4xl': spacing['10'],
-        full: '999px',
+        full: '999px'
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans]
       }
+    },
+    screens: {
+      phone: { max: '376px' }, //< 376px
+      tablet: { min: '376px', max: '769px' }, //376 <= screen < 769px
+      laptop: { min: '769px', max: '1025px' }, //769 <= screen < 1025
+      desktop: { min: '1025px' } //>=1025
     }
   },
-  plugins: []
+  plugins: [],
+  corePlugins: {
+    preflight: false
+  }
 } satisfies Config;
