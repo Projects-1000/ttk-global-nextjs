@@ -3,6 +3,20 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 const spacing = require('tailwindcss/defaultTheme').spacing;
 
+const spacingObject = {
+  '3xs': spacing['0.5'], //2
+  '2xs': spacing['1'], //4
+  xs: spacing['1.5'], //6
+  s: spacing['2'], //8
+  m: spacing['3'], //12
+  l: spacing['4'], //16
+  xl: spacing['5'], //20
+  '2xl': spacing['6'], //24
+  '3xl': spacing['8'], //32
+  '4xl': spacing['10'], //40
+  full: '999px' //full
+};
+
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -38,7 +52,7 @@ export default {
           900: '#0B0E28',
           950: '#050714'
         },
-        grey: {
+        gray: {
           50: '#F1F1F3',
           100: '#E3E3E8',
           200: '#C7C8D1',
@@ -118,32 +132,32 @@ export default {
           lighter: colors.red[300],
           darker: colors.red[700],
           label: colors.red[500]
+        },
+        greyscale: {
+          surface: {
+            default: colors.gray[200],
+            subtle: colors.gray[100],
+            disable: colors.gray[200]
+          },
+          border: {
+            default: colors.gray[400],
+            subtle: colors.gray[300],
+            darker: colors.gray[700]
+          },
+          title: colors.gray[900],
+          body: colors.gray[800],
+          subtitle: colors.gray[600],
+          caption: colors.gray[500],
+          negative: colors.gray[50],
+          disable: colors.gray[400]
         }
-        // greyscale: {
-        //   default: colors.red[500],
-        //   subtle: colors.red[50],
-        //   lighter: colors.red[300],
-        //   darker: colors.red[700],
-        //   label: colors.red[500],
-        // }
       },
-      spacing: {
-        '3xs': spacing['0.5'],
-        '2xs': spacing['1'],
-        xs: spacing['1.5'],
-        s: spacing['2'],
-        m: spacing['3'],
-        l: spacing['4'],
-        xl: spacing['5'],
-        '2xl': spacing['6'],
-        '3xl': spacing['8'],
-        '4xl': spacing['10'],
-        full: '999px'
-      },
+      spacing: spacingObject,
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans]
       }
     },
+    borderRadius: spacingObject,
     screens: {
       phone: { max: '376px' }, //< 376px
       tablet: { min: '376px', max: '769px' }, //376 <= screen < 769px

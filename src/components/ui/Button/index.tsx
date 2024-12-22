@@ -2,6 +2,7 @@ import { ButtonProps } from '@/types/button.typs';
 import { Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { MouseEventHandler } from 'react';
+import './button.scss';
 
 interface SubmitButtonProps extends ButtonProps {
   isSubmitting?: boolean;
@@ -13,21 +14,29 @@ export default function SubmitButton({
   variant = 'contained',
   isSubmitting = false,
   isDirty = false,
+  size = 'small',
+  color = 'primary',
+  iconPosition,
+  icon,
+  isPill = false,
   onClick
 }: SubmitButtonProps) {
   const isDisabled = isDirty && !isSubmitting ? false : true;
+  const sizeClass = `btn__${size} ${isPill ? `btn--pill` : ''}`;
+  const colorClass = `btn__${color}`;
+  const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
+
   return (
     <Button
       variant={variant}
       disabled={isDisabled}
-      color="primary"
-      size="large"
-      className={`btn bg-secondary-default ${isSubmitting && 'animate-pulse'} `}
-      type="submit"
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
+      type="button"
       onClick={onClick}
     >
-      {text}
-      {isSubmitting && <CircularProgress className="ml-2 text-gray-400" size={16} />}
+      {iconPosition && icon}
+      {iconPosition !== 'only' && text}
+      {!iconPosition && isSubmitting && <CircularProgress className="ml-xs text-gray-400" size={16} />}
     </Button>
   );
 }
