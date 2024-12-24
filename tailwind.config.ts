@@ -126,13 +126,13 @@ export default {
         //   label: colors.red[500],
         // }
       },
-      borderColor: (theme) => ({
-        ...theme('colors'), // Inherit all colors for borders
-        primary: colors.blue[500],
-        secondary: colors.yellow[500],
-        success: colors.green[500],
-        error: colors.red[500]
-      }),
+      // borderColor: (theme) => ({
+      //   ...theme('colors'), // Inherit all colors for borders
+      //   primary: colors.blue[500],
+      //   secondary: colors.yellow[500],
+      //   success: colors.green[500],
+      //   error: colors.red[500]
+      // }),
       borderRadius: {
         '3xs': '2px',
         '2xs': spacing['1'],
