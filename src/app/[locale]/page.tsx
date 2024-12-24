@@ -1,5 +1,4 @@
 import React from 'react';
-import './page.scss';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
