@@ -151,6 +151,49 @@ export default {
           negative: colors.gray[50],
           disable: colors.gray[400]
         }
+
+        // greyscale: {
+        //   default: colors.red[500],
+        //   subtle: colors.red[50],
+        //   lighter: colors.red[300],
+        //   darker: colors.red[700],
+        //   label: colors.red[500],
+        // }
+      },
+      // borderColor: (theme) => ({
+      //   ...theme('colors'), // Inherit all colors for borders
+      //   primary: colors.blue[500],
+      //   secondary: colors.yellow[500],
+      //   success: colors.green[500],
+      //   error: colors.red[500]
+      // }),
+      borderRadius: {
+        '3xs': '2px',
+        '2xs': spacing['1'],
+        xs: spacing['1.5'],
+        s: spacing['2'],
+        m: spacing['3'],
+        l: spacing['4'],
+        xl: spacing['5'],
+        '2xl': spacing['6'],
+        '3xl': spacing['8'],
+        '4xl': spacing['10'],
+        full: '999px'
+      },
+
+      spacing: {
+        '3xs': spacing['0.5'],
+        '2xs': spacing['1'],
+        xs: spacing['1.5'],
+        s: spacing['2'],
+        m: spacing['3'],
+        l: spacing['4'],
+        xl: spacing['5'],
+        '2xl': spacing['6'],
+        '3xl': spacing['8'],
+        '4xl': spacing['10'],
+        full: '999px'
+
       },
       spacing: spacingObject,
       fontFamily: {
