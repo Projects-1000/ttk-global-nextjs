@@ -26,9 +26,10 @@ export default function SubmitButton({
   isPill = false,
   onClick,
   classCustom,
+  type,
   props
 }: SubmitButtonProps) {
-  const isDisabled = isDirty && !isSubmitting ? false : true;
+  const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
   const sizeClass = `btn__${size} ${isPill ? `btn--pill` : ''}`;
   const colorClass = `btn__${color}`;
   const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
@@ -38,7 +39,7 @@ export default function SubmitButton({
       variant={variant}
       disabled={isDisabled}
       className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
-      type="button"
+      type={type}
       onClick={onClick}
       {...props}
     >

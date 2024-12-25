@@ -4,7 +4,7 @@
   @apply text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out;
 
   &.btn__primary {
-    @apply subtitle-bold bg-primary-default hover:bg-blue-600;
+    @apply subtitle-bold bg-primary-default hover:bg-blue-600 border-2 border-solid border-primary-default;
     
     &:disabled {
       @apply bg-greyscale-surface-disable text-greyscale-disable;
