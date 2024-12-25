@@ -13,5 +13,9 @@
     "cardImage": "/og.png",
     "robots": "follow, index",
     "favicon": "/favicon.ico"
+  },
+  "LocaleSwitcher": {
+    "label": "Ngon ngu",
+    "locale": "{locale, select, vi {VI} en {EN} other {Unknown}}"
   }
 }

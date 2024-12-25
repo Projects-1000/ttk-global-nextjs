@@ -169,12 +169,10 @@ export default {
       laptop: { min: '769px', max: '1025px' }, //769 <= screen < 1025
       desktop: { min: '1025px' } //>=1025
     },
-    container: {
-      center: true
-    }
   },
   plugins: [],
   corePlugins: {
-    preflight: false
+    preflight: false,
+    container: false
   }
 } satisfies Config;

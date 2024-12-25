@@ -1,5 +1,5 @@
 @mixin respond($breakpoint) {
-  @if $breakpoint == phone {
+  @if $breakpoint == mobile {
     // phone: width <= 375px
     @media (max-width: 376px) {
       @content;
@@ -25,5 +25,21 @@
     @media (min-width: 1025px) {
       @content;
     }
+  }
+}
+
+.container {
+  // responsive container
+  @include respond(mobile) {
+    @apply px-mobile_container;
+  }
+  @include respond(tablet) {
+    @apply px-tablet_container;
+  }
+  @include respond(laptop) {
+    @apply px-laptop_container;
+  }
+  @include respond(desktop) {
+    @apply px-desktop_container;
   }
 }

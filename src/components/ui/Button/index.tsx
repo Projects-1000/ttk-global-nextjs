@@ -1,20 +1,9 @@
 import { ButtonProps } from '@/types/button.typs';
-import { Button } from '@mui/material';
+import { Button as MUIButton } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { HTMLAttributes, HTMLProps, MouseEventHandler } from 'react';
 import './button.scss';
 
-interface SubmitButtonProps extends ButtonProps {
-  isSubmitting?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  classCustom?: HTMLProps<HTMLElement>['className'];
-  props?: Omit<
-    HTMLAttributes<HTMLButtonElement>,
-    'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
-  >;
-}
-
-export default function SubmitButton({
+export default function Button({
   text = 'Click me',
   variant = 'contained',
   isSubmitting = false,
@@ -28,14 +17,14 @@ export default function SubmitButton({
   classCustom,
   type,
   props
-}: SubmitButtonProps) {
+}: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
   const sizeClass = `btn__${size} ${isPill ? `btn--pill` : ''}`;
   const colorClass = `btn__${color}`;
   const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
 
   return (
-    <Button
+    <MUIButton
       variant={variant}
       disabled={isDisabled}
       className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
@@ -46,6 +35,6 @@ export default function SubmitButton({
       {iconPosition && icon}
       {iconPosition !== 'only' && text}
       {!iconPosition && isSubmitting && <CircularProgress className="ml-xs text-gray-400" size={16} />}
-    </Button>
+    </MUIButton>
   );
 }
