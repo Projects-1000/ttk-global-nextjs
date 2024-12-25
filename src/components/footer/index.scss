@@ -1,0 +1,11 @@
+.footer-container {
+  .link {
+    color: currentColor;
+    text-decoration: none;
+    transition: color 200ms;
+
+    &:hover {
+      color: #e4a700; /* Replace this with the actual color code for `anzac-400` */
+    }
+  }
+}
