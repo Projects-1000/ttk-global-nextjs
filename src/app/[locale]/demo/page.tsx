@@ -1,7 +1,6 @@
 'use client';
 
 import SubmitButton from '@/components/ui/Button';
-import { Header } from '@/components/ui/Header';
 import LocaleSwitcher from '@/components/ui/LocalSwitcher';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 

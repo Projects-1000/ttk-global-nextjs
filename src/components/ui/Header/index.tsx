@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import LocaleSwitcher from '../LocalSwitcher';
 import SubmitButton from '../Button';
+import LocaleSwitcher from '../LocalSwitcher';
 import NavBar from '../NavBar';
-import a from '../../../../public/assets/demo/header-logo.png'
 
 export const Header = () => {
   return (
