@@ -14,7 +14,12 @@ const spacingObject = {
   '2xl': spacing['6'], //24
   '3xl': spacing['8'], //32
   '4xl': spacing['10'], //40
-  full: '999px' //full
+  full: '999px', //full
+  desktop_container: 'var(--desktop-container-padding-x)',
+  laptop_container: 'var(--laptop-container-padding-x)',
+  tablet_container: 'var(--tablet-container-padding-x)',
+  mobile_container: 'var(--mobile-container-padding-x)',
+  desktop_header: 'var(--desktop-header-height)'
 };
 
 export default {
@@ -159,10 +164,13 @@ export default {
     },
     borderRadius: spacingObject,
     screens: {
-      phone: { max: '376px' }, //< 376px
+      mobile: { max: '376px' }, //< 376px
       tablet: { min: '376px', max: '769px' }, //376 <= screen < 769px
       laptop: { min: '769px', max: '1025px' }, //769 <= screen < 1025
       desktop: { min: '1025px' } //>=1025
+    },
+    container: {
+      center: true
     }
   },
   plugins: [],
