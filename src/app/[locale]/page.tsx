@@ -1,3 +1,5 @@
+import About from '@/components/page/home/About/index.tsx';
+import Benefit from '@/components/page/home/Benefit';
 import Hero from '@/components/page/home/Hero';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
@@ -8,6 +10,8 @@ const HomePage = () => {
   return (
     <div className="">
       <Hero />
+      <About />
+      <Benefit />
     </div>
   );
 };
@@ -19,7 +23,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;
-
+  console.log('Translated Title:', t('HomePage.title'));
   return {
     title: t('HomePage.title'),
     description: t('HomePage.about')
