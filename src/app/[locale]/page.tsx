@@ -1,5 +1,5 @@
 import React from 'react';
- import { LocaleRouteParams } from '@/types/routeParams';
+import { LocaleRouteParams } from '@/types/routeParams';
 import { routing } from '@/i18n/routing';
 import { getTranslations } from 'next-intl/server';
 import { TFunction } from '@/i18n/types';

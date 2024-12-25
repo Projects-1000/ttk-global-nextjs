@@ -1,0 +1,27 @@
+.swiper-container {
+  position: relative;
+  .swiper-pagination {
+    bottom: 0 !important;
+  }
+}
+.prev-button {
+  color: #000; /* Change to desired color */
+  opacity: 0.8;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 0;
+}
+.next-button {
+  color: #000; /* Change to desired color */
+  opacity: 0.8;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  right: 0;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  opacity: 1;
+}
