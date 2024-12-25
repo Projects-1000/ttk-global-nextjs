@@ -1,6 +1,7 @@
+'use client';
 import { FacebookOutlined, Google, Instagram } from '@mui/icons-material';
 import Image from 'next/image';
-import SubmitButton from '../ui/Button';
+import SubmitButton from '../../ui/Button';
 import Link from 'next/link';
 import './index.scss';
 const Footer = () => {
