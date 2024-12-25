@@ -38,14 +38,14 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
         <Select
           labelId="demo-simple-select-label"
           id="locale-switcher-select"
-          value={defaultValue}
-          defaultValue={defaultValue}
+          value={defaultValue as unknown as HTMLSelectElement}
+          defaultValue={defaultValue as unknown as HTMLSelectElement}
           label={label}
           onChange={onSelectChange}
           disabled={isPending}
           inputProps={{ 'aria-label': 'Without label' }}
           displayEmpty
-          renderValue={(value) => <ValueDisplay value={value} />}
+          renderValue={(value) => <ValueDisplay value={value as unknown as string} />}
           className='group'
         >
           {children}
