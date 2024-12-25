@@ -62,12 +62,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${montserrat.variable} font-sans`}>
+    <html lang={locale} className={`${montserrat.variable} font-sans`} id="__next">
       <body>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
             {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
-            <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>{children}</ThemeProvider>
             </AppRouterCacheProvider>
           </ReduxProvider>
