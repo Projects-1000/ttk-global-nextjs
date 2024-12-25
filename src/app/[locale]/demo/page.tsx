@@ -1,6 +1,5 @@
 'use client';
 
-import Footer from '@/components/footer';
 import SubmitButton from '@/components/ui/Button';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 
@@ -340,7 +339,6 @@ const DemoPage = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </main>
   );
 };
