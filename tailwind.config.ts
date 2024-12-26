@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 const spacing = require('tailwindcss/defaultTheme').spacing;
+const plugin = require('tailwindcss/plugin');
 
 const spacingObject = {
   '3xs': spacing['0.5'], //2
@@ -161,6 +162,23 @@ export default {
       spacing: spacingObject,
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans]
+      },
+      fontSize: {
+        h1: ['48px', '56px'],
+        h2: ['36px', '40px'],
+        h3: ['30px', '36px'],
+        h4: ['24px', '32px'],
+        headline: ['20px', '28px'],
+        body: ['16px', '24px'],
+        subtitle: ['14px', '20px'],
+        caption: ['14px', '20px'],
+        footnote: ['12px', '16px']
+      },
+      fontWeight: {
+        bold: '700',
+        semibold: '600',
+        regular: '400',
+        light: '200'
       }
     },
     borderRadius: spacingObject,
@@ -171,7 +189,31 @@ export default {
       desktop: '1025px' //>=1025
     }
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({
+      addUtilities,
+      theme
+    }: {
+      addUtilities: (utilities: Record<string, any>) => void;
+      theme: (path: string) => any;
+    }) {
+      const typoClasses: Record<string, any> = {};
+      const fontSizes = theme('fontSize') as Record<string, [string, string]>;
+      const fontWeights = theme('fontWeight') as Record<string, number>;
+
+      for (const [typoName, [size, lineHeight]] of Object.entries(fontSizes)) {
+        for (const [weightName, weightValue] of Object.entries(fontWeights)) {
+          typoClasses[`.${typoName}-${weightName}`] = {
+            fontSize: size,
+            lineHeight,
+            fontWeight: weightValue
+          };
+        }
+      }
+
+      addUtilities(typoClasses);
+    })
+  ],
   corePlugins: {
     preflight: false,
     container: false

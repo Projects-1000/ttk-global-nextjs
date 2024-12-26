@@ -1,7 +1,7 @@
 import { ButtonProps } from '@/types/button.typs';
 import { Button as MUIButton } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import './button.scss';
+import './index.scss';
 
 export default function Button({
   text = 'Click me',

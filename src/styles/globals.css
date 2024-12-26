@@ -14,3 +14,9 @@
     --desktop-section-paddingY: 120px;
   }
 }
+
+@layer components {
+  .container {
+    @apply mobile:px-mobile_container tablet:px-tablet_container laptop:px-laptop_container desktop:px-desktop_container;
+  }
+}
