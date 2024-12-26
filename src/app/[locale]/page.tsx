@@ -1,5 +1,6 @@
 import Benefit from '@/components/page/home/Benefit';
 import Hero from '@/components/page/home/Hero';
+import Prize from '@/components/page/home/Prize';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';
@@ -10,6 +11,7 @@ const HomePage = () => {
     <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
       <Benefit />
+      <Prize />
     </div>
   );
 };

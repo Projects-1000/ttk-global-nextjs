@@ -16,7 +16,7 @@ const BenefitCard = ({ title, description, image, isReverse = false }: BenefitCa
         <p className="mobile:h3-bold laptop:h2-bold">{title}</p>
         <p className="text-black subtitle-regular laptop:body-regular">{description}</p>
       </div>
-      <div className="relative inset-0 h-full w-full basis-3/5">
+      <div className="w-full basis-3/5">
         <Image
           alt={title}
           src={image}
