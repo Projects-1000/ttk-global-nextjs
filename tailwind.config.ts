@@ -183,10 +183,10 @@ export default {
     },
     borderRadius: spacingObject,
     screens: {
-      mobile: '376px', //< 376px
-      tablet: '376px', //376 <= screen < 769px
-      laptop: '769px', //769 <= screen < 1025
-      desktop: '1025px' //>=1025
+      mobile: '375px', //< 376px
+      tablet: '768px', //376 <= screen < 769px
+      laptop: '1024px', //769 <= screen < 1025
+      desktop: '1440px' //>=1025
     }
   },
   plugins: [
