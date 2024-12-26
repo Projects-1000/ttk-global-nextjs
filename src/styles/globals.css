@@ -10,5 +10,6 @@
     --mobile-container-padding-x: 20px;
 
     --desktop-header-height: 88px;
+    --desktop-section-paddingY: 120px;
   }
 }

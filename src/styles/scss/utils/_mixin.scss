@@ -8,14 +8,14 @@
 
   @if $breakpoint == tablet {
     // tablet: width >= 375px and width < 768px
-    @media (min-width: 376px) and (max-width: 769px) {
+    @media (min-width: 376px) {
       @content;
     }
   }
 
   @if $breakpoint == laptop {
     // tablet: width >= 768px and width < 1024px
-    @media (min-width: 769px) and (max-width: 1025px) {
+    @media (min-width: 769px) {
       @content;
     }
   }
