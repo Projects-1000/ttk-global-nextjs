@@ -1,4 +1,5 @@
 import Footer from '@/components/layout/footer';
+import { Header } from '@/components/ui/Header';
 import { montserrat } from '@/configs/locales';
 import theme from '@/configs/theme';
 import { routing } from '@/i18n/routing';
@@ -64,14 +65,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} className={`${montserrat.variable} font-sans`} id="__next">
-      <body>
+      <body className="overflow-x-hidden w-full">
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
             {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
             <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>
                 <div className="flex min-h-screen flex-col">
-                  <header>Header</header>
+                <Header />
                   <main className="flex-1">{children}</main>
                   <Footer />
                 </div>

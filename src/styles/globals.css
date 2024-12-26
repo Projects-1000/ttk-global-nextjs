@@ -10,12 +10,6 @@
     --mobile-container-padding-x: 20px;
 
     --desktop-header-height: 88px;
-  }
-}
-
-@layer components {
-  /* responsive container */
-  .container {
-    @apply mobile:px-mobile_container tablet:px-tablet_container laptop:px-laptop_container desktop:px-desktop_container;
+    --desktop-section-paddingY: 120px;
   }
 }

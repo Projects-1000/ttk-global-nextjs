@@ -19,14 +19,15 @@ const spacingObject = {
   laptop_container: 'var(--laptop-container-padding-x)',
   tablet_container: 'var(--tablet-container-padding-x)',
   mobile_container: 'var(--mobile-container-padding-x)',
-  desktop_header: 'var(--desktop-header-height)'
+  desktop_header: 'var(--desktop-header-height)',
+  desktop_section_padding: 'var(--desktop-section-paddingY)'
 };
 
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx,scss}'
   ],
   theme: {
     extend: {
@@ -164,17 +165,15 @@ export default {
     },
     borderRadius: spacingObject,
     screens: {
-      mobile: { max: '376px' }, //< 376px
-      tablet: { min: '376px', max: '769px' }, //376 <= screen < 769px
-      laptop: { min: '769px', max: '1025px' }, //769 <= screen < 1025
-      desktop: { min: '1025px' } //>=1025
-    },
-    container: {
-      center: true
+      mobile: '376px', //< 376px
+      tablet: '376px', //376 <= screen < 769px
+      laptop: '769px', //769 <= screen < 1025
+      desktop: '1025px' //>=1025
     }
   },
   plugins: [],
   corePlugins: {
-    preflight: false
+    preflight: false,
+    container: false
   }
 } satisfies Config;

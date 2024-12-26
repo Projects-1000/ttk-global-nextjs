@@ -1,5 +1,5 @@
 @mixin respond($breakpoint) {
-  @if $breakpoint == phone {
+  @if $breakpoint == mobile {
     // phone: width <= 375px
     @media (max-width: 376px) {
       @content;
@@ -8,14 +8,14 @@
 
   @if $breakpoint == tablet {
     // tablet: width >= 375px and width < 768px
-    @media (min-width: 376px) and (max-width: 769px) {
+    @media (min-width: 376px) {
       @content;
     }
   }
 
   @if $breakpoint == laptop {
     // tablet: width >= 768px and width < 1024px
-    @media (min-width: 769px) and (max-width: 1025px) {
+    @media (min-width: 769px) {
       @content;
     }
   }
@@ -25,5 +25,21 @@
     @media (min-width: 1025px) {
       @content;
     }
+  }
+}
+
+.container {
+  // responsive container
+  @include respond(mobile) {
+    @apply px-mobile_container;
+  }
+  @include respond(tablet) {
+    @apply px-tablet_container;
+  }
+  @include respond(laptop) {
+    @apply px-laptop_container;
+  }
+  @include respond(desktop) {
+    @apply px-desktop_container;
   }
 }
