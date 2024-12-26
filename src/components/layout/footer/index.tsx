@@ -1,12 +1,12 @@
 'use client';
 import { FacebookOutlined, Google, Instagram } from '@mui/icons-material';
 import Image from 'next/image';
-import SubmitButton from '../../ui/Button';
+import SubmitButton from '../../ui/Button/Button';
 import Link from 'next/link';
 import './index.scss';
 const Footer = () => {
   return (
-    <div className="footer-container flex flex-col">
+    <div className="footer-container flex flex-col overflow-hidden">
       <div className="flex flex-col gap-4xl bg-blue-600 px-[120px] py-[60px]">
         <Image
           src="https://res.cloudinary.com/dh6bfx865/image/upload/v1735060367/ttk-global/Logo_gsse3o.png"
