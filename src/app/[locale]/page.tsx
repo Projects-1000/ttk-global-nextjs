@@ -1,3 +1,5 @@
+
+import About from '@/components/page/home/About/index.tsx';
 import Benefit from '@/components/page/home/Benefit';
 import Hero from '@/components/page/home/Hero';
 import Partner from '@/components/page/home/Partner';
@@ -14,6 +16,7 @@ const HomePage = () => {
       <Benefit />
       <Prize />
       <Partner />
+      <About />
     </div>
   );
 };
@@ -25,7 +28,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;
-
+  console.log('Translated Title:', t('HomePage.title'));
   return {
     title: t('HomePage.title'),
     description: t('HomePage.about')

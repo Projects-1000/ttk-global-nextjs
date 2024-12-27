@@ -34,6 +34,7 @@ type CustomSwipperProps<T> = {
   effect?: 'fade' | 'cube' | 'coverflow' | 'flip' | 'cards' | 'creative';
   spaceBetween?: number;
   centeredSlides?: boolean;
+  autoPlay?: number;
 };
 
 const CustomSwiper = <T,>({
@@ -44,7 +45,8 @@ const CustomSwiper = <T,>({
   slidesPerView = 1,
   effect,
   centeredSlides = false,
-  spaceBetween = 30
+  spaceBetween = 30,
+  autoPlay = 0
 }: CustomSwipperProps<T>) => {
   return (
     <div className="swiper-container max-w-full px-4xl">
@@ -71,6 +73,7 @@ const CustomSwiper = <T,>({
         effect={effect}
         spaceBetween={spaceBetween}
         loop={loop}
+        autoplay={autoPlay ? { delay: autoPlay } : false}
         coverflowEffect={
           effect === 'coverflow'
             ? {
