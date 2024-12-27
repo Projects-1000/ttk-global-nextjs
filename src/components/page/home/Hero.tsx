@@ -1,10 +1,11 @@
 'use client';
-import { BlueVector } from '@/assets/blue-vector';
-import SubmitButton from '@/components/ui/Button';
+// import { BlueVector } from '@/assets/blue-vector';
+
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import Button from '@/components/ui/Button/Button';
 const listLogos = [
   {
     src: 'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/logo-shopbase_1_mnd9il.png',
@@ -58,22 +59,22 @@ const listLogos = [
 const Hero = () => {
   return (
     <div className="relative flex flex-col gap-4xl py-[120px]">
-      <div className="absolute left-[-67%] top-[-40%] z-0 rotate-180">
+      {/* <div className="absolute left-[-67%] top-[-40%] z-0 rotate-180">
         <BlueVector />
-      </div>
+      </div> */}
       <div className="z-10 flex items-center justify-between px-[120px]">
         <div className="flex max-w-[600px] flex-col gap-2xl">
-          <div className="h1-bold">
+          <p className="h1-bold">
             Hợp tác kinh doanh trên <span className="text-[#F58C29]">Amazon</span> - Đưa thương hiệu của bạn ra toàn
             cầu!
-          </div>
-          <span className="headline-regular">
+          </p>
+          <p className="headline-regular">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi
             tristique senectus
-          </span>
+          </p>
           <div className="flex items-center gap-l">
-            <SubmitButton text="Đăng ký hợp tác" size="medium" />
-            <SubmitButton text="Tìm hiểu thêm" color="secondary" size="medium" />
+            <Button text="Đăng ký hợp tác" size="medium" />
+            <Button text="Tìm hiểu thêm" color="secondary" size="medium" />
           </div>
         </div>
         <div className="min-h-[380px] min-w-[480px]">
@@ -86,7 +87,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="z-10 flex flex-col items-center gap-2xl px-0 py-3xl">
-        <span className="body-bold">Các đơn vị hỗ trợ</span>
+        <p className="body-bold">Các đơn vị hỗ trợ</p>
         {/* <div className="flex w-full items-center justify-between">
           <Image
             src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/logo-shopbase_1_mnd9il.png'}
@@ -136,7 +137,7 @@ const Hero = () => {
           dots={true}
           centeredSlides={true}
         /> */}
-        <div className="w-full">
+        <div className="max-w-[100vw]">
           <Swiper
             modules={[Autoplay]} // Add Autoplay module
             slidesPerView={5}

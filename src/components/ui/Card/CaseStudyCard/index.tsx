@@ -2,7 +2,7 @@ import CustomTag from '@/components/ui/CustomTag';
 import Image from 'next/image';
 import React from 'react';
 
-export interface CaseStudyProps {
+export interface CaseStudyCardProps {
   projectName: string;
   description: string;
   tags: string[];
@@ -11,7 +11,7 @@ export interface CaseStudyProps {
   image?: string;
 }
 
-const CaseStudy: React.FC<CaseStudyProps> = ({
+const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   projectName,
   description,
   tags,
@@ -20,8 +20,8 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
   image
 }) => {
   return (
-    <div className="bg- flex items-center space-x-4 rounded-xl p-4xl shadow-md">
-      <div className="flex w-1/3 flex-col gap-s">
+    <div className="flex items-center space-x-4 rounded-xl border-solid border-blue-200 bg-white p-4xl">
+      <div className="flex w-1/3 flex-col gap-3xl">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <CustomTag key={index} tagName={tag} type="outline" />
@@ -39,16 +39,16 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
 
       <div className="flex flex-1 items-center justify-center">
         {image ? (
-          // <img src={image} alt="casestudy-image" className="md:w-1/3 flex h-[340px] w-full" />
+          // <img src={image} alt="casestudyCard-image" className="md:w-1/3 flex h-[340px] w-full" />
           <Image
             src={image}
-            alt="casestudy-image"
+            alt="casestudyCard-image"
             className="md:w-1/3 flex h-[340px] w-full"
             width={500}
             height={340}
           />
         ) : (
-          <div className="md:w-1/3 flex h-[340px] w-full items-center justify-center rounded-lg">
+          <div className="md:w-1/3 rounded-lg flex h-[340px] w-full items-center justify-center">
             <span className="text-gray-400">Image/Placeholder</span>
           </div>
         )}
@@ -57,4 +57,4 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
   );
 };
 
-export default CaseStudy;
+export default CaseStudyCard;
