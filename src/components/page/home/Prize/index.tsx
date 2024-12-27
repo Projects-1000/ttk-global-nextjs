@@ -1,5 +1,4 @@
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { Stack } from '@mui/material';
 import Image from 'next/image';
 
 const prize = {
@@ -18,9 +17,9 @@ const Prize = () => {
             Giải tiên phong khỏi nghiệp xanh - Tuổi Trẻ Startup Award 2024
           </h3>
           <p className="text-start text-black subtitle-regular tablet:text-center tablet:body-regular">
-            TTK Global Ventures tự hào được vinh danh là 1 trong 10 doanh nghiệp xuất sắc nhất tại Giải thưởng "Tuổi Trẻ
+            {`TTK Global Ventures tự hào được vinh danh là 1 trong 10 doanh nghiệp xuất sắc nhất tại Giải thưởng "Tuổi Trẻ
             Start-up Award 2024" do báo Tuổi Trẻ tổ chức vào tháng 10/2024, ghi nhận những nỗ lực của chúng tôi trong
-            việc kiến tạo nên một hệ sinh thái TMĐT xuyên biên giới bền vững, giúp doanh nghiệp Việt vươn tầm quốc tế.
+            việc kiến tạo nên một hệ sinh thái TMĐT xuyên biên giới bền vững, giúp doanh nghiệp Việt vươn tầm quốc tế.`}
           </p>
         </div>
         <div className="flex w-full flex-col items-start justify-between gap-l tablet:flex-row tablet:gap-2xl laptop:gap-3xl">

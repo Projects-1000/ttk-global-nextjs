@@ -55,7 +55,7 @@ const Partner = () => {
           return (
             <div className="flex flex-row items-center laptop:gap-3xl desktop:gap-4xl" key={i}>
               {row.map(({ href, id, name, src }) => {
-                return <LogoCard name={name} src={src} href={href} />;
+                return <LogoCard key={id} name={name} src={src} href={href} />;
               })}
             </div>
           );
