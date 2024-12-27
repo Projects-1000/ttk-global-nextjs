@@ -30,10 +30,46 @@ const Benefit = () => {
       <div className="flex h-full w-full flex-col items-center py-[60px]">
         {benefits.map(({ id, title, image, description }, index) => {
           const isReverse = index % 2 !== 0;
-          return <BenefitCard key={id} title={title} description={description} image={image} isReverse={isReverse} />;
+          return (
+            <div key={id} className="flex flex-col items-center">
+              <BenefitCard key={id} title={title} description={description} image={image} isReverse={isReverse} />
+              {index !== benefits.length - 1 && <RoadmapLine isReverse={isReverse} />}
+            </div>
+          );
         })}
       </div>
     </SectionCard>
+  );
+};
+
+// type : 1=> left to right, 2=> right to left
+const RoadmapLine: React.FC<{ isReverse: boolean }> = ({ isReverse }) => {
+  return (
+    <div className="flex w-[50%] flex-col">
+      <div
+        className={`relative h-[100px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-blue-200 ${isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'}`}
+      >
+        <div
+          className={`absolute -top-2 h-2/3 w-[20px] ${isReverse ? '-left-[10px]' : '-right-[10px]'}`}
+          style={{
+            background: 'linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
+            filter: 'blur(5px)'
+          }}
+        ></div>
+      </div>
+      <div className="h-[2px] w-full border-[2px] border-l-0 border-r-0 border-t-0 border-dashed border-blue-200"></div>
+      <div
+        className={`relative h-[100px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-blue-200 ${!isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'}`}
+      >
+        <div
+          className={`absolute -bottom-2 h-2/3 w-[20px] ${!isReverse ? '-left-[10px]' : '-right-[10px]'}`}
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
+            filter: 'blur(5px)'
+          }}
+        ></div>
+      </div>
+    </div>
   );
 };
 

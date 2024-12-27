@@ -1,4 +1,4 @@
-import Footer from '@/components/layout/footer';
+import Footer from '@/components/ui/Footer';
 import { Header } from '@/components/ui/Header';
 import { montserrat } from '@/configs/locales';
 import theme from '@/configs/theme';

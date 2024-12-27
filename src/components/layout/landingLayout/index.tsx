@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import Footer from '../footer';
+import Footer from '../../ui/Footer';
 
 const LandingLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
