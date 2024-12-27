@@ -1,5 +1,6 @@
 import Benefit from '@/components/page/home/Benefit';
 import Hero from '@/components/page/home/Hero';
+import Partner from '@/components/page/home/Partner';
 import Prize from '@/components/page/home/Prize';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
@@ -12,6 +13,7 @@ const HomePage = () => {
       <Hero />
       <Benefit />
       <Prize />
+      <Partner />
     </div>
   );
 };
