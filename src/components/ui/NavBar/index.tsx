@@ -10,7 +10,7 @@ const NavBar = () => {
     { title: 'Tài liệu', link: '/' }
   ];
   return (
-    <nav className="flex h-full items-center">
+    <nav className="hidden h-full items-center laptop:flex">
       {navItems.map(({ title, link }, i) => (
         <HeaderButton key={i} title={title} link={link} />
       ))}

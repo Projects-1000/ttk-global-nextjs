@@ -1,6 +1,9 @@
+
 import About from '@/components/page/home/About/index.tsx';
 import Benefit from '@/components/page/home/Benefit';
 import Hero from '@/components/page/home/Hero';
+import Partner from '@/components/page/home/Partner';
+import Prize from '@/components/page/home/Prize';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';
@@ -8,10 +11,12 @@ import { getTranslations } from 'next-intl/server';
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
-      <About />
       <Benefit />
+      <Prize />
+      <Partner />
+      <About />
     </div>
   );
 };

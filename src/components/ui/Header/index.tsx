@@ -19,7 +19,7 @@ export const Header = () => {
           </div>
           <NavBar />
         </div>
-        <div className="flex items-center gap-m">
+        <div className="hidden items-center gap-m tablet:flex">
           <LocaleSwitcher />
           <SubmitButton text="Đăng ký" size="medium" color="secondary" />
           <SubmitButton text="Đăng nhập" size="medium" color="primary" />
