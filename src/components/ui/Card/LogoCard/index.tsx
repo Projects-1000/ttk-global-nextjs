@@ -24,7 +24,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
         width="0"
         height="0"
         sizes="100vw"
-        className="smooth-transition max-w-[120px ] h-auto w-full object-contain object-center group-hover:scale-105"
+        className="smooth-transition max-w-[120px] h-auto w-full object-contain object-center group-hover:scale-105"
         loading="lazy"
       />
     </Link>

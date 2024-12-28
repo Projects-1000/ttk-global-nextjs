@@ -3,6 +3,12 @@ import { LogoCard } from '@/components/ui/Card/LogoCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperOptions } from 'swiper/types';
+
+interface MobileBodyProps {
+  delay: number;
+  speed: SwiperOptions['speed'];
+}
 
 const partners = [
   {
@@ -94,29 +100,42 @@ const Partner = () => {
           );
         })}
       </div>
-      <MobileBody delay={1000} />
-      <MobileBody delay={0} />
-      <MobileBody delay={3000} />
+      <MobileBody delay={2} speed={4000} />
+      <MobileBody delay={1} speed={2000} />
+      <MobileBody delay={0} speed={3000} />
     </SectionCard>
   );
 };
 
-const MobileBody = ({ delay }: { delay: number }) => {
+const MobileBody = ({ delay, speed }: MobileBodyProps) => {
   return (
-    <div className="z-10 flex flex-col items-center gap-2xl px-0 laptop:hidden">
-      <div className="max-w-[100vw]">
+    <div className="max-w-[100vw]">
+      <div className="flex w-full laptop:hidden">
         <Swiper
           modules={[Autoplay]} // Add Autoplay module
+          loop
+          allowTouchMove={false}
           slidesPerView={5}
           spaceBetween={50}
-          loop
+          initialSlide={delay}
+          direction="horizontal"
           autoplay={{
-            delay: delay || 0,
+            delay: 0,
             disableOnInteraction: false,
             stopOnLastSlide: false,
             pauseOnMouseEnter: true
           }}
-          speed={1000}
+          speed={speed}
+          breakpoints={{
+            375: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 30
+            }
+          }}
           className="swiper-infinity-slider"
         >
           {partners.map(({ href, id, name, src }) => (
@@ -132,7 +151,9 @@ const MobileBody = ({ delay }: { delay: number }) => {
 
 const SectionTitle = (
   <p>
-    PHỐI HỢP CÙNG CÁC <span className="text-secondary-label">ĐƠN VỊ QUỐC TẾ</span>
+    PHỐI HỢP CÙNG <span className="hidden tablet:inline">CÁC</span>
+    <span className="text-secondary-label">ĐƠN VỊ QUỐC TẾ</span>
   </p>
 );
+
 export default Partner;
