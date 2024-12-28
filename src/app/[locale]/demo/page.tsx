@@ -18,7 +18,17 @@ const DemoPage = () => {
             <SubmitButton
               isDirty={false}
               text="Label"
-              size="medium"
+              // size="medium"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+              // props={{className: 'custom-class'}}
+            />
+            <SubmitButton
+              isDirty={false}
+              text="Label"
+              size="small"
               color="primary"
               isSubmitting={false}
               iconPosition="end"

@@ -50,7 +50,7 @@ h6 {
 @layer base {
   :root {
     --desktop-container-padding-x: 120px;
-    --laptop-container-padding-x: 120px;
+    --laptop-container-padding-x: 80px;
     --tablet-container-padding-x: 32px;
     --mobile-container-padding-x: 32px;
 
