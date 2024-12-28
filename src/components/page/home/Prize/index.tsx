@@ -22,7 +22,7 @@ const Prize = () => {
             việc kiến tạo nên một hệ sinh thái TMĐT xuyên biên giới bền vững, giúp doanh nghiệp Việt vươn tầm quốc tế.`}
           </p>
         </div>
-        <div className="flex w-full flex-col items-start justify-between gap-l tablet:flex-row tablet:gap-2xl laptop:gap-3xl">
+        <div className="flex w-full flex-col items-start justify-between rounded-s overflow-hidden gap-l tablet:flex-row tablet:gap-2xl laptop:gap-3xl">
           {prize.image.map((image, index) => (
             <Image
               key={index}
@@ -43,7 +43,7 @@ const Prize = () => {
 
 const SectionTitle = (
   <p>
-    <span className="text-secondary-label"> GIẢI THƯỞNG</span> NỔI BẬT
+    <span className="text-secondary-label"> GIẢI THƯỞNG</span><br className='tablet:hidden'/> NỔI BẬT
   </p>
 );
 

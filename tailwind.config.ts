@@ -5,6 +5,7 @@ const spacing = require('tailwindcss/defaultTheme').spacing;
 const plugin = require('tailwindcss/plugin');
 
 const spacingObject = {
+  none: '0px', //2
   '3xs': spacing['0.5'], //2
   '2xs': spacing['1'], //4
   xs: spacing['1.5'], //6
@@ -220,7 +221,7 @@ export default {
     })
   ],
   corePlugins: {
-    preflight: false,
+    preflight: true,
     container: false
   }
 } satisfies Config;

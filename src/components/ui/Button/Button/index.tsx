@@ -8,7 +8,7 @@ export default function Button({
   variant = 'contained',
   isSubmitting = false,
   isDirty = false,
-  size = 'small',
+  size,
   color = 'primary',
   iconPosition,
   icon,
@@ -19,7 +19,7 @@ export default function Button({
   props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
-  const sizeClass = `btn__${size} ${isPill ? `btn--pill` : ''}`;
+  const sizeClass = `${size ? `btn__${size}` : `mobile:btn__small tablet:btn__medium laptop:btn__large`} ${isPill ? `btn--pill` : ''}`;
   const colorClass = `btn__${color}`;
   const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
 
@@ -27,7 +27,7 @@ export default function Button({
     <MUIButton
       variant={variant}
       disabled={isDisabled}
-      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting && 'animate-pulse'} flex items-center gap-xs capitalize`}
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs capitalize`}
       type={type}
       onClick={onClick}
       {...props}

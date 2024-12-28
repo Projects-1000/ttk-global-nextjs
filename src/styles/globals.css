@@ -50,8 +50,8 @@ h6 {
 @layer base {
   :root {
     --desktop-container-padding-x: 120px;
-    --laptop-container-padding-x: 120px;
-    --tablet-container-padding-x: 20px;
+    --laptop-container-padding-x: 80px;
+    --tablet-container-padding-x: 32px;
     --mobile-container-padding-x: 32px;
 
     --desktop-header-height: 88px;
@@ -74,4 +74,10 @@ h6 {
     border-image-slice: 1 !important;
     border-image-source: linear-gradient(to left, rgba(255, 236, 250, 0.3), rgba(60, 75, 204, 0.8));
   }
+
+  .swiper-infinity-slider {
+    .swiper-wrapper {
+      @apply ease-linear;
+    }
+  } 
 }

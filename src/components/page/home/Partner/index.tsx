@@ -1,5 +1,14 @@
+'use client';
 import { LogoCard } from '@/components/ui/Card/LogoCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperOptions } from 'swiper/types';
+
+interface MobileBodyProps {
+  delay: number;
+  speed: SwiperOptions['speed'];
+}
 
 const partners = [
   {
@@ -31,6 +40,36 @@ const partners = [
     name: 'Amazon',
     src: '/assets/demo/partner-amazon.png',
     href: 'https://www.amazon.com'
+  },
+  {
+    id: 5,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
+  },
+  {
+    id: 6,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
+  },
+  {
+    id: 7,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
+  },
+  {
+    id: 8,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
+  },
+  {
+    id: 9,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
   }
 ];
 
@@ -50,7 +89,7 @@ const Partner = () => {
       title={SectionTitle}
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
     >
-      <div className="flex flex-col items-center laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
+      <div className="hidden flex-col items-center laptop:flex laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
         {rows.map((row, i) => {
           return (
             <div className="flex flex-row items-center laptop:gap-3xl desktop:gap-4xl" key={i}>
@@ -61,13 +100,60 @@ const Partner = () => {
           );
         })}
       </div>
+      <MobileBody delay={2} speed={4000} />
+      <MobileBody delay={1} speed={2000} />
+      <MobileBody delay={0} speed={3000} />
     </SectionCard>
+  );
+};
+
+const MobileBody = ({ delay, speed }: MobileBodyProps) => {
+  return (
+    <div className="max-w-[100vw]">
+      <div className="flex w-full laptop:hidden">
+        <Swiper
+          modules={[Autoplay]} // Add Autoplay module
+          loop
+          allowTouchMove={false}
+          slidesPerView={5}
+          spaceBetween={50}
+          initialSlide={delay}
+          direction="horizontal"
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            stopOnLastSlide: false,
+            pauseOnMouseEnter: true
+          }}
+          speed={speed}
+          breakpoints={{
+            375: {
+              slidesPerView: 3,
+              spaceBetween: 30
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 30
+            }
+          }}
+          className="swiper-infinity-slider"
+        >
+          {partners.map(({ href, id, name, src }) => (
+            <SwiperSlide key={id}>
+              <LogoCard name={name} src={src} href={href} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 };
 
 const SectionTitle = (
   <p>
-    PHỐI HỢP CÙNG CÁC <span className="text-secondary-label">ĐƠN VỊ QUỐC TẾ</span>
+    PHỐI HỢP CÙNG <span className="hidden tablet:inline">CÁC</span>
+    <span className="text-secondary-label">ĐƠN VỊ QUỐC TẾ</span>
   </p>
 );
+
 export default Partner;

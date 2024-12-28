@@ -15,7 +15,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
       target="_blank"
       title={`${name}`}
       href={href || '#'}
-      className={`${customClass} hover:smooth-transition group w-full rounded-s border border-solid border-greyscale-surface-default bg-blue-10 p-xl no-underline hover:border-primary-default`}
+      className={`${customClass} hover:smooth-transition group block w-full rounded-s border border-solid border-greyscale-surface-default bg-blue-10 p-xl no-underline hover:border-primary-default`}
       {...props}
     >
       <Image
@@ -24,7 +24,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
         width="0"
         height="0"
         sizes="100vw"
-        className="smooth-transition h-auto w-full max-w-[120px ] object-contain object-center group-hover:scale-105"
+        className="smooth-transition max-w-[120px] h-auto w-full object-contain object-center group-hover:scale-105"
         loading="lazy"
       />
     </Link>
