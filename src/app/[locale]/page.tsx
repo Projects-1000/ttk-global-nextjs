@@ -13,13 +13,13 @@ import { getTranslations } from 'next-intl/server';
 const HomePage = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
-      <Hero />
+      {/* <Hero /> */}
       <Benefit />
-      <CaseStudy />
+      {/* <CaseStudy />
       <Prize />
       <Partner />
       <About />
-      <Testimonial />
+      <Testimonial /> */}
     </div>
   );
 };

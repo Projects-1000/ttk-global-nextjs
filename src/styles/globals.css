@@ -51,8 +51,8 @@ h6 {
   :root {
     --desktop-container-padding-x: 120px;
     --laptop-container-padding-x: 120px;
-    --tablet-container-padding-x: 20px;
-    --mobile-container-padding-x: 20px;
+    --tablet-container-padding-x: 32px;
+    --mobile-container-padding-x: 32px;
 
     --desktop-header-height: 88px;
     --desktop-section-paddingY: 120px;
