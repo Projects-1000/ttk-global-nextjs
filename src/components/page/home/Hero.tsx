@@ -88,55 +88,6 @@ const Hero = () => {
       </div>
       <div className="z-10 flex flex-col items-center gap-2xl px-0 py-3xl">
         <p className="body-bold">Các đơn vị hỗ trợ</p>
-        {/* <div className="flex w-full items-center justify-between">
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/logo-shopbase_1_mnd9il.png'}
-            alt="shopbase"
-            className="h-fit w-fit object-cover"
-            width={213}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/Payoneer-Logo_1_kdrmaf.png'}
-            alt="payoneer"
-            className="h-fit w-fit object-cover"
-            width={108}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/burgerprints_2_urwqde.png'}
-            alt="burgerprints"
-            className="h-fit w-fit object-cover"
-            width={253}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/Logo_AGS_1_cfmys9.png'}
-            alt="shopbase"
-            className="h-fit w-fit object-cover"
-            width={149}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/burgerprints_2_urwqde.png'}
-            alt="burgerprints"
-            className="h-fit w-fit object-cover"
-            width={253}
-            height={40}
-          />
-        </div> */}
-        {/* <CustomSwiper<ImageProps>
-          Card={({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) => (
-            <Image src={src} alt={alt} width={width} height={height} />
-          )}
-          listData={listLogos}
-          slidesPerView={3} // Adjust as necessary
-          spaceBetween={20}
-          loop
-          autoPlay={3000} // Optional autoplay
-          dots={true}
-          centeredSlides={true}
-        /> */}
         <div className="max-w-[100vw]">
           <Swiper
             modules={[Autoplay]} // Add Autoplay module
@@ -148,7 +99,8 @@ const Hero = () => {
               disableOnInteraction: false,
               stopOnLastSlide: false
             }}
-            speed={1500}
+            speed={3000}
+            className="swiper-infinity-slider"
           >
             {listLogos.map((logo, index) => (
               <SwiperSlide key={index}>

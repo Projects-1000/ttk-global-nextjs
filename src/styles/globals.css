@@ -67,4 +67,10 @@ h6 {
   .smooth-transition {
     @apply transition-transform duration-300 ease-in-out;
   }
+
+  .swiper-infinity-slider {
+    .swiper-wrapper {
+      @apply ease-linear;
+    }
+  } 
 }
