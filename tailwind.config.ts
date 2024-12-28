@@ -21,7 +21,8 @@ const spacingObject = {
   tablet_container: 'var(--tablet-container-padding-x)',
   mobile_container: 'var(--mobile-container-padding-x)',
   desktop_header: 'var(--desktop-header-height)',
-  desktop_section_padding: 'var(--desktop-section-paddingY)'
+  desktop_section_padding: 'var(--desktop-section-paddingY)',
+  mobile_section_padding: 'var(--mobile-section-paddingY)'
 };
 
 export default {
@@ -157,6 +158,9 @@ export default {
           caption: colors.gray[500],
           negative: colors.gray[50],
           disable: colors.gray[400]
+        },
+        surface: {
+          subtle: colors.blue[50]
         }
       },
       spacing: spacingObject,
@@ -182,6 +186,7 @@ export default {
       }
     },
     borderRadius: spacingObject,
+
     screens: {
       mobile: '375px', //< 376px
       tablet: '768px', //376 <= screen < 769px

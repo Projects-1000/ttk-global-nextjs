@@ -63,14 +63,24 @@ const CaseStudy = () => {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.';
   return (
     <SectionCard title={<CaseStudyTitle />} description={description}>
-      <div className="flex items-center gap-10">
+      <div className="flex w-full items-center mobile:gap-0 laptop:gap-10">
         <div className="prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronLeft size={24} />
         </div>
-        <div className="max-w-[1120px]">
-          <Swiper
+        <div className="w-full max-w-[1120px]">
+          {/* <Swiper
             modules={[Navigation]}
             slidesPerView={1}
+            breakpoints={{
+              375: {
+                spaceBetween: 16,
+                slidesPerView: 1.2
+              },
+              768: {
+                spaceBetween: 0,
+                slidesPerView: 1
+              }
+            }}
             spaceBetween={30}
             className="relative"
             navigation={{
@@ -80,7 +90,7 @@ const CaseStudy = () => {
             loop={true}
           >
             {caseStudyData.map((caseStudy) => (
-              <SwiperSlide key={caseStudy.id}>
+              <SwiperSlide className="w-full" key={caseStudy.id}>
                 <CaseStudyCard
                   image={caseStudy.image}
                   projectName={caseStudy.projectName}
@@ -91,7 +101,7 @@ const CaseStudy = () => {
                 />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
         </div>
         <div className="next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronRight size={24} />
@@ -102,7 +112,7 @@ const CaseStudy = () => {
 };
 
 const CaseStudyTitle = () => {
-  return <p className="text-secondary-label h1-bold">CASE STUDY</p>;
+  return <p className="text-secondary-label">CASE STUDY</p>;
 };
 
 export default CaseStudy;

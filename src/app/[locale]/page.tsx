@@ -1,7 +1,7 @@
 import About from '@/components/page/home/About/index.tsx';
 import Benefit from '@/components/page/home/Benefit';
 import CaseStudy from '@/components/page/home/CaseStudy';
-import Hero from '@/components/page/home/Hero';
+import Hero from '@/components/page/home/Hero/index.tsx';
 import Partner from '@/components/page/home/Partner';
 import Prize from '@/components/page/home/Prize';
 import Testimonial from '@/components/page/home/Testimonial';
@@ -14,12 +14,12 @@ const HomePage = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
-      <Benefit />
+      {/* <Benefit /> */}
       <CaseStudy />
-      <Prize />
-      <Partner />
+      {/* <Prize /> */}
+      {/* <Partner /> */}
       <About />
-      <Testimonial />
+      {/* <Testimonial /> */}
     </div>
   );
 };

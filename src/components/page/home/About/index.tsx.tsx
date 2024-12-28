@@ -7,7 +7,7 @@ const INFO_CARDS = [
     subtitle: 'Đối tác thành công'
   },
   {
-    title: '50.000',
+    title: '50,000',
     subtitle: 'Doanh thu trung bình của mỗi gian hàng tính theo USD'
   },
   {
@@ -17,13 +17,13 @@ const INFO_CARDS = [
 ];
 const About = () => {
   const description =
-    ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbitristique senectus et netus et malesuada fames ac turpis egestas.';
+    'Nhà phát triển Thương mại điện tử Quốc tế hàng đầu tại Việt Nam, cung cấp hệ sinh thái dịch vụ đa dạng và toàn diện, hỗ trợ doanh nghiệp Việt bán hàng xuyên biên giới.';
   return (
     <SectionCard title={SectionTitle} description={description}>
       {/* <div className="absolute right-[-50%] top-[10px] z-0 overflow-hidden">
         <YellowVector />
       </div> */}
-      <div className="grid grid-cols-3">
+      <div className="grid mobile:grid-cols-1 mobile:gap-y-l tablet:grid-cols-3">
         {INFO_CARDS.map((card, i) => {
           return <InfoCard key={i} title={card.title} subtitle={card.subtitle} isLast={i === INFO_CARDS.length - 1} />;
         })}
@@ -33,7 +33,7 @@ const About = () => {
 };
 
 const SectionTitle = (
-  <p className="h1-bold">
+  <p className="">
     VỀ <span className="text-secondary-label">TTK GLOBAL VENTURES</span>
   </p>
 );
@@ -46,14 +46,12 @@ interface InfoCardProps {
 
 const InfoCard: React.FC<InfoCardProps> = ({ title, subtitle, isLast }) => {
   return (
-    <div className={`flex items-center justify-center p-4xl ${!isLast ? 'pr-0' : ''}`}>
-      <div
-        className={`flex w-full flex-col items-center justify-center gap-l text-center ${
-          !isLast ? 'border-b-0 border-l-0 border-r-[1px] border-t-0 border-solid border-blue-200 pr-4xl' : ''
-        }`}
-      >
-        <p className="text-blue-500 h1-bold">{title}</p>
-        <span className="headline-bold">{subtitle}</span>
+    <div
+      className={`flex items-start justify-center mobile:gap-l mobile:rounded-[12px] mobile:bg-blue-50 mobile:p-xl tablet:rounded-[0] tablet:bg-transparent tablet:p-4xl ${!isLast ? 'border-b-0 border-l-0 border-t-0 border-blue-200 pr-0 mobile:border-none tablet:border-r-[1px] tablet:border-solid tablet:pr-4xl' : ''}`}
+    >
+      <div className={`flex w-full flex-col items-center justify-center gap-l text-center ${!isLast ? '' : ''}`}>
+        <p className="text-blue-500 mobile:h3-bold laptop:h1-bold">{title}</p>
+        <span className="mobile:subtitle-bold laptop:headline-bold">{subtitle}</span>
       </div>
     </div>
   );

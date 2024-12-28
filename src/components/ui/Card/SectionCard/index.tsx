@@ -9,9 +9,12 @@ interface SectionCardProps {
 
 const SectionCard = ({ children, title, description, ...props }: SectionCardProps) => {
   return (
-    <section className="flex flex-col items-center gap-2xl py-desktop_section_padding tablet:gap-3xl" {...props}>
+    <section
+      className="mobile:py-mobile_section_padding flex flex-col gap-2xl mobile:justify-start mobile:gap-l tablet:items-center tablet:gap-3xl desktop:py-desktop_section_padding"
+      {...props}
+    >
       <h2 className="uppercase h3-bold tablet:h2-bold laptop:h1-bold">{title}</h2>
-      {description && <p className="w-1/2 text-center body-regular">{description}</p>}
+      {description && <p className="body-regular mobile:w-full tablet:text-center laptop:w-1/2">{description}</p>}
       {children}
     </section>
   );
