@@ -76,7 +76,7 @@ const Testimonial = () => {
 };
 
 const TestimonialTitle = () => (
-  <p className="h1-bold">
+  <p className="">
     <span className="text-secondary-label">PHẢN HỒI</span> TỪ KHÁCH HÀNG
   </p>
 );

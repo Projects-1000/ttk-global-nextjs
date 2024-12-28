@@ -58,17 +58,17 @@ const listLogos = [
 ];
 const Hero = () => {
   return (
-    <div className="relative flex flex-col gap-4xl py-[120px]">
+    <section className="mobile:py-mobile_section_padding relative flex w-full flex-col gap-4xl laptop:py-desktop_section_padding">
       {/* <div className="absolute left-[-67%] top-[-40%] z-0 rotate-180">
         <BlueVector />
       </div> */}
-      <div className="z-10 flex items-center justify-between px-[120px]">
-        <div className="flex max-w-[600px] flex-col gap-2xl">
-          <p className="h1-bold">
+      <div className="flex items-center justify-between mobile:flex-col mobile:items-center mobile:gap-3xl tablet:flex-row">
+        <div className="flex max-w-[600px] flex-col gap-2xl mobile:items-center mobile:gap-y-3xl">
+          <p className="h1-bold mobile:h3-bold">
             Hợp tác kinh doanh trên <span className="text-[#F58C29]">Amazon</span> - Đưa thương hiệu của bạn ra toàn
             cầu!
           </p>
-          <p className="headline-regular">
+          <p className="headline-regular mobile:caption-regular">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi
             tristique senectus
           </p>
@@ -77,68 +77,18 @@ const Hero = () => {
             <Button text="Tìm hiểu thêm" color="secondary" size="medium" />
           </div>
         </div>
-        <div className="min-h-[380px] min-w-[480px]">
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102626/ttk-global/HeroImage_dobhqx.png'}
-            alt="Hero logo"
-            width={480}
-            height={380}
-          />
-        </div>
+        <Image
+          className="max-h-[380px] max-w-[480px] mobile:h-auto mobile:w-full"
+          src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102626/ttk-global/HeroImage_dobhqx.png'}
+          alt="Hero logo"
+          width={480}
+          height={380}
+        />
       </div>
-      <div className="z-10 flex flex-col items-center gap-2xl px-0 py-3xl">
+      <div className="flex flex-col items-center gap-2xl px-0 py-3xl">
         <p className="body-bold">Các đơn vị hỗ trợ</p>
-        {/* <div className="flex w-full items-center justify-between">
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/logo-shopbase_1_mnd9il.png'}
-            alt="shopbase"
-            className="h-fit w-fit object-cover"
-            width={213}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/Payoneer-Logo_1_kdrmaf.png'}
-            alt="payoneer"
-            className="h-fit w-fit object-cover"
-            width={108}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/burgerprints_2_urwqde.png'}
-            alt="burgerprints"
-            className="h-fit w-fit object-cover"
-            width={253}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/Logo_AGS_1_cfmys9.png'}
-            alt="shopbase"
-            className="h-fit w-fit object-cover"
-            width={149}
-            height={40}
-          />
-          <Image
-            src={'https://res.cloudinary.com/dh6bfx865/image/upload/v1735102949/ttk-global/burgerprints_2_urwqde.png'}
-            alt="burgerprints"
-            className="h-fit w-fit object-cover"
-            width={253}
-            height={40}
-          />
-        </div> */}
-        {/* <CustomSwiper<ImageProps>
-          Card={({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) => (
-            <Image src={src} alt={alt} width={width} height={height} />
-          )}
-          listData={listLogos}
-          slidesPerView={3} // Adjust as necessary
-          spaceBetween={20}
-          loop
-          autoPlay={3000} // Optional autoplay
-          dots={true}
-          centeredSlides={true}
-        /> */}
-        <div className="max-w-[100vw]">
-          <Swiper
+        <div className="max-w-[100vw] mobile:overflow-hidden">
+          {/* <Swiper
             modules={[Autoplay]} // Add Autoplay module
             slidesPerView={5}
             spaceBetween={20}
@@ -149,16 +99,27 @@ const Hero = () => {
               stopOnLastSlide: false
             }}
             speed={1500}
+            breakpoints={{
+              375: {
+                slidesPerView: 3
+              },
+              768: {
+                slidesPerView: 4
+              },
+              1024: {
+                slidesPerView: 5
+              }
+            }}
           >
             {listLogos.map((logo, index) => (
               <SwiperSlide key={index}>
                 <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -73,7 +73,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <ThemeProvider theme={theme}>
                 <div className="flex min-h-screen flex-col">
                   <Header />
-                  <main className="container">{children}</main>
+                  <main className="flex w-full items-center justify-center">
+                    <div className="container desktop:max-w-[1440px]">{children}</div>
+                  </main>
                   <Footer />
                 </div>
               </ThemeProvider>

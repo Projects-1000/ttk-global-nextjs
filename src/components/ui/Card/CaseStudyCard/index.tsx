@@ -20,8 +20,8 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   image
 }) => {
   return (
-    <div className="flex items-center space-x-4 rounded-xl border-solid border-blue-200 bg-white p-4xl">
-      <div className="flex w-1/3 flex-col gap-3xl">
+    <div className="border-card flex items-center space-x-4 rounded-xl border-solid bg-white mobile:flex-col mobile:p-l tablet:flex-row tablet:p-4xl">
+      <div className="flex flex-col gap-3xl laptop:w-1/3">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <CustomTag key={index} tagName={tag} type="outline" />
@@ -37,18 +37,12 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
         </p>
       </div>
 
-      <div className="flex flex-1 items-center justify-center">
+      <div className="flex flex-1 items-center justify-center laptop:h-[340px] laptop:w-1/3">
         {image ? (
           // <img src={image} alt="casestudyCard-image" className="md:w-1/3 flex h-[340px] w-full" />
-          <Image
-            src={image}
-            alt="casestudyCard-image"
-            className="md:w-1/3 flex h-[340px] w-full"
-            width={500}
-            height={340}
-          />
+          <Image src={image} alt="casestudyCard-image" className="flex w-full" width={500} height={340} />
         ) : (
-          <div className="md:w-1/3 rounded-lg flex h-[340px] w-full items-center justify-center">
+          <div className="rounded-lg flex w-full items-center justify-center laptop:h-[340px] laptop:w-1/3">
             <span className="text-gray-400">Image/Placeholder</span>
           </div>
         )}
