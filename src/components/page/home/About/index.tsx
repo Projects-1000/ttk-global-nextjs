@@ -1,10 +1,10 @@
 'use client';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import './index.scss';
 import NumberCounter from '@/components/ui/NumberCounter';
 import { motion } from 'framer-motion';
 import { cardVariants, containerVariants, textVariants } from './AboutAnimationVariants';
 import { YellowVector } from '@/assets/YellowVector';
+import './index.scss';
 
 const INFO_CARDS = [
   {
@@ -30,7 +30,7 @@ const About = () => {
   return (
     <SectionCard title={SectionTitle} description={description}>
       <motion.div
-        className="relative grid grid-cols-1 gap-y-l tablet:grid-cols-3"
+        className="relative container grid grid-cols-1 gap-y-l tablet:grid-cols-3"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants

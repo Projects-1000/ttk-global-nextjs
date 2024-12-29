@@ -71,13 +71,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
             <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>
-                <div className="flex min-h-screen flex-col">
-                  <Header />
-                  <main className="flex w-full items-center justify-center">
-                    <div className="container desktop:max-w-[1440px]">{children}</div>
-                  </main>
-                  <Footer />
-                </div>
+                {/* <div className="flex min-h-screen flex-col"> */}
+                <Header />
+                <main className="flex w-full items-center justify-center">
+                  <div className="flex w-full flex-col items-center justify-center gap-4 overflow-hidden laptop:max-w-[1440px]">
+                    {children}
+                  </div>
+                </main>
+                <Footer />
+                {/* </div> */}
               </ThemeProvider>
             </AppRouterCacheProvider>
           </ReduxProvider>

@@ -10,10 +10,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
 import listLogos from './fakeData';
 import { BlueVector } from '@/assets/BlueVector';
+import CustomSwiper from '@/components/ui/CustomSwiper';
 
 const Hero = () => {
   return (
-    <section className="relative flex w-full flex-col gap-4xl mobile:py-mobile_section_padding laptop:py-desktop_section_padding">
+    <section className="container relative flex w-full flex-col gap-4xl mobile:py-mobile_section_padding laptop:py-desktop_section_padding">
       <div className="absolute left-0 top-[0] -z-10 translate-x-[-70%] translate-y-[-35%] rotate-180">
         <BlueVector />
       </div>
@@ -34,8 +35,8 @@ const Hero = () => {
             tristique senectus
           </motion.p>
           <motion.div className="flex items-center gap-l" variants={itemVariants}>
-            <Button text="Đăng ký hợp tác" size="medium" />
-            <Button text="Tìm hiểu thêm" color="secondary" size="medium" />
+            <Button text="Đăng ký hợp tác" />
+            <Button text="Tìm hiểu thêm" color="secondary" />
           </motion.div>
         </div>
 
@@ -57,18 +58,15 @@ const Hero = () => {
         <motion.p variants={itemVariants} className="body-bold">
           Các đơn vị hỗ trợ
         </motion.p>
-        <div className="max-w-[100vw] mobile:overflow-hidden">
-          <Swiper
-            modules={[Autoplay]}
+        <div className="">
+          <CustomSwiper
+            navigation={false}
             slidesPerView={5}
             spaceBetween={20}
             loop
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-              stopOnLastSlide: false
-            }}
+            isAutoplay={true}
             speed={1500}
+            isFullWidth={true}
             breakpoints={{
               375: {
                 slidesPerView: 3
@@ -80,6 +78,7 @@ const Hero = () => {
                 slidesPerView: 5
               }
             }}
+            className="swiper-infinity-slider"
           >
             {[...listLogos, ...listLogos].map((logo, index) => (
               <SwiperSlide key={index}>
@@ -88,7 +87,7 @@ const Hero = () => {
                 </motion.div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </CustomSwiper>
         </div>
       </motion.div>
     </section>

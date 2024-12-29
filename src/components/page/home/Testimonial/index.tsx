@@ -1,9 +1,8 @@
 'use client';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import TestimonialCard from '@/components/ui/Card/TestimonialCard';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import CustomSwiper from '@/components/ui/CustomSwiper';
+import { SwiperSlide } from 'swiper/react';
 
 const TESTIMONIAL_DATA = [
   {
@@ -38,38 +37,34 @@ const Testimonial = () => {
 
   return (
     <SectionCard title={<TestimonialTitle />} description={description}>
-      <div className="flex items-center gap-10">
-        {/* <div className="container prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-          <ChevronLeft size={24} />
-        </div> */}
-        <div className="max-w-[1120px]">
-          <Swiper
-            modules={[Navigation]}
-            slidesPerView={2}
-            spaceBetween={30}
-            className="relative"
-            navigation={{
-              nextEl: '.next-button',
-              prevEl: '.prev-button'
-            }}
-            loop={true}
-          >
-            {TESTIMONIAL_DATA.map((testimonial) => (
-              <SwiperSlide key={testimonial.id}>
-                <TestimonialCard
-                  customerName={testimonial.customerName}
-                  customerPosition={testimonial.customerPosition}
-                  customerImage={testimonial.customerImage}
-                  content={testimonial.content}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        {/* <div className="next-button border-primary z-10 flex h-[40px] w-[40px] flex-none cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-          <ChevronRight size={24} />
-        </div> */}
-      </div>
+      <CustomSwiper
+        breakpoints={{
+          370: {
+            slidesPerView: 1.15
+          },
+          768: {
+            slidesPerView: 2.15
+          },
+          1024: {
+            slidesPerView: 2
+          },
+          1440: {
+            slidesPerView: 2
+          }
+        }}
+        wrapperClass="laptop:w-[calc(100%-240px)]"
+      >
+        {TESTIMONIAL_DATA.map((testimonial) => (
+          <SwiperSlide className="" key={testimonial.id}>
+            <TestimonialCard
+              customerName={testimonial.customerName}
+              customerPosition={testimonial.customerPosition}
+              customerImage={testimonial.customerImage}
+              content={testimonial.content}
+            />
+          </SwiperSlide>
+        ))}
+      </CustomSwiper>
     </SectionCard>
   );
 };
