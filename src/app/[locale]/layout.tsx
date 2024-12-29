@@ -1,11 +1,12 @@
-import Footer from '@/components/layout/footer';
+import Footer from '@/components/ui/Footer';
+import { Header } from '@/components/ui/Header';
 import { montserrat } from '@/configs/locales';
 import theme from '@/configs/theme';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { ReduxProvider } from '@/redux/ReduxProvider';
 import '@/styles/globals.css';
-import '@/styles/scss/_index.scss';
+// import '@/styles/scss/_index.scss';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { getURL } from '@/utils/helpers';
 import { ThemeProvider } from '@mui/material';
@@ -64,15 +65,17 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} className={`${montserrat.variable} font-sans`} id="__next">
-      <body>
+      <body className="overflow-x-hidden">
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
             {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
             <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>
                 <div className="flex min-h-screen flex-col">
-                  <header>Header</header>
-                  <main className="flex-1">{children}</main>
+                  <Header />
+                  <main className="flex w-full items-center justify-center">
+                    <div className="container desktop:max-w-[1440px]">{children}</div>
+                  </main>
                   <Footer />
                 </div>
               </ThemeProvider>

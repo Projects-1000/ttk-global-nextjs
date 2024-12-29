@@ -1,21 +1,83 @@
+@import './scss/_index.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
 @layer base {
   :root {
     --desktop-container-padding-x: 120px;
-    --laptop-container-padding-x: 120px;
-    --tablet-container-padding-x: 20px;
-    --mobile-container-padding-x: 20px;
+    --laptop-container-padding-x: 80px;
+    --tablet-container-padding-x: 32px;
+    --mobile-container-padding-x: 32px;
 
     --desktop-header-height: 88px;
+    --desktop-section-paddingY: 120px;
+    --mobile-section-paddingY: 60px;
+
+    --gradient-border: linear-gradient(to right, rgba(60, 75, 204, 0.8), rgba(255, 236, 250, 0.3));
   }
 }
 
 @layer components {
-  /* responsive container */
   .container {
     @apply mobile:px-mobile_container tablet:px-tablet_container laptop:px-laptop_container desktop:px-desktop_container;
   }
+
+  .smooth-transition {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  .border-card {
+    border-image-slice: 1 !important;
+    border-image-source: linear-gradient(to left, rgba(255, 236, 250, 0.3), rgba(60, 75, 204, 0.8));
+  }
+
+  .swiper-infinity-slider {
+    .swiper-wrapper {
+      @apply ease-linear;
+    }
+  } 
 }

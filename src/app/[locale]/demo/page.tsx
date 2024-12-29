@@ -1,6 +1,7 @@
 'use client';
 
-import SubmitButton from '@/components/ui/Button';
+import SubmitButton from '@/components/ui/Button/Button';
+import LocaleSwitcher from '@/components/ui/LocalSwitcher';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 
 interface TypoGroupProps {
@@ -9,149 +10,175 @@ interface TypoGroupProps {
 
 const DemoPage = () => {
   return (
-    <main>
-      {' '}
-      <section className="container flex flex-col gap-24 px-[120px] py-20 phone:bg-red-500 tablet:bg-blue-500 laptop:bg-yellow-500">
-        <div className="flex gap-4 py-10">
-          <SubmitButton
-            isDirty={false}
-            text="Label"
-            size="medium"
-            color="primary"
-            isSubmitting={false}
-            iconPosition="end"
-            icon={<CallMadeIcon />}
-            // props={{className: 'custom-class'}}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Click"
-            size="medium"
-            color="primary"
-            isSubmitting={true}
-            iconPosition="start"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="primary"
-            isSubmitting={true}
-            iconPosition="only"
-            isPill={true}
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={true} />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={true} isPill={true} />
-        </div>
+    <>
+      <section className="overflow-hidden phone:bg-red-500 flex flex-col gap-24 py-20 tablet:bg-blue-500 laptop:bg-yellow-500 desktop:bg-white">
+        <div className="flex flex-col items-start">
+          <LocaleSwitcher />
+          <div className="flex gap-4 py-10">
+            <SubmitButton
+              isDirty={false}
+              text="Label"
+              // size="medium"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+              // props={{className: 'custom-class'}}
+            />
+            <SubmitButton
+              isDirty={false}
+              text="Label"
+              size="small"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+              // props={{className: 'custom-class'}}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Click"
+              size="medium"
+              color="primary"
+              isSubmitting={true}
+              iconPosition="start"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="primary"
+              isSubmitting={true}
+              iconPosition="only"
+              isPill={true}
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={true} />
+            <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={true} isPill={true} />
+          </div>
 
-        <div className="flex gap-4 py-10">
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="primary"
-            isSubmitting={false}
-            iconPosition="end"
-            icon={<CallMadeIcon />}
-            classCustom="!bg-red-500 !text-primary-default"
-            props={{}}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Click"
-            size="medium"
-            color="primary"
-            isSubmitting={false}
-            iconPosition="start"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="primary"
-            isSubmitting={false}
-            iconPosition="only"
-            isPill={true}
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={false} />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={false} isPill={true} />
-        </div>
+          <div className="flex gap-4 py-10">
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+              classCustom="!bg-red-500 !text-primary-default"
+              props={{}}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Click"
+              size="medium"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="start"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="primary"
+              isSubmitting={false}
+              iconPosition="only"
+              isPill={true}
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton isDirty={true} text="Label" size="medium" color="primary" isSubmitting={false} />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="primary"
+              isSubmitting={false}
+              isPill={true}
+            />
+          </div>
 
-        <div className="flex gap-4 py-10">
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="secondary"
-            isSubmitting={true}
-            iconPosition="end"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Click"
-            size="medium"
-            color="secondary"
-            isSubmitting={true}
-            iconPosition="start"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="secondary"
-            isSubmitting={true}
-            iconPosition="only"
-            isPill={true}
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="secondary" isSubmitting={true} />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="secondary" isSubmitting={true} isPill={true} />
-        </div>
+          <div className="flex gap-4 py-10">
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={true}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Click"
+              size="medium"
+              color="secondary"
+              isSubmitting={true}
+              iconPosition="start"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={true}
+              iconPosition="only"
+              isPill={true}
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton isDirty={true} text="Label" size="medium" color="secondary" isSubmitting={true} />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={true}
+              isPill={true}
+            />
+          </div>
 
-        <div className="flex gap-4 py-10">
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="secondary"
-            isSubmitting={false}
-            iconPosition="end"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Click"
-            size="medium"
-            color="secondary"
-            isSubmitting={false}
-            iconPosition="start"
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="secondary"
-            isSubmitting={false}
-            iconPosition="only"
-            isPill={true}
-            icon={<CallMadeIcon />}
-          />
-          <SubmitButton isDirty={true} text="Label" size="medium" color="secondary" isSubmitting={false} />
-          <SubmitButton
-            isDirty={true}
-            text="Label"
-            size="medium"
-            color="secondary"
-            isSubmitting={false}
-            isPill={true}
-          />
+          <div className="flex gap-4 py-10">
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={false}
+              iconPosition="end"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Click"
+              size="medium"
+              color="secondary"
+              isSubmitting={false}
+              iconPosition="start"
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={false}
+              iconPosition="only"
+              isPill={true}
+              icon={<CallMadeIcon />}
+            />
+            <SubmitButton isDirty={true} text="Label" size="medium" color="secondary" isSubmitting={false} />
+            <SubmitButton
+              isDirty={true}
+              text="Label"
+              size="medium"
+              color="secondary"
+              isSubmitting={false}
+              isPill={true}
+            />
+          </div>
         </div>
 
         <div className="">
@@ -339,15 +366,16 @@ const DemoPage = () => {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 };
 
 const TypoGroup = ({ title }: TypoGroupProps) => {
-  const upperTitle = title.toUpperCase();
+  const upperTitle = title;
   return (
     <div className="flex gap-[88px]">
-      <div className="flex gap-[88px]">
+      <div className="flex gap-[88px] capitalize">
+        <p className={`${title}-bold`}>{upperTitle} Bold</p>
         <p className={`${title}-bold`}>{upperTitle} Bold</p>
         <p className={`${title}-regular`}>{upperTitle} Regular</p>
         <p className={`${title}-light -ml-[45px]`}>{upperTitle} Light</p>

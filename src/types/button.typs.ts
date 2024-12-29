@@ -1,10 +1,16 @@
-import { HTMLAttributes, HTMLProps, MouseEventHandler } from 'react';
+import { NavBarItemProps } from '@/components/ui/NavBar';
+import { HTMLAttributes, HTMLProps, MouseEventHandler, ReactNode } from 'react';
 
+export enum ButtonSizeEnum {
+  small = 'small',
+  medium = 'medium',
+  large = 'large'
+}
 export interface ButtonProps {
   text?: string;
   variant?: 'text' | 'outlined' | 'contained';
   isDirty?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: keyof typeof ButtonSizeEnum;
   color?: 'primary' | 'secondary';
   isPill?: boolean;
   iconPosition?: 'only' | 'start' | 'end';
@@ -17,4 +23,10 @@ export interface ButtonProps {
     HTMLAttributes<HTMLButtonElement>,
     'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
   >;
+}
+
+export interface NavButtonProps extends NavBarItemProps {
+  isLeafButton: boolean;
+  children?: ReactNode;
+  isMobile: boolean;
 }

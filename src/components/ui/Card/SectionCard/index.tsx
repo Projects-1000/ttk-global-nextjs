@@ -1,0 +1,82 @@
+'use client';
+import { containerVariants } from '@/components/page/home/Hero/HeroAnimationVariants';
+import { motion, Variants } from 'framer-motion';
+import { HTMLAttributes, ReactNode } from 'react';
+
+interface SectionCardProps {
+  title: ReactNode | string;
+  children: ReactNode;
+  description?: string;
+  props?: HTMLAttributes<HTMLElement>;
+}
+
+const SectionCard = ({ children, title, description, ...props }: SectionCardProps) => {
+  return (
+    <section
+      className="flex flex-col justify-start gap-l mobile:py-mobile_section_padding tablet:items-center tablet:gap-2xl laptop:gap-3xl desktop:py-desktop_section_padding"
+      {...props}
+    >
+      <motion.div
+        className="flex flex-col justify-start gap-l tablet:items-center tablet:gap-2xl laptop:gap-3xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+        variants={containerVariants}
+      >
+        <motion.h2 className="uppercase h3-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+          {title}
+        </motion.h2>
+
+        {description && (
+          <motion.p
+            className="body-regular mobile:w-full tablet:text-center laptop:w-1/2"
+            variants={descriptionVariants}
+          >
+            {description}
+          </motion.p>
+        )}
+      </motion.div>
+      {children}
+    </section>
+  );
+};
+const titleVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scaleY: 0,
+    originY: 1
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scaleY: 1,
+    originY: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut'
+    }
+  }
+};
+
+// Variants for Description
+const descriptionVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scaleY: 0,
+    originY: 1
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scaleY: 1,
+    originY: 1,
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+      delay: 0.2
+    }
+  }
+};
+export default SectionCard;

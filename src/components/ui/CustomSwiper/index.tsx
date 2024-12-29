@@ -34,6 +34,7 @@ type CustomSwipperProps<T> = {
   effect?: 'fade' | 'cube' | 'coverflow' | 'flip' | 'cards' | 'creative';
   spaceBetween?: number;
   centeredSlides?: boolean;
+  autoPlay?: number;
 };
 
 const CustomSwiper = <T,>({
@@ -44,14 +45,15 @@ const CustomSwiper = <T,>({
   slidesPerView = 1,
   effect,
   centeredSlides = false,
-  spaceBetween = 30
+  spaceBetween = 30,
+  autoPlay = 0
 }: CustomSwipperProps<T>) => {
   return (
     <div className="swiper-container max-w-full px-4xl">
-      <div className="prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
+      <div className="nav-button prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
         <ChevronLeft size={24} />
       </div>
-      <div className="next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
+      <div className="nav-button next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
         <ChevronRight size={24} />
       </div>
 
@@ -71,6 +73,7 @@ const CustomSwiper = <T,>({
         effect={effect}
         spaceBetween={spaceBetween}
         loop={loop}
+        autoplay={autoPlay ? { delay: autoPlay } : false}
         coverflowEffect={
           effect === 'coverflow'
             ? {

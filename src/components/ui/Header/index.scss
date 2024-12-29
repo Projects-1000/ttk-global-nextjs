@@ -1,0 +1,13 @@
+.menu-icon {
+  @apply absolute right-0 top-1/2 -translate-x-mobile_container -translate-y-1/2 text-greyscale-border-darker transition-all duration-300 ease-in-out;
+}
+
+.mobile-menu {
+  &--open {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  &--close {
+    @apply translate-x-full transition-all duration-300 ease-in-out;
+  }
+}

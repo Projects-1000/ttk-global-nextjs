@@ -1,0 +1,57 @@
+@tailwind components;
+
+@layer components {
+  .btn {
+    @apply text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out;
+
+    &.btn__primary {
+      @apply border-2 border-solid border-primary-default bg-primary-default subtitle-bold hover:bg-blue-600;
+
+      &:disabled {
+        @apply bg-greyscale-surface-disable text-greyscale-disable;
+      }
+    }
+
+    &.btn__secondary {
+      @apply border-2 border-solid border-primary-default bg-gray-50 text-black;
+
+      &:hover {
+        @apply border-primary-darker;
+      }
+
+      &:disabled {
+        @apply border-greyscale-surface-subtle text-greyscale-disable;
+      }
+    }
+
+    &.btn {
+      &__small {
+        @apply rounded-2xs px-m py-2xs subtitle-bold;
+
+        &--icon {
+          @apply px-2xs;
+        }
+      }
+
+      &__medium {
+        @apply rounded-xs px-2xl py-s body-bold;
+
+        &--icon {
+          @apply px-s;
+        }
+      }
+
+      &__large {
+        @apply rounded-s px-3xl py-m headline-bold;
+
+        &--icon {
+          @apply px-m;
+        }
+      }
+    }
+
+    &--pill {
+      @apply rounded-full !important;
+    }
+  }
+}
