@@ -57,7 +57,7 @@ const Hero = () => {
         <motion.p variants={itemVariants} className="body-bold">
           Các đơn vị hỗ trợ
         </motion.p>
-        {/* <div className="max-w-[100vw] mobile:overflow-hidden">
+        <div className="max-w-[100vw] mobile:overflow-hidden">
           <Swiper
             modules={[Autoplay]}
             slidesPerView={5}
@@ -89,7 +89,7 @@ const Hero = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div> */}
+        </div>
       </motion.div>
     </section>
   );
