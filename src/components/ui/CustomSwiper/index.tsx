@@ -1,105 +1,83 @@
 'use client';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  EffectFade,
-  EffectCube,
-  EffectCoverflow,
-  EffectFlip,
-  EffectCards,
-  EffectCreative
-} from 'swiper/modules';
-import 'swiper/css';
+import { HTMLAttributes, ReactNode } from 'react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/effect-fade';
-import 'swiper/css/effect-cube';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/effect-flip';
-import 'swiper/css/effect-cards';
-import 'swiper/css/effect-creative';
+import 'swiper/css/autoplay';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperProps } from 'swiper/react';
+import { NavigateButton } from '../Button/NavigateButton';
 import './index.scss';
-type CustomSwipperProps<T> = {
-  Card: React.FC<T>;
-  listData: T[];
+
+interface CustomSwipperProps extends SwiperProps {
   loop?: boolean;
-  dots?: boolean;
+  pagination?: boolean;
+  navigation?: boolean;
   slidesPerView?: number;
-  effect?: 'fade' | 'cube' | 'coverflow' | 'flip' | 'cards' | 'creative';
+  effect?: SwiperProps['effect'];
   spaceBetween?: number;
   centeredSlides?: boolean;
-  autoPlay?: number;
-};
+  children: ReactNode;
+  isAutoplay?: boolean;
+  isFullWidth?: boolean;
+  wrapperClass?: HTMLAttributes<HTMLDivElement>['className'];
+}
 
-const CustomSwiper = <T,>({
-  Card,
-  listData,
+const CustomSwiper = ({
   loop = true,
-  dots = true,
+  pagination = false,
+  navigation = true,
   slidesPerView = 1,
   effect,
   centeredSlides = false,
   spaceBetween = 30,
-  autoPlay = 0
-}: CustomSwipperProps<T>) => {
-  return (
-    <div className="swiper-container max-w-full px-4xl">
-      <div className="nav-button prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-        <ChevronLeft size={24} />
-      </div>
-      <div className="nav-button next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-        <ChevronRight size={24} />
-      </div>
+  children,
+  wrapperClass,
+  isAutoplay = false,
+  isFullWidth = false,
+  autoplay,
+  ...props
+}: CustomSwipperProps) => {
+  const modules = [];
+  if (pagination) modules.push(Pagination);
+  if (navigation) modules.push(Navigation);
+  if (isAutoplay || autoplay) modules.push(Autoplay);
+  if (props.modules) modules.push(...props.modules);
 
-      <Swiper
-        modules={[
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          EffectFade,
-          EffectCube,
-          EffectCoverflow,
-          EffectFlip,
-          EffectCards,
-          EffectCreative
-        ]}
-        effect={effect}
-        spaceBetween={spaceBetween}
-        loop={loop}
-        autoplay={autoPlay ? { delay: autoPlay } : false}
-        coverflowEffect={
-          effect === 'coverflow'
-            ? {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false
-              }
-            : {}
-        }
-        pagination={dots ? { clickable: true } : false}
-        navigation={{
-          nextEl: '.next-button',
-          prevEl: '.prev-button'
-        }}
-        centeredSlides={centeredSlides || effect === 'coverflow'}
-        slidesPerView={slidesPerView}
-        style={{ height: 'auto', padding: '20px 0' }}
-      >
-        {listData.map((data, index) => (
-          <SwiperSlide key={index}>
-            <Card {...(data as React.PropsWithChildren<T>)} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+  return (
+    <div className={`mx-auto ${wrapperClass} ${isFullWidth ? 'swiper-fluid' : ''}`}>
+      <div className="swiper-container relative max-w-[100vw]">
+        <Swiper
+          modules={modules}
+          effect={effect || 'slide'}
+          spaceBetween={spaceBetween}
+          loop={loop}
+          autoplay={
+            isAutoplay
+              ? {
+                  delay: 0,
+                  disableOnInteraction: false,
+                  stopOnLastSlide: false
+                }
+              : false
+          }
+          pagination={pagination ? { clickable: true } : false}
+          navigation={
+            navigation
+              ? {
+                  nextEl: '.next-button',
+                  prevEl: '.prev-button'
+                }
+              : false
+          }
+          centeredSlides={centeredSlides || effect === 'coverflow'}
+          slidesPerView={slidesPerView}
+          className="group"
+          {...props}
+        >
+          {children}
+        </Swiper>
+        {navigation && <NavigateButton />}
+      </div>
     </div>
   );
 };

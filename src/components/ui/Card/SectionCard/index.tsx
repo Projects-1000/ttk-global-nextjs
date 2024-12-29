@@ -12,10 +12,7 @@ interface SectionCardProps {
 
 const SectionCard = ({ children, title, description, ...props }: SectionCardProps) => {
   return (
-    <section
-      className="flex flex-col justify-start gap-l mobile:py-mobile_section_padding tablet:items-center tablet:gap-2xl laptop:gap-3xl desktop:py-desktop_section_padding"
-      {...props}
-    >
+    <section className="mobile:py-mobile_section_padding desktop:py-desktop_section_padding" {...props}>
       <motion.div
         className="flex flex-col justify-start gap-l tablet:items-center tablet:gap-2xl laptop:gap-3xl"
         initial="hidden"
@@ -23,20 +20,20 @@ const SectionCard = ({ children, title, description, ...props }: SectionCardProp
         viewport={{ once: true, amount: 0.8 }}
         variants={containerVariants}
       >
-        <motion.h2 className="uppercase h3-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+        <motion.h2 className="container uppercase h3-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
           {title}
         </motion.h2>
 
         {description && (
           <motion.p
-            className="body-regular mobile:w-full tablet:text-center laptop:w-1/2"
+            className="container body-regular mobile:w-full tablet:text-center laptop:w-1/2"
             variants={descriptionVariants}
           >
             {description}
           </motion.p>
         )}
       </motion.div>
-      {children}
+      <div className="mx-auto mt-l tablet:mt-2xl laptop:mt-3xl">{children}</div>
     </section>
   );
 };

@@ -9,7 +9,7 @@ interface TestimonialProps {
 }
 const TestimonialCard: React.FC<TestimonialProps> = ({ content, customerName, customerPosition, customerImage }) => {
   return (
-    <div className="flex flex-col gap-3xl rounded-s border-[1px] border-solid border-blue-200 p-4xl">
+    <div className="flex flex-col gap-3xl w-full rounded-s border-[1px] border-solid border-blue-200 p-4xl">
       <p className="body-regular">{content}</p>
       <div className="flex items-center gap-l">
         <Avatar src={customerImage} alt="customerImage" sx={{ width: 70, height: 70 }} />
