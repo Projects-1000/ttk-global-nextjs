@@ -100,9 +100,9 @@ const Partner = () => {
           );
         })}
       </div>
-      <MobileBody delay={2} speed={4000} />
+      {/* <MobileBody delay={2} speed={4000} />
       <MobileBody delay={1} speed={2000} />
-      <MobileBody delay={0} speed={3000} />
+      <MobileBody delay={0} speed={3000} /> */}
     </SectionCard>
   );
 };

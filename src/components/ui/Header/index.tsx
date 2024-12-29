@@ -18,9 +18,7 @@ export const Header = () => {
   };
 
   return (
-    <header
-      className={`container relative h-desktop_header bg-slate-100 ${!isOpenMenu ? '' : ''}`}
-    >
+    <header className={`container relative h-desktop_header bg-slate-100 ${!isOpenMenu ? '' : ''}`}>
       <div className="flex h-full items-center justify-between">
         <div className="flex h-full items-center gap-l">
           <div className="relative h-full w-44">
@@ -34,11 +32,11 @@ export const Header = () => {
           </div>
           <NavBar />
         </div>
-        <div className="tablet:hidden" onClick={handleOpenMenu}>
+        {/* <div className="tablet:hidden" onClick={handleOpenMenu}>
           <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />
           <CloseIcon className={`menu-icon ${isOpenMenu ? '' : 'translate-x-[50px]'}`} />
         </div>
-        <MobileMenu isOpen={isOpenMenu} />
+        <MobileMenu isOpen={isOpenMenu} /> */}
         <div className="hidden items-center gap-m tablet:flex">
           <LocaleSwitcher />
           <SubmitButton text="Đăng ký" size="medium" color="secondary" />
