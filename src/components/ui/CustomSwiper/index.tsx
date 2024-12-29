@@ -2,7 +2,8 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css/autoplay';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperProps } from 'swiper/react';
 import { NavigateButton } from '../Button/NavigateButton';
 import './index.scss';
@@ -15,8 +16,9 @@ interface CustomSwipperProps extends SwiperProps {
   effect?: SwiperProps['effect'];
   spaceBetween?: number;
   centeredSlides?: boolean;
-  autoPlay?: number;
   children: ReactNode;
+  isAutoplay?: boolean;
+  isFullWidth?: boolean;
   wrapperClass?: HTMLAttributes<HTMLDivElement>['className'];
 }
 
@@ -28,25 +30,36 @@ const CustomSwiper = ({
   effect,
   centeredSlides = false,
   spaceBetween = 30,
-  autoPlay = 0,
   children,
   wrapperClass,
+  isAutoplay = false,
+  isFullWidth = false,
+  autoplay,
   ...props
 }: CustomSwipperProps) => {
   const modules = [];
   if (pagination) modules.push(Pagination);
   if (navigation) modules.push(Navigation);
+  if (isAutoplay || autoplay) modules.push(Autoplay);
   if (props.modules) modules.push(...props.modules);
 
   return (
-    <div className={`mx-auto ${wrapperClass}`}>
+    <div className={`mx-auto ${wrapperClass} ${isFullWidth ? 'swiper-fluid' : ''}`}>
       <div className="swiper-container relative max-w-[100vw]">
         <Swiper
           modules={modules}
           effect={effect || 'slide'}
           spaceBetween={spaceBetween}
           loop={loop}
-          autoplay={autoPlay ? { delay: autoPlay } : false}
+          autoplay={
+            isAutoplay
+              ? {
+                  delay: 0,
+                  disableOnInteraction: false,
+                  stopOnLastSlide: false
+                }
+              : false
+          }
           pagination={pagination ? { clickable: true } : false}
           navigation={
             navigation
@@ -58,7 +71,7 @@ const CustomSwiper = ({
           }
           centeredSlides={centeredSlides || effect === 'coverflow'}
           slidesPerView={slidesPerView}
-          className=""
+          className="group"
           {...props}
         >
           {children}

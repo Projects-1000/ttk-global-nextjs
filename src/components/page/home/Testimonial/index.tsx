@@ -3,7 +3,6 @@ import SectionCard from '@/components/ui/Card/SectionCard';
 import TestimonialCard from '@/components/ui/Card/TestimonialCard';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import { SwiperSlide } from 'swiper/react';
-import './index.scss'
 
 const TESTIMONIAL_DATA = [
   {
@@ -53,7 +52,7 @@ const Testimonial = () => {
             slidesPerView: 2
           }
         }}
-        wrapperClass="laptop:w-[calc(100%-120px)]"
+        wrapperClass="laptop:w-[calc(100%-240px)]"
       >
         {TESTIMONIAL_DATA.map((testimonial) => (
           <SwiperSlide className="" key={testimonial.id}>

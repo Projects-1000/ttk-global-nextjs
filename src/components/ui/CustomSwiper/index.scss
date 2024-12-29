@@ -26,5 +26,11 @@
 }
 
 .swiper {
-  @apply mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-desktop_container;
+  @apply mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-0 !important;
+}
+
+.swiper-fluid {
+  .swiper {
+    overflow: visible;
+  }
 }

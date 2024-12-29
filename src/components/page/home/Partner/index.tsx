@@ -2,6 +2,7 @@
 import GridBackground from '@/assets/GridBackground';
 import { LogoCard } from '@/components/ui/Card/LogoCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
+import CustomSwiper from '@/components/ui/CustomSwiper';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperOptions } from 'swiper/types';
@@ -101,9 +102,9 @@ const Partner = () => {
           );
         })}
       </div>
-      {/* <MobileBody delay={2} speed={4000} />
+      <MobileBody delay={2} speed={4000} />
       <MobileBody delay={1} speed={2000} />
-      <MobileBody delay={0} speed={3000} /> */}
+      <MobileBody delay={0} speed={3000} />
     </SectionCard>
   );
 };
@@ -112,20 +113,12 @@ const MobileBody = ({ delay, speed }: MobileBodyProps) => {
   return (
     <div className="max-w-[100vw] laptop:max-w-0">
       <div className="inline-block w-full laptop:hidden">
-        <Swiper
-          modules={[Autoplay]} // Add Autoplay module
-          loop
+        <CustomSwiper
+          isAutoplay
           allowTouchMove={false}
-          slidesPerView={'auto'}
           spaceBetween={50}
           initialSlide={delay}
           direction="horizontal"
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-            stopOnLastSlide: false,
-            pauseOnMouseEnter: true
-          }}
           speed={speed}
           breakpoints={{
             375: {
@@ -144,7 +137,7 @@ const MobileBody = ({ delay, speed }: MobileBodyProps) => {
               <LogoCard name={name} src={src} href={href} />
             </SwiperSlide>
           ))}
-        </Swiper>
+        </CustomSwiper>
       </div>
     </div>
   );

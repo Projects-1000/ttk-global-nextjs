@@ -22,7 +22,7 @@ const Prize = () => {
   return (
     <SectionCard title={SectionTitle}>
       <motion.div
-        className="flex flex-col items-start gap-2xl tablet:items-center tablet:gap-2xl laptop:gap-4xl"
+        className="flex container flex-col items-start gap-2xl tablet:items-center tablet:gap-2xl laptop:gap-4xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}

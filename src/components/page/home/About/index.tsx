@@ -30,7 +30,7 @@ const About = () => {
   return (
     <SectionCard title={SectionTitle} description={description}>
       <motion.div
-        className="relative grid grid-cols-1 gap-y-l tablet:grid-cols-3"
+        className="relative container grid grid-cols-1 gap-y-l tablet:grid-cols-3"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants

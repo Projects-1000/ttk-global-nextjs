@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { logosVariants } from '../Hero/HeroAnimationVariants';
 import { TtkFrame } from '@/assets/TtkFrame';
 import { BlueVector } from '@/assets/BlueVector';
+import CustomSwiper from '@/components/ui/CustomSwiper';
 const caseStudyData = [
   {
     id: 0,
@@ -81,12 +82,10 @@ const CaseStudy = () => {
         <div className="absolute right-0 top-[0] -z-10 translate-x-[40%] translate-y-[-40%]">
           <BlueVector />
         </div>
-        <div className="prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-          <ChevronLeft size={24} />
-        </div>
-        <div className="w-full max-w-[1120px]">
-          <Swiper
-            modules={[Navigation]}
+
+        <div className="">
+          <CustomSwiper
+            navigation
             slidesPerView={1}
             breakpoints={{
               375: {
@@ -99,12 +98,6 @@ const CaseStudy = () => {
               }
             }}
             spaceBetween={30}
-            className="relative"
-            navigation={{
-              nextEl: '.next-button',
-              prevEl: '.prev-button'
-            }}
-            loop={true}
           >
             {caseStudyData.map((caseStudy) => (
               <SwiperSlide className="w-full" key={caseStudy.id}>
@@ -117,10 +110,7 @@ const CaseStudy = () => {
                 />
               </SwiperSlide>
             ))}
-          </Swiper>
-        </div>
-        <div className="next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
-          <ChevronRight size={24} />
+          </CustomSwiper>
         </div>
       </motion.div>
     </SectionCard>
