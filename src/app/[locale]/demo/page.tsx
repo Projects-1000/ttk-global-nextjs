@@ -1,7 +1,6 @@
 'use client';
 
 import SubmitButton from '@/components/ui/Button/Button';
-import LocaleSwitcher from '@/components/ui/LocalSwitcher';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 
 interface TypoGroupProps {
@@ -13,7 +12,6 @@ const DemoPage = () => {
     <>
       <section className="overflow-hidden phone:bg-red-500 flex flex-col gap-24 py-20 tablet:bg-blue-500 laptop:bg-yellow-500 desktop:bg-white">
         <div className="flex flex-col items-start">
-          <LocaleSwitcher />
           <div className="flex gap-4 py-10">
             <SubmitButton
               isDirty={false}

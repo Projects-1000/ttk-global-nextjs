@@ -4,8 +4,8 @@ import { NavButtonProps } from '@/types/button.typs';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import { DesktopSubMenu, MobileSubMenu } from '../../layout/SelectMenu/SubMenu';
 import './index.scss';
-import { SubNavButton } from './SubNavButton';
 
 export const NavButton = ({ title, link, subnav, isLeafButton = false, isMobile = false }: NavButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,41 +34,20 @@ export const NavButton = ({ title, link, subnav, isLeafButton = false, isMobile 
         onMouseEnter={!isMobile ? handleMouseEnter : undefined}
         onClick={isMobile ? handleClick : undefined}
         href={link || undefined}
-        className={`${isActive ? 'header-button--active' : ''} header-button ${isLeafButton ? 'nav-leaf-button' : ''}`}
+        className={`${isMobile && isOpen ? 'nav-mobile-button--active' : ''} ${isMobile ? 'nav-mobile-button' : ''} flex flex-col ${isActive && !isMobile ? 'header-button--active' : ''} header-button ${isLeafButton ? 'nav-leaf-button' : ''}`}
       >
-        <div className="flex w-full justify-between">
+        <div className="flex w-full shrink-0 items-center justify-center">
           {title}
-          {subnav && <ArrowDropDownIcon className="text-greyscale-subtitle" />}
+          {subnav && (
+            <ArrowDropDownIcon
+              radius="1px"
+              className={`smooth-transition text-greyscale-subtitle duration-[350ms] ${isOpen ? '-rotate-180' : ''}`}
+            />
+          )}
         </div>
         {subnav && !isMobile && <DesktopSubMenu isOpen={isOpen} subnav={subnav} />}
-        {subnav && isMobile && <MobileSubMenu isOpen={isOpen} subnav={subnav} />}
       </Button>
+      {subnav && isMobile && <MobileSubMenu isOpen={isOpen} subnav={subnav} />}
     </>
-  );
-};
-
-interface DesktopSubMenuProps extends Pick<NavButtonProps, 'subnav'> {
-  isOpen: boolean;
-}
-
-export const DesktopSubMenu = ({ subnav, isOpen }: DesktopSubMenuProps) => {
-  return (
-    <div
-      className={`absolute left-0 top-[80%] z-10 overflow-hidden rounded-2xs bg-white text-start shadow-md ${isOpen ? 'block' : 'hidden'}`}
-    >
-      {subnav?.map(({ title, link }, index) => <SubNavButton key={index} link={link} title={title} isLeafButton />)}
-    </div>
-  );
-};
-
-export const MobileSubMenu = ({ subnav, isOpen }: DesktopSubMenuProps) => {
-  return (
-    <div
-      className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-        isOpen ? 'max-h-[500px]' : 'max-h-0'
-      }`}
-    >
-      {subnav?.map(({ title, link }, index) => <SubNavButton key={index} link={link} title={title} isLeafButton />)}
-    </div>
   );
 };
