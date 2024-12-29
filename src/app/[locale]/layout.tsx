@@ -1,12 +1,11 @@
-import Footer from '@/components/ui/Footer';
-import { Header } from '@/components/ui/Header';
+import Footer from '@/components/ui/layout/Footer';
+import { Header } from '@/components/ui/layout/Header';
 import { montserrat } from '@/configs/locales';
 import theme from '@/configs/theme';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { ReduxProvider } from '@/redux/ReduxProvider';
 import '@/styles/globals.css';
-// import '@/styles/scss/_index.scss';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { getURL } from '@/utils/helpers';
 import { ThemeProvider } from '@mui/material';
@@ -65,13 +64,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} className={`${montserrat.variable} font-sans`} id="__next">
-      <body className="overflow-x-hidden">
+      <body>
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
             {/* Ref: https://mui.com/material-ui/integrations/nextjs/#app-router */}
             <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>
-                {/* <div className="flex min-h-screen flex-col"> */}
                 <Header />
                 <main className="flex w-full items-center justify-center">
                   <div className="flex w-full flex-col items-center justify-center gap-4 overflow-hidden laptop:max-w-[1440px]">
@@ -79,7 +77,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   </div>
                 </main>
                 <Footer />
-                {/* </div> */}
               </ThemeProvider>
             </AppRouterCacheProvider>
           </ReduxProvider>

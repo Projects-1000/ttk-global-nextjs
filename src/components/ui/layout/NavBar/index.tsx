@@ -1,4 +1,4 @@
-import { NavButton } from '../Button/NavButton';
+import { NavButton } from '../../Button/NavButton';
 
 export interface SubNavBarProps {
   title: string;
@@ -24,7 +24,6 @@ export const navItems: NavBarProps = [
   },
   {
     title: 'Tài nguyên',
-    link: 'partnership',
     subnav: [
       { title: 'Tài liệu', link: 'document' },
       { title: 'Blog', link: '/blogs' }
