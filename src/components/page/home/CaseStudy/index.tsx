@@ -113,7 +113,6 @@ const CaseStudy = () => {
                   projectName={caseStudy.projectName}
                   description={caseStudy.description}
                   tags={caseStudy.tags}
-                  previousRevenue={caseStudy.previousRevenue}
                   postRevenue={caseStudy.postRevenue}
                 />
               </SwiperSlide>
