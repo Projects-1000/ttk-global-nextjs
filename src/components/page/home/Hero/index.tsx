@@ -9,13 +9,14 @@ import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
 import listLogos from './fakeData';
+import { BlueVector } from '@/assets/BlueVector';
 
 const Hero = () => {
   return (
     <section className="relative flex w-full flex-col gap-4xl mobile:py-mobile_section_padding laptop:py-desktop_section_padding">
-      {/* <div className="absolute left-[-67%] top-[-40%] z-0 rotate-180">
+      <div className="absolute left-0 top-[0] -z-10 translate-x-[-70%] translate-y-[-35%] rotate-180">
         <BlueVector />
-      </div> */}
+      </div>
       <motion.div
         className="flex items-center justify-between mobile:flex-col mobile:items-center mobile:gap-3xl tablet:flex-row"
         initial="hidden"

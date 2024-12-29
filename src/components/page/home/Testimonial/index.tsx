@@ -1,10 +1,9 @@
 'use client';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import TestimonialCard from '@/components/ui/Card/TestimonialCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const TESTIMONIAL_DATA = [
   {
@@ -43,7 +42,7 @@ const Testimonial = () => {
         <div className="container prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronLeft size={24} />
         </div>
-        {/* <div className="max-w-[1120px]">
+        <div className="max-w-[1120px]">
           <Swiper
             modules={[Navigation]}
             slidesPerView={2}
@@ -66,7 +65,7 @@ const Testimonial = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div> */}
+        </div>
         <div className="next-button border-primary z-10 flex h-[40px] w-[40px] flex-none cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronRight size={24} />
         </div>
