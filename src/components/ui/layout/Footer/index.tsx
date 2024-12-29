@@ -2,13 +2,13 @@
 import { FacebookOutlined, Google, Instagram } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
-import SubmitButton from '../Button/Button';
+import SubmitButton from '../../Button/Button';
 import './index.scss';
-const icons = [<FacebookOutlined key={1} className=''/>, <Google key={2} />, <Instagram key={3} />];
+const icons = [<FacebookOutlined key={1} className="" />, <Google key={2} />, <Instagram key={3} />];
 const Footer = () => {
   return (
     <footer className="flex w-full flex-col items-center bg-blue-600">
-      <div className="container mobile:py-mobile_section_padding w-full max-w-[1440px]">
+      <div className="container w-full max-w-[1440px] mobile:py-mobile_section_padding">
         <div className="footer-container flex flex-col overflow-hidden">
           <div className="flex flex-col gap-4xl">
             <Image

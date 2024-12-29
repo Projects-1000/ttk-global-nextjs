@@ -1,4 +1,4 @@
-import { NavBarItemProps } from '@/components/ui/NavBar';
+import { NavBarItemProps } from '@/components/ui/layout/NavBar';
 import { HTMLAttributes, HTMLProps, MouseEventHandler, ReactNode } from 'react';
 
 export enum ButtonSizeEnum {
@@ -27,6 +27,5 @@ export interface ButtonProps {
 
 export interface NavButtonProps extends NavBarItemProps {
   isLeafButton: boolean;
-  children?: ReactNode;
   isMobile: boolean;
 }

@@ -1,5 +1,5 @@
 .header-button {
-  @apply rounded-none h-full content-center bg-transparent px-m capitalize text-black no-underline body-semibold hover:bg-[#C7C8D1]/15;
+  @apply h-full content-center rounded-none bg-transparent px-m capitalize text-black no-underline body-semibold hover:bg-[#C7C8D1]/15;
 
   &--active {
     @apply border-b-2 border-primary-default text-primary-label;
@@ -12,13 +12,12 @@
       @apply bg-greyscale-surface-subtle text-primary-default;
     }
   }
-}
+  
+  &.nav-mobile-button {
+    @apply h-fit overflow-hidden rounded-s py-m body-regular;
 
-.paperClass {
-  @apply shadow-sm;
-  transform: translateY(50px) !important;
-
-  ul {
-    @apply flex flex-col text-start;
+    &--active {
+      @apply bg-primary-subtle text-primary-label body-bold;
+    }
   }
 }
