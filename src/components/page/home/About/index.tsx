@@ -4,6 +4,7 @@ import './index.scss';
 import NumberCounter from '@/components/ui/NumberCounter';
 import { motion } from 'framer-motion';
 import { cardVariants, containerVariants, textVariants } from './AboutAnimationVariants';
+import { YellowVector } from '@/assets/YellowVector';
 
 const INFO_CARDS = [
   {
@@ -29,11 +30,14 @@ const About = () => {
   return (
     <SectionCard title={SectionTitle} description={description}>
       <motion.div
-        className="grid grid-cols-1 gap-y-l tablet:grid-cols-3"
+        className="relative grid grid-cols-1 gap-y-l tablet:grid-cols-3"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants
       >
+        <div className="absolute right-0 top-[0] -z-10 translate-x-[50%] translate-y-[-35%]">
+          <YellowVector />
+        </div>
         {INFO_CARDS.map((card, i) => {
           return (
             <motion.div

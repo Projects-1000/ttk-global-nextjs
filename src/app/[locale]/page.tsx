@@ -9,17 +9,38 @@ import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
 const HomePage = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
+      <About />
       <Benefit />
       <CaseStudy />
       <Prize />
       <Partner />
-      <About />
       <Testimonial />
+      <div className="relative w-[100vw]">
+        <Image
+          src="/assets/demo/testi.png"
+          width={0}
+          height={0}
+          sizes="100vw"
+          alt="Testimonial"
+          className="h-auto w-full"
+        />
+        <div className="absolute left-[50%] top-[-65%] -z-10 w-full translate-x-[-50%]">
+          <Image
+            src="/assets/demo/Group_5.png"
+            width={0}
+            height={0}
+            sizes="100vw"
+            alt="Testimonial"
+            className="h-auto w-screen"
+          />
+        </div>
+      </div>
     </div>
   );
 };
