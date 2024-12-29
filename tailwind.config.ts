@@ -221,7 +221,7 @@ export default {
     })
   ],
   corePlugins: {
-    preflight: true,
+    preflight: false,
     container: false
   }
 } satisfies Config;

@@ -90,10 +90,7 @@ const Partner = () => {
       title={SectionTitle}
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
     >
-      <div className="relative hidden flex-col items-center laptop:flex laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
-        <div className="absolute left-[50%] top-[0] -z-10 translate-x-[-50%] translate-y-[-60%] -rotate-90">
-          <GridBackground />
-        </div>
+      <div className="container hidden flex-col items-center laptop:flex laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
         {rows.map((row, i) => {
           return (
             <div className="flex flex-row items-center laptop:gap-3xl desktop:gap-4xl" key={i}>
@@ -113,13 +110,13 @@ const Partner = () => {
 
 const MobileBody = ({ delay, speed }: MobileBodyProps) => {
   return (
-    <div className="max-w-[100vw]">
-      <div className="flex w-full laptop:hidden">
+    <div className="max-w-[100vw] laptop:max-w-0">
+      <div className="inline-block w-full laptop:hidden">
         <Swiper
           modules={[Autoplay]} // Add Autoplay module
           loop
           allowTouchMove={false}
-          slidesPerView={5}
+          slidesPerView={'auto'}
           spaceBetween={50}
           initialSlide={delay}
           direction="horizontal"

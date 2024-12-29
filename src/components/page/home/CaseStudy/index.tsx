@@ -4,7 +4,7 @@ import SectionCard from '@/components/ui/Card/SectionCard';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css/navigation';
+// import 'swiper/css/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { logosVariants } from '../Hero/HeroAnimationVariants';

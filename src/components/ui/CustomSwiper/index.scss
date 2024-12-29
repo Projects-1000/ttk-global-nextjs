@@ -25,24 +25,6 @@
   }
 }
 
-// .prev-button {
-//   color: #000; /* Change to desired color */
-//   opacity: 0.8;
-//   position: absolute !important;
-//   top: 50% !important;
-//   transform: translateY(-50%) !important;
-//   left: 0;
-// }
-// .next-button {
-//   color: #000; /* Change to desired color */
-//   opacity: 0.8;
-//   position: absolute !important;
-//   top: 50% !important;
-//   transform: translateY(-50%) !important;
-//   right: 0;
-// }
-
-// .prev-button:hover,
-// .next-button:hover {
-//   opacity: 1;
-// }
+.swiper {
+  @apply mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-desktop_container;
+}

@@ -1,10 +1,10 @@
 'use client';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import './index.scss';
 import NumberCounter from '@/components/ui/NumberCounter';
 import { motion } from 'framer-motion';
 import { cardVariants, containerVariants, textVariants } from './AboutAnimationVariants';
 import { YellowVector } from '@/assets/YellowVector';
+import './index.scss';
 
 const INFO_CARDS = [
   {
