@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { logosVariants } from '../Hero/HeroAnimationVariants';
 const caseStudyData = [
   {
     id: 0,
@@ -63,12 +65,18 @@ const CaseStudy = () => {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.';
   return (
     <SectionCard title={<CaseStudyTitle />} description={description}>
-      <div className="flex w-full items-center mobile:gap-0 laptop:gap-10">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={logosVariants}
+        viewport={{ once: true, amount: 0.8 }}
+        className="flex w-full items-center mobile:gap-0 laptop:gap-10"
+      >
         <div className="prev-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronLeft size={24} />
         </div>
-        <div className="w-full max-w-[1120px]">
-          {/* <Swiper
+        {/* <div className="w-full max-w-[1120px]">
+          <Swiper
             modules={[Navigation]}
             slidesPerView={1}
             breakpoints={{
@@ -101,12 +109,12 @@ const CaseStudy = () => {
                 />
               </SwiperSlide>
             ))}
-          </Swiper> */}
-        </div>
+          </Swiper>
+        </div> */}
         <div className="next-button border-primary z-10 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full border border-solid text-greyscale-border-default duration-200 hover:bg-primary-default hover:text-white active:bg-primary-darker active:text-white">
           <ChevronRight size={24} />
         </div>
-      </div>
+      </motion.div>
     </SectionCard>
   );
 };

@@ -14,12 +14,12 @@ const HomePage = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
-      {/* <Benefit /> */}
+      <Benefit />
       <CaseStudy />
-      {/* <Prize /> */}
-      {/* <Partner /> */}
+      <Prize />
+      <Partner />
       <About />
-      {/* <Testimonial /> */}
+      <Testimonial />
     </div>
   );
 };
