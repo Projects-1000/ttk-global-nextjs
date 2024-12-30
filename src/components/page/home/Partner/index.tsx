@@ -72,6 +72,12 @@ const partners = [
     name: 'Amazon',
     src: '/assets/demo/partner-amazon.png',
     href: 'https://www.amazon.com'
+  },
+  {
+    id: 10,
+    name: 'Amazon',
+    src: '/assets/demo/partner-amazon.png',
+    href: 'https://www.amazon.com'
   }
 ];
 
@@ -91,10 +97,13 @@ const Partner = () => {
       title={SectionTitle}
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
     >
-      <div className="container hidden flex-col items-center laptop:flex laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
+      <div className="relative hidden w-full flex-col items-center laptop:flex laptop:gap-3xl laptop:px-3xl desktop:gap-4xl desktop:px-4xl">
+        <div className="absolute left-[50%] top-[0] -z-10 translate-x-[-50%] translate-y-[-60%] -rotate-90">
+          <GridBackground />
+        </div>
         {rows.map((row, i) => {
           return (
-            <div className="flex flex-row items-center laptop:gap-3xl desktop:gap-4xl" key={i}>
+            <div className="flex w-full flex-row items-center justify-center laptop:gap-3xl desktop:gap-4xl" key={i}>
               {row.map(({ href, id, name, src }) => {
                 return <LogoCard key={id} name={name} src={src} href={href} />;
               })}
