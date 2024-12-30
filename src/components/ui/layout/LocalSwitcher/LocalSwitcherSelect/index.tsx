@@ -34,7 +34,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
 
   return (
     <>
-      <FormControl className="w-20">
+      <FormControl className="min-w-20">
         <Select
           labelId="demo-simple-select-label"
           id="locale-switcher-select"
@@ -46,7 +46,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
           inputProps={{ 'aria-label': 'Without label' }}
           displayEmpty
           renderValue={(value) => <ValueDisplay value={value as unknown as string} />}
-          className='group'
+          className="group"
         >
           {children}
         </Select>
@@ -59,7 +59,7 @@ const ValueDisplay = ({ value }: { value: string }) => {
   return (
     <div className="flex items-center gap-2xs text-greyscale-subtitle group-hover:text-greyscale-body">
       <LanguageIcon className="size-5" />
-      <span className="body-semibold uppercase">{value}</span>
+      <span className="uppercase body-semibold">{value}</span>
     </div>
   );
 };
