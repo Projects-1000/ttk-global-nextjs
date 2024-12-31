@@ -10,27 +10,27 @@ const Benefit = () => {
       id: 0,
       title: 'Không cần mặt bằng',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-      image: '/assets/demo/carousel-so-lieu-2024.png'
+        'Dự án vận hành hoàn toàn trực tuyến trên nền tảng Amazon, giúp bạn tiết kiệm chi phí và linh hoạt kinh doanh ở bất kỳ đâu.',
+      image: '/assets/demo/benefit-no-field.png'
     },
     {
       id: 1,
       title: 'Không nhân sự',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-      image: '/assets/demo/carousel-so-lieu-2024.png'
+        'TTK GV đảm nhận toàn bộ quy trình vận hành với đội ngũ chuyên gia có 10+ năm kinh nghiệm trong lĩnh vực TMĐT Quốc tế.',
+      image: '/assets/demo/benefit-no-employee.png'
     },
     {
       id: 2,
       title: 'Doanh thu ổn định',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-      image: '/assets/demo/carousel-so-lieu-2024.png'
+        'Áp dụng phương pháp vận hành đã được chứng minh về hiệu quả qua hơn 200+ dự án (doanh số trung bình hằng tháng ~ 50.000 USD).',
+      image: '/assets/demo/benefit-stable-revenue.png'
     }
   ];
   return (
     <SectionCard title={SectionTitle}>
-      <div className="flex h-full w-full flex-col items-center laptop:py-[60px] container">
+      <div className="container flex h-full w-full flex-col items-center laptop:py-[60px]">
         {benefits.map(({ id, title, image, description }, index) => {
           const isReverse = index % 2 !== 0;
           return (
