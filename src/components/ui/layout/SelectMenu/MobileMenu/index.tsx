@@ -23,7 +23,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
 
   return (
     <menu
-      className={`absolute inset-0 z-50 flex h-[calc(100dvh-var(--desktop-header-height))] w-full translate-y-desktop_header flex-col items-center justify-between overflow-hidden bg-white p-mobile_container ${isOpen ? 'mobile-menu--open' : 'mobile-menu--close'}`}
+      className={`absolute inset-0 z-50 flex h-[calc(100dvh-var(--mobile-header-height))] w-full translate-y-mobile_header flex-col items-center justify-between overflow-hidden bg-white p-mobile_container ${isOpen ? 'mobile-menu--open' : 'mobile-menu--close'}`}
     >
       <div className="flex h-fit flex-col items-center gap-xs">
         {navItems.map(({ title, link, subnav }, i) => (

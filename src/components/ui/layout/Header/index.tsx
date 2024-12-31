@@ -28,14 +28,14 @@ export const Header = () => {
   console.log(isTop);
   return (
     <header
-      className={`fixed top-0 z-10 flex w-full justify-center ${
+      className={`fixed top-0 z-10 flex w-full justify-center container ${
         isTop ? 'bg-transparent' : 'bg-white/30 shadow-md'
       } backdrop-blur-md transition-colors duration-300`}
     >
-      <div className={`h-desktop_header w-full desktop:max-w-[1440px] ${!isOpenMenu ? '' : ''}`}>
+      <div className={`h-mobile_header laptop:h-desktop_header w-full desktop:max-w-[1440px] ${!isOpenMenu ? '' : ''}`}>
         <div className="flex h-full items-center justify-between">
           <div className="flex h-full items-center gap-l">
-            <div className="relative h-full w-44">
+            <div className="relative h-full w-[136px] tablet:w-[152px]">
               <Image
                 alt="TTK Global Venture"
                 src={'/assets/demo/header-logo.png'}

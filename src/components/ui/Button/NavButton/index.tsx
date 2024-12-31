@@ -1,11 +1,11 @@
 'use client';
 import { usePathnameWithoutLocale } from '@/hooks/usePathnameWithoutLocale';
 import { NavButtonProps } from '@/types/button.typs';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { DesktopSubMenu, MobileSubMenu } from '../../layout/SelectMenu/SubMenu';
 import './index.scss';
+import { ArrowDropDownIcon } from '../../icons/ArrowDropDownIcon';
 
 export const NavButton = ({ title, link, subnav, isLeafButton = false, isMobile = false }: NavButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,11 +36,10 @@ export const NavButton = ({ title, link, subnav, isLeafButton = false, isMobile 
         href={link || undefined}
         className={`${isMobile && isOpen ? 'nav-mobile-button--active' : ''} ${isMobile ? 'nav-mobile-button' : ''} flex flex-col ${isActive && !isMobile ? 'header-button--active' : ''} header-button ${isLeafButton ? 'nav-leaf-button' : ''}`}
       >
-        <div className="flex w-full shrink-0 items-center justify-center">
+        <div className="flex w-full shrink-0 items-center justify-center normal-case gap-m">
           {title}
           {subnav && (
             <ArrowDropDownIcon
-              radius="1px"
               className={`smooth-transition text-greyscale-subtitle duration-[350ms] ${isOpen ? '-rotate-180' : ''}`}
             />
           )}
