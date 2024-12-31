@@ -21,9 +21,9 @@ export default function ScrollTriggered({ children, index }: ScrollTriggeredProp
   };
 
   return (
-    <div className="mx-auto w-full py-10">
+    <div className="mx-auto w-full">
       <motion.div
-        className="relative mb-[-30px] flex items-center justify-center overflow-hidden pt-5"
+        className="relative mb-[-30px] flex items-center justify-center overflow-hidden py-5 pb-10"
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.8 }}

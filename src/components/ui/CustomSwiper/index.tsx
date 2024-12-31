@@ -19,6 +19,7 @@ interface CustomSwipperProps extends SwiperProps {
   children: ReactNode;
   isAutoplay?: boolean;
   isFullWidth?: boolean;
+
   wrapperClass?: HTMLAttributes<HTMLDivElement>['className'];
 }
 
@@ -42,9 +43,9 @@ const CustomSwiper = ({
   if (navigation) modules.push(Navigation);
   if (isAutoplay || autoplay) modules.push(Autoplay);
   if (props.modules) modules.push(...props.modules);
-
+  console.log('wrapperClass', wrapperClass);
   return (
-    <div className={`mx-auto ${wrapperClass} ${isFullWidth ? 'swiper-fluid' : ''}`}>
+    <div className={`mx-auto ${wrapperClass && wrapperClass} ${isFullWidth ? 'swiper-fluid' : ''}`}>
       <div className="swiper-container relative max-w-[100vw]">
         <Swiper
           modules={modules}

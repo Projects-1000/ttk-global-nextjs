@@ -12,9 +12,11 @@ import { MobileMenu } from '../SelectMenu/MobileMenu';
 export const Header = () => {
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const [isTop, setIsTop] = useState<boolean>(true);
+
   const handleOpenMenu = () => {
     setIsOpenMenu(!isOpenMenu);
   };
+
   useEffect(() => {
     const onScroll = () => {
       setIsTop(window.scrollY === 0);
@@ -25,14 +27,13 @@ export const Header = () => {
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
-  console.log(isTop);
   return (
     <header
       className={`fixed top-0 z-10 flex w-full justify-center ${
-        isTop ? 'bg-transparent' : 'bg-white/30 shadow-md'
+        isTop ? 'bg-transparent' : 'bg-white/30'
       } backdrop-blur-md transition-colors duration-300`}
     >
-      <div className={`h-desktop_header w-full desktop:max-w-[1440px] ${!isOpenMenu ? '' : ''}`}>
+      <div className={`container h-desktop_header w-full desktop:max-w-[1440px] ${!isOpenMenu ? '' : ''}`}>
         <div className="flex h-full items-center justify-between">
           <div className="flex h-full items-center gap-l">
             <div className="relative h-full w-44">
