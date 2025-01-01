@@ -16,7 +16,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
       target="_blank"
       title={`${name}`}
       href={href || '#'}
-      className={`${customClass} partner-card group`}
+      className={`${customClass} partner-card group w-full`}
       {...props}
     >
       <Image

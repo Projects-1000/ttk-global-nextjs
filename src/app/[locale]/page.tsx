@@ -13,16 +13,16 @@ import Image from 'next/image';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 laptop:max-w-[1440px]">
+    <div className="flex w-full flex-col items-center justify-center gap-4">
       <Hero />
       <About />
       <Benefit />
       <CaseStudy />
       <Prize />
-      <div className="w-full bg-blue-10">
+      <div className="flex w-full justify-center self-center bg-blue-10">
         <Partner />
       </div>
-      <Testimonial />
+      {/* <Testimonial /> */}
       <div className="relative w-[100vw]">
         <Image
           src="/assets/demo/testi.png"
@@ -32,16 +32,6 @@ const HomePage = () => {
           alt="Testimonial"
           className="h-auto w-full"
         />
-        <div className="absolute left-[50%] top-[-65%] -z-10 w-full translate-x-[-50%]">
-          <Image
-            src="/assets/demo/Group_5.png"
-            width={0}
-            height={0}
-            sizes="100vw"
-            alt="Testimonial"
-            className="h-auto w-screen object-contain"
-          />
-        </div>
       </div>
     </div>
   );

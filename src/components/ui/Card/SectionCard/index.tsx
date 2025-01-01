@@ -14,22 +14,22 @@ interface SectionCardProps
 const SectionCard = ({ children, title, description, customClass, ...props }: SectionCardProps) => {
   return (
     <section
-      className={`mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
+      className={`max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
       {...props}
     >
       <motion.div
-        className="flex flex-col justify-start  gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
+        className="flex flex-col justify-start gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
         variants={containerVariants}
       >
-        <motion.h2 className="container uppercase h4-bold tablet:h2-bold laptop:h1-bold z-50" variants={titleVariants}>
+        <motion.h2 className="container z-50 uppercase h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
           {title}
         </motion.h2>
 
         {description && (
-          <motion.p className="container body-regular mobile:w-full laptop:w-1/2 z-50" variants={descriptionVariants}>
+          <motion.p className="container z-50 body-regular mobile:w-full laptop:w-1/2" variants={descriptionVariants}>
             {description}
           </motion.p>
         )}
@@ -41,15 +41,12 @@ const SectionCard = ({ children, title, description, customClass, ...props }: Se
 const titleVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
-    scaleY: 0,
-    originY: 1
+    y: 50
   },
   visible: {
     opacity: 1,
     y: 0,
-    scaleY: 1,
-    originY: 1,
+
     transition: {
       duration: 0.5,
       ease: 'easeInOut'
@@ -61,15 +58,12 @@ const titleVariants: Variants = {
 const descriptionVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
-    scaleY: 0,
-    originY: 1
+    y: 50
   },
   visible: {
     opacity: 1,
     y: 0,
-    scaleY: 1,
-    originY: 1,
+
     transition: {
       duration: 0.5,
       ease: 'easeInOut',

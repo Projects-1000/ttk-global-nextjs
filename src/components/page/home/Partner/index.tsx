@@ -102,14 +102,14 @@ const Partner = () => {
   const defaultVisibleMobile = 6;
   const defaultVisibleDesktop = 12;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [chunkSize, setChunkSize] = useState(window.innerWidth <= 375 ? 3 : 4);
+  const [chunkSize, setChunkSize] = useState(window.innerWidth <= 768 ? 3 : 4);
   const [visibleItems, setVisibleItems] = useState(
-    window.innerWidth <= 375 ? defaultVisibleMobile : defaultVisibleDesktop
+    window.innerWidth <= 768 ? defaultVisibleMobile : defaultVisibleDesktop
   );
 
   useEffect(() => {
     const updateChunkSize = () => {
-      if (window.innerWidth <= 375) {
+      if (window.innerWidth <= 768) {
         setChunkSize(3);
       } else {
         setChunkSize(4);
@@ -128,7 +128,7 @@ const Partner = () => {
 
   const toggleReadMore = () => {
     setIsExpanded((prev) => !prev);
-    if (window.innerWidth <= 375) {
+    if (window.innerWidth <= 768) {
       setVisibleItems(!isExpanded ? partners.length : defaultVisibleMobile);
     } else setVisibleItems(!isExpanded ? partners.length : defaultVisibleDesktop);
   };
@@ -143,7 +143,7 @@ const Partner = () => {
   }
 
   const isShowingLoadMore = () => {
-    if (window.innerWidth <= 375) return defaultVisibleMobile >= partners.length ? false : true;
+    if (window.innerWidth <= 768) return defaultVisibleMobile >= partners.length ? false : true;
     else return defaultVisibleDesktop >= partners.length ? false : true;
   };
 

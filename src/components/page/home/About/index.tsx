@@ -82,9 +82,9 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = ({ title, subtitle, isLast }) => {
   return (
     <div
-      className={`flex items-start justify-center gap-l rounded-[12px] bg-blue-50 p-xl tablet:rounded-[0] tablet:bg-transparent tablet:p-4xl ${!isLast ? 'border-b-0 border-l-0 border-t-0 border-none border-blue-200 pr-0 tablet:border-r-[1px] tablet:border-solid tablet:pr-4xl' : ''}`}
+      className={`flex h-full items-start justify-center gap-l rounded-[12px] bg-blue-50 p-xl tablet:rounded-[0] tablet:bg-transparent tablet:p-4xl ${!isLast ? 'border-b-0 border-l-0 border-t-0 border-none border-blue-200 pr-0 tablet:border-r-[1px] tablet:border-solid tablet:pr-4xl' : ''}`}
     >
-      <div className={`flex w-full flex-col items-center justify-center gap-l text-center ${!isLast ? '' : ''}`}>
+      <div className={`flex w-full flex-col items-center justify-center gap-l text-center`}>
         <p className="text-blue-500 h3-bold tablet:h2-bold laptop:h1-bold">{title}</p>{' '}
         <span className="subtitle-bold laptop:headline-bold">{subtitle}</span>
       </div>
