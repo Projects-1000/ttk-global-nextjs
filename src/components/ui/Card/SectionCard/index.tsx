@@ -5,7 +5,7 @@ import { DetailedHTMLProps, ReactNode } from 'react';
 
 interface SectionCardProps
   extends Omit<DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'className' | 'title'> {
-  title: string | ReactNode;
+  title?: string | ReactNode;
   children: ReactNode;
   description?: string;
   customClass?: DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>['className'];

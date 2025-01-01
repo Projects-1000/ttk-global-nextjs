@@ -4,7 +4,6 @@ import CaseStudy from '@/components/page/home/CaseStudy';
 import Hero from '@/components/page/home/Hero';
 import Partner from '@/components/page/home/Partner';
 import Prize from '@/components/page/home/Prize';
-import Testimonial from '@/components/page/home/Testimonial';
 import { routing } from '@/i18n/routing';
 import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';

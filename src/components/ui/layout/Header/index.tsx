@@ -8,6 +8,8 @@ import Button from '../../Button/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { MobileMenu } from '../SelectMenu/MobileMenu';
+import paths from '@/utils/paths';
+import Link from 'next/link';
 
 type direction = 'up' | 'down' | null;
 export const Header = () => {
@@ -46,7 +48,7 @@ export const Header = () => {
       >
         <div className="flex h-full items-center justify-between">
           <div className="flex h-full items-center gap-l">
-            <div className="relative h-full w-[136px] tablet:w-[152px]">
+            <Link href={paths.HOME} className="relative h-full w-[136px] tablet:w-[152px]">
               <Image
                 alt="TTK Global Venture"
                 src={'/assets/demo/header-logo.png'}
@@ -54,7 +56,7 @@ export const Header = () => {
                 className="object-contain object-center"
                 loading="eager"
               />
-            </div>
+            </Link>
             <NavBar />
           </div>
           <div className="tablet:hidden" onClick={handleOpenMenu}>
