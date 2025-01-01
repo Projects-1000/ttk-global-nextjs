@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-const GridBackground = () => {
+interface SVGIconProps extends SVGProps<SVGSVGElement> {}
+const GridBackground = ({ ...props }: SVGIconProps) => {
   return (
-    <svg width="888" height="659" viewBox="0 0 888 659" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="888" height="659" viewBox="0 0 888 659" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <line x1="887.4" y1="110.492" y2="110.492" stroke="url(#paint0_linear_379_1391)" strokeDasharray="5 5" />
       <line x1="887.4" y1="158.031" y2="158.031" stroke="url(#paint1_linear_379_1391)" strokeDasharray="5 5" />
       <line x1="887.4" y1="205.57" y2="205.57" stroke="url(#paint2_linear_379_1391)" strokeDasharray="5 5" />

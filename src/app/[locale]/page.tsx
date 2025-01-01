@@ -19,7 +19,9 @@ const HomePage = () => {
       <Benefit />
       <CaseStudy />
       <Prize />
-      <Partner />
+      <div className="w-full bg-blue-10">
+        <Partner />
+      </div>
       <Testimonial />
       <div className="relative w-[100vw]">
         <Image

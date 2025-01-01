@@ -9,7 +9,7 @@ interface BenefitCardProps {
 
 const BenefitCard = ({ title, description, image, isReverse = false }: BenefitCardProps) => {
   return (
-    <div className="flex min-h-full flex-col items-center justify-center laptop:px-4xl">
+    <div className="flex min-h-full flex-col items-center justify-center">
       <div
         className={`flex h-full mobile:flex-col laptop:flex-row ${isReverse ? 'laptop:flex-row-reverse' : 'laptop:flex-row'} w-full items-center justify-between gap-l tablet:gap-xl laptop:gap-2xl desktop:gap-3xl`}
       >

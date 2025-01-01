@@ -1,0 +1,44 @@
+// Định nghĩa các biến chiều cao và chiều rộng
+$max-height-mobile: 50px;
+$min-height-mobile: 50px;
+$max-width-mobile: 100px;
+$max-height-tablet: 72px;
+$min-height-tablet: 72px;
+$max-width-tablet: 150px;
+$max-height-laptop: 96px;
+$min-height-laptop: 96px;
+$max-width-laptop: 200px;
+$max-height-desktop: 120px;
+$min-height-desktop: 120px;
+$max-width-desktop: 250px;
+
+.partner-card {
+  @apply inline-block h-full min-h-fit min-w-fit overflow-hidden rounded-s border border-solid border-greyscale-surface-default bg-blue-10 p-s no-underline tablet:p-xl;
+
+  max-height: $max-height-mobile;
+  min-height: $min-height-mobile;
+  max-width: $max-width-mobile;
+  min-width: $max-width-mobile;
+
+  @media (min-width: 768px) {
+    max-height: $max-height-tablet;
+    min-height: $min-height-tablet;
+    max-width: $max-width-tablet;
+    min-width: $max-width-tablet;
+  }
+
+  @media (min-width: 1024px) {
+    max-height: $max-height-laptop;
+    min-height: $min-height-laptop;
+    max-width: $max-width-laptop;
+    min-width: $max-width-laptop;
+    @apply laptop:hover:border-primary-default;
+  }
+
+  @media (min-width: 1440px) {
+    max-height: $max-height-desktop;
+    min-height: $min-height-desktop;
+    max-width: $max-width-desktop;
+    min-width: $max-width-desktop;
+  }
+}
