@@ -22,6 +22,7 @@ const spacingObject = {
   tablet_container: 'var(--tablet-container-padding-x)',
   mobile_container: 'var(--mobile-container-padding-x)',
   desktop_header: 'var(--desktop-header-height)',
+  mobile_header: 'var(--mobile-header-height)',
   desktop_section_padding: 'var(--desktop-section-paddingY)',
   mobile_section_padding: 'var(--mobile-section-paddingY)'
 };

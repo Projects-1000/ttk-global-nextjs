@@ -1,0 +1,51 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (min-width: 375px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == laptop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}
+
+@mixin border-gradient($distance: 3px, $padding-thickness: 5px, $border-radius: 20px, $angle: 90deg, $color...) {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: $border-radius + 1px; /* Adjust border radius if needed */
+  padding: $distance; /* Distance from content to border */
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient($angle, $color);
+    border-radius: inherit;
+    padding: $padding-thickness; /* thickness of border */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude; /* show border*/
+  }
+}

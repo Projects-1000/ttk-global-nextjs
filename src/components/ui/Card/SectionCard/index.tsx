@@ -1,39 +1,40 @@
 'use client';
 import { containerVariants } from '@/components/page/home/Hero/HeroAnimationVariants';
 import { motion, Variants } from 'framer-motion';
-import { HTMLAttributes, ReactNode } from 'react';
+import { DetailedHTMLProps, ReactNode } from 'react';
 
-interface SectionCardProps {
-  title: ReactNode | string;
+interface SectionCardProps
+  extends Omit<DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'className' | 'title'> {
+  title: string | ReactNode;
   children: ReactNode;
   description?: string;
-  props?: HTMLAttributes<HTMLElement>;
+  customClass?: DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>['className'];
 }
 
-const SectionCard = ({ children, title, description, ...props }: SectionCardProps) => {
+const SectionCard = ({ children, title, description, customClass, ...props }: SectionCardProps) => {
   return (
-    <section className="mobile:py-mobile_section_padding desktop:py-desktop_section_padding" {...props}>
+    <section
+      className={`mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
+      {...props}
+    >
       <motion.div
-        className="flex flex-col justify-start gap-l tablet:items-center tablet:gap-2xl laptop:gap-3xl"
+        className="flex flex-col justify-start  gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
         variants={containerVariants}
       >
-        <motion.h2 className="container uppercase h3-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+        <motion.h2 className="container uppercase h4-bold tablet:h2-bold laptop:h1-bold z-50" variants={titleVariants}>
           {title}
         </motion.h2>
 
         {description && (
-          <motion.p
-            className="container body-regular mobile:w-full tablet:text-center laptop:w-1/2"
-            variants={descriptionVariants}
-          >
+          <motion.p className="container body-regular mobile:w-full laptop:w-1/2 z-50" variants={descriptionVariants}>
             {description}
           </motion.p>
         )}
       </motion.div>
-      <div className="mx-auto mt-l tablet:mt-2xl laptop:mt-3xl">{children}</div>
+      <div className="mx-auto mt-xl tablet:mt-2xl laptop:mt-3xl laptop:px-4xl">{children}</div>
     </section>
   );
 };

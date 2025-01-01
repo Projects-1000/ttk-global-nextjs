@@ -13,8 +13,9 @@ const nextConfig: NextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '**'
       }
-    ]
 
+      // internal-api-drive-stream-sg.larksuite.com
+    ]
   }
 };
 

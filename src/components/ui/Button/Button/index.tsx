@@ -27,7 +27,7 @@ export default function Button({
     <MUIButton
       variant={variant}
       disabled={isDisabled}
-      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs capitalize`}
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case`}
       type={type}
       onClick={onClick}
       {...props}

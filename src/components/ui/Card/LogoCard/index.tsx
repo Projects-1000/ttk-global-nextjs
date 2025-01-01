@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { HTMLAttributes, HtmlHTMLAttributes } from 'react';
+import './index.scss';
 
 interface LogoCardProps {
   src: string;
@@ -15,7 +16,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
       target="_blank"
       title={`${name}`}
       href={href || '#'}
-      className={`${customClass} hover:smooth-transition group block w-full rounded-s border border-solid border-greyscale-surface-default bg-blue-10 p-xl no-underline hover:border-primary-default`}
+      className={`${customClass} partner-card group`}
       {...props}
     >
       <Image
@@ -24,7 +25,7 @@ export const LogoCard = ({ src, name, href, customClass, props }: LogoCardProps)
         width="0"
         height="0"
         sizes="100vw"
-        className="smooth-transition max-w-[120px] h-auto w-full object-contain object-center group-hover:scale-105"
+        className="smooth-transition h-auto max-h-full min-w-full object-contain object-center laptop:group-hover:scale-105"
         loading="lazy"
       />
     </Link>

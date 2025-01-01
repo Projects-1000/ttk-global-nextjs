@@ -12,7 +12,7 @@ export const SubNavButton = ({ link, title, isLeafButton, isMobile = false }: Su
     <Button
       variant="text"
       href={link || undefined}
-      className={`${isMobile ? 'h-fit' : 'justify-start h-full whitespace-nowrap text-ellipsis'} ${isActive ? (!isMobile ? 'nav-leaf-button--active' : '') : ''} header-button ${isLeafButton ? 'nav-leaf-button' : ''}`}
+      className={`${isMobile ? 'h-fit' : 'h-full justify-start text-ellipsis whitespace-nowrap'} ${isActive ? (!isMobile ? 'nav-leaf-button--active' : '') : ''} ${isLeafButton ? 'nav-leaf-button' : ''} header-button normal-case`}
     >
       {title}
     </Button>

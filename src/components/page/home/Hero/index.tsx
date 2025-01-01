@@ -14,19 +14,19 @@ import CustomSwiper from '@/components/ui/CustomSwiper';
 
 const Hero = () => {
   return (
-    <section className="container relative flex w-full flex-col gap-4xl mobile:py-mobile_section_padding laptop:py-desktop_section_padding">
+    <section className="container relative flex w-full flex-col gap-4xl py-mobile_section_padding laptop:py-desktop_section_padding">
       <div className="absolute left-0 top-[0] -z-10 translate-x-[-70%] translate-y-[-35%] rotate-180">
         <BlueVector />
       </div>
       <motion.div
-        className="flex items-center justify-between mobile:flex-col mobile:items-center mobile:gap-3xl tablet:flex-row"
+        className="flex flex-col items-center justify-between mobile:gap-3xl tablet:flex-row"
         initial="hidden"
         animate="visible"
         viewport={{ once: true, amount: 0.5 }}
         variants={containerVariants}
       >
-        <div className="flex max-w-[600px] flex-col gap-2xl mobile:items-center mobile:gap-y-3xl">
-          <motion.p className="h3-bold tablet:h2-bold laptop:h1-bold" variants={itemVariants}>
+        <div className="order-2 flex flex-col items-start justify-start gap-y-3xl tablet:order-1 tablet:flex-auto tablet:gap-2xl">
+          <motion.p className="h3-bold tablet:h3-bold laptop:h1-bold" variants={itemVariants}>
             Hợp tác kinh doanh trên <span className="text-[#F58C29]">Amazon</span> - Đưa thương hiệu của bạn ra toàn
             cầu!
           </motion.p>
@@ -34,23 +34,30 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi
             tristique senectus
           </motion.p>
-          <motion.div className="flex items-center gap-l" variants={itemVariants}>
-            <Button text="Đăng ký hợp tác" />
-            <Button text="Tìm hiểu thêm" color="secondary" />
+          <motion.div
+            className="flex w-full items-center justify-center gap-l tablet:justify-start"
+            variants={itemVariants}
+          >
+            <Button text="Đăng ký hợp tác" classCustom="flex-1 tablet:flex-none" />
+            <Button text="Tìm hiểu thêm" color="secondary" classCustom="flex-1 tablet:flex-none" />
           </motion.div>
         </div>
 
-        <motion.div className="max-h-[380px] max-w-[480px] mobile:h-auto mobile:w-full" variants={imageVariants}>
+        <motion.div
+          className="order-1 flex h-fit w-full min-w-[360px] justify-center tablet:order-2 tablet:h-auto tablet:min-w-[480px] laptop:min-w-[50%]"
+          variants={imageVariants}
+        >
           <Image
-            src="https://res.cloudinary.com/dh6bfx865/image/upload/v1735102626/ttk-global/HeroImage_dobhqx.png"
+            src="/assets/demo/HeroImage.png"
             alt="Hero logo"
-            width={480}
-            height={380}
+            width={629}
+            height={552}
+            className="object h-fit w-full object-contain"
           />
         </motion.div>
       </motion.div>
       <motion.div
-        className="flex flex-col items-center gap-2xl px-0 py-3xl"
+        className="flex flex-col items-center gap-l px-0 py-l laptop:gap-2xl laptop:py-3xl"
         initial="hidden"
         animate="visible"
         variants={logosVariants}
@@ -63,6 +70,7 @@ const Hero = () => {
             navigation={false}
             slidesPerView={5}
             spaceBetween={20}
+            allowTouchMove={false}
             loop
             isAutoplay={true}
             speed={1500}
@@ -82,8 +90,14 @@ const Hero = () => {
           >
             {[...listLogos, ...listLogos].map((logo, index) => (
               <SwiperSlide key={index}>
-                <motion.div className="flex items-center justify-center" variants={itemVariants}>
-                  <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} />
+                <motion.div className="flex w-full items-center justify-center" variants={itemVariants}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    className="object-contain object-center"
+                  />
                 </motion.div>
               </SwiperSlide>
             ))}

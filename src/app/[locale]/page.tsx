@@ -13,13 +13,15 @@ import Image from 'next/image';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
+    <div className="flex w-full flex-col items-center justify-center gap-4 laptop:max-w-[1440px]">
       <Hero />
       <About />
       <Benefit />
       <CaseStudy />
       <Prize />
-      <Partner />
+      <div className="w-full bg-blue-10">
+        <Partner />
+      </div>
       <Testimonial />
       <div className="relative w-[100vw]">
         <Image
@@ -37,7 +39,7 @@ const HomePage = () => {
             height={0}
             sizes="100vw"
             alt="Testimonial"
-            className="h-auto w-screen"
+            className="h-auto w-screen object-contain"
           />
         </div>
       </div>

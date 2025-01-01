@@ -1,11 +1,13 @@
 'use client';
 
+import { ArrowDropDownIcon } from '@/components/ui/icons/ArrowDropDownIcon';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { LocaleProps } from '@/types/locale.type';
+
 import LanguageIcon from '@mui/icons-material/Language';
-import { FormControl, Select, SelectChangeEvent } from '@mui/material';
+import { FormControl, MenuProps, Select, SelectChangeEvent } from '@mui/material';
 import { useParams } from 'next/navigation';
-import { ReactNode, useTransition } from 'react';
+import { ReactNode, useState, useTransition } from 'react';
 
 interface LocalSwitcherProps {
   children: ReactNode;
@@ -16,10 +18,11 @@ interface LocalSwitcherProps {
 export default function LocaleSwitcherSelect({ children, defaultValue, label }: LocalSwitcherProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const params = useParams();
 
-  function onSelectChange(event: SelectChangeEvent<HTMLSelectElement>) {
+  const onSelectChange = (event: SelectChangeEvent<HTMLSelectElement>) => {
     const nextLocale = event.target.value as LocaleProps;
     startTransition(() => {
       router.replace(
@@ -30,23 +33,28 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
         { locale: nextLocale }
       );
     });
-  }
+  };
 
   return (
     <>
-      <FormControl className="w-20">
+      <FormControl className={`min-w-2 ${isPending ? 'animate-pulse' : ''}`}>
         <Select
-          labelId="demo-simple-select-label"
-          id="locale-switcher-select"
           value={defaultValue as unknown as HTMLSelectElement}
           defaultValue={defaultValue as unknown as HTMLSelectElement}
-          label={label}
           onChange={onSelectChange}
+          onClose={() => setIsOpen(false)}
+          renderValue={(value) => <ValueDisplay value={value as unknown as string} isOpen={isOpen} />}
+          onOpen={() => setIsOpen(true)}
+          label={label}
           disabled={isPending}
+          IconComponent={() => null}
+          MenuProps={menuProps}
+          labelId="locale-switcher-select-label"
+          id="locale-switcher-select"
           inputProps={{ 'aria-label': 'Without label' }}
           displayEmpty
-          renderValue={(value) => <ValueDisplay value={value as unknown as string} />}
-          className='group'
+          className="group"
+          title="Change language"
         >
           {children}
         </Select>
@@ -55,11 +63,26 @@ export default function LocaleSwitcherSelect({ children, defaultValue, label }: 
   );
 }
 
-const ValueDisplay = ({ value }: { value: string }) => {
+export const ValueDisplay = ({ value, isOpen }: { value: string; isOpen: boolean }) => {
   return (
-    <div className="flex items-center gap-2xs text-greyscale-subtitle group-hover:text-greyscale-body">
-      <LanguageIcon className="size-5" />
-      <span className="body-semibold uppercase">{value}</span>
+    <div className="flex items-center gap-s text-greyscale-subtitle group-hover:text-greyscale-body">
+      <div className="flex items-center gap-2xs">
+        <LanguageIcon className="size-[22px]" />
+        <span className="uppercase subtitle-semibold tablet:body-semibold">{value}</span>
+      </div>
+      <ArrowDropDownIcon
+        className={`smooth-transition text-greyscale-subtitle duration-[350ms] ${isOpen ? '-rotate-180' : ''}`}
+      />
     </div>
   );
+};
+
+const menuProps: Partial<MenuProps> = {
+  PaperProps: {
+    style: {
+      maxHeight: 200,
+      overflowY: 'auto'
+    }
+  },
+  disableScrollLock: true
 };
