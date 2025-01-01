@@ -1,51 +1,66 @@
 import { motion, Variants } from 'framer-motion';
+import { Fragment } from 'react';
 
 const RoadmapLine: React.FC<{ isReverse: boolean }> = ({ isReverse }) => {
   return (
-    <motion.div
-      className="flex w-[50%] flex-col"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.8 }}
-      variants={containerVariants}
-    >
+    <Fragment>
       <motion.div
-        className={`relative h-[50px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-primary-lighter laptop:h-[100px] ${
-          isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'
-        }`}
-        variants={lineVariants(0)} // No delay for the top line
+        className="hidden w-[50%] flex-col tablet:flex"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+        variants={containerVariants}
       >
         <motion.div
-          className={`absolute -top-2 h-2/3 w-[20px] ${isReverse ? '-left-[10px]' : '-right-[10px]'}`}
-          style={{
-            background: 'linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
-            filter: 'blur(5px)'
-          }}
-          variants={blurVariants(0)} // No delay for the top blur
+          className={`relative h-[50px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-primary-lighter laptop:h-[100px] ${
+            isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'
+          }`}
+          variants={lineVariants(0)} // No delay for the top line
+        >
+          <motion.div
+            className={`absolute -top-2 h-2/3 w-[20px] ${isReverse ? '-left-[10px]' : '-right-[10px]'}`}
+            style={{
+              background: 'linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
+              filter: 'blur(5px)'
+            }}
+            variants={blurVariants(0)} // No delay for the top blur
+          ></motion.div>
+        </motion.div>
+
+        <motion.div
+          className="h-[2px] w-full border-[2px] border-l-0 border-r-0 border-t-0 border-dashed border-primary-lighter"
+          variants={middleLineVariants(0.5, isReverse)} // Delay after top line finishes
         ></motion.div>
+
+        <motion.div
+          className={`relative h-[50px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-primary-lighter laptop:h-[100px] ${
+            !isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'
+          }`}
+          variants={lineVariants(1)} // Delay after middle line finishes
+        >
+          <motion.div
+            className={`absolute -bottom-2 h-2/3 w-[20px] ${!isReverse ? '-left-[10px]' : '-right-[10px]'}`}
+            style={{
+              background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
+              filter: 'blur(5px)'
+            }}
+            variants={blurVariants(1)} // Delay after middle blur
+          ></motion.div>
+        </motion.div>
       </motion.div>
-
       <motion.div
-        className="h-[2px] w-full border-[2px] border-l-0 border-r-0 border-t-0 border-dashed border-primary-lighter"
-        variants={middleLineVariants(0.5, isReverse)} // Delay after top line finishes
-      ></motion.div>
-
-      <motion.div
-        className={`relative h-[50px] w-full border-[2px] border-b-0 border-t-0 border-dashed border-primary-lighter laptop:h-[100px] ${
-          !isReverse ? 'border-l-[2px] border-r-0' : 'border-l-0 border-r-[2px]'
-        }`}
-        variants={lineVariants(1)} // Delay after middle line finishes
+        className="flex w-fit flex-col tablet:hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+        variants={lineVariants(1)}
       >
         <motion.div
-          className={`absolute -bottom-2 h-2/3 w-[20px] ${!isReverse ? '-left-[10px]' : '-right-[10px]'}`}
-          style={{
-            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)',
-            filter: 'blur(5px)'
-          }}
-          variants={blurVariants(1)} // Delay after middle blur
+          className="h-[50px] w-[2px] border-[2px] border-l-0 border-t-0 border-dashed border-primary-lighter"
+          variants={blurVariants(1)} // Horizontal line with no delay
         ></motion.div>
       </motion.div>
-    </motion.div>
+    </Fragment>
   );
 };
 

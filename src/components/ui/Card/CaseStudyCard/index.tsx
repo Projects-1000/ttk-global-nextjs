@@ -12,8 +12,8 @@ export interface CaseStudyCardProps {
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description, tags, postRevenue, image }) => {
   return (
-    <div className="border-card flex items-center space-x-4 rounded-xl border-solid bg-white/40 backdrop-blur-xl mobile:flex-col mobile:p-l tablet:flex-row tablet:p-4xl">
-      <div className="flex flex-col gap-3xl laptop:w-1/3">
+    <div className="flex h-full flex-col items-center gap-l rounded-xl border-solid border-blue-100 bg-white/40 p-l backdrop-blur-xl tablet:flex-row tablet:gap-0 tablet:p-4xl">
+      <div className="flex w-full flex-col items-start gap-1 tablet:w-1/3 tablet:gap-3xl">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <CustomTag key={index} tagName={tag} type="outline" />
@@ -25,7 +25,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description,
         <p className="text-primary-label body-bold laptop:h4-bold">{postRevenue}</p>
       </div>
 
-      <div className="flex flex-1 items-center justify-center laptop:h-[340px] laptop:w-1/3">
+      <div className="flex h-auto w-full flex-1 items-center justify-center laptop:h-[340px] laptop:w-1/3">
         {image ? (
           // <img src={image} alt="casestudyCard-image" className="md:w-1/3 flex h-[340px] w-full" />
           <Image src={image} alt="casestudyCard-image" className="flex w-full" width={500} height={340} />

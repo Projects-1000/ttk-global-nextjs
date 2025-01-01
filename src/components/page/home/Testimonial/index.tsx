@@ -38,12 +38,15 @@ const Testimonial = () => {
   return (
     <SectionCard title={<TestimonialTitle />} description={description}>
       <CustomSwiper
+        navigation
         breakpoints={{
           370: {
-            slidesPerView: 1.15
+            slidesPerView: 1.15,
+            navigation: false
           },
           768: {
-            slidesPerView: 2.15
+            slidesPerView: 2.15,
+            navigation: false
           },
           1024: {
             slidesPerView: 2
@@ -52,10 +55,10 @@ const Testimonial = () => {
             slidesPerView: 2
           }
         }}
-        wrapperClass="laptop:w-[calc(100%-240px)]"
+        wrapperClass="desktop:w-[calc(100% - 160px)] desktop:max-w-[1440px] desktop:container"
       >
         {TESTIMONIAL_DATA.map((testimonial) => (
-          <SwiperSlide className="" key={testimonial.id}>
+          <SwiperSlide key={testimonial.id}>
             <TestimonialCard
               customerName={testimonial.customerName}
               customerPosition={testimonial.customerPosition}

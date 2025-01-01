@@ -38,12 +38,12 @@
   <g filter="url(#filter0_f_379_1391)">
     <path
       d="M552.6 186.831C576.147 201.137 584.71 235.164 593.273 270.35C601.836 305.923 610.399 342.269 592.417 359.283C574.435 376.682 529.48 374.363 491.803 384.029C453.699 394.082 423.3 416.122 388.621 418.055C354.369 419.989 315.408 401.429 297.854 372.429C279.872 343.816 283.298 304.376 292.717 268.03C302.136 231.684 317.977 198.044 345.806 184.897C373.208 171.364 412.597 177.551 451.558 177.937C490.519 178.324 529.052 172.524 552.6 186.831Z"
-      fill="url(#paint18_linear_379_1391)" fill-opacity="0.35" />
+      fill="url(#paint18_linear_379_1391)" fillOpacity="0.35" />
   </g>
   <defs>
     <filter id="filter0_f_379_1391" x="45" y="-63.8066" width="798" height="722"
-      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+      <feFlood floodOpacity="0" result="BackgroundImageFix" />
       <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
       <feGaussianBlur stdDeviation="120" result="effect1_foregroundBlur_379_1391" />
     </filter>
