@@ -2,7 +2,7 @@
 
 @layer components {
   .btn {
-    @apply text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out normal-case ;
+    @apply normal-case text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out;
 
     &.btn__primary {
       @apply border-2 border-solid border-primary-default bg-primary-default subtitle-bold hover:bg-blue-600;
@@ -42,7 +42,7 @@
       }
 
       &__large {
-        @apply rounded-s px-3xl py-m headline-bold;
+        @apply rounded-s px-3xl py-m body-bold;
 
         &--icon {
           @apply px-m;

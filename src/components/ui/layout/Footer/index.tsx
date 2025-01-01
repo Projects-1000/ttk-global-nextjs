@@ -72,16 +72,14 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-xl text-greyscale-negative mobile:w-full mobile:gap-l laptop:max-w-[360px]">
+              <div className="flex flex-col gap-m text-greyscale-negative mobile:w-full mobile:gap-l laptop:max-w-[360px] laptop:gap-3xl">
                 <span className="mobile:footnote-bold tablet:body-bold">Theo dõi chúng tôi</span>
                 <div className="flex items-center gap-[12px] bg-white p-[12px]">
                   <input
                     className="flex-1 border-none outline-none mobile:footnote-regular tablet:body-regular"
                     placeholder="Email"
                   />
-                  {/* <Button variant="contained" className="bg-primary-default">
-                Gửi
-              </Button> */}
+
                   <SubmitButton
                     isDirty={true}
                     text="Gửi"
