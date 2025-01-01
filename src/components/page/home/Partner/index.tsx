@@ -106,7 +106,6 @@ const Partner = () => {
   const [visibleItems, setVisibleItems] = useState(
     window.innerWidth <= 768 ? defaultVisibleMobile : defaultVisibleDesktop
   );
-
   useEffect(() => {
     const updateChunkSize = () => {
       if (window.innerWidth <= 768) {
