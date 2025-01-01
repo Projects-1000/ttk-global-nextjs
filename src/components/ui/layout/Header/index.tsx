@@ -37,7 +37,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`container fixed top-0 z-10 flex w-full justify-center smooth-transition ${
+      className={`container fixed top-0 z-[1000] flex w-full justify-center smooth-transition ${
         scrollDirection === 'down' ? 'max-tablet:-translate-y-full' : 'max-tablet:translate-y-0'
       } backdrop-blur-md`}
     >
