@@ -1,16 +1,13 @@
 'use client';
 import CaseStudyCard from '@/components/ui/Card/CaseStudyCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { SwiperSlide } from 'swiper/react';
 // import 'swiper/css/navigation';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { BlueVector } from '@/assets/BlueVector';
+import { TtkFrame } from '@/assets/TtkFrame';
+import CustomSwiper from '@/components/ui/CustomSwiper';
 import { motion } from 'framer-motion';
 import { logosVariants } from '../Hero/HeroAnimationVariants';
-import { TtkFrame } from '@/assets/TtkFrame';
-import { BlueVector } from '@/assets/BlueVector';
-import CustomSwiper from '@/components/ui/CustomSwiper';
 const caseStudyData = [
   {
     id: 0,
@@ -83,24 +80,60 @@ const CaseStudy = () => {
           <BlueVector />
         </div>
 
-        <div className="">
+        <CustomSwiper
+          navigation
+          slidesPerView={1}
+          breakpoints={{
+            375: {
+              spaceBetween: 16,
+              slidesPerView: 1.2
+            },
+            768: {
+              spaceBetween: 16,
+              slidesPerView: 1
+            },
+            1024: {
+              spaceBetween: 16,
+              slidesPerView: 1
+            }
+          }}
+          spaceBetween={30}
+          wrapperClass="desktop:w-[calc(100%-160px)] desktop:max-w-[1440px] "
+        >
+          {caseStudyData.map((caseStudy) => (
+            <SwiperSlide className="w-full flex-auto" key={caseStudy.id}>
+              <CaseStudyCard
+                image={caseStudy.image}
+                projectName={caseStudy.projectName}
+                description={caseStudy.description}
+                tags={caseStudy.tags}
+                postRevenue={caseStudy.postRevenue}
+              />
+            </SwiperSlide>
+          ))}
+        </CustomSwiper>
+        {/* <div className="inline-block w-full">
           <CustomSwiper
-            navigation
-            slidesPerView={1}
+            allowTouchMove={false}
+            spaceBetween={50}
+            direction="horizontal"
             breakpoints={{
               375: {
                 spaceBetween: 16,
                 slidesPerView: 1.2
               },
               768: {
-                spaceBetween: 0,
+                spaceBetween: 16,
+                slidesPerView: 1
+              },
+              1024: {
+                spaceBetween: 16,
                 slidesPerView: 1
               }
             }}
-            spaceBetween={30}
           >
-            {caseStudyData.map((caseStudy) => (
-              <SwiperSlide className="w-full" key={caseStudy.id}>
+            {caseStudyData.map((caseStudy, index) => (
+              <SwiperSlide key={index}>
                 <CaseStudyCard
                   image={caseStudy.image}
                   projectName={caseStudy.projectName}
@@ -111,7 +144,7 @@ const CaseStudy = () => {
               </SwiperSlide>
             ))}
           </CustomSwiper>
-        </div>
+        </div> */}
       </motion.div>
     </SectionCard>
   );

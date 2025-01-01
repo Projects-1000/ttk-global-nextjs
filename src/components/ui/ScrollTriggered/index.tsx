@@ -21,6 +21,7 @@ export default function ScrollTriggered({ children, index }: ScrollTriggeredProp
   };
 
   return (
+
     <div className="mx-auto mb-l w-full tablet:mb-xl laptop:mb-3xl desktop:mb-4xl">
       <motion.div
         className="relative flex items-center justify-center overflow-hidden tablet:pt-5"
