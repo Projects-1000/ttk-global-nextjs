@@ -2,38 +2,57 @@
 // import { BlueVector } from '@/assets/blue-vector';
 
 import Button from '@/components/ui/Button/Button';
+import CustomSwiper from '@/components/ui/CustomSwiper';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import 'swiper/css';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
+import { SwiperSlide } from 'swiper/react';
+import heroBg1 from '../../../../../public/assets/demo/hero/hero-bg-1.png';
+import heroBg2 from '../../../../../public/assets/demo/hero/hero-bg-2.png';
+import heroImage from '../../../../../public/assets/demo/hero/HeroImage.png';
+import blueVector from '@/assets/blue-vector.png';
 import listLogos from './fakeData';
-import { BlueVector } from '@/assets/BlueVector';
-import CustomSwiper from '@/components/ui/CustomSwiper';
+import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
 
 const Hero = () => {
   return (
-    <section className="container relative flex w-full flex-col gap-4xl py-mobile_section_padding laptop:py-desktop_section_padding">
-      <div className="absolute left-0 top-[0] -z-10 translate-x-[-70%] translate-y-[-35%] rotate-180">
-        <BlueVector />
-      </div>
+    <section className="container flex w-full max-w-[1440px] flex-col gap-4xl py-mobile_section_padding laptop:py-desktop_section_padding laptop:pt-10">
       <motion.div
-        className="flex flex-col items-center justify-between mobile:gap-3xl tablet:flex-row"
+        className="relative flex flex-col items-center justify-between mobile:gap-3xl laptop:flex-row"
         initial="hidden"
         animate="visible"
         viewport={{ once: true, amount: 0.5 }}
         variants={containerVariants}
       >
+        <div className="absolute right-0 top-0 -z-10 h-full w-full translate-x-[30%] scale-[2] opacity-50">
+          <Image
+            src={blueVector}
+            width={0}
+            height={0}
+            sizes="100vw"
+            alt=""
+            className="h-full w-full object-contain object-center"
+          />
+        </div>
+        <div className="absolute left-0 top-[0] -z-10">
+          <Image
+            src={heroBg1}
+            width={0}
+            height={0}
+            sizes="100vw"
+            alt=""
+            className="h-full w-full object-contain object-center"
+          />
+        </div>
         <div className="order-2 flex flex-col items-start justify-start gap-y-3xl tablet:order-1 tablet:flex-auto tablet:gap-2xl">
-          <motion.p className="h3-bold tablet:h3-bold laptop:h1-bold" variants={itemVariants}>
+          <motion.p className="text-justify uppercase h3-bold tablet:h3-bold laptop:h1-bold" variants={itemVariants}>
             Hợp tác kinh doanh trên <span className="text-[#F58C29]">Amazon</span> - Đưa thương hiệu của bạn ra toàn
             cầu!
           </motion.p>
-          <motion.p className="headline-regular mobile:caption-regular" variants={itemVariants}>
+          {/* <motion.p className="headline-regular mobile:caption-regular" variants={itemVariants}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi
             tristique senectus
-          </motion.p>
+          </motion.p> */}
           <motion.div
             className="flex w-full items-center justify-center gap-l tablet:justify-start"
             variants={itemVariants}
@@ -44,11 +63,22 @@ const Hero = () => {
         </div>
 
         <motion.div
-          className="order-1 flex h-fit w-full min-w-[360px] justify-center tablet:order-2 tablet:h-auto tablet:min-w-[480px] laptop:min-w-[50%]"
+          className="relative order-1 flex h-fit w-full min-w-[360px] justify-center tablet:order-2 tablet:h-auto tablet:min-w-[480px] laptop:min-w-[45%]"
           variants={imageVariants}
         >
+          <div className="absolute left-0 top-[0] -z-10 h-full w-full">
+            <Image
+              src={heroBg2}
+              width={0}
+              height={0}
+              sizes="100vw"
+              alt=""
+              className="h-full w-full object-contain object-center"
+            />
+          </div>
+
           <Image
-            src="/assets/demo/HeroImage.png"
+            src={heroImage}
             alt="Hero logo"
             width={629}
             height={552}

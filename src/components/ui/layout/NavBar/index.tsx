@@ -20,11 +20,12 @@ export const navItems: NavBarProps = [
     ]
   },
   {
-    title: 'Cho đối tác',
-    subnav: [
-      { title: 'Mô hình hợp tác', link: 'document' },
-      { title: 'Đối tác kinh doanh', link: 'blogs' },
-    ]
+    title: 'Mô hình hợp tác',
+    link: 'partnership'
+    // subnav: [
+    //   { title: 'Mô hình hợp tác', link: 'document' },
+    //   { title: 'Đối tác kinh doanh', link: 'blogs' }
+    // ]
   },
   {
     title: 'Tài nguyên',
@@ -33,12 +34,18 @@ export const navItems: NavBarProps = [
       { title: 'Blog', link: '/blogs' }
     ]
   },
-  { title: 'Liên hệ', link: 'contact' }
+  {
+    title: 'Liên hệ',
+    subnav: [
+      { title: 'Đặt lịch meeting', link: 'document' },
+      { title: 'Liên hệ hợp tác', link: 'blogs' }
+    ]
+  }
 ];
 
 const NavBar = () => {
   return (
-    <nav className="hidden h-full items-center laptop:flex gap-xs">
+    <nav className="hidden h-full items-center gap-xs laptop:flex">
       {navItems.map(({ title, link, subnav }, i) => (
         <NavButton key={i} title={title} link={link} subnav={subnav} isLeafButton={false} isMobile={false} />
       ))}
