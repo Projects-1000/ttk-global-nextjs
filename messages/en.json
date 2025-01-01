@@ -16,6 +16,6 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, vi {VI} en {EN} other {Unknown}}"
+    "locale": "{locale, select, vi {VN} en {EN} other {Unknown}}"
   }
 }

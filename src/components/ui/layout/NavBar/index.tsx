@@ -12,14 +12,18 @@ export interface NavBarItemProps extends SubNavBarProps {
 export type NavBarProps = NavBarItemProps[];
 
 export const navItems: NavBarProps = [
-  { title: 'Giới thiệu', link: '/' },
+  {
+    title: 'Về Công ty',
+    subnav: [
+      { title: 'Phản hồi từ đối tác', link: 'about' },
+      { title: 'Scoreboard', link: 'history' }
+    ]
+  },
   {
     title: 'Cho đối tác',
-    // link: 'how-it-work',
     subnav: [
       { title: 'Mô hình hợp tác', link: 'document' },
       { title: 'Đối tác kinh doanh', link: 'blogs' },
-      { title: 'Phản hồi', link: 'blogs' }
     ]
   },
   {
@@ -34,7 +38,7 @@ export const navItems: NavBarProps = [
 
 const NavBar = () => {
   return (
-    <nav className="hidden h-full items-center laptop:flex">
+    <nav className="hidden h-full items-center laptop:flex gap-xs">
       {navItems.map(({ title, link, subnav }, i) => (
         <NavButton key={i} title={title} link={link} subnav={subnav} isLeafButton={false} isMobile={false} />
       ))}

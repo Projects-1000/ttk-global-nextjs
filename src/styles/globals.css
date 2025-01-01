@@ -8,9 +8,10 @@
     --desktop-container-padding-x: 120px;
     --laptop-container-padding-x: 80px;
     --tablet-container-padding-x: 32px;
-    --mobile-container-padding-x: 32px;
+    --mobile-container-padding-x: 24px;
 
     --desktop-header-height: 88px;
+    --mobile-header-height: 72px;
     --desktop-section-paddingY: 120px;
     --mobile-section-paddingY: 60px;
 
@@ -28,7 +29,6 @@
   html,
   body {
     height: 100%;
-    overflow-x :hidden
   }
   body {
     line-height: 1.5;
