@@ -84,5 +84,5 @@ const menuProps: Partial<MenuProps> = {
       overflowY: 'auto'
     }
   },
-  disableScrollLock: true
+  disableScrollLock: false
 };
