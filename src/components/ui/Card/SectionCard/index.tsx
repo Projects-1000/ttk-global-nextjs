@@ -1,7 +1,7 @@
 'use client';
 import { containerVariants } from '@/components/page/home/Hero/HeroAnimationVariants';
 import { motion, Variants } from 'framer-motion';
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import { DetailedHTMLProps, ReactNode } from 'react';
 
 interface SectionCardProps
   extends Omit<DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'className' | 'title'> {

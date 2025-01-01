@@ -36,7 +36,7 @@ export const NavButton = ({ title, link, subnav, isLeafButton = false, isMobile 
         href={link || undefined}
         className={`${isMobile && isOpen ? 'nav-mobile-button--active' : ''} ${isMobile ? 'nav-mobile-button' : ''} flex flex-col ${isActive && !isMobile ? 'header-button--active' : ''} header-button ${isLeafButton ? 'nav-leaf-button' : ''}`}
       >
-        <div className="flex w-full shrink-0 items-center justify-center normal-case gap-m">
+        <div className="flex w-full shrink-0 items-center justify-center gap-m normal-case">
           {title}
           {subnav && (
             <ArrowDropDownIcon

@@ -2,17 +2,8 @@
 import GridBackground from '@/assets/GridBackground';
 import { LogoCard } from '@/components/ui/Card/LogoCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import CustomSwiper from '@/components/ui/CustomSwiper';
-import { Button } from '@mui/material';
+import LoadMoreIcon from '@/components/ui/icons/LoadMoreIcon';
 import { useEffect, useState } from 'react';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { SwiperOptions } from 'swiper/types';
-
-interface MobileBodyProps {
-  delay: number;
-  speed: SwiperOptions['speed'];
-}
 
 const partners = [
   {
@@ -109,21 +100,19 @@ const partners = [
 
 const Partner = () => {
   const defaultVisibleMobile = 6;
-  const defaultVisibleDesktop = 11;
+  const defaultVisibleDesktop = 12;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [chunkSize, setChunkSize] = useState(4);
-  const [visibleItems, setVisibleItems] = useState(11);
+  const [chunkSize, setChunkSize] = useState(window.innerWidth <= 375 ? 3 : 4);
+  const [visibleItems, setVisibleItems] = useState(
+    window.innerWidth <= 375 ? defaultVisibleMobile : defaultVisibleDesktop
+  );
 
   useEffect(() => {
     const updateChunkSize = () => {
       if (window.innerWidth <= 375) {
         setChunkSize(3);
-        setVisibleItems(defaultVisibleMobile);
-        if (defaultVisibleMobile < partners.length) setIsExpanded(false);
       } else {
         setChunkSize(4);
-        setVisibleItems(defaultVisibleDesktop);
-        if (defaultVisibleDesktop < partners.length) setIsExpanded(false);
       }
     };
 
@@ -138,8 +127,10 @@ const Partner = () => {
   const rows = splitIconsIntoChunks(partners.slice(0, visibleItems), chunkSize);
 
   const toggleReadMore = () => {
-    setIsExpanded(true);
-    setVisibleItems(partners.length);
+    setIsExpanded((prev) => !prev);
+    if (window.innerWidth <= 375) {
+      setVisibleItems(!isExpanded ? partners.length : defaultVisibleMobile);
+    } else setVisibleItems(!isExpanded ? partners.length : defaultVisibleDesktop);
   };
 
   function splitIconsIntoChunks<T>(icons: Array<T>, chunkSize = 4) {
@@ -150,6 +141,11 @@ const Partner = () => {
     }
     return arrayParent;
   }
+
+  const isShowingLoadMore = () => {
+    if (window.innerWidth <= 375) return defaultVisibleMobile >= partners.length ? false : true;
+    else return defaultVisibleDesktop >= partners.length ? false : true;
+  };
 
   return (
     <SectionCard
@@ -171,56 +167,25 @@ const Partner = () => {
           );
         })}
       </div>
+      {isShowingLoadMore() && (
+        <div
+          onClick={toggleReadMore}
+          className={`relative z-10 mt-l flex w-full animate-pulse cursor-pointer justify-center pt-xl ${!isExpanded ? '' : 'rotate-180'}`}
+        >
+          <LoadMoreIcon className={`w-full animate-bounce`} height="18" />
+        </div>
+      )}
       <div className="absolute left-1/2 top-1/3 z-0 translate-x-[-50%] translate-y-[-40%]">
         <GridBackground className="scale-[1.5] laptop:scale-100" />
       </div>
-      {!isExpanded && (
-        <Button onClick={toggleReadMore} variant="text">
-          Xem thêm
-        </Button>
-      )}
     </SectionCard>
-  );
-};
-
-const MobileBody = ({ delay, speed }: MobileBodyProps) => {
-  return (
-    <div className="max-w-[100vw] laptop:max-w-0">
-      <div className="inline-block w-full laptop:hidden">
-        <CustomSwiper
-          isAutoplay={false}
-          allowTouchMove={false}
-          initialSlide={delay}
-          direction="horizontal"
-          speed={speed}
-          isFullWidth={true}
-          breakpoints={{
-            375: {
-              slidesPerView: 3,
-              spaceBetween: 30
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 30
-            }
-          }}
-          className="swiper-infinity-slider"
-        >
-          {partners.map(({ href, id, name, src }) => (
-            <SwiperSlide key={id}>
-              <LogoCard name={name} src={src} href={href} />
-            </SwiperSlide>
-          ))}
-        </CustomSwiper>
-      </div>
-    </div>
   );
 };
 
 const SectionTitle = (
   <p>
-    PHỐI HỢP CÙNG <span className="hidden tablet:inline">CÁC </span>
-    <span className="text-secondary-label">ĐƠN VỊ QUỐC TẾ</span>
+    PHỐI HỢP CÙNG CÁC <br className="tablet:hidden" />
+    <span className="text-secondary-label"> ĐƠN VỊ QUỐC TẾ</span>
   </p>
 );
 

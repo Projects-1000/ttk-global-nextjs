@@ -1,2 +1,2 @@
-@use './utils/mixin';
-@use './utils/config';
+@use './mixin' as *;
+@use './helper' as *;
