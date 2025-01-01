@@ -34,9 +34,12 @@ const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dignissim nibh. Pellentesque habitant morbi
             tristique senectus
           </motion.p>
-          <motion.div className="flex items-center gap-l" variants={itemVariants}>
-            <Button text="Đăng ký hợp tác" />
-            <Button text="Tìm hiểu thêm" color="secondary" />
+          <motion.div
+            className="flex w-full items-center justify-center gap-l tablet:justify-start"
+            variants={itemVariants}
+          >
+            <Button text="Đăng ký hợp tác" classCustom="flex-1 tablet:flex-none" />
+            <Button text="Tìm hiểu thêm" color="secondary" classCustom="flex-1 tablet:flex-none" />
           </motion.div>
         </div>
 
@@ -67,6 +70,7 @@ const Hero = () => {
             navigation={false}
             slidesPerView={5}
             spaceBetween={20}
+            allowTouchMove={false}
             loop
             isAutoplay={true}
             speed={1500}
@@ -86,8 +90,14 @@ const Hero = () => {
           >
             {[...listLogos, ...listLogos].map((logo, index) => (
               <SwiperSlide key={index}>
-                <motion.div className="flex items-center justify-center" variants={itemVariants}>
-                  <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} />
+                <motion.div className="flex w-full items-center justify-center" variants={itemVariants}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    className="object-contain object-center"
+                  />
                 </motion.div>
               </SwiperSlide>
             ))}
