@@ -1,5 +1,5 @@
 import { NavBarItemProps } from '@/components/ui/layout/NavBar';
-import { HTMLAttributes, HTMLProps, MouseEventHandler } from 'react';
+import { HTMLAttributes, HTMLProps, MouseEventHandler, ReactNode } from 'react';
 
 export enum ButtonSizeEnum {
   small = 'small',
@@ -23,6 +23,7 @@ export interface ButtonProps {
     HTMLAttributes<HTMLButtonElement>,
     'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
   >;
+  children?: ReactNode;
 }
 
 export interface NavButtonProps extends NavBarItemProps {

@@ -55,6 +55,9 @@
   h4,
   h5,
   h6 {
+    font-size: unset;
+    font-weight: unset;
+    line-height: unset;
     overflow-wrap: break-word;
   }
   #root,

@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import './index.scss';
 
 export default function Button({
-  text = 'Click me',
+  text,
   variant = 'contained',
   isSubmitting = false,
   isDirty = false,
@@ -16,6 +16,7 @@ export default function Button({
   onClick,
   classCustom,
   type,
+  children,
   props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
@@ -35,6 +36,7 @@ export default function Button({
       {iconPosition && icon}
       {iconPosition !== 'only' && text}
       {!iconPosition && isSubmitting && <CircularProgress className="ml-xs text-gray-400" size={16} />}
+      {children}
     </MUIButton>
   );
 }
