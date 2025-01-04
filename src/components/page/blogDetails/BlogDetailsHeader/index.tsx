@@ -31,7 +31,7 @@ const BlogDetailsHeader = () => {
           </div>
         </div>
         {/* replace desctiption with content */}
-        <div dangerouslySetInnerHTML={{ __html: description }} className="mt-[120px]" />
+        <div dangerouslySetInnerHTML={{ __html: content as string }} className="mt-[120px]" />
       </div>
     </SectionCard>
   );

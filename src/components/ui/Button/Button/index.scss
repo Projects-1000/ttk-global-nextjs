@@ -2,7 +2,7 @@
 
 @layer components {
   .btn {
-    @apply normal-case w-full text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out;
+    @apply normal-case text-greyscale-negative shadow-none drop-shadow-none transition-all duration-200 ease-in-out;
 
     &.btn__primary {
       @apply border-2 border-solid border-primary-default bg-primary-default subtitle-bold hover:bg-blue-600;

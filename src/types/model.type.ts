@@ -11,7 +11,7 @@ export interface BlogModelProps {
   id: string;
   title: string;
   description: string;
-  content?: HTMLElement | ReactElement;
+  content?: string;
   publishDate: string;
   coverImage?: ImageProps['src'];
   tags?: TagModelProps[];
