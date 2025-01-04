@@ -1,0 +1,7 @@
+.table-no-border {
+  border-collapse: collapse; /* Ensures cells are joined without any space between them */
+}
+
+.table-no-border td, .table-no-border th {
+  border: none; /* Removes borders for both table headers and table cells */
+}

@@ -17,7 +17,7 @@ export default function Button({
   classCustom,
   type,
   children,
-  props
+  ...props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
   const sizeClass = `${size ? `btn__${size}` : `mobile:btn__small tablet:btn__medium laptop:btn__large`} ${isPill ? `btn--pill` : ''}`;
@@ -27,8 +27,8 @@ export default function Button({
   return (
     <MUIButton
       variant={variant}
-      disabled={isDisabled}
-      className={`btn !${classCustom} ${sizeClass} ${colorClass} ${iconClass} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case`}
+      disabled={props.disabled || isDisabled}
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case`}
       type={type}
       onClick={onClick}
       {...props}
