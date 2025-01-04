@@ -55,7 +55,7 @@ const BlogCard = ({
         {tags?.length && (
           <div className={`flex flex-wrap gap-s ${isShowContentMobile ? '' : 'mobile:max-tablet:hidden'}`}>
             {tags?.map((tag) => {
-              return <CustomTag key={tag.id} tagName={tag.name} type="active" />;
+              return <CustomTag key={tag.id} tagName={tag.name} type="outline" />;
             })}
           </div>
         )}

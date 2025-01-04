@@ -7,13 +7,14 @@ import { TagFilterIcon } from '@/components/ui/icons/TagFilterIcon';
 import ControlledInput from '@/components/ui/Input';
 import { useDebounce } from '@/hooks/useDebounce';
 import { BlogModelProps, TagModelProps } from '@/types/model.type';
+import { blogList } from '@/utils/mockDB';
 import { Search } from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
 import { SwipeableDrawer } from '@mui/material';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import SortSelector from '../../../ui/Selector/SortSelector';
 import TagFilter from '../TagFilter';
-import { blogList } from '@/utils/mockDB';
 
 interface BlogListContextProps {
   selectedTags: TagModelProps['id'][];
@@ -50,7 +51,6 @@ const BlogList = () => {
     //fetch data
     const fetchData = async () => {
       const res = await fetchBlogList();
-      console.log(res, 'res');
     };
     fetchData();
     handleParamChange();
@@ -83,7 +83,6 @@ const BlogList = () => {
     urlParams.set('page', page.toString());
     urlParams.set('tags', selectedTags.join(','));
     urlParams.set('search', searchQuery);
-    console.log(urlParams.toString(), 'urlParams');
     router.push(`?${urlParams.toString()}`, { scroll: false });
   };
 
@@ -106,15 +105,18 @@ const BlogList = () => {
             <TagFilterMobile />
           </div>
           <div className="flex basis-[80%] flex-col gap-4xl">
-            <div className="hidden w-1/2 self-end laptop:block">
-              <ControlledInput
-                required
-                icon={<Search />}
-                placeholder="Search"
-                defaultValue={searchQuery}
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
+            <div className="hidden w-full items-center justify-between gap-2xl laptop:flex">
+              <div className="basis-[40%]">
+                <ControlledInput
+                  required
+                  icon={<Search />}
+                  placeholder="Search"
+                  defaultValue={searchQuery}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </div>
+              <SortSelector />
             </div>
             <div className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3">
               {currentBlogs.map((blog) => {
