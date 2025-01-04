@@ -1,3 +1,4 @@
+import paths from '@/utils/paths';
 import { NavButton } from '../../Button/NavButton';
 
 export interface SubNavBarProps {
@@ -15,13 +16,13 @@ export const navItems: NavBarProps = [
   {
     title: 'Về Công ty',
     subnav: [
-      { title: 'Phản hồi từ đối tác', link: 'about' },
-      { title: 'Scoreboard', link: 'history' }
+      { title: 'Phản hồi từ đối tác', link: paths.HOME },
+      { title: 'Scoreboard', link: paths.HOME }
     ]
   },
   {
     title: 'Mô hình hợp tác',
-    link: 'partnership'
+    link: paths.PARTNERSHIP
     // subnav: [
     //   { title: 'Mô hình hợp tác', link: 'document' },
     //   { title: 'Đối tác kinh doanh', link: 'blogs' }
@@ -30,15 +31,15 @@ export const navItems: NavBarProps = [
   {
     title: 'Tài nguyên',
     subnav: [
-      { title: 'Tài liệu', link: 'document' },
-      { title: 'Blog', link: '/blogs' }
+      { title: 'Tài liệu', link: paths.DOCUMENT },
+      { title: 'Blog', link: paths.BLOGS }
     ]
   },
   {
     title: 'Liên hệ',
     subnav: [
-      { title: 'Đặt lịch meeting', link: 'document' },
-      { title: 'Liên hệ hợp tác', link: 'blogs' }
+      { title: 'Đặt lịch meeting', link: paths.HOME },
+      { title: 'Liên hệ hợp tác', link: paths.CONTACT }
     ]
   }
 ];

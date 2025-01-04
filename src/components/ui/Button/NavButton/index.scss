@@ -1,5 +1,5 @@
 .header-button {
-  @apply h-full content-center rounded-none bg-transparent px-m capitalize text-black no-underline body-semibold hover:bg-[#C7C8D1]/15;
+  @apply h-full content-center rounded-none border border-b-2 border-l-0 border-r-0 border-t-0 border-solid border-transparent bg-transparent px-m capitalize text-black no-underline body-semibold hover:text-primary-label;
 
   &--active {
     @apply border-b-2 border-primary-default text-primary-label;
@@ -12,7 +12,7 @@
       @apply bg-greyscale-surface-subtle text-primary-default;
     }
   }
-  
+
   &.nav-mobile-button {
     @apply h-fit overflow-hidden rounded-s py-m body-regular;
 

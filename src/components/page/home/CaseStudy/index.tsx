@@ -66,7 +66,7 @@ const CaseStudy = () => {
   const description =
     'TTK Global Ventures đã và đang vận hành các gian hàng thuộc nhiều ngách sản phẩm khác nhau, mang về cho đối tác doanh thu ấn tượng.';
   return (
-    <SectionCard title={<CaseStudyTitle />} description={description}>
+    <SectionCard isPaddingContent title={<CaseStudyTitle />} description={description}>
       <motion.div
         initial="hidden"
         animate="visible"
@@ -113,39 +113,6 @@ const CaseStudy = () => {
             </SwiperSlide>
           ))}
         </CustomSwiper>
-        {/* <div className="inline-block w-full">
-          <CustomSwiper
-            allowTouchMove={false}
-            spaceBetween={50}
-            direction="horizontal"
-            breakpoints={{
-              375: {
-                spaceBetween: 16,
-                slidesPerView: 1.2
-              },
-              768: {
-                spaceBetween: 16,
-                slidesPerView: 1
-              },
-              1024: {
-                spaceBetween: 16,
-                slidesPerView: 1
-              }
-            }}
-          >
-            {caseStudyData.map((caseStudy, index) => (
-              <SwiperSlide key={index}>
-                <CaseStudyCard
-                  image={caseStudy.image}
-                  projectName={caseStudy.projectName}
-                  description={caseStudy.description}
-                  tags={caseStudy.tags}
-                  postRevenue={caseStudy.postRevenue}
-                />
-              </SwiperSlide>
-            ))}
-          </CustomSwiper>
-        </div> */}
       </motion.div>
     </SectionCard>
   );
