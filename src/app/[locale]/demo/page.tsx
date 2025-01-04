@@ -181,15 +181,78 @@ const DemoPage = () => {
         <div className="">
           <p className="mb-8 h1-bold">Typography</p>
           <div className="flex flex-col gap-12">
-            <TypoGroup title="h1" />
-            <TypoGroup title="h2" />
-            <TypoGroup title="h3" />
-            <TypoGroup title="h4" />
-            <TypoGroup title="headline" />
-            <TypoGroup title="body" />
-            <TypoGroup title="subtitle" />
-            <TypoGroup title="caption" />
-            <TypoGroup title="footnote" />
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h1-bold`}>H1 Bold</p>
+                <p className={`h1-semibold`}>H1 SemiBold</p>
+                <p className={`h1-regular`}>H1 Regular</p>
+                <p className={`-ml-[45px] h1-light`}>H1 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h2-bold`}>H2 Bold</p>
+                <p className={`h2-semibold`}>H2 SemiBold</p>
+                <p className={`h2-regular`}>H2 Regular</p>
+                <p className={`-ml-[45px] h2-light`}>H2 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h3-bold`}>H3 Bold</p>
+                <p className={`h3-semibold`}>H3 SemiBold</p>
+                <p className={`h3-regular`}>H3 Regular</p>
+                <p className={`-ml-[45px] h3-light`}>H3 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h4-bold`}>H4 Bold</p>
+                <p className={`h4-semibold`}>H4 SemiBold</p>
+                <p className={`h4-regular`}>H4 Regular</p>
+                <p className={`-ml-[45px] h4-light`}>H4 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`headline-bold`}>Headline Bold</p>
+                <p className={`headline-semibold`}>Headline SemiBold</p>
+                <p className={`headline-regular`}>Headline Regular</p>
+                <p className={`-ml-[45px] headline-light`}>Headline Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`body-bold`}>Body Bold</p>
+                <p className={`body-semibold`}>Body SemiBold</p>
+                <p className={`body-regular`}>Body Regular</p>
+                <p className={`-ml-[45px] body-light`}>Body Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`subtitle-bold`}>Subtitle Bold</p>
+                <p className={`subtitle-semibold`}>Subtitle SemiBold</p>
+                <p className={`subtitle-regular`}>Subtitle Regular</p>
+                <p className={`-ml-[45px] subtitle-light`}>Subtitle Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`caption-bold`}>Caption Bold</p>
+                <p className={`caption-semibold`}>Caption SemiBold</p>
+                <p className={`caption-regular`}>Caption Regular</p>
+                <p className={`-ml-[45px] caption-light`}>Caption Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`footnote-bold`}>Footnote Bold</p>
+                <p className={`footnote-semibold`}>Footnote SemiBold</p>
+                <p className={`footnote-regular`}>Footnote Regular</p>
+                <p className={`-ml-[45px] footnote-light`}>Footnote Light</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -237,7 +300,7 @@ const DemoPage = () => {
             <div className="flex items-center gap-12">
               <p className="text-grey-500 capitalize h2-bold">grey</p>
               <div className="flex gap-10">
-                <div className="bg-grey-10 rounded-md size-16"></div>
+                <div className="bg-greys rounded-md size-16"></div>
                 <div className="rounded-md bg-grey-50 size-16">50</div>
                 <div className="rounded-md bg-grey-100 size-16">100</div>
                 <div className="rounded-md bg-grey-200 size-16">200</div>
@@ -373,7 +436,7 @@ const TypoGroup = ({ title }: TypoGroupProps) => {
     <div className="flex gap-[88px]">
       <div className="flex gap-[88px] capitalize">
         <p className={`${title}-bold`}>{upperTitle} Bold</p>
-        <p className={`${title}-bold`}>{upperTitle} Bold</p>
+        <p className={`${title}-semibold`}>{upperTitle} SemiBold</p>
         <p className={`${title}-regular`}>{upperTitle} Regular</p>
         <p className={`${title}-light -ml-[45px]`}>{upperTitle} Light</p>
       </div>
