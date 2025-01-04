@@ -1,4 +1,5 @@
 import { ImageProps, StaticImageData } from 'next/image';
+import { ReactElement } from 'react';
 
 export interface TagModelProps {
   id: string;
@@ -10,6 +11,7 @@ export interface BlogModelProps {
   id: string;
   title: string;
   description: string;
+  content?: HTMLElement | ReactElement;
   publishDate: string;
   coverImage?: ImageProps['src'];
   tags?: TagModelProps[];

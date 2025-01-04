@@ -27,7 +27,9 @@ export const blogList: BlogModelProps[] = [
           blogAmount: 50
         }
       ],
-      isHighlight: true
+      isHighlight: true,
+      content: <>
+      </>
     },
     {
       id: '1',

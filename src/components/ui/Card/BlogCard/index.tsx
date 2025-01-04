@@ -1,14 +1,15 @@
-import Image, { ImageProps } from 'next/image';
-import Link from 'next/link';
-import './index.scss';
-import CustomTag from '../../CustomTag';
 import { BlogModelProps } from '@/types/model.type';
-import { Divider } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import CustomTag from '../../CustomTag';
+import BlogInfo from '../../CustomTag/BlogInfoTag';
+import './index.scss';
 
 interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
   direction?: 'row' | 'column';
   isShowContentMobile?: boolean;
 }
+
 const BlogCard = ({
   coverImage,
   description,
@@ -35,17 +36,7 @@ const BlogCard = ({
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
-        <ul
-          className={`${isShowContentMobile ? '' : 'hidden'} w-full list-none flex-row items-center gap-s footnote-bold tablet:flex tablet:subtitle-regular`}
-        >
-          {author && (
-            <>
-              <li>{author}</li>
-              <Divider orientation="vertical" flexItem className="border-r border-r-black" />
-            </>
-          )}
-          {publishDate && <li> {publishDate}</li>}
-        </ul>
+        <BlogInfo author={author} publishDate={publishDate} />
         <Link href="/" className="smooth-transition text-black no-underline hover:text-primary-default">
           <header>
             <h2
