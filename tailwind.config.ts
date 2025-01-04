@@ -213,7 +213,7 @@ export default {
           typoClasses[`.${typoName}-${weightName}`] = {
             fontSize: size,
             lineHeight,
-            fontWeight: weightValue
+            fontWeight: typoName === 'footnote' ? 600 : weightValue
           };
         }
       }

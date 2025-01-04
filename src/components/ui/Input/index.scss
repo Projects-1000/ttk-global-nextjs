@@ -1,0 +1,76 @@
+.controlled-input {
+  input,
+  textarea {
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    padding-block: 1px;
+    padding-inline: 2px;
+    padding: 4px 0 5px;
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    -webkit-animation-name: mui-auto-fill-cancel;
+    animation-name: mui-auto-fill-cancel;
+    -webkit-animation-duration: 10ms;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+    @apply rounded-2xs bg-primary-subtle p-s subtitle-regular laptop:p-m laptop:body-regular;
+  }
+
+  input:focus,
+  textarea:focus {
+    @apply outline outline-1 outline-primary-default transition-all duration-150 ease-in-out;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-greyscale-title;
+  }
+
+  &--error {
+    input,
+    textarea {
+      @apply border-2 border-solid border-error-default bg-error-subtle outline-error-default;
+      &:focus {
+        @apply outline-error-default;
+      }
+    }
+  }
+
+  &__label {
+    &--error {
+      @apply text-error-default;
+    }
+  }
+
+  &--icon {
+    input,
+    textarea {
+      padding-left: 40px;
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+    }
+  }
+}

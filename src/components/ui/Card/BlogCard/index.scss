@@ -1,0 +1,23 @@
+.blog {
+  @apply flex w-full h-full;
+
+  &__column {
+    @apply flex-col items-center;
+  }
+
+  &__row {
+    @apply flex-row items-start;
+  }
+
+  &-body {
+    @apply flex flex-col items-start gap-s;
+
+    &__column {
+      @apply flex-col items-center;
+    }
+
+    &__row {
+      @apply flex-row items-start;
+    }
+  }
+}

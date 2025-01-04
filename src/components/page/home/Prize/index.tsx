@@ -20,7 +20,7 @@ const prize = {
 
 const Prize = () => {
   return (
-    <SectionCard title={SectionTitle}>
+    <SectionCard isPaddingContent title={SectionTitle}>
         <motion.div
           className="container flex flex-col items-start gap-xl tablet:items-center tablet:gap-2xl laptop:gap-4xl"
           initial="hidden"
