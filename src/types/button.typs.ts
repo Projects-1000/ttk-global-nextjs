@@ -6,7 +6,8 @@ export enum ButtonSizeEnum {
   medium = 'medium',
   large = 'large'
 }
-export interface ButtonProps {
+export interface ButtonProps
+  extends Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'type' | 'onClick' | 'variant' | 'color' | 'size'> {
   text?: string;
   variant?: 'text' | 'outlined' | 'contained';
   isDirty?: boolean;
@@ -19,10 +20,11 @@ export interface ButtonProps {
   isSubmitting?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   classCustom?: HTMLProps<HTMLElement>['className'];
-  props?: Omit<
-    HTMLAttributes<HTMLButtonElement>,
-    'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
-  >;
+  disabled?:boolean
+  // props?: Omit<
+  //   HTMLAttributes<HTMLButtonElement>,
+  //   'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
+  // >;
   children?: ReactNode;
 }
 

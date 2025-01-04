@@ -22,7 +22,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, wrapperClass, ...props }
       {...props}
     >
       <h1 className="uppercase text-greyscale-negative h3-bold laptop:h1-bold">{title}</h1>
-      <Breadcrumbs text-greyscale-negative />
+      <Breadcrumbs />
     </section>
   );
 };

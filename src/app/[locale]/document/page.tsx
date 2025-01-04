@@ -1,5 +1,5 @@
 import PageHeader from '@/components/layout/PageHeader';
-import CTASection from '@/components/page/parnership/CTASection';
+import CTASection from '@/components/page/document/CTASection';
 import DocumentCard from '@/components/ui/Card/DocumentCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 
@@ -24,11 +24,13 @@ const Document = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <PageHeader title="Tài Nguyên " />
-      <SectionCard customClass="w-full container max-w-[1440px]">
-        <DocumentCard title={<EbookTitle />} documents={documents} />
-        <DocumentCard title={<ServiceDocumentTitle />} documents={documents} />
-        <CTASection />
+      <SectionCard customClass="w-full container max-w-[1440px] ">
+        <div className="flex w-full flex-col gap-2xl laptop:gap-[120px]">
+          <DocumentCard title={<EbookTitle />} documents={documents} />
+          <DocumentCard title={<ServiceDocumentTitle />} documents={documents} />
+        </div>
       </SectionCard>
+      <CTASection />
     </div>
   );
 };
