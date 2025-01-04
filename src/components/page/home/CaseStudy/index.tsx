@@ -66,7 +66,7 @@ const CaseStudy = () => {
   const description =
     'TTK Global Ventures đã và đang vận hành các gian hàng thuộc nhiều ngách sản phẩm khác nhau, mang về cho đối tác doanh thu ấn tượng.';
   return (
-    <SectionCard title={<CaseStudyTitle />} description={description}>
+    <SectionCard isPaddingContent title={<CaseStudyTitle />} description={description}>
       <motion.div
         initial="hidden"
         animate="visible"

@@ -29,7 +29,7 @@ const Benefit = () => {
     }
   ];
   return (
-    <SectionCard title={SectionTitle}>
+    <SectionCard isPaddingContent title={SectionTitle}>
       <div className="container flex h-full w-full flex-col items-center laptop:py-[60px]">
         {benefits.map(({ id, title, image, description }, index) => {
           const isReverse = index % 2 !== 0;

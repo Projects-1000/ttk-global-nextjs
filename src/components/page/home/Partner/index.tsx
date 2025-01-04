@@ -148,6 +148,7 @@ const Partner = () => {
 
   return (
     <SectionCard
+      isPaddingContent
       title={SectionTitle}
       description="Cùng lắng nghe trải nghiệp và phản hồi từ khách hàng gửi đến TTK Global Ventures."
       customClass="relative"

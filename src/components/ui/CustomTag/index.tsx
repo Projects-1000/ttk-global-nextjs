@@ -6,7 +6,7 @@ type CustomTagProps = {
 const CustomTag: React.FC<CustomTagProps> = ({ tagName, type }) => {
   return (
     <div
-      className={`cursor-pointer rounded-full px-3 py-1 footnote-bold ${type === 'active' ? 'bg-primary-darker text-white' : 'border border-solid border-primary-default bg-primary-subtle text-primary-label'}`}
+      className={`cursor-pointer rounded-full px-3 py-1 uppercase footnote-bold ${type === 'active' ? 'bg-primary-darker text-white' : 'border border-solid border-primary-default bg-primary-subtle text-primary-label'}`}
     >
       {tagName}
     </div>

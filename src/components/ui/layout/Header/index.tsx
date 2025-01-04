@@ -39,7 +39,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`smooth-transition fixed top-0 z-[1000] flex w-full justify-center bg-opacity-50 ${
+      className={`smooth-transition fixed top-0 z-[100] flex w-full justify-center bg-opacity-50 ${
         scrollDirection === 'down' ? 'max-tablet:-translate-y-full' : 'max-tablet:translate-y-0'
       } bg-gradient-to-br from-blue-10/30 to-blue-10/60 backdrop-blur-md`}
     >

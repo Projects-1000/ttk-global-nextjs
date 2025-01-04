@@ -9,12 +9,20 @@ interface SectionCardProps
   children: ReactNode;
   description?: string;
   customClass?: DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>['className'];
+  isPaddingContent?: boolean;
 }
 
-const SectionCard = ({ children, title, description, customClass, ...props }: SectionCardProps) => {
+const SectionCard = ({
+  children,
+  title,
+  description,
+  customClass,
+  isPaddingContent = false,
+  ...props
+}: SectionCardProps) => {
   return (
     <section
-      className={`max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
+      className={`w-full max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
       {...props}
     >
       <motion.div
@@ -34,7 +42,9 @@ const SectionCard = ({ children, title, description, customClass, ...props }: Se
           </motion.p>
         )}
       </motion.div>
-      <div className="mx-auto mt-xl tablet:mt-2xl laptop:mt-3xl laptop:px-4xl">{children}</div>
+      <div className={`mx-auto mt-xl tablet:mt-2xl laptop:mt-3xl ${isPaddingContent ? 'laptop:px-4xl' : ''}`}>
+        {children}
+      </div>
     </section>
   );
 };
