@@ -1,56 +1,35 @@
 'use client';
+import GridBackground from '@/assets/GridBackground';
 import { TtkFrame } from '@/assets/TtkFrame';
 import Button from '@/components/ui/Button/Button';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { motion, Variants } from 'framer-motion';
-import React from 'react';
 
 const CTASection = () => {
-  const description =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ipsum nibh, porta vitae luctus a, tristique eu ex. Nam hendrerit urna nec erat mattis, et luctus nisl cursus. Phasellus orci arcu, placerat sit amet venenatis ac, mollis eget enim. Donec ut nulla ipsum.';
+  const description = (
+    <p className="text-center">
+      Chúng tôi luôn tìm kiếm đối tác chia sẻ tầm nhìn phát triển bền vững. Với kinh nghiệm và nguồn lực sẵn có, chúng
+      tôi cam kết mang lại giá trị cho mọi dự án hợp tác.
+    </p>
+  );
   return (
-    <SectionCard title={<CTASectionTitle />}>
-      <div className="relative flex flex-col gap-2xl laptop:gap-3xl">
-        <div className="px-2xl laptop:px-4xl">
-          <motion.p
-            className="z-50 px-mobile_container text-center body-regular laptop:px-desktop_container"
-            variants={descriptionVariants}
-          >
-            {description}
-          </motion.p>
-        </div>
+    <SectionCard title={<CTASectionTitle />} description={description}>
+      <div className="flex flex-col gap-2xl laptop:gap-3xl">
         <div className="flex w-full justify-center">
           <Button size="medium" text="Cộng tác ngay" />
         </div>
-        <div className="absolute bottom-[0] right-0 -z-10 translate-x-[40%] translate-y-[50%] scale-[0.6] opacity-30">
-          <TtkFrame />
-        </div>
+      </div>
+      <div className="absolute left-1/2 top-1/3 z-[-1] translate-x-[-50%] translate-y-[-40%] tablet:translate-y-[-30%] laptop:translate-y-[-28%]">
+        <GridBackground className="scale-[3] tablet:scale-[2] laptop:scale-[1.2]" />
       </div>
     </SectionCard>
   );
 };
 const CTASectionTitle = () => (
-  <span>
+  <span className="inline-block w-full text-center">
     Bạn muốn
     <span className="text-secondary-label"> hợp tác </span>
     với chúng tôi?
   </span>
 );
-const descriptionVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 50
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-
-    transition: {
-      duration: 0.5,
-      ease: 'easeInOut',
-      delay: 0.2
-    }
-  }
-};
 
 export default CTASection;

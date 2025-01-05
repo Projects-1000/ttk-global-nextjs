@@ -43,7 +43,6 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;
-  console.log('Translated Title:', t('HomePage.title'));
   return {
     title: t('HomePage.title'),
     description: t('HomePage.about')
