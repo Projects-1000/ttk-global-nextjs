@@ -24,45 +24,45 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChan
     page,
     onChange: (_, value) => onChange(null as unknown as React.ChangeEvent<unknown>, value)
   });
+  if (count > 1)
+    return (
+      <nav>
+        <List>
+          {items.map(({ page: itemPage, type, selected, ...item }, index) => {
+            let children = null;
+            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+              children = '…';
+            } else if (type === 'page') {
+              children = (
+                <Button
+                  text={itemPage?.toString()}
+                  size="medium"
+                  type="button"
+                  color={selected ? 'primary' : 'secondary'}
+                  {...item}
+                />
+              );
+            } else if (type === 'previous') {
+              children = (
+                <Button {...item} color="secondary" size="medium" disabled={page === 1}>
+                  <ArrowLeft />
+                  <span className="hidden laptop:inline">Trước</span>
+                </Button>
+              );
+            } else if (type === 'next') {
+              children = (
+                <Button {...item} color="secondary" size="medium" disabled={page === count}>
+                  <span className="hidden laptop:inline">Sau</span>
+                  <ArrowRight />
+                </Button>
+              );
+            }
 
-  return (
-    <nav>
-      <List>
-        {items.map(({ page: itemPage, type, selected, ...item }, index) => {
-          let children = null;
-          if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-            children = '…';
-          } else if (type === 'page') {
-            children = (
-              <Button
-                text={itemPage?.toString()}
-                size="medium"
-                type="button"
-                color={selected ? 'primary' : 'secondary'}
-                {...item}
-              />
-            );
-          } else if (type === 'previous') {
-            children = (
-              <Button {...item} color="secondary" size="medium" disabled={page === 1}>
-                <ArrowLeft />
-                <span className="hidden laptop:inline">Trước</span>
-              </Button>
-            );
-          } else if (type === 'next') {
-            children = (
-              <Button {...item} color="secondary" size="medium" disabled={page === count}>
-                <span className="hidden laptop:inline">Sau</span>
-                <ArrowRight />
-              </Button>
-            );
-          }
-
-          return <li key={index}>{children}</li>;
-        })}
-      </List>
-    </nav>
-  );
+            return <li key={index}>{children}</li>;
+          })}
+        </List>
+      </nav>
+    );
 };
 
 export default CustomPagination;

@@ -99,10 +99,10 @@ const CaseStudy = () => {
             }
           }}
           spaceBetween={30}
-          wrapperClass="desktop:w-[calc(100%-160px)] laptop:w-[calc(100%-60px)] desktop:max-w-[1440px] "
+          wrapperClass="desktop:w-[calc(100%-160px)] laptop:w-[calc(100%-60px)] desktop:max-w-[1440px]"
         >
           {caseStudyData.map((caseStudy) => (
-            <SwiperSlide className="h-full w-full flex-auto" key={caseStudy.id}>
+            <SwiperSlide className="min-h-full w-full" key={caseStudy.id}>
               <CaseStudyCard
                 image={caseStudy.image}
                 projectName={caseStudy.projectName}

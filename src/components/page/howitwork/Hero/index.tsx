@@ -45,7 +45,7 @@ const HowItWorkHero = () => {
             <Button text="Tính lợi nhuận" color="secondary" classCustom="flex-1 tablet:flex-none" />
           </div>
         </div>
-        <div className="relative h-auto w-full px-3xl desktop:w-1/2">
+        <div className="relative h-auto w-full laptop:max-w-[50%] laptop:px-3xl">
           <Image src={videoBg} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
           <CirclePlay className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black" size={40} />
         </div>
