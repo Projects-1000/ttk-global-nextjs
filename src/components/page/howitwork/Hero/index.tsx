@@ -4,6 +4,9 @@ import React, { PropsWithChildren } from 'react';
 import videoBg from '@/assets/howitwork/video-bg.png';
 import Image from 'next/image';
 import { CirclePlay } from 'lucide-react';
+import graphic from '@/assets/howitwork/hero/Graphic.png';
+import combineVector from '@/assets/yellow-blue-vector.png';
+import mobileGraphic from '@/assets/howitwork/hero/mobile-graphic.png';
 const HeroTitle = () => (
   <span className="uppercase h3-bold laptop:h1-bold">
     Hợp tác kinh doanh
@@ -33,7 +36,10 @@ const HowItWorkHero = () => {
   return (
     <section className="container flex w-full max-w-[1440px] flex-col gap-4xl py-mobile_section_padding laptop:py-desktop_section_padding laptop:pt-10">
       <HeroTitle />
-      <div className="flex flex-col gap-y-[60px] laptop:flex-row laptop:gap-x-3xl">
+      <div className="relative flex flex-col gap-y-[60px] laptop:flex-row laptop:gap-x-3xl">
+        <div className="absolute bottom-0 left-0 w-full translate-x-[3.5%] translate-y-[15%] scale-110 mobile:max-tablet:hidden">
+          <Image src={graphic} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
+        </div>
         <div className="flex flex-col gap-2xl laptop:gap-3xl">
           <div className="flex flex-col gap-l">
             {HERO_ITEMS.map((item, index) => (
@@ -48,6 +54,36 @@ const HowItWorkHero = () => {
         <div className="relative h-auto w-full laptop:max-w-[50%] laptop:px-3xl">
           <Image src={videoBg} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
           <CirclePlay className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black" size={40} />
+          <div className="absolute bottom-0 left-0 -z-10 flex w-full translate-x-[3.5%] translate-y-[15%] rotate-[18deg] scale-[2] opacity-30 mobile:max-tablet:hidden">
+            <Image
+              src={combineVector}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 flex w-full translate-x-[3%] scale-[1.65] opacity-30 tablet:hidden">
+            <Image
+              src={mobileGraphic}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 flex w-full translate-x-[3%] scale-[2] opacity-30 tablet:hidden">
+            <Image
+              src={combineVector}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>

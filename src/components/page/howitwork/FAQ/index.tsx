@@ -1,7 +1,8 @@
 import SectionCard from '@/components/ui/Card/SectionCard';
 import Dropdown from '@/components/ui/Dropdown';
 import React from 'react';
-
+import yellowVector from '@/assets/yellow-vector.png';
+import Image from 'next/image';
 const faqItems = [
   {
     title: 'Nghiên cứu sản phẩm tiềm năng',
@@ -25,10 +26,13 @@ const FAQ = () => {
   const description =
     'Giải đáp những câu hỏi thường gặp về công ty, cũng như về quy trình hợp tác. Tìm hiểu ngay để bắt đầu hành trình kinh doanh hiệu quả.';
   return (
-    <SectionCard customClass="container" title={<FAQTitle />} description={description}>
+    <SectionCard customClass="container relative " title={<FAQTitle />} description={description}>
+      <div className="scale-30 absolute right-0 top-0 -z-10 flex w-full translate-x-[50%] translate-y-[-50%] rotate-180 opacity-30 mobile:max-tablet:hidden">
+        <Image src={yellowVector} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
+      </div>
       <div className="grid grid-cols-1 gap-x-3xl tablet:grid-cols-2">
         {faqItems.map((item) => (
-          <Dropdown classCustom="max-w-[560px] h-fit" key={item.title} title={item.title}>
+          <Dropdown classCustom="max-w-[560px] h-fit " key={item.title} title={item.title}>
             {item.content}
           </Dropdown>
         ))}

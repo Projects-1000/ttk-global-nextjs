@@ -3,7 +3,8 @@ import TargetPartnerCard from '@/components/ui/Card/PartnerCard/TargetPartnerCar
 import TargetPartnerHeadingCard from '@/components/ui/Card/PartnerCard/TargetPartnerHeadingCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import { Building, ChartLine, Globe, ShoppingBag, User } from 'lucide-react';
-
+import Image from 'next/image';
+import targetBg from '@/assets/partner/targetpartner/targetparther-bg.png';
 const TargetPartner = () => {
   const fakeData = [
     {
@@ -44,7 +45,10 @@ const TargetPartner = () => {
   ];
   return (
     <SectionCard customClass="laptop:px-[102px]">
-      <div className="container grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
+      <div className="container relative grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
+        <div className="absolute top-0 w-full translate-y-[-80%]">
+          <Image src={targetBg} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
+        </div>
         <TargetPartnerHeadingCard />
         {fakeData.map((item) => (
           <TargetPartnerCard key={item.id} icon={item.icon} title={item.title} description={item.description} />
