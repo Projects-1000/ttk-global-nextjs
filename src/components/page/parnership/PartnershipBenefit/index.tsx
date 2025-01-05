@@ -4,8 +4,13 @@ import videoBg from '@/assets/howitwork/video-bg.png';
 import Image from 'next/image';
 
 const PartnershipBenefit = () => {
-  const description =
-    'Tích hợp công cụ tính toán lợi nhuận tiềm năng - Công cụ ước tính hoa hồng Agency có thể nhận được khi hợp tác cùng TTK Global Ventures thông qua giới thiệu dịch vụ EBO-C đến Khách hàng';
+  const description = (
+    <>
+      Tích hợp công cụ tính toán <span className="text-secondary-default body-bold">lợi nhuận tiềm năng</span> - Công cụ ước tính
+      hoa hồng Agency có thể nhận được khi hợp tác cùng TTK Global Ventures thông qua giới thiệu dịch vụ EBO-C đến Khách
+      hàng
+    </>
+  );
   return (
     <SectionCard title={<PartnershipBenefitTitle />} description={description}>
       <div className="container flex w-full items-center justify-between">

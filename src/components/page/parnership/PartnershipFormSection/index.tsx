@@ -23,14 +23,16 @@ const cardData = [
 ];
 const PartnershipFormSection = () => {
   const description =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur quam arcu, sit amet facilisis ipsum hendrerit vitae.';
+    'Khám phá các hình thức hợp tác đa dạng của chúng tôi, từ cơ hội kiếm hoa hồng hấp dẫn đến việc xây dựng thương hiệu chung. Chọn mô hình phù hợp nhất với định hướng của bạn.';
 
   return (
-    <SectionCard title={<ParnershipFormSectionTitle />} description={description}>
-      <div className="container flex w-full flex-col items-center justify-between gap-2xl laptop:flex-row">
-        {cardData.map((card, index) => (
-          <PartnershipFormCard key={index} {...card} />
-        ))}
+    <SectionCard title={<ParnershipFormSectionTitle />} description={description} isPaddingContent>
+      <div className="container">
+        <div className="flex w-full flex-col items-center justify-between gap-2xl laptop:px-xl laptop:flex-row">
+          {cardData.map((card, index) => (
+            <PartnershipFormCard key={index} {...card} />
+          ))}
+        </div>
       </div>
     </SectionCard>
   );
@@ -45,10 +47,10 @@ interface CardProps {
 
 const PartnershipFormCard: React.FC<CardProps> = ({ icon, title, subtitle, number }) => {
   return (
-    <div className="group flex min-h-full w-full cursor-pointer flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle laptop:w-[320px] laptop:gap-3xl">
-      <div className="flex w-full justify-between">
-        <div className="text-primary-label">{icon}</div>
-        <div className="text-5xl text-[96px] font-extrabold text-[#3C4BCC]/15 text-blue-100 duration-300 group-hover:text-blue-500">
+    <div className="group flex min-h-full w-full flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle tablet:max-laptop:w-[70%] laptop:w-[320px] laptop:gap-3xl">
+      <div className="flex w-full items-center justify-between tablet:max-laptop:justify-center tablet:max-laptop:gap-xl">
+        <div className="w-[56px] overflow-hidden text-primary-label">{icon}</div>
+        <div className="text-[96px] font-extrabold leading-none text-[#3C4BCC]/15 text-blue-100 duration-300 group-hover:text-blue-500">
           {number}
         </div>
       </div>

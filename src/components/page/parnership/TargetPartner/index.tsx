@@ -1,8 +1,8 @@
+import { YellowVector } from '@/assets/YellowVector';
 import TargetPartnerCard from '@/components/ui/Card/PartnerCard/TargetPartnerCard';
 import TargetPartnerHeadingCard from '@/components/ui/Card/PartnerCard/TargetPartnerHeadingCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import { Building, ChartLine, Globe, ShoppingBag, User } from 'lucide-react';
-import React from 'react';
 
 const TargetPartner = () => {
   const fakeData = [
@@ -43,12 +43,15 @@ const TargetPartner = () => {
     }
   ];
   return (
-    <SectionCard isPaddingContent customClass="max-w-[1440px] w-full container">
-      <div className="grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
+    <SectionCard customClass="laptop:px-[102px]">
+      <div className="container grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
         <TargetPartnerHeadingCard />
         {fakeData.map((item) => (
           <TargetPartnerCard key={item.id} icon={item.icon} title={item.title} description={item.description} />
         ))}
+      </div>
+      <div className="absolute bottom-[-40%] right-[-45%] z-[-1] hidden scale-[0.8] laptop:block">
+        <YellowVector />
       </div>
     </SectionCard>
   );

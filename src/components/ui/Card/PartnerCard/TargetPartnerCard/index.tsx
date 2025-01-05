@@ -29,6 +29,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
       onMouseLeave={() => {
         if (window.innerWidth >= 1024) setIsFlipped(false);
       }}
+      onClick={window.innerWidth <= 768 ? handleClick : undefined}
     >
       <motion.div
         className="absolute h-full w-full"
@@ -74,7 +75,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
         >
           <div className="flex flex-col gap-2">
             <div>{icon}</div>
-            <h3 className="headline-bold laptop:h2-bold">{title}</h3>
+            <h3 className="headline-bold tablet:h4-bold laptop:h3-bold desktop:h2-bold">{title}</h3>
           </div>
           <span className="inline self-end subtitle-bold active:text-primary-label laptop:hidden" onClick={handleClick}>
             Xem thêm
@@ -82,7 +83,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
         </motion.div>
 
         <motion.div
-          className="absolute inset-0 flex flex-col justify-between p-4 text-white active:text-primary-label"
+          className="absolute inset-0 flex flex-col justify-between p-2xl text-white active:text-primary-label tablet:p-3xl laptop:p-4xl"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'
