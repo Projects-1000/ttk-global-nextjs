@@ -66,8 +66,8 @@ export const Header = () => {
           <MobileMenu isOpen={isOpenMenu} />
           <div className="hidden items-center gap-m tablet:flex">
             <LocaleSwitcher />
-            <Button text="Đăng ký" size="medium" color="secondary" />
-            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!bg-primary-surface-default" />
+            <Button text="Đăng ký" size="medium" color="secondary" classCustom="!w-fit" />
+            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!w-fit" />
           </div>
         </div>
       </div>
