@@ -1,4 +1,5 @@
-import { ButtonProps } from '@/types/button.typs';
+'use client';
+import { ButtonProps } from '@/types/button.type';
 import { Button as MUIButton } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import './index.scss';
@@ -20,7 +21,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
-  const sizeClass = `${size ? `btn__${size}` : `mobile:btn__small tablet:btn__medium laptop:btn__large`} ${isPill ? `btn--pill` : ''}`;
+  const sizeClass = `${size ? `btn__${size}` : ``} ${isPill ? `btn--pill` : ''}`;
   const colorClass = `btn__${color}`;
   const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
 

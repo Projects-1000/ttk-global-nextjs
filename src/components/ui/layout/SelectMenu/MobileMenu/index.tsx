@@ -1,4 +1,4 @@
-import { NavButtonProps } from '@/types/button.typs';
+import { NavButtonProps } from '@/types/button.type';
 import { useEffect } from 'react';
 import { NavButton } from '../../../Button/NavButton';
 import { navItems } from '../../NavBar';

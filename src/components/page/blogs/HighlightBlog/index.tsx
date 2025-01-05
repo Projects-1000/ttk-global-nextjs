@@ -33,7 +33,7 @@ export const HighlightBlog = () => {
 };
 
 const SectionTitle = (
-  <>
+  <p className="w-full text-left">
     BÀI VIẾT <span className="text-secondary-default">NỔI BẬT</span>
-  </>
+  </p>
 );

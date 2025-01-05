@@ -32,7 +32,7 @@ const SectionCard = ({
         viewport={{ once: true, amount: 0.8 }}
         variants={containerVariants}
       >
-        <motion.h2 className="container z-50 h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+        <motion.h2 className="container w-full z-50 h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
           {title}
         </motion.h2>
 
