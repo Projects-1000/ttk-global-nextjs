@@ -47,8 +47,15 @@ const HowItWorkHero = () => {
             ))}
           </div>
           <div className="flex items-center gap-l">
-            <Button text="Đặt lịch meeting" classCustom="flex-1 tablet:flex-none" />
-            <Button text="Tính lợi nhuận" color="secondary" classCustom="flex-1 tablet:flex-none" />
+            <Button
+              text="Đặt lịch meeting"
+              classCustom="w-full tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+            />
+            <Button
+              text="Tính lợi nhuận"
+              color="secondary"
+              classCustom="w-full tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+            />
           </div>
         </div>
         <div className="relative h-auto w-full laptop:max-w-[50%] laptop:px-3xl">

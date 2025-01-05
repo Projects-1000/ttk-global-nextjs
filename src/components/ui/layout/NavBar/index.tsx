@@ -16,17 +16,14 @@ export const navItems: NavBarProps = [
   {
     title: 'Về Công ty',
     subnav: [
-      { title: 'Phản hồi từ đối tác', link: paths.HOME },
-      { title: 'Scoreboard', link: paths.HOME }
+      { title: 'Giới thiệu', link: paths.HOME },
+      { title: 'Phản hồi từ đối tác', link: '#' },
+      { title: 'Scoreboard', link: '#' }
     ]
   },
   {
     title: 'Mô hình hợp tác',
-    link: paths.PARTNERSHIP
-    // subnav: [
-    //   { title: 'Mô hình hợp tác', link: 'document' },
-    //   { title: 'Đối tác kinh doanh', link: 'blogs' }
-    // ]
+    link: paths.HOW_IT_WORK
   },
   {
     title: 'Tài nguyên',
@@ -38,8 +35,8 @@ export const navItems: NavBarProps = [
   {
     title: 'Liên hệ',
     subnav: [
-      { title: 'Đặt lịch meeting', link: paths.HOME },
-      { title: 'Liên hệ hợp tác', link: paths.CONTACT }
+      { title: 'Đặt lịch meeting', link: paths.CONTACT },
+      { title: 'Liên hệ hợp tác', link: paths.PARTNERSHIP }
     ]
   }
 ];
