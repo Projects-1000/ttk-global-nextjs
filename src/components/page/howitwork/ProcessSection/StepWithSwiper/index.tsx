@@ -46,7 +46,7 @@ const SwiperWithStepper = () => {
   return (
     <div className="container-margin rounded-m border-[1px] border-blue-100 bg-white tablet:border-solid laptop:pb-4xl">
       <div className="mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:border-solid mobile:max-tablet:border-blue-100 laptop:mb-l laptop:px-xl laptop:py-2xl">
-        <Stepper activeStep={activeStep} alternativeLabel className={`w-full`}>
+        <Stepper activeStep={activeStep} alternativeLabel className={`relative w-full`}>
           {steps.map((label, index) => (
             <Step key={label} className={`${activeStep !== index && 'mobile:max-tablet:hidden'}`}>
               <StepLabel>
@@ -56,6 +56,7 @@ const SwiperWithStepper = () => {
               </StepLabel>
             </Step>
           ))}
+          <div className=""></div>
         </Stepper>
       </div>
 
