@@ -19,7 +19,7 @@ interface DocumentCardProps {
 const DocumentItem: React.FC<{ doc: Document }> = ({ doc }) => (
   <div className="laptop:2xl flex items-center justify-between border border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-blue-200 px-xl py-xl laptop:px-3xl">
     <span className="subtitle-bold laptop:body-bold">{doc.name}</span>
-    <Button size="medium" classCustom="rounded-full laptop:rounded-none">
+    <Button classCustom="mobile:max-tablet:btn--pill mobile:btn__small tablet:btn__medium laptop:rounded-none">
       <span className="hidden laptop:inline">Download</span>
       <ArrowDownToLine />
     </Button>

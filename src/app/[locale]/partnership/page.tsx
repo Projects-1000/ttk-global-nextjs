@@ -1,6 +1,6 @@
 import PageHeader from '@/components/layout/PageHeader';
+import DocumentSection from '@/components/page/blogs/Document';
 import CTASection from '@/components/page/document/CTASection';
-import DocumentSection from '@/components/page/parnership/DocumentSection';
 import PartnershipBenefit from '@/components/page/parnership/PartnershipBenefit';
 import PartnershipFormSection from '@/components/page/parnership/PartnershipFormSection';
 import TargetPartner from '@/components/page/parnership/TargetPartner';

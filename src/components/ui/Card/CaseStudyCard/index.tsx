@@ -13,8 +13,8 @@ export interface CaseStudyCardProps {
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description, tags, postRevenue, image }) => {
   return (
-    <div className="card-border-gradient h-auto min-h-full overflow-hidden">
-      <div className="flex h-auto min-h-full flex-col items-center justify-between gap-l rounded-xl bg-white/40 p-l backdrop-blur-xl laptop:flex-row laptop:gap-0 laptop:p-4xl">
+    <div className="card-border-gradient h-full min-h-full overflow-hidden">
+      <div className="flex h-full min-h-full flex-col items-center justify-between gap-l rounded-xl bg-white/40 p-l backdrop-blur-xl laptop:flex-row laptop:gap-0 laptop:p-4xl">
         <div className="flex w-full flex-col items-start gap-1 laptop:w-1/3 laptop:gap-3xl">
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (

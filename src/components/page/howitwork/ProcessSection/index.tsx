@@ -6,7 +6,7 @@ const ProcessSection = () => {
   const description =
     'Quy trình hợp tác rõ ràng, minh bạch từ đăng ký đến chia sẻ lợi nhuận. Chúng tôi đồng hành cùng bạn trong từng bước triển khai, đảm bảo hiệu quả tối ưu cho mọi dự án.';
   return (
-    <SectionCard customClass="container" title={<ProcessSectionTitle />} description={description}>
+    <SectionCard title={<ProcessSectionTitle />} description={description}>
       <SwiperWithStepper />
     </SectionCard>
   );
