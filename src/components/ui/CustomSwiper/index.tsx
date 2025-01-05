@@ -5,10 +5,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperProps } from 'swiper/react';
-import { NavigateButton } from '../Button/NavigateButton';
+import { NavigateButton, NavigateButtonProps } from '../Button/NavigateButton';
 import './index.scss';
 
-interface CustomSwipperProps extends SwiperProps {
+interface CustomSwipperProps extends SwiperProps, NavigateButtonProps {
   loop?: boolean;
   pagination?: boolean;
   navigation?: boolean;
@@ -19,7 +19,6 @@ interface CustomSwipperProps extends SwiperProps {
   children: ReactNode;
   isAutoplay?: boolean;
   isFullWidth?: boolean;
-
   wrapperClass?: HTMLAttributes<HTMLDivElement>['className'];
 }
 
@@ -36,6 +35,7 @@ const CustomSwiper = ({
   isAutoplay = false,
   isFullWidth = false,
   autoplay,
+  isMobileShow = false,
   ...props
 }: CustomSwipperProps) => {
   const modules = [];
@@ -76,7 +76,7 @@ const CustomSwiper = ({
         >
           {children}
         </Swiper>
-        {navigation && <NavigateButton />}
+        {navigation && <NavigateButton isMobileShow={isMobileShow} />}
       </div>
     </div>
   );
