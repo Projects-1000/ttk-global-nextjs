@@ -128,6 +128,7 @@ const BlogList = () => {
                       publishDate={blog.publishDate}
                       coverImage={blog.coverImage}
                       tags={blog.tags}
+                      slug={blog.slug}
                     />
                   </div>
                 );

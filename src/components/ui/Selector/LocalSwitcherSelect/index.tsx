@@ -14,8 +14,8 @@ interface LocalSwitcherProps extends Pick<SelectorProps, 'children' | 'defaultOp
 }
 
 const options: SelectorProps['options'] = [
-  { label: 'En', value: 'en' },
-  { label: 'Vi', value: 'vi' }
+  { label: 'EN', value: 'en' },
+  { label: 'VI', value: 'vi' }
 ];
 
 export default function LocaleSwitcherSelect({ children, defaultOption }: LocalSwitcherProps) {

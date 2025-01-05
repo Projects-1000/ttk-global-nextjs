@@ -1,9 +1,11 @@
+'use client'
 import { BlogModelProps } from '@/types/model.type';
 import Image from 'next/image';
 import Link from 'next/link';
 import CustomTag from '../../CustomTag';
 import BlogInfo from '../../CustomTag/BlogInfoTag';
 import './index.scss';
+import { usePathname } from 'next/navigation';
 
 interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
   direction?: 'row' | 'column';
@@ -18,11 +20,14 @@ const BlogCard = ({
   direction = 'column',
   tags,
   author,
-  isShowContentMobile = false
+  isShowContentMobile = false,
+  slug
 }: BlogCardProps) => {
+  const pathname = usePathname();
+
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
-      <Link href="/" className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
+      <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
         <div className={`w-full overflow-hidden rounded-m`}>
           <Image
             title={title}
@@ -37,7 +42,7 @@ const BlogCard = ({
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
         <BlogInfo author={author} publishDate={publishDate} />
-        <Link href="/" className="smooth-transition text-black no-underline hover:text-primary-default">
+        <Link href="/" className="smooth-transition text-black no-underline hover:text-secondary-default">
           <header>
             <h2
               title={title}

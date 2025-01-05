@@ -22,6 +22,7 @@ export const HighlightBlog = () => {
                 isShowContentMobile={index === 0}
                 author={blog.author}
                 tags={blog.tags}
+                slug={blog.slug}
               />
             </div>
           );
