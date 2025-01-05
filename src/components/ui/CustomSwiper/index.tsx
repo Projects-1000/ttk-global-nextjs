@@ -1,14 +1,14 @@
 'use client';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
+import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperProps } from 'swiper/react';
-import { NavigateButton } from '../Button/NavigateButton';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperClass, SwiperProps } from 'swiper/react';
+import { NavigateButton, NavigateButtonProps } from '../Button/NavigateButton';
 import './index.scss';
 
-interface CustomSwipperProps extends SwiperProps {
+interface CustomSwipperProps extends SwiperProps, NavigateButtonProps {
   loop?: boolean;
   pagination?: boolean;
   navigation?: boolean;
@@ -19,7 +19,6 @@ interface CustomSwipperProps extends SwiperProps {
   children: ReactNode;
   isAutoplay?: boolean;
   isFullWidth?: boolean;
-
   wrapperClass?: HTMLAttributes<HTMLDivElement>['className'];
 }
 
@@ -36,14 +35,27 @@ const CustomSwiper = ({
   isAutoplay = false,
   isFullWidth = false,
   autoplay,
+  isMobileShow = false,
   ...props
 }: CustomSwipperProps) => {
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSwiper = (swiper: SwiperClass) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
+  const handleActiveIndexChange = (swiper: SwiperClass) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
   const modules = [];
   if (pagination) modules.push(Pagination);
   if (navigation) modules.push(Navigation);
   if (isAutoplay || autoplay) modules.push(Autoplay);
   if (props.modules) modules.push(...props.modules);
-  console.log('wrapperClass', wrapperClass);
   return (
     <div className={`mx-auto ${wrapperClass && wrapperClass} ${isFullWidth ? 'swiper-fluid' : ''}`}>
       <div className="swiper-container relative max-w-[100vw]">
@@ -73,11 +85,19 @@ const CustomSwiper = ({
           centeredSlides={centeredSlides || effect === 'coverflow'}
           slidesPerView={slidesPerView}
           className="group"
+          onSwiper={handleSwiper}
+          onActiveIndexChange={handleActiveIndexChange}
           {...props}
         >
           {children}
         </Swiper>
-        {navigation && <NavigateButton />}
+        {navigation && (
+          <NavigateButton
+            isBeginning={!loop ? isBeginning : undefined}
+            isEnd={!loop ? isEnd : undefined}
+            isMobileShow={isMobileShow}
+          />
+        )}
       </div>
     </div>
   );

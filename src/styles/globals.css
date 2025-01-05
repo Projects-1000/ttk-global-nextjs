@@ -25,6 +25,7 @@
   }
   * {
     margin: 0;
+    padding: 0;
   }
   html,
   body {
@@ -55,6 +56,9 @@
   h4,
   h5,
   h6 {
+    font-size: unset;
+    font-weight: unset;
+    line-height: unset;
     overflow-wrap: break-word;
   }
   #root,
@@ -69,7 +73,7 @@
   }
 
   .container-margin {
-    @apply mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-desktop_container;
+    @apply mobile:mx-mobile_container tablet:mx-tablet_container laptop:mx-laptop_container desktop:mx-desktop_container;
   }
 
   .smooth-transition {

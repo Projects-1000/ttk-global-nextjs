@@ -1,0 +1,12 @@
+.MuiSelect-nativeInput,
+fieldset {
+  border: none;
+}
+
+.MuiPaper-root {
+  min-width: 50px;
+}
+
+.Mui-selected {
+  @apply text-primary-default body-semibold;
+}

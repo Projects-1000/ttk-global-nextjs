@@ -1,10 +1,11 @@
-import { ButtonProps } from '@/types/button.typs';
+'use client';
+import { ButtonProps } from '@/types/button.type';
 import { Button as MUIButton } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import './index.scss';
 
 export default function Button({
-  text = 'Click me',
+  text,
   variant = 'contained',
   isSubmitting = false,
   isDirty = false,
@@ -16,18 +17,19 @@ export default function Button({
   onClick,
   classCustom,
   type,
-  props
+  children,
+  ...props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
-  const sizeClass = `${size ? `btn__${size}` : `mobile:btn__small tablet:btn__medium laptop:btn__large`} ${isPill ? `btn--pill` : ''}`;
+  const sizeClass = `${size ? `btn__${size}` : ``} ${isPill ? `btn--pill` : ''}`;
   const colorClass = `btn__${color}`;
   const iconClass = `${iconPosition === 'start' ? 'flex-row' : iconPosition === 'end' ? 'flex-row-reverse' : iconPosition === 'only' ? `btn__${size}--icon min-w-0` : ''}`;
 
   return (
     <MUIButton
       variant={variant}
-      disabled={isDisabled}
-      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${classCustom} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case`}
+      disabled={props.disabled || isDisabled}
+      className={`btn ${sizeClass} ${colorClass} ${iconClass} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case ${classCustom}`}
       type={type}
       onClick={onClick}
       {...props}
@@ -35,6 +37,7 @@ export default function Button({
       {iconPosition && icon}
       {iconPosition !== 'only' && text}
       {!iconPosition && isSubmitting && <CircularProgress className="ml-xs text-gray-400" size={16} />}
+      {children}
     </MUIButton>
   );
 }

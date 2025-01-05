@@ -3,14 +3,18 @@ import { routing } from '@/i18n/routing';
 import { MenuItem } from '@mui/material';
 import { useLocale, useTranslations } from 'next-intl';
 import './index.scss';
-import LocaleSwitcherSelect from './LocalSwitcherSelect';
+import LocaleSwitcherSelect from '../../Selector/LocalSwitcherSelect';
+import { SelectorProps } from '../../Selector';
 
 export default function LocaleSwitcher() {
   const t = useTranslations('LocaleSwitcher');
   const locale = useLocale();
-
+  const defaultOption: SelectorProps['defaultOption'] = {
+    label: t('locale', { locale: locale }),
+    value: locale
+  };
   return (
-    <LocaleSwitcherSelect defaultValue={locale} label={t('label')}>
+    <LocaleSwitcherSelect defaultOption={defaultOption}>
       {routing.locales.map((cur) => (
         <MenuItem
           key={cur}

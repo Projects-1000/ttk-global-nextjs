@@ -1,5 +1,5 @@
 import { usePathnameWithoutLocale } from '@/hooks/usePathnameWithoutLocale';
-import { NavButtonProps } from '@/types/button.typs';
+import { NavButtonProps } from '@/types/button.type';
 import { Button } from '@mui/material';
 
 interface SubNavBarButtonProps extends Omit<NavButtonProps, 'subnav'> {}

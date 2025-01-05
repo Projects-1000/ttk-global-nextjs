@@ -28,7 +28,7 @@ const About = () => {
     'Nhà phát triển Thương mại điện tử Quốc tế hàng đầu tại Việt Nam, cung cấp hệ sinh thái dịch vụ đa dạng và toàn diện, hỗ trợ doanh nghiệp Việt bán hàng xuyên biên giới.';
 
   return (
-    <SectionCard title={SectionTitle} description={description}>
+    <SectionCard isPaddingContent title={SectionTitle} description={description}>
       <motion.div
         className="container relative grid grid-cols-1 gap-y-l tablet:grid-cols-3"
         initial="hidden"

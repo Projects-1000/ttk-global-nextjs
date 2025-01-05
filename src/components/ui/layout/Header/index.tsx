@@ -8,6 +8,8 @@ import Button from '../../Button/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { MobileMenu } from '../SelectMenu/MobileMenu';
+import paths from '@/utils/paths';
+import Link from 'next/link';
 
 type direction = 'up' | 'down' | null;
 export const Header = () => {
@@ -37,7 +39,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`smooth-transition fixed top-0 z-[1000] flex w-full justify-center bg-opacity-50 ${
+      className={`smooth-transition fixed top-0 z-[100] flex w-full justify-center bg-opacity-50 ${
         scrollDirection === 'down' ? 'max-tablet:-translate-y-full' : 'max-tablet:translate-y-0'
       } bg-gradient-to-br from-blue-10/30 to-blue-10/60 backdrop-blur-md`}
     >
@@ -46,7 +48,7 @@ export const Header = () => {
       >
         <div className="flex h-full items-center justify-between">
           <div className="flex h-full items-center gap-l">
-            <div className="relative h-full w-[136px] tablet:w-[152px]">
+            <Link href={paths.HOME} className="relative h-full w-[136px] tablet:w-[152px]">
               <Image
                 alt="TTK Global Venture"
                 src={'/assets/demo/header-logo.png'}
@@ -54,7 +56,7 @@ export const Header = () => {
                 className="object-contain object-center"
                 loading="eager"
               />
-            </div>
+            </Link>
             <NavBar />
           </div>
           <div className="tablet:hidden" onClick={handleOpenMenu}>
@@ -64,8 +66,8 @@ export const Header = () => {
           <MobileMenu isOpen={isOpenMenu} />
           <div className="hidden items-center gap-m tablet:flex">
             <LocaleSwitcher />
-            <Button text="Đăng ký" size="medium" color="secondary" />
-            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!bg-primary-surface-default" />
+            <Button text="Đăng ký" size="medium" color="secondary" classCustom="!w-fit" />
+            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!w-fit" />
           </div>
         </div>
       </div>

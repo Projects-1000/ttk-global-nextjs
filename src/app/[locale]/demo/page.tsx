@@ -10,7 +10,7 @@ interface TypoGroupProps {
 const DemoPage = () => {
   return (
     <>
-      <section className="overflow-hidden phone:bg-red-500 flex flex-col gap-24 py-20 tablet:bg-blue-500 laptop:bg-yellow-500 desktop:bg-white">
+      <section className="phone:bg-red-500 flex flex-col gap-24 overflow-hidden py-20 tablet:bg-blue-500 laptop:bg-yellow-500 desktop:bg-white">
         <div className="flex flex-col items-start">
           <div className="flex gap-4 py-10">
             <SubmitButton
@@ -66,7 +66,6 @@ const DemoPage = () => {
               iconPosition="end"
               icon={<CallMadeIcon />}
               classCustom="!bg-red-500 !text-primary-default"
-              props={{}}
             />
             <SubmitButton
               isDirty={true}
@@ -180,26 +179,89 @@ const DemoPage = () => {
         </div>
 
         <div className="">
-          <p className="h1-bold mb-8">Typography</p>
+          <p className="mb-8 h1-bold">Typography</p>
           <div className="flex flex-col gap-12">
-            <TypoGroup title="h1" />
-            <TypoGroup title="h2" />
-            <TypoGroup title="h3" />
-            <TypoGroup title="h4" />
-            <TypoGroup title="headline" />
-            <TypoGroup title="body" />
-            <TypoGroup title="subtitle" />
-            <TypoGroup title="caption" />
-            <TypoGroup title="footnote" />
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h1-bold`}>H1 Bold</p>
+                <p className={`h1-semibold`}>H1 SemiBold</p>
+                <p className={`h1-regular`}>H1 Regular</p>
+                <p className={`-ml-[45px] h1-light`}>H1 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h2-bold`}>H2 Bold</p>
+                <p className={`h2-semibold`}>H2 SemiBold</p>
+                <p className={`h2-regular`}>H2 Regular</p>
+                <p className={`-ml-[45px] h2-light`}>H2 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h3-bold`}>H3 Bold</p>
+                <p className={`h3-semibold`}>H3 SemiBold</p>
+                <p className={`h3-regular`}>H3 Regular</p>
+                <p className={`-ml-[45px] h3-light`}>H3 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`h4-bold`}>H4 Bold</p>
+                <p className={`h4-semibold`}>H4 SemiBold</p>
+                <p className={`h4-regular`}>H4 Regular</p>
+                <p className={`-ml-[45px] h4-light`}>H4 Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`headline-bold`}>Headline Bold</p>
+                <p className={`headline-semibold`}>Headline SemiBold</p>
+                <p className={`headline-regular`}>Headline Regular</p>
+                <p className={`-ml-[45px] headline-light`}>Headline Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`body-bold`}>Body Bold</p>
+                <p className={`body-semibold`}>Body SemiBold</p>
+                <p className={`body-regular`}>Body Regular</p>
+                <p className={`-ml-[45px] body-light`}>Body Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`subtitle-bold`}>Subtitle Bold</p>
+                <p className={`subtitle-semibold`}>Subtitle SemiBold</p>
+                <p className={`subtitle-regular`}>Subtitle Regular</p>
+                <p className={`-ml-[45px] subtitle-light`}>Subtitle Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`caption-bold`}>Caption Bold</p>
+                <p className={`caption-semibold`}>Caption SemiBold</p>
+                <p className={`caption-regular`}>Caption Regular</p>
+                <p className={`-ml-[45px] caption-light`}>Caption Light</p>
+              </div>
+            </div>
+            <div className="flex gap-[88px]">
+              <div className="flex gap-[88px] capitalize">
+                <p className={`footnote-bold`}>Footnote Bold</p>
+                <p className={`footnote-semibold`}>Footnote SemiBold</p>
+                <p className={`footnote-regular`}>Footnote Regular</p>
+                <p className={`-ml-[45px] footnote-light`}>Footnote Light</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="text-se">
-          <p className="h1-bold mb-8">Colors</p>
+          <p className="mb-8 h1-bold">Colors</p>
           <div className="flex flex-col gap-12">
             {/* Anzac */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-anzac-500">Anzac</p>
+              <p className="capitalize text-anzac-500 h2-bold">Anzac</p>
               <div className="flex gap-10">
                 <div className="rounded-md size-16 bg-anzac-50">50</div>
                 <div className="rounded-md size-16 bg-anzac-100">100</div>
@@ -217,7 +279,7 @@ const DemoPage = () => {
 
             {/* Blue */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-blue-500">blue</p>
+              <p className="capitalize text-blue-500 h2-bold">blue</p>
               <div className="flex gap-10">
                 <div className="rounded-md size-16 bg-blue-10"></div>
                 <div className="rounded-md size-16 bg-blue-50">50</div>
@@ -236,9 +298,9 @@ const DemoPage = () => {
 
             {/* Grey */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold text-grey-500 capitalize">grey</p>
+              <p className="text-grey-500 capitalize h2-bold">grey</p>
               <div className="flex gap-10">
-                <div className="bg-grey-10 rounded-md size-16"></div>
+                <div className="bg-greys rounded-md size-16"></div>
                 <div className="rounded-md bg-grey-50 size-16">50</div>
                 <div className="rounded-md bg-grey-100 size-16">100</div>
                 <div className="rounded-md bg-grey-200 size-16">200</div>
@@ -255,7 +317,7 @@ const DemoPage = () => {
 
             {/* Red */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-red-500">red</p>
+              <p className="capitalize text-red-500 h2-bold">red</p>
               <div className="flex gap-10">
                 <div className="bg-red-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-red-50">50</div>
@@ -274,7 +336,7 @@ const DemoPage = () => {
 
             {/* Green */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-green-500">green</p>
+              <p className="capitalize text-green-500 h2-bold">green</p>
               <div className="flex gap-10">
                 <div className="bg-green-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-green-50">50</div>
@@ -293,7 +355,7 @@ const DemoPage = () => {
 
             {/* Yellow */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-yellow-500">yellow</p>
+              <p className="capitalize text-yellow-500 h2-bold">yellow</p>
               <div className="flex gap-10">
                 <div className="bg-yellow-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-yellow-50">50</div>
@@ -312,7 +374,7 @@ const DemoPage = () => {
 
             {/* Primary */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-primary-default">primary</p>
+              <p className="capitalize text-primary-default h2-bold">primary</p>
               <div className="flex gap-10">
                 <div className="bg-yellow-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-primary-default">default</div>
@@ -325,7 +387,7 @@ const DemoPage = () => {
 
             {/* secondary */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-secondary-default">secondary</p>
+              <p className="capitalize text-secondary-default h2-bold">secondary</p>
               <div className="flex gap-10">
                 <div className="bg-yellow-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-secondary-default">default</div>
@@ -338,7 +400,7 @@ const DemoPage = () => {
 
             {/* success */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-success-default">success</p>
+              <p className="capitalize text-success-default h2-bold">success</p>
               <div className="flex gap-10">
                 <div className="bg-yellow-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-success-default">default</div>
@@ -351,7 +413,7 @@ const DemoPage = () => {
 
             {/* error */}
             <div className="flex items-center gap-12">
-              <p className="h2-bold capitalize text-error-default">error</p>
+              <p className="capitalize text-error-default h2-bold">error</p>
               <div className="flex gap-10">
                 <div className="bg-yellow-10 rounded-md size-16"></div>
                 <div className="rounded-md size-16 bg-error-default">default</div>
@@ -374,7 +436,7 @@ const TypoGroup = ({ title }: TypoGroupProps) => {
     <div className="flex gap-[88px]">
       <div className="flex gap-[88px] capitalize">
         <p className={`${title}-bold`}>{upperTitle} Bold</p>
-        <p className={`${title}-bold`}>{upperTitle} Bold</p>
+        <p className={`${title}-semibold`}>{upperTitle} SemiBold</p>
         <p className={`${title}-regular`}>{upperTitle} Regular</p>
         <p className={`${title}-light -ml-[45px]`}>{upperTitle} Light</p>
       </div>

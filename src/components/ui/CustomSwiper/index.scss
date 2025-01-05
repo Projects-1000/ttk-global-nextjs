@@ -1,8 +1,31 @@
 .swiper-container {
   position: relative;
+  height: 100%;
+  // max-height: 100vw;
+  // CSS Grid/Flexbox bug size workaround
+  // @see https://github.com/kenwheeler/slick/issues/982
+  // @see https://github.com/nolimits4web/swiper/issues/3599
+  min-height: 0;
+  min-width: 0;
+  max-width: 100vw;
+  width: 100%;
   .swiper-pagination {
     bottom: 0 !important;
   }
+}
+
+.swiper-slide {
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+  height: 100%;
+  max-height: 100%;
+}
+
+.swiper-wrapper {
+  max-height: 100%;
+  height: 100%t;
+  display: flex;
 }
 
 .nav-button {
@@ -25,12 +48,19 @@
   }
 }
 
+// .swiper {
+//   @apply overflow-hidden mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-0 !important;
+// }
+
 .swiper {
-  @apply mobile:ml-mobile_container tablet:ml-tablet_container laptop:mx-laptop_container desktop:mx-0 !important;
+  overflow: hidden;
 }
 
 .swiper-fluid {
   .swiper {
     overflow: visible;
   }
+}
+.swiper-slide {
+  height: auto !important;
 }
