@@ -57,8 +57,8 @@ const Hero = () => {
             className="flex w-full items-center justify-center gap-l tablet:justify-start"
             variants={itemVariants}
           >
-            <Button text="Đăng ký hợp tác" classCustom="flex-1 tablet:flex-none" />
-            <Button text="Tìm hiểu thêm" color="secondary" classCustom="flex-1 tablet:flex-none" />
+            <Button text="Đăng ký hợp tác" classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large" />
+            <Button text="Tìm hiểu thêm" color="secondary" classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large" />
           </motion.div>
         </div>
 

@@ -1,10 +1,10 @@
 'use client';
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
+import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperProps } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperClass, SwiperProps } from 'swiper/react';
 import { NavigateButton, NavigateButtonProps } from '../Button/NavigateButton';
 import './index.scss';
 
@@ -38,6 +38,19 @@ const CustomSwiper = ({
   isMobileShow = false,
   ...props
 }: CustomSwipperProps) => {
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSwiper = (swiper: SwiperClass) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
+  const handleActiveIndexChange = (swiper: SwiperClass) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
+
   const modules = [];
   if (pagination) modules.push(Pagination);
   if (navigation) modules.push(Navigation);
@@ -72,11 +85,19 @@ const CustomSwiper = ({
           centeredSlides={centeredSlides || effect === 'coverflow'}
           slidesPerView={slidesPerView}
           className="group"
+          onSwiper={handleSwiper}
+          onActiveIndexChange={handleActiveIndexChange}
           {...props}
         >
           {children}
         </Swiper>
-        {navigation && <NavigateButton isMobileShow={isMobileShow} />}
+        {navigation && (
+          <NavigateButton
+            isBeginning={!loop ? isBeginning : undefined}
+            isEnd={!loop ? isEnd : undefined}
+            isMobileShow={isMobileShow}
+          />
+        )}
       </div>
     </div>
   );

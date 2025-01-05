@@ -35,14 +35,6 @@ const stepSlides = [
 const SwiperWithStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
 
-  // const handleNext = () => {
-  //   setActiveStep((prevActiveStep) => Math.min(prevActiveStep + 1, steps.length - 1));
-  // };
-
-  // const handleBack = () => {
-  //   setActiveStep((prevActiveStep) => Math.max(prevActiveStep - 1, 0));
-  // };
-
   return (
     <div className="container-margin rounded-m border-[1px] border-blue-100 bg-white tablet:border-solid laptop:pb-4xl">
       <div className="mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:border-solid mobile:max-tablet:border-blue-100 laptop:mb-l laptop:px-xl laptop:py-2xl">
@@ -60,24 +52,20 @@ const SwiperWithStepper = () => {
         </Stepper>
       </div>
 
-      <div className="flex w-full justify-center">
-        <CustomSwiper
-          slidesPerView={1}
-          isFullWidth={false}
-          navigation
-          loop={false}
-          onSlideChange={(swiper) => setActiveStep(swiper.activeIndex)}
-          autoHeight={true}
-          spaceBetween={100}
-          wrapperClass=" laptop:max-w-[700px] w-full "
-        >
-          {stepSlides.map((step, index) => (
-            <SwiperSlide virtualIndex={index} key={index}>
-              <StepContent image={step.image} description={step.description} />
-            </SwiperSlide>
-          ))}
-        </CustomSwiper>
-      </div>
+      <CustomSwiper
+        slidesPerView={1}
+        navigation
+        loop={false}
+        onSlideChange={(swiper) => setActiveStep(swiper.activeIndex)}
+        spaceBetween={100}
+        wrapperClass="laptop:max-w-[700px]"
+      >
+        {stepSlides.map((step, index) => (
+          <SwiperSlide virtualIndex={index} key={index}>
+            <StepContent image={step.image} description={step.description} />
+          </SwiperSlide>
+        ))}
+      </CustomSwiper>
     </div>
   );
 };
