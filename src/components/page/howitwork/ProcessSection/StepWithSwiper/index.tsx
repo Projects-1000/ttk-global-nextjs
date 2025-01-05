@@ -42,7 +42,7 @@ const SwiperWithStepper = () => {
   };
 
   return (
-    <div className="rounded-lg w-full bg-white p-6 shadow-md">
+    <div className="rounded-lg bg-white p-6 shadow-md">
       <Stepper activeStep={activeStep} alternativeLabel className="mb-6 w-full">
         {steps.map((label, index) => (
           <Step key={label}>
@@ -58,28 +58,12 @@ const SwiperWithStepper = () => {
       <CustomSwiper
         slidesPerView={1}
         navigation
-        pagination={false}
         onSlideChange={(swiper) => setActiveStep(swiper.activeIndex)}
-        wrapperClass="desktop:w-[calc(100%-160px)] laptop:w-[calc(100%-60px)] desktop:max-w-[1440px] "
-        isAutoplay={false}
-        spaceBetween={30}
-        breakpoints={{
-          375: {
-            spaceBetween: 16,
-            slidesPerView: 1.2
-          },
-          768: {
-            spaceBetween: 16,
-            slidesPerView: 1.2
-          },
-          1440: {
-            spaceBetween: 16,
-            slidesPerView: 1
-          }
-        }}
+        autoHeight={true}
+        spaceBetween={100}
       >
         {stepSlides.map((step, index) => (
-          <SwiperSlide key={index} className="h-full w-full">
+          <SwiperSlide virtualIndex={index} key={index}>
             <StepContent title={step.title} description={step.description} />
           </SwiperSlide>
         ))}
@@ -93,7 +77,7 @@ interface StepContentProps {
 }
 const StepContent: React.FC<StepContentProps> = ({ title, description }) => {
   return (
-    <div className="rounded-lg bg-blue-100 p-6 text-center">
+    <div className="rounded-lg w-full bg-blue-100 p-6 text-center">
       <h3 className="mb-2 text-lg font-semibold">{title}</h3>
       <p className="text-sm text-gray-600">{description}</p>
     </div>
