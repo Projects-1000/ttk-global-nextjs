@@ -1,5 +1,6 @@
 import Benefit from '@/components/page/howitwork/Benefit';
 import DemoSection from '@/components/page/howitwork/Demo';
+import FAQ from '@/components/page/howitwork/FAQ';
 import HowItWorkHero from '@/components/page/howitwork/Hero';
 import ProcessSection from '@/components/page/howitwork/ProcessSection';
 import ProjectCounting from '@/components/page/howitwork/ProjectCounting';
@@ -12,6 +13,7 @@ const HowItWork = () => {
       <ProcessSection />
       {/* <DemoSection /> */}
       <Benefit />
+      <FAQ />
     </div>
   );
 };

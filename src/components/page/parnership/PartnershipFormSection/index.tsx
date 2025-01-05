@@ -27,7 +27,7 @@ const PartnershipFormSection = () => {
 
   return (
     <SectionCard title={<ParnershipFormSectionTitle />} description={description}>
-      <div className="container flex w-full flex-col items-center justify-between gap-2xl laptop:flex-row laptop:p-0">
+      <div className="container flex w-full flex-col items-center justify-between gap-2xl laptop:flex-row">
         {cardData.map((card, index) => (
           <PartnershipFormCard key={index} {...card} />
         ))}
@@ -45,10 +45,12 @@ interface CardProps {
 
 const PartnershipFormCard: React.FC<CardProps> = ({ icon, title, subtitle, number }) => {
   return (
-    <div className="flex w-full flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:shadow-lg laptop:w-[320px] laptop:gap-3xl">
+    <div className="group flex w-full cursor-pointer flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle laptop:w-[320px] laptop:gap-3xl">
       <div className="flex w-full justify-between">
-        <div className="text-blue-500">{icon}</div>
-        <div className="text-5xl text-[96px] font-extrabold text-[#3C4BCC]/15 text-blue-100">{number}</div>
+        <div className="text-primary-label">{icon}</div>
+        <div className="text-5xl text-[96px] font-extrabold text-[#3C4BCC]/15 text-blue-100 duration-300 group-hover:text-blue-500">
+          {number}
+        </div>
       </div>
       <div className="flex flex-col gap-l">
         <div className="text-primary-label h4-bold laptop:h3-bold">{title}</div>

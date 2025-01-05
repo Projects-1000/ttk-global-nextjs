@@ -1,43 +1,61 @@
 import React, { Fragment } from 'react';
 import './index.scss';
-interface Column {
-  key: string;
-  title: string;
+
+interface TableRow {
+  [key: string]: string;
 }
 
 interface ComparisonTableProps {
-  columns: Column[];
-  data: Record<string, { title: { key: string; content: string }; data: string[] }[]>;
+  columns: string[];
+  data: Record<string, TableRow[]>;
 }
 
 const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, data }) => {
+  const tableHeader = {
+    cost: 'Chi phí',
+    profit: 'Lợi nhuận',
+    risk: 'Rủi ro'
+  };
+  console.log(data);
+  const colWidth = 100 / columns.length;
   return (
     <div className="overflow-auto">
-      <table className="rounded-lg table-no-border min-w-full border border-gray-300 shadow-md">
-        <thead className="bg-blue-600 text-white">
+      <table className="rounded-lg table-no-border min-w-full border">
+        <thead className="rounded-tl-m rounded-tr-m bg-primary-default">
           <tr>
-            {columns.map((col) => (
-              <th key={col.key} className="px-6 py-3 text-center font-semibold">
-                {col.title}
+            {columns.map((col, index) => (
+              <th
+                key={col}
+                className={`py-s text-center text-greyscale-negative footnote-bold laptop:py-l laptop:headline-bold ${index === 0 && 'rounded-tl-m'} ${index === columns.length - 1 && 'rounded-tr-m'}`}
+              >
+                {col}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {data[columns[0].key]?.map((row, rowIndex) => (
-            <Fragment key={row.title.key}>
-              <tr className="w-full bg-gray-100">
-                <td colSpan={columns.length} className={`px-6 py-4 text-center font-bold text-gray-700`}>
-                  {row.title.content}
+          {Object.keys(data).map((key) => (
+            <Fragment key={key}>
+              <tr className="border-[1px] border-l-0 border-r-0 border-t-0 border-solid border-primary-lighter bg-primary-subtle">
+                <td colSpan={columns.length} className="py-s text-center footnote-bold laptop:py-l laptop:body-bold">
+                  {tableHeader[key as keyof typeof tableHeader]}
                 </td>
               </tr>
-              <tr>
-                {columns.map((col) => (
-                  <td key={col.key} className="border-t border-gray-300 px-6 py-4 text-center">
-                    {data[col.key][rowIndex]?.data.map((item, itemIndex) => <p key={itemIndex}>{item}</p>)}
-                  </td>
-                ))}
-              </tr>
+              {data[key].map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  className={`cursor-pointer border border-l-0 border-r-0 border-t-0 border-solid border-primary-lighter duration-200 hover:bg-blue-10`}
+                >
+                  {Object.keys(row).map((col) => (
+                    <td
+                      key={col}
+                      className={`w-[${colWidth}%] py-s text-center footnote-regular laptop:py-l laptop:body-regular`}
+                    >
+                      {row[col]}
+                    </td>
+                  ))}
+                </tr>
+              ))}
             </Fragment>
           ))}
         </tbody>

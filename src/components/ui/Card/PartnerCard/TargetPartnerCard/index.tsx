@@ -13,10 +13,22 @@ interface TargetPartnerCardProps {
 const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, description }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // Handle flip on smaller screens
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      setIsFlipped((state) => !state);
+    }
+  };
+
   return (
     <div
       className="relative aspect-square w-full cursor-pointer overflow-hidden"
-      onClick={() => setIsFlipped((state) => !state)}
+      onMouseEnter={() => {
+        if (window.innerWidth >= 1024) setIsFlipped(true);
+      }}
+      onMouseLeave={() => {
+        if (window.innerWidth >= 1024) setIsFlipped(false);
+      }}
     >
       <motion.div
         className="absolute h-full w-full"
@@ -64,18 +76,22 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
             <div>{icon}</div>
             <h3 className="headline-bold laptop:h2-bold">{title}</h3>
           </div>
-          <span className="inline self-end subtitle-bold laptop:hidden">Xem thêm</span>
+          <span className="inline self-end subtitle-bold active:text-primary-label laptop:hidden" onClick={handleClick}>
+            Xem thêm
+          </span>
         </motion.div>
 
         <motion.div
-          className="absolute inset-0 flex flex-col justify-between p-4 text-white"
+          className="absolute inset-0 flex flex-col justify-between p-4 text-white active:text-primary-label"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'
           }}
         >
           <p className="subtitle-regular laptop:body-regular">{description}</p>
-          <span className="inline self-end subtitle-bold laptop:hidden">Trở về</span>
+          <span className="inline self-end subtitle-bold laptop:hidden" onClick={handleClick}>
+            Trở về
+          </span>
         </motion.div>
       </motion.div>
     </div>

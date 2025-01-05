@@ -2,7 +2,8 @@ import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/page/document/CTASection';
 import DocumentCard from '@/components/ui/Card/DocumentCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
-
+const larkContent = `<div class="scheduler-inline-widget" data-url="https://ttkenable.larksuite.com/scheduler/embed/24d2aff55ef7aadf" style="width:100%;height:626px;"></div>
+      <script type="text/javascript" src="https://ttkenable.larksuite.com/scheduler/embed/scheduler-widget.js" async></script>`;
 const Document = () => {
   const documents = [
     { name: 'Nghiên cứu sản phẩm tiềm năng 1', label: 'Label', downloadLink: '#' },
@@ -31,6 +32,7 @@ const Document = () => {
         </div>
       </SectionCard>
       <CTASection />
+      {/* <div dangerouslySetInnerHTML={{ __html: larkContent }}></div>; */}
     </div>
   );
 };
