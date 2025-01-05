@@ -9,7 +9,7 @@ import React from 'react';
 import BgBlurCircle from '@/assets/bg-blue-circle.png';
 const PartnerShip = () => {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center gap-4">
+    <div className="relative flex w-full flex-col items-center justify-center">
       <PageHeader title="Đối tác kinh doanh" />
       <PartnershipFormSection />
       <TargetPartner />

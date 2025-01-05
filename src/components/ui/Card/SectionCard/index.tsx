@@ -45,7 +45,9 @@ const SectionCard = ({
           </motion.p>
         )}
       </motion.div>
-      <div className={`mx-auto mt-xl tablet:mt-2xl laptop:mt-3xl ${isPaddingContent ? 'laptop:px-4xl' : ''}`}>
+      <div
+        className={`mx-auto mt-xl ${!title && !description && 'tablet:mt-2xl laptop:mt-3xl'} ${isPaddingContent ? 'laptop:px-4xl' : ''}`}
+      >
         {children}
       </div>
     </section>

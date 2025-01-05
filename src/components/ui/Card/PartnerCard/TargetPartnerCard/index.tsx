@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import targetcartThumb from '@/assets/partner/targetpartner/target-partner-thumb.png';
+import targetcartThumb from '@/assets/partner/targetpartner/targetpartner-thumb.png';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 

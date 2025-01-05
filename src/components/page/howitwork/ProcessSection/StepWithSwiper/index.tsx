@@ -36,8 +36,8 @@ const SwiperWithStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div className="container-margin rounded-m border-[1px] border-blue-100 bg-white tablet:border-solid laptop:pb-4xl">
-      <div className="mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:border-solid mobile:max-tablet:border-blue-100 laptop:mb-l laptop:px-xl laptop:py-2xl">
+    <div className="container-margin border-gradient-stroke-1 tablet:border-gradient-stroke-1 rounded-m border-[1px] bg-white/30 backdrop-blur-md laptop:pb-4xl">
+      <div className="mobile:max-tablet:border-gradient-stroke-1 mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border laptop:mb-l laptop:px-xl laptop:py-2xl">
         <Stepper activeStep={activeStep} alternativeLabel className={`relative w-full`}>
           {steps.map((label, index) => (
             <Step key={label} className={`${activeStep !== index && 'mobile:max-tablet:hidden'}`}>
