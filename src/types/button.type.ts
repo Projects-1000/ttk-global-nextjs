@@ -21,10 +21,6 @@ export interface ButtonProps
   onClick?: MouseEventHandler<HTMLButtonElement>;
   classCustom?: HTMLProps<HTMLElement>['className'];
   disabled?:boolean
-  // props?: Omit<
-  //   HTMLAttributes<HTMLButtonElement>,
-  //   'className' | 'type' | 'onClick' | 'disabled' | 'variant' | 'color' | 'size'
-  // >;
   children?: ReactNode;
 }
 

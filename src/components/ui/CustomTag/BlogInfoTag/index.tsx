@@ -9,11 +9,15 @@ interface BlogInfoProps
 const BlogInfoTag = ({ author, publishDate, className }: BlogInfoProps) => {
   return (
     <ul
-      className={`w-full list-none flex-row items-center gap-s footnote-bold tablet:flex tablet:subtitle-regular ${className}`}
+      className={`flex w-full list-none flex-row items-center gap-s footnote-bold tablet:subtitle-regular ${className}`}
     >
-      <li>{author}</li>
-      <Divider orientation="vertical" flexItem className="border-r border-r-black" />
-      <li> {publishDate}</li>
+      {author && (
+        <>
+          <li>{author}</li>
+          <Divider orientation="vertical" flexItem className="border-r border-r-black" />
+        </>
+      )}
+      {publishDate && <li> {publishDate}</li>}
     </ul>
   );
 };

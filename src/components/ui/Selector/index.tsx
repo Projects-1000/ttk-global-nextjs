@@ -87,7 +87,7 @@ export const ValueDisplay = ({ value, isOpen, prefix, className }: ValueDisplayP
     >
       <div className="flex items-center gap-2xs">
         {prefix}
-        <span className="selector-display__value uppercase subtitle-semibold tablet:body-semibold">{value}</span>
+        <span className="selector-display__value subtitle-semibold tablet:body-semibold">{value}</span>
       </div>
       <ArrowDropDownIcon
         className={`smooth-transition text-greyscale-subtitle duration-[350ms] ${isOpen ? '-rotate-180' : ''}`}

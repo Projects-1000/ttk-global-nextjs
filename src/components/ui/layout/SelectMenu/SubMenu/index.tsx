@@ -1,4 +1,4 @@
-import { NavButtonProps } from '@/types/button.typs';
+import { NavButtonProps } from '@/types/button.type';
 import { SubNavButton } from '../../../Button/NavButton/SubNavButton';
 
 interface SubMenuProps extends Pick<NavButtonProps, 'subnav'> {

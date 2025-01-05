@@ -8,3 +8,12 @@
   //     @include border-gradient(3px, 5px, 20px, 90deg, #3c4bcc, #ebecfa);
   //   }
 }
+
+.document-banner-border-gradient {
+  @include border-gradient(2px, 4px, 12px, 90deg, #3c4bcc, #ebecfa);
+
+  //   Added the respond mixin if needed
+  //   @media screen and (min-width: 375px) {
+  //     @include border-gradient(3px, 5px, 20px, 90deg, #3c4bcc, #ebecfa);
+  //   }
+}

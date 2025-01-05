@@ -1,6 +1,6 @@
 'use client';
 import { usePathnameWithoutLocale } from '@/hooks/usePathnameWithoutLocale';
-import { NavButtonProps } from '@/types/button.typs';
+import { NavButtonProps } from '@/types/button.type';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { DesktopSubMenu, MobileSubMenu } from '../../layout/SelectMenu/SubMenu';

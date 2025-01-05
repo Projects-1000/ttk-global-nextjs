@@ -22,6 +22,7 @@ export const HighlightBlog = () => {
                 isShowContentMobile={index === 0}
                 author={blog.author}
                 tags={blog.tags}
+                slug={blog.slug}
               />
             </div>
           );
@@ -32,7 +33,7 @@ export const HighlightBlog = () => {
 };
 
 const SectionTitle = (
-  <>
+  <p className="w-full text-left">
     BÀI VIẾT <span className="text-secondary-default">NỔI BẬT</span>
-  </>
+  </p>
 );

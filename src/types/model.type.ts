@@ -1,5 +1,4 @@
-import { ImageProps, StaticImageData } from 'next/image';
-import { ReactElement } from 'react';
+import { ImageProps } from 'next/image';
 
 export interface TagModelProps {
   id: string;
@@ -17,4 +16,5 @@ export interface BlogModelProps {
   tags?: TagModelProps[];
   isHighlight: boolean;
   author?: string;
+  slug: string;
 }
