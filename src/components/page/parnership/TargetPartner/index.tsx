@@ -43,7 +43,7 @@ const TargetPartner = () => {
     }
   ];
   return (
-    <SectionCard customClass="max-w-[1440px] w-full container">
+    <SectionCard isPaddingContent customClass="max-w-[1440px] w-full container">
       <div className="grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
         <TargetPartnerHeadingCard />
         {fakeData.map((item) => (
