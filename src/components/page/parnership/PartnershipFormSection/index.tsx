@@ -45,7 +45,7 @@ interface CardProps {
 
 const PartnershipFormCard: React.FC<CardProps> = ({ icon, title, subtitle, number }) => {
   return (
-    <div className="group flex w-full cursor-pointer flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle laptop:w-[320px] laptop:gap-3xl">
+    <div className="group flex min-h-full w-full cursor-pointer flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle laptop:w-[320px] laptop:gap-3xl">
       <div className="flex w-full justify-between">
         <div className="text-primary-label">{icon}</div>
         <div className="text-5xl text-[96px] font-extrabold text-[#3C4BCC]/15 text-blue-100 duration-300 group-hover:text-blue-500">

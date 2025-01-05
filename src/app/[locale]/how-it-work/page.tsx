@@ -1,5 +1,5 @@
+import LarkScheduleSection from '@/components/page/contact/LarkScheduleSection';
 import Benefit from '@/components/page/howitwork/Benefit';
-import DemoSection from '@/components/page/howitwork/Demo';
 import FAQ from '@/components/page/howitwork/FAQ';
 import HowItWorkHero from '@/components/page/howitwork/Hero';
 import ProcessSection from '@/components/page/howitwork/ProcessSection';
@@ -14,6 +14,7 @@ const HowItWork = () => {
       {/* <DemoSection /> */}
       <Benefit />
       <FAQ />
+      <LarkScheduleSection />
     </div>
   );
 };

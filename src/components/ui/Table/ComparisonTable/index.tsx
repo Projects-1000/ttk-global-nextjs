@@ -16,7 +16,6 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, data }) => {
     profit: 'Lợi nhuận',
     risk: 'Rủi ro'
   };
-  console.log(data);
   const colWidth = 100 / columns.length;
   return (
     <div className="overflow-auto">
@@ -26,7 +25,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, data }) => {
             {columns.map((col, index) => (
               <th
                 key={col}
-                className={`py-s text-center text-greyscale-negative footnote-bold laptop:py-l laptop:headline-bold ${index === 0 && 'rounded-tl-m'} ${index === columns.length - 1 && 'rounded-tr-m'}`}
+                className={`text-wrap py-s text-center text-greyscale-negative footnote-bold laptop:py-l laptop:headline-bold ${index === 0 && 'rounded-tl-m'} ${index === columns.length - 1 && 'rounded-tr-m'}`}
               >
                 {col}
               </th>

@@ -58,7 +58,6 @@ const Selector = ({
         onChange={onSelectChange}
         onClose={handleClose}
         renderValue={(value: any) => {
-          console.log(options);
           const option = options?.find((option) => option.value === value);
           const label = option ? option.label : value;
           return <ValueDisplay value={label as string} isOpen={isOpen} prefix={prefix} />;

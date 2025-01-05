@@ -1,20 +1,18 @@
-import { Check, LoaderCircle } from 'lucide-react';
-import React from 'react';
-
 const CheckIcon = () => {
   return (
-    <div className="h-[32px] w-[32px]">
-      <div className="relative h-full w-full rounded-full">
-        <LoaderCircle
-          strokeWidth={1.5}
-          size={28}
-          className="absolute left-1/2 top-1/2 z-0 h-fit w-fit -translate-x-1/2 -translate-y-1/2 rounded-full text-primary-default"
-        />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-extrabold text-primary-default">
-          <Check className="z-10 rounded-full" strokeWidth={3} size={20} />
-        </span>
-      </div>
-    </div>
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14.0003" cy="14.0003" r="9.33333" fill="#EBECFA" />
+      <path
+        d="M11.083 14.0003L13.3103 16.2276C13.3689 16.2862 13.4638 16.2862 13.5224 16.2276L18.083 11.667"
+        stroke="#3C4BCC"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M22.8337 14.0003C22.8337 15.7474 22.3156 17.4552 21.345 18.9079C20.3744 20.3605 18.9948 21.4927 17.3807 22.1613C15.7666 22.8298 13.9905 23.0048 12.277 22.6639C10.5635 22.3231 8.98958 21.4818 7.75422 20.2464C6.51885 19.0111 5.67756 17.4371 5.33672 15.7236C4.99589 14.0101 5.17082 12.234 5.83939 10.62C6.50796 9.00587 7.64015 7.6263 9.09279 6.65568C10.5454 5.68506 12.2533 5.16699 14.0003 5.16699"
+        stroke="#3C4BCC"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 };
 
