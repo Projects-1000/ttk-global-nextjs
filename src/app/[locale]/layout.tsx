@@ -13,6 +13,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import Transition from './transition';
 
 interface LocaleLayoutProps extends LocaleRouteParams {
   children: React.ReactNode;
@@ -72,7 +73,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <ThemeProvider theme={theme}>
                 <Header />
                 <main className="flex w-full items-center justify-center overflow-hidden pt-desktop_header">
-                  <div className="flex w-full flex-col items-center justify-center gap-4">{children}</div>
+                  <Transition>{children}</Transition>
                 </main>
                 <Footer />
               </ThemeProvider>
