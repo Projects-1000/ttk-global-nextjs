@@ -39,9 +39,9 @@ export const Header = () => {
 
   return (
     <header
-      className={`smooth-transition fixed top-0 z-[100] flex w-full justify-center bg-opacity-50 ${
+      className={`smooth-transition fixed top-0 z-[100] flex w-full justify-center transition-all duration-200 ${
         scrollDirection === 'down' ? 'max-tablet:-translate-y-full' : 'max-tablet:translate-y-0'
-      } bg-gradient-to-br from-blue-10/30 to-blue-10/60 backdrop-blur-md`}
+      } ${isOpenMenu ? 'bg-white' : 'bg-opacity-50 bg-gradient-to-br from-blue-10/30 to-blue-10/60 backdrop-blur-md'} `}
     >
       <div
         className={`container h-mobile_header w-full laptop:h-desktop_header desktop:max-w-[1440px] ${!isOpenMenu ? '' : ''}`}
@@ -59,16 +59,16 @@ export const Header = () => {
             </Link>
             <NavBar />
           </div>
-          <div className="tablet:hidden" onClick={handleOpenMenu}>
-            <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />
-            <CloseIcon className={`menu-icon ${isOpenMenu ? '' : 'translate-x-[50px]'}`} />
-          </div>
-          <MobileMenu isOpen={isOpenMenu} />
           <div className="hidden items-center gap-m tablet:flex">
             <LocaleSwitcher />
             <Button text="Đăng ký" size="medium" color="secondary" classCustom="!w-fit" />
             <Button text="Đăng nhập" size="medium" color="primary" classCustom="!w-fit" />
           </div>
+          <div className="laptop:hidden" onClick={handleOpenMenu}>
+            <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />
+            <CloseIcon className={`menu-icon ${isOpenMenu ? '' : 'translate-x-[50px]'}`} />
+          </div>
+          <MobileMenu isOpen={isOpenMenu} />
         </div>
       </div>
     </header>
