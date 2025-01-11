@@ -8,11 +8,16 @@ import graphic from '@/assets/howitwork/hero/Graphic.png';
 import combineVector from '@/assets/yellow-blue-vector.png';
 import mobileGraphic from '@/assets/howitwork/hero/mobile-graphic.png';
 const HeroTitle = () => (
-  <span className="uppercase h3-bold laptop:h1-bold">
-    Hợp tác kinh doanh
-    <span className="hidden text-primary-label h3-light tablet:inline"> (cùng TTK Global Ventures)</span>
-    <span className="text-secondary-label"> TMĐT quốc tế </span>
-  </span>
+  <div className="flex justify-start gap-x-m">
+    <p className="uppercase h4-bold tablet:h3-bold laptop:h1-bold desktop:basis-1/2">
+      Hợp tác kinh doanh
+      <br />
+      <span className="text-secondary-label"> TMĐT quốc tế </span>
+    </p>
+    <span className="mt-3 hidden text-primary-label tablet:inline laptop:h4-light desktop:h3-light">
+      (cùng TTK Global Ventures)
+    </span>
+  </div>
 );
 const HeroItem: React.FC<PropsWithChildren> = ({ children }) => (
   <div className="flex gap-[10px]">
@@ -24,13 +29,16 @@ const HeroItem: React.FC<PropsWithChildren> = ({ children }) => (
 const HowItWorkHero = () => {
   const HERO_ITEMS = [
     <span key={1} className="text-black subtitle-regular laptop:headline-regular">
-      Vận hành gian hàng <span className="subtitle-bold laptop:headline-bold">miễn phí</span> cho đến khi hòa vốn
+      Vận hành gian hàng <span className="text-primary-default subtitle-bold laptop:headline-bold">miễn phí</span> cho
+      đến khi hòa vốn
     </span>,
     <span key={2} className="text-black subtitle-regular laptop:headline-regular">
-      Cam kết <span className="subtitle-bold laptop:headline-bold">hoàn 100% vốn & lãi</span> nếu không hài lòng
+      Cam kết <span className="text-primary-default subtitle-bold laptop:headline-bold">hoàn 100% vốn & lãi</span> nếu
+      không hài lòng
     </span>,
     <span key={3} className="text-black subtitle-regular laptop:headline-regular">
-      Hệ thống quảng cáo độc quyền <span className="subtitle-bold laptop:headline-bold">ACOS trung bình dưới 20%</span>
+      Hệ thống quảng cáo độc quyền{' '}
+      <span className="text-primary-default subtitle-bold laptop:headline-bold">ACOS trung bình dưới 20%</span>
     </span>
   ];
   return (

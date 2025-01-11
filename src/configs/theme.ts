@@ -4,20 +4,20 @@ import { createTheme } from '@mui/material';
 
 const theme = createTheme({
   cssVariables: true,
-  //   palette: {
-  //     primary: {
-  //       main: '#D81C21',
-  //       light: '#FDE9E9',
-  //       dark: '#D81C21',
-  //       contrastText: '#fff'
-  //     },
-  //     secondary: {
-  //       main: '#208229'
-  //     },
-  //     error: {
-  //       main: '#ED1F24'
-  //     }
-  //   },
+  palette: {
+    primary: {
+      main: '#3C4BCC',
+      light: '#FDE9E9',
+      dark: '#D81C21',
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#208229'
+    },
+    error: {
+      main: '#ED1F24'
+    }
+  },
   typography: {
     fontFamily: 'var(--font-montserrat)'
   }

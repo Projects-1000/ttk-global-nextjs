@@ -1,5 +1,11 @@
-@media screen and (max-width: 768px) {
-  .MuiStepConnector-line {
-    display: none !important;
-  }
+.MuiStepConnector-line {
+  @apply hidden tablet:block;
+}
+
+.MuiStepLabel-label {
+  @apply mt-s tablet:mt-l;
+}
+
+.swiper-nav-button {
+  @apply mobile:max-tablet:top-0 mobile:max-tablet:-translate-y-[240%] mobile:max-tablet:px-l;
 }

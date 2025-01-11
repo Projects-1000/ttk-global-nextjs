@@ -8,7 +8,7 @@ const ProcessSection = () => {
     'Quy trình hợp tác rõ ràng, minh bạch từ đăng ký đến chia sẻ lợi nhuận. Chúng tôi đồng hành cùng bạn trong từng bước triển khai, đảm bảo hiệu quả tối ưu cho mọi dự án.';
   return (
     <SectionCard customClass="relative" title={<ProcessSectionTitle />} description={description}>
-      <div className="absolute left-0 top-[0] -z-10 translate-x-[-50%] translate-y-[-5%] scale-[0.6]">
+      <div className="absolute top-[0] -z-10 translate-x-[40%] translate-y-[-45%] scale-[0.4] mobile:max-tablet:right-0 tablet:left-0 tablet:translate-x-[-50%] tablet:translate-y-[-5%] tablet:scale-[0.6]">
         <TtkFrame />
       </div>
       <SwiperWithStepper />
