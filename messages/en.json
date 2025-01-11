@@ -1,11 +1,23 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "title": "TTK Global Ventures",
+    "description": "Welcome to our homepage"
   },
   "AboutPage": {
-    "title": "About page",
-    "nav": "Go to the home page"
+    "title": "About Us",
+    "description": "Learn more about us"
+  },
+  "BlogsPage": {
+    "title": "Blog Page",
+    "description": "Explore our articles and posts"
+  },
+  "HowItWorksPage": {
+    "title": "How It Works",
+    "description": "Learn how our service works"
+  },
+  "PartnershipPage": {
+    "title": "Partnerships",
+    "description": "Information about our partners"
   },
   "LocaleLayout": {
     "title": "TTK GLOBAL",

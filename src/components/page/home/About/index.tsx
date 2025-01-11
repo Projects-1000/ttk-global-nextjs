@@ -30,7 +30,7 @@ const About = () => {
   return (
     <SectionCard isPaddingContent title={SectionTitle} description={description}>
       <motion.div
-        className="container relative grid grid-cols-1 gap-y-l tablet:grid-cols-3"
+        className="container relative"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants
@@ -38,30 +38,32 @@ const About = () => {
         <div className="absolute right-0 top-[0] -z-10 translate-x-[50%] translate-y-[-35%]">
           <YellowVector />
         </div>
-        {INFO_CARDS.map((card, i) => {
-          return (
-            <motion.div
-              key={i}
-              initial="hidden"
-              animate="visible"
-              variants={cardVariants} // Apply individual card variants
-              className="info-card-wrapper"
-            >
-              <InfoCard
-                title={
-                  <span>
-                    <NumberCounter value={card.titleValue} direction="up" />
-                    <motion.span variants={textVariants} className="w-fit">
-                      {card.afterTitle}
-                    </motion.span>
-                  </span>
-                }
-                subtitle={card.subtitle}
-                isLast={i === INFO_CARDS.length - 1}
-              />
-            </motion.div>
-          );
-        })}
+        <div className="grid grid-cols-1 gap-y-l tablet:grid-cols-3 tablet:py-4xl">
+          {INFO_CARDS.map((card, i) => {
+            return (
+              <motion.div
+                key={i}
+                initial="hidden"
+                animate="visible"
+                variants={cardVariants} // Apply individual card variants
+                className="info-card-wrapper"
+              >
+                <InfoCard
+                  title={
+                    <span>
+                      <NumberCounter value={card.titleValue} direction="up" />
+                      <motion.span variants={textVariants} className="w-fit">
+                        {card.afterTitle}
+                      </motion.span>
+                    </span>
+                  }
+                  subtitle={card.subtitle}
+                  isLast={i === INFO_CARDS.length - 1}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </motion.div>
     </SectionCard>
   );
@@ -82,7 +84,7 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = ({ title, subtitle, isLast }) => {
   return (
     <div
-      className={`flex h-full items-start justify-center gap-l rounded-[12px] bg-blue-50 p-xl tablet:rounded-[0] tablet:bg-transparent tablet:p-4xl ${!isLast ? 'border-b-0 border-l-0 border-t-0 border-none border-blue-200 pr-0 tablet:border-r-[1px] tablet:border-solid tablet:pr-4xl' : ''}`}
+      className={`flex h-full items-start justify-center gap-l rounded-[12px] bg-blue-50 p-xl tablet:rounded-[0] tablet:bg-transparent tablet:p-4xl tablet:py-0 ${!isLast ? 'border-b-0 border-l-0 border-t-0 border-none border-blue-200 tablet:border-r-[1px] tablet:border-solid tablet:pr-4xl' : ''}`}
     >
       <div className={`flex w-full flex-col items-center justify-center gap-l text-center`}>
         <p className="text-blue-500 h3-bold tablet:h2-bold laptop:h1-bold">{title}</p>{' '}

@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import GoogleMap from '@/components/ui/GoogleMap';
+import Address from '@/components/ui/Address';
 
 const AddressSection = () => {
   const addresses = [
@@ -30,7 +31,10 @@ const AddressSection = () => {
     <SectionCard customClass="container" title={<AddressSectionTitle />}>
       <div className="grid grid-cols-1 gap-4xl laptop:grid-cols-2">
         {addresses.map((data, index) => (
-          <GoogleMap key={index} {...data} />
+          <div className="flex w-full flex-col gap-l laptop:gap-2xl" key={index}>
+            <GoogleMap iframeUrl={data.iframeUrl} />
+            <Address address={data.address} />
+          </div>
         ))}
       </div>
     </SectionCard>

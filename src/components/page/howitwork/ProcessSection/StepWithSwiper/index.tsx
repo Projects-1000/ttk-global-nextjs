@@ -6,13 +6,16 @@ import { useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import carouselImage from '@/assets/howitwork/carousel-so-lieu.png';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import './index.scss';
+
 const steps = [
   'Đăng ký hợp tác',
   'Đánh giá và xây dựng kế hoạch kinh doanh',
   'Vận hành gian hàng Amazon',
   'Theo dõi và chia sẻ lợi nhuận'
 ];
+
 const stepSlides = [
   {
     description:
@@ -32,12 +35,38 @@ const stepSlides = [
     image: carouselImage
   }
 ];
+
+// Animation variants
+const stepVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const slideVariants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+};
+
 const SwiperWithStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div className="container-margin border-gradient-stroke-1 tablet:border-gradient-stroke-1 rounded-m border-[1px] bg-white/30 backdrop-blur-md laptop:pb-4xl">
-      <div className="mobile:max-tablet:border-gradient-stroke-1 mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border laptop:mb-l laptop:px-xl laptop:py-2xl">
+    <motion.div
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      initial="hidden"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+      }}
+      className="container-margin border-gradient-stroke-1 tablet:border-gradient-stroke-1 rounded-m border-[1px] bg-white/30 backdrop-blur-md laptop:pb-4xl"
+    >
+      <motion.div
+        className="mobile:max-tablet:border-gradient-stroke-1 mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border laptop:mb-l laptop:px-xl laptop:py-2xl"
+        variants={stepVariants}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Stepper activeStep={activeStep} alternativeLabel className={`relative w-full`}>
           {steps.map((label, index) => (
             <Step key={label} className={`${activeStep !== index && 'mobile:max-tablet:hidden'}`}>
@@ -48,9 +77,8 @@ const SwiperWithStepper = () => {
               </StepLabel>
             </Step>
           ))}
-          <div className=""></div>
         </Stepper>
-      </div>
+      </motion.div>
 
       <CustomSwiper
         slidesPerView={1}
@@ -62,18 +90,27 @@ const SwiperWithStepper = () => {
       >
         {stepSlides.map((step, index) => (
           <SwiperSlide virtualIndex={index} key={index}>
-            <StepContent image={step.image} description={step.description} />
+            <motion.div
+              variants={slideVariants}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              initial="hidden"
+            >
+              <StepContent image={step.image} description={step.description} />
+            </motion.div>
           </SwiperSlide>
         ))}
       </CustomSwiper>
-    </div>
+    </motion.div>
   );
 };
+
 interface StepContentProps {
   description: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any;
 }
+
 const StepContent: React.FC<StepContentProps> = ({ description, image }) => {
   return (
     <div className="rounded-lg flex w-full flex-col gap-2xl text-center laptop:gap-l">
@@ -89,4 +126,5 @@ const StepContent: React.FC<StepContentProps> = ({ description, image }) => {
     </div>
   );
 };
+
 export default SwiperWithStepper;
