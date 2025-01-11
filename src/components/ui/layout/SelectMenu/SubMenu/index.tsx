@@ -19,7 +19,7 @@ export const DesktopSubMenu = ({ subnav, isOpen }: SubMenuProps) => {
 
 export const MobileSubMenu = ({ subnav, isOpen }: SubMenuProps) => {
   return (
-    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
+    <div className={`overflow-hidden transition-all duration-[300ms] ease-linear ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
       {subnav?.map(({ title, link }, index) => (
         <SubNavButton key={index} link={link} isMobile={true} title={title} isLeafButton />
       ))}

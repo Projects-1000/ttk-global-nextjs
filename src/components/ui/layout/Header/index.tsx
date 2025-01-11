@@ -68,7 +68,7 @@ export const Header = () => {
             <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />
             <CloseIcon className={`menu-icon ${isOpenMenu ? '' : 'translate-x-[50px]'}`} />
           </div>
-          <MobileMenu isOpen={isOpenMenu} />
+          <MobileMenu isOpen={isOpenMenu} handleOpenMenu={handleOpenMenu}/>
         </div>
       </div>
     </header>

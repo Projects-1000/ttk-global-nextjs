@@ -5,11 +5,12 @@ import { navItems } from '../../NavBar';
 import LocaleSwitcher from '../../LocalSwitcher';
 import Button from '@/components/ui/Button/Button';
 
-interface MobileMenuProps extends Pick<NavButtonProps, 'subnav'> {
+interface MobileMenuProps {
   isOpen: boolean;
+  handleOpenMenu?: () => void;
 }
 
-export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
+export const MobileMenu = ({ isOpen, handleOpenMenu }: MobileMenuProps) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -45,7 +46,10 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
           </div>
         </div>
       </menu>
-      <div className={`mobile-menu__backdrop z-[-1] translate-y-mobile_header h-[calc(100dvh-var(--mobile-header-height))] ${isOpen ? 'mobile-menu__backdrop--open' : 'mobile-menu__backdrop--close'}`}></div>
+      <div
+        onClick={handleOpenMenu ? handleOpenMenu : undefined}
+        className={`mobile-menu__backdrop z-[-1] h-[calc(100dvh-var(--mobile-header-height))] translate-y-mobile_header ${isOpen ? 'mobile-menu__backdrop--open' : 'mobile-menu__backdrop--close'}`}
+      ></div>
     </>
   );
 };
