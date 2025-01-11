@@ -1,7 +1,7 @@
 @use './mixin' as *;
 
 .card-border-gradient {
-  @include border-gradient(3px, 5px, 20px, 90deg, #3c4bcc, #ebecfa);
+  @include border-gradient(2px, 4px, 20px, 90deg, #3c4bcc, #ebecfa);
 
   //   Added the respond mixin if needed
   //   @media screen and (min-width: 375px) {
@@ -11,11 +11,6 @@
 
 .document-banner-border-gradient {
   @include border-gradient(2px, 4px, 12px, 90deg, #3c4bcc, #ebecfa);
-
-  //   Added the respond mixin if needed
-  //   @media screen and (min-width: 375px) {
-  //     @include border-gradient(3px, 5px, 20px, 90deg, #3c4bcc, #ebecfa);
-  //   }
 }
 
 //$distance: 3px, $padding-thickness: 5px, $border-radius: 20px, $angle: 90deg, $color...
