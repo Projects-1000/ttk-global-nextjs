@@ -14,59 +14,59 @@ const caseStudyData = [
   {
     id: 0,
     projectName: 'Ngách thực phẩm bổ sung',
-    description:
-      'Brand A, chuyên về thực phẩm bổ sung vitamin và khoáng chất - Dự án ghi nhận mức tăng trưởng ấn tượng với doanh số hơn 1 triệu USD trong năm 2024 và trung bình hơn 150,000 USD/tháng, khẳng định năng lực của TTK trong việc hỗ trợ DN Việt bứt phá trên thị trường Amazon.',
+    description: (
+      <>
+        Brand A, chuyên về <span className="text-secondary-default body-bold"> thực phẩm bổ sung</span> vitamin và
+        khoáng chất - Dự án ghi nhận mức tăng trưởng ấn tượng với doanh số hơn
+        <span className="text-secondary-default body-bold"> 1 triệu USD</span> trong năm 2024 và trung bình hơn{' '}
+        <span className="text-secondary-default body-bold">150,000 USD/tháng</span>, khẳng định năng lực của TTK trong
+        việc hỗ trợ DN Việt bứt phá trên thị trường Amazon.
+      </>
+    ),
     tags: ['Brand A'],
     previousRevenue: '1,110,006.83 USD',
-    postRevenue: 'Doanh thu trong năm 2024:  1,110,006.83 USD',
+    postRevenue: '1,110,006.83 USD',
     image: casestudyImage
   },
   {
     id: 1,
-    projectName: 'Ngách thực phẩm bổ sung',
-    description:
-      'Brand A, chuyên về thực phẩm bổ sung vitamin và khoáng chất - Dự án ghi nhận mức tăng trưởng ấn tượng với doanh số hơn 1 triệu USD trong năm 2024 và trung bình hơn 150,000 USD/tháng, khẳng định năng lực của TTK trong việc hỗ trợ DN Việt bứt phá trên thị trường Amazon.',
+    projectName: 'Ngách thức uống hòa tan',
+    description: (
+      <>
+        Trong năm 2024, Brand B đạt doanh thu gần <span className="text-secondary-default body-bold">600,000 USD</span>{' '}
+        (trung bình 70,000 USD/tháng) với <span className="text-secondary-default body-bold">cà phê hòa tan</span>.
+        Chiến lược vận hành hiệu quả cùng hệ thống quảng cáo độc quyền của TTK đã giúp Brand B tăng trưởng vượt bậc trên
+        thị trường cạnh tranh.
+      </>
+    ),
     tags: ['Finance', 'Innovation'],
     previousRevenue: '200 triệu VND',
-    postRevenue: '700 triệu VND',
+    postRevenue: '567,722.65 USD',
     image: casestudyImage
   },
   {
     id: 2,
-    projectName: 'Ngách thực phẩm bổ sung',
-    description:
-      'Brand A, chuyên về thực phẩm bổ sung vitamin và khoáng chất - Dự án ghi nhận mức tăng trưởng ấn tượng với doanh số hơn 1 triệu USD trong năm 2024 và trung bình hơn 150,000 USD/tháng, khẳng định năng lực của TTK trong việc hỗ trợ DN Việt bứt phá trên thị trường Amazon.',
+    projectName: 'Ngách thực phẩm',
+    description: (
+      <>
+        TTK vận hành gian hàng Brand C - kinh doanh <span className="text-secondary-default body-bold">bánh tráng</span>{' '}
+        và các sản phẩm <span className="text-secondary-default body-bold">thực phẩm khô đóng gói</span> trên Amazon.
+        Trong vòng 1 năm, dự án đã đạt doanh thu hơn{' '}
+        <span className="text-secondary-default body-bold">250,000 USD</span>, nhờ sự chuyên nghiệp và am hiểu thị
+        trường của đội ngũ chuyên gia.
+      </>
+    ),
     tags: ['E-commerce', 'Growth'],
     previousRevenue: '300 triệu VND',
-    postRevenue: '1 tỷ VND',
+    postRevenue: '259,723.50 USD',
     image: casestudyImage
   }
-  // {
-  //   id: 3,
-  //   projectName: 'Dự án 3',
-  //   description: 'Mô tả ngắn gọn về dự án 3.',
-  //   tags: ['E-commerce', 'Growth'],
-  //   previousRevenue: '300 triệu VND',
-  //   postRevenue: '1 tỷ VND',
-  //   image:
-  //     casestudyImage
-  // },
-  // {
-  //   id: 4,
-  //   projectName: 'Dự án 3',
-  //   description: 'Mô tả ngắn gọn về dự án 3.',
-  //   tags: ['E-commerce', 'Growth'],
-  //   previousRevenue: '300 triệu VND',
-  //   postRevenue: '1 tỷ VND',
-  //   image:
-  //     casestudyImage
-  // }
 ];
 const CaseStudy = () => {
   const description =
     'TTK Global Ventures đã và đang vận hành các gian hàng thuộc nhiều ngách sản phẩm khác nhau, mang về cho đối tác doanh thu ấn tượng.';
   return (
-    <SectionCard isPaddingContent title={<CaseStudyTitle />} description={description} customClass=''>
+    <SectionCard isPaddingContent title={<CaseStudyTitle />} description={description} customClass="">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -91,7 +91,7 @@ const CaseStudy = () => {
             },
             768: {
               spaceBetween: 16,
-              slidesPerView: 1.2
+              slidesPerView: 1.4
             },
             1024: {
               spaceBetween: 16,
