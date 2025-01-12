@@ -25,7 +25,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description,
           <p className="subtitle-regular laptop:body-regular">{description}</p>
 
           <p className="text-primary-label body-bold laptop:h4-bold">
-            <p>Doanh thu trong năm 2024:</p>
+            Doanh thu trong năm 2024:
             {postRevenue}
           </p>
         </div>

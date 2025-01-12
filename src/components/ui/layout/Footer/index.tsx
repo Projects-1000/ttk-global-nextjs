@@ -22,7 +22,12 @@ const infoData = [
   {
     id: 'email',
     title: 'Email:',
-    content: [{ title: 'contact@ttkglobalventures.com', link: 'mailto:contact@ttkglobalventures.com' }]
+    content: [
+      {
+        title: `contact@ttkglobalventures.com`,
+        link: `mailto:contact@ttkglobalventures.com?subject=${encodeURIComponent(`[TTK Global Ventures] Could you help me?`)}`
+      }
+    ]
   },
   {
     id: 'phone',
@@ -53,7 +58,7 @@ const Footer = () => {
             </div>
             <div className="flex w-full flex-col justify-between gap-3xl laptop:flex-row">
               <div className="flex w-full gap-l text-greyscale-negative tablet:gap-[60px]">
-                <div className="flex w-2/3 max-w-[360px] flex-col gap-l  laptop:gap-3xl">
+                <div className="flex w-2/3 max-w-[360px] flex-col gap-l laptop:gap-3xl">
                   <span className="footnote-regular tablet:body-regular">
                     Nhà phát triển Thương mại điện tử Quốc tế - Đơn vị trung gian hàng đầu tại Việt Nam cung cấp các
                     giải pháp giúp doanh nghiệp Việt bán hàng xuyên biên giới.
@@ -72,7 +77,7 @@ const Footer = () => {
                 <div className="flex w-1/3 flex-col gap-l laptop:gap-3xl">
                   <span className="footnote-bold tablet:body-bold">Danh mục</span>
                   {navItems.map(({ title, link, subnav }, i) => (
-                    <div className="flex flex-col gap-s laptop:gap-3xl">
+                    <div key={i} className="flex flex-col gap-s laptop:gap-3xl">
                       <FooterNavList key={i} title={title} link={link} subnav={subnav} />
                     </div>
                   ))}
@@ -118,12 +123,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-center bg-greyscale-surface-subtle">
-        <div className="container w-full max-w-[1440px]">
-          <div className="flex gap-[120px] py-2xl">
-            <span className="flex items-center body-regular">© 2023 TTK Global Ventures. All rights reserved.</span>
-          </div>
-        </div>
+      <div className="container flex w-full bg-greyscale-surface-subtle py-2xl">
+        <span className="footnote-regular tablet:caption-regular laptop:body-regular">
+          © 2023 TTK Global Ventures. All rights reserved.
+        </span>
       </div>
     </footer>
   );
@@ -131,14 +134,17 @@ const Footer = () => {
 
 const FooterNavList = ({ title, link, subnav, direction = 'column' }: FooterNavListProps) => {
   return (
-    <Link
-      href={link || ''}
-      className={`flex ${direction == 'column' ? 'flex-col' : 'flex-row'} flex-wrap gap-s text-greyscale-negative no-underline ${link ? '' : 'pointer-events-none cursor-default'}`}
-    >
-      <span className="footnote-bold tablet:body-bold">{title}</span>
+    <div className={`flex ${direction == 'column' ? 'flex-col' : 'flex-row'} gap-s`}>
+      <Link
+        href={link || ''}
+        className={`flex-wrap gap-s text-greyscale-negative no-underline footnote-bold tablet:body-bold ${link ? '' : 'pointer-events-none cursor-default'}`}
+      >
+        {title}
+      </Link>
       {subnav?.map((nav, i) => {
         return (
           <Link
+            key={i}
             href={nav.link || '#'}
             className={`link footnote-regular tablet:body-regular ${nav.link ? 'pointer-events-auto' : 'pointer-events-none cursor-default'}`}
           >
@@ -146,7 +152,7 @@ const FooterNavList = ({ title, link, subnav, direction = 'column' }: FooterNavL
           </Link>
         );
       })}
-    </Link>
+    </div>
   );
 };
 

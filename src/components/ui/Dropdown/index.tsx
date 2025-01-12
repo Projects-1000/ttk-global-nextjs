@@ -37,11 +37,11 @@ const Dropdown: React.FC<PropsWithChildren<DropdownProps>> = ({ children, isOpen
         transition={{ duration: 0.3 }}
         className={`overflow-hidden`}
       >
-        <p
+        <div
           className={`p-xl subtitle-regular laptop:px-3xl laptop:py-0 laptop:body-regular ${isOpenState ? 'laptop:pb-3xl' : 'min-h-0'}`}
         >
           {children}
-        </p>
+        </div>
       </motion.div>
     </div>
   );
