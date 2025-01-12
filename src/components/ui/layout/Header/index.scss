@@ -1,13 +1,22 @@
 .menu-icon {
-  @apply absolute right-0 top-1/2 -translate-x-mobile_container -translate-y-1/2 text-greyscale-border-darker transition-all duration-300 ease-in-out;
+  @apply absolute right-0 top-1/2 -translate-x-mobile_container -translate-y-1/2 text-greyscale-border-darker transition-all duration-300 ease-in-out tablet:-translate-x-tablet_container;
 }
 
 .mobile-menu {
   &--open {
-    @apply transition-all duration-300 ease-in-out;
+    @apply transition-all duration-300 ease-in-out tablet:translate-x-[100%];
   }
 
   &--close {
-    @apply translate-x-full transition-all duration-300 ease-in-out;
+    @apply translate-x-full transition-all duration-300 ease-in-out tablet:translate-x-[200%];
+  }
+
+  &__backdrop {
+    @apply absolute inset-0 bg-black bg-opacity-40 ;
+    &--open {
+    }
+    &--close {
+      @apply translate-x-full;
+    }
   }
 }

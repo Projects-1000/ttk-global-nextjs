@@ -1,8 +1,7 @@
 import { ControlledInputProps } from '@/types/input.type';
-import { AccountCircle } from '@mui/icons-material';
 import { InputAdornment, TextField, Typography } from '@mui/material';
 import './index.scss';
-interface InputLabelProps extends Pick<ControlledInputProps, 'required' | 'disabled' | 'label' | 'error'> {
+interface InputLabelProps extends Pick<ControlledInputProps, 'required' | 'disabled' | 'label' | 'error' > {
   inputId?: string;
 }
 
@@ -20,11 +19,12 @@ const ControlledInput = ({
   onChange,
   value,
   required,
-  icon
+  icon,
+  className
 }: ControlledInputProps) => {
   const inputId = label?.toLowerCase().replace(/ /g, '-');
   return (
-    <div className={`controlled-input w-full flex flex-col gap-s`}>
+    <div className={`controlled-input w-full flex flex-col gap-s ${className}`}>
       {label && <InputLabel required={required} label={label} error={error} inputId={inputId} />}
       <TextField
         id={inputId}
@@ -45,7 +45,7 @@ const ControlledInput = ({
           input: {
             startAdornment: (
               <InputAdornment position="start" className="absolute left-m">
-                {icon ? icon : <AccountCircle />}
+                {icon && icon }
               </InputAdornment>
             )
           }

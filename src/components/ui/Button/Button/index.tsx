@@ -18,6 +18,7 @@ export default function Button({
   classCustom,
   type,
   children,
+  href,
   ...props
 }: ButtonProps) {
   const isDisabled = type !== 'submit' ? false : isDirty && !isSubmitting ? false : true;
@@ -27,6 +28,7 @@ export default function Button({
 
   return (
     <MUIButton
+      href={href ? href : undefined}
       variant={variant}
       disabled={props.disabled || isDisabled}
       className={`btn ${sizeClass} ${colorClass} ${iconClass} ${isSubmitting ? 'animate-pulse' : ''} flex items-center gap-xs normal-case ${classCustom}`}

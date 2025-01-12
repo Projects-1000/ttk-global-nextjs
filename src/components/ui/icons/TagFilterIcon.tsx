@@ -11,20 +11,20 @@ export const TagFilterIcon = ({ className, width, height, fill, ...props }: SVGP
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M4.16699 10.4917L4.16699 3.82503" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
-      <path d="M15.833 17.1582L15.833 15.4915" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
-      <path d="M4.16699 17.1582L4.16699 13.8249" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
-      <path d="M15.833 10.4917L15.833 3.82503" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
-      <path d="M10 6.3252L10 3.8252" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
-      <path d="M10 17.1582L10 10.4915" stroke="#33363F" stroke-width="2" stroke-linecap="round" />
+      <path d="M4.16699 10.4917L4.16699 3.82503" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
+      <path d="M15.833 17.1582L15.833 15.4915" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
+      <path d="M4.16699 17.1582L4.16699 13.8249" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
+      <path d="M15.833 10.4917L15.833 3.82503" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
+      <path d="M10 6.3252L10 3.8252" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
+      <path d="M10 17.1582L10 10.4915" stroke="#33363F" strokeWidth="2" strokeLinecap="round" />
       <ellipse
         cx="4.16667"
         cy="12.1584"
         rx="1.66667"
         ry="1.66667"
         stroke="#33363F"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <ellipse
         cx="9.99967"
@@ -32,8 +32,8 @@ export const TagFilterIcon = ({ className, width, height, fill, ...props }: SVGP
         rx="1.66667"
         ry="1.66667"
         stroke="#33363F"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <ellipse
         cx="15.8337"
@@ -41,8 +41,8 @@ export const TagFilterIcon = ({ className, width, height, fill, ...props }: SVGP
         rx="1.66667"
         ry="1.66667"
         stroke="#33363F"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );

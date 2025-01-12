@@ -8,4 +8,10 @@
       color: #e4a700; /* Replace this with the actual color code for `anzac-400` */
     }
   }
+
+  .controlled-input {
+    input {
+      @apply p-m;
+    }
+  }
 }

@@ -15,26 +15,33 @@ const Dropdown: React.FC<PropsWithChildren<DropdownProps>> = ({ children, isOpen
 
   return (
     <div
-      className={`flex cursor-pointer flex-col overflow-hidden border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-primary-default laptop:py-3xl ${classCustom}`}
+      className={`block flex-col overflow-hidden border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-primary-default ${classCustom}`}
     >
       <div
-        className={`flex w-full items-center justify-between laptop:p-3xl laptop:py-0 ${
+        className={`flex w-full cursor-pointer items-center justify-between laptop:p-3xl ${
           isOpenState ? 'bg-primary-subtle' : ''
-        } p-xl text-left font-bold text-black duration-300 laptop:bg-transparent`}
+        } p-xl text-left font-bold text-black duration-300 laptop:bg-transparent ${isOpenState ? 'laptop:pb-2xl' : 'hover:laptop:bg-primary-subtle'}`}
         onClick={toggleDropdown}
       >
         <span className="subtitle-bold laptop:body-bold">{title}</span>
-        <span>{isOpenState ? <ArrowUp /> : <ArrowDown />}</span>
+        <ArrowDown className={`${isOpenState ? '-rotate-180' : ''} size-5 laptop:size-6 smooth-transition`} />
       </div>
 
       <motion.div
-        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-        animate={{ height: isOpenState ? 'auto' : 0, opacity: isOpenState ? 1 : 0, marginTop: isOpenState ? 24 : 0 }}
-        exit={{ height: 0, opacity: 0, marginTop: 0 }}
+        initial={{ opacity: 0, marginTop: 0, height: 0 }}
+        animate={{
+          height: isOpenState ? 'fit-content' : 0,
+          opacity: isOpenState ? 1 : 0
+        }}
+        exit={{ opacity: 0, marginTop: 0, height: 0 }}
         transition={{ duration: 0.3 }}
         className={`overflow-hidden`}
       >
-        <p className="p-xl subtitle-regular laptop:px-3xl laptop:py-0 laptop:body-regular">{children}</p>
+        <div
+          className={`p-xl subtitle-regular laptop:px-3xl laptop:py-0 laptop:body-regular ${isOpenState ? 'laptop:pb-3xl' : 'min-h-0'}`}
+        >
+          {children}
+        </div>
       </motion.div>
     </div>
   );

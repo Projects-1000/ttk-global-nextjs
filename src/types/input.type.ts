@@ -14,6 +14,7 @@ export interface ControlledInputProps
     | 'defaultValue'
     | 'type'
     | 'required'
+    |'className'
   > {
   error?: string;
   label?: string;
