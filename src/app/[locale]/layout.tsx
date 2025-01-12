@@ -73,7 +73,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <ThemeProvider theme={theme}>
                 <Header />
                 <main className="flex w-full items-center justify-center overflow-hidden pt-desktop_header">
-                  <Transition>{children}</Transition>
+                  {/* <Transition>{children}</Transition> */}
+                  {children}
                 </main>
                 <Footer />
               </ThemeProvider>
