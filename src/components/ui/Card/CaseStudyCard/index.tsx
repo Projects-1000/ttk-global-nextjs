@@ -24,10 +24,10 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description,
           <h2 className="text-primary-label headline-bold tablet:h4-bold laptop:h3-bold">{projectName}</h2>
           <p className="subtitle-regular laptop:body-regular">{description}</p>
 
-          <p className="text-primary-label body-bold laptop:h4-bold">
-            Doanh thu trong năm 2024:
+          <div className="text-primary-label body-bold laptop:h4-bold">
+            <p>Doanh thu trong năm 2024:</p>
             {postRevenue}
-          </p>
+          </div>
         </div>
 
         <div className="flex h-auto w-full flex-1 items-center justify-center laptop:h-[340px] laptop:basis-[50%]">

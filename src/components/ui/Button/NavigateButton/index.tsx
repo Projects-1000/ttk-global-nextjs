@@ -9,7 +9,7 @@ export interface NavigateButtonProps {
 export const NavigateButton: React.FC<NavigateButtonProps> = ({ isMobileShow = false, isBeginning, isEnd }) => {
   return (
     <div
-      className={`swiper-nav-button absolute left-0 right-0 top-1/2 z-50 ${!isMobileShow && 'hidden'} flex w-full -translate-y-1/2 items-center justify-between`}
+      className={`swiper-nav-button absolute left-0 right-0 top-1/2 z-50 ${!isMobileShow && 'mobile:max-laptop:hidden'} flex w-full -translate-y-1/2 items-center justify-between`}
     >
       <button
         disabled={isBeginning}

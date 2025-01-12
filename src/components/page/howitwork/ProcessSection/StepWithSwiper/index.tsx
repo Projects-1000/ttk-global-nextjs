@@ -9,6 +9,8 @@ import { ReactNode, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import './index.scss';
 import DialogImageText from '../DialogImageText';
+import { motion } from 'framer-motion';
+import './index.scss';
 
 const steps = [
   'Đăng ký hợp tác',
@@ -16,6 +18,7 @@ const steps = [
   'Vận hành gian hàng Amazon',
   'Theo dõi và chia sẻ lợi nhuận'
 ];
+
 const stepSlides = [
   {
     description:
@@ -59,13 +62,37 @@ interface StepContentProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any;
 }
+// Animation variants
+const stepVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const slideVariants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+};
 
 const SwiperWithStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div className="container-margin tablet:border-gradient-stroke-1 tablet:border-gradient-stroke-1 rounded-m border-[1px] tablet:bg-white/30 tablet:backdrop-blur-md laptop:pb-4xl">
-      <div className="mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:bg-white/30 mobile:max-tablet:backdrop-blur-md laptop:mb-l laptop:px-xl laptop:py-2xl">
+    <motion.div
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      initial="hidden"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+      }}
+      className="container-margin tablet:border-gradient-stroke-1 tablet:border-gradient-stroke-1 rounded-m border-[1px] tablet:bg-white/30 tablet:backdrop-blur-md laptop:pb-4x"
+    >
+      <motion.div
+        className="mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:bg-white/30 mobile:max-tablet:backdrop-blur-md laptop:mb-l laptop:px-xl laptop:py-2xl"
+        variants={stepVariants}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Stepper activeStep={activeStep} alternativeLabel className={`relative w-full`}>
           {steps.map((label, index) => (
             <Step
@@ -81,9 +108,8 @@ const SwiperWithStepper = () => {
               </StepLabel>
             </Step>
           ))}
-          <div className=""></div>
         </Stepper>
-      </div>
+      </motion.div>
 
       <CustomSwiper
         slidesPerView={1}
@@ -96,11 +122,18 @@ const SwiperWithStepper = () => {
       >
         {stepSlides.map((step, index) => (
           <SwiperSlide virtualIndex={index} key={index}>
-            <StepContent image={step.image} description={step.description} />
+            <motion.div
+              variants={slideVariants}
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              initial="hidden"
+            >
+              <StepContent image={step.image} description={step.description} />
+            </motion.div>
           </SwiperSlide>
         ))}
       </CustomSwiper>
-    </div>
+    </motion.div>
   );
 };
 

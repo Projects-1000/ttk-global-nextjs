@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: LocaleRouteParams) {
   const t = (await getTranslations({ locale })) as TFunction;
   return {
     title: t('HomePage.title'),
-    description: t('HomePage.about')
+    description: t('HomePage.description')
   };
 }
 

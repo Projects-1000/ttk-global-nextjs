@@ -1,4 +1,5 @@
 'use client';
+import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button/Button';
 import BlogPost from '@/components/ui/Card/BlogCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
@@ -22,11 +23,9 @@ interface BlogListContextProps {
   allTagId: TagModelProps['id'];
 }
 
-// Combine SSR + CSR (Hybrid)
-
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
+
 const BlogList = () => {
-  //TODO: Custom hook for pagination
   const [page, setPage] = useState(1);
   const [pageSize] = useState(3);
   const allTagId = 'tags-all';
@@ -38,42 +37,27 @@ const BlogList = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const debounceSearch = useDebounce(searchQuery);
 
-  console.log(searchParams.get('page'), 'searchParams');
-  const fetchBlogList = async () => {
-    //using fetch API from next
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(blogList);
-      }, 3000);
-    });
-  };
   useEffect(() => {
-    //fetch data
     const fetchData = async () => {
-      const res = await fetchBlogList();
+      const res = await new Promise((resolve) => setTimeout(() => resolve(blogList), 3000));
+      setBlogData(res as BlogModelProps[]);
     };
     fetchData();
     handleParamChange();
   }, [page]);
 
   useEffect(() => {
-    //fetch data + reset page
-    // console.log(searchQuery, 'searchQuery');
     setPage(1);
     handleParamChange();
   }, [debounceSearch]);
 
   useEffect(() => {
-    if (window.screen.width < 768) {
-      //waiting for confirmation
-    } else {
-      //fetch data
-    }
     handleParamChange();
   }, [selectedTags]);
 
   const totalPages = Math.ceil(blogList.length / pageSize);
   const currentBlogs = blogList.slice((page - 1) * pageSize, page * pageSize);
+
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
@@ -90,22 +74,35 @@ const BlogList = () => {
     setSearchQuery(event.target.value);
   };
 
-  if (!blogList?.length) return null; //TODO: Add skeleton loader + Not found component
+  if (!blogList?.length) return null;
+
   return (
     <BlogListContext.Provider value={{ selectedTags, setSelectedTags, allTagId }}>
       <SectionCard title={SectionTitle}>
         <div className="container flex flex-col items-start gap-4xl laptop:flex-row">
-          <div className="h-100px hidden w-full basis-[20%] laptop:block">
+          <motion.div
+            className="h-100px hidden w-full basis-[20%] laptop:block"
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
             <TagFilter />
-          </div>
-          <div className="flex w-full justify-between gap-2xl laptop:hidden">
+          </motion.div>
+          <div className="flex w-full justify-start gap-2xl laptop:hidden">
             <div className="w-full">
               <ControlledInput required icon={<Search />} placeholder="Search" />
             </div>
             <TagFilterMobile />
           </div>
           <div className="flex basis-[80%] flex-col gap-4xl">
-            <div className="hidden w-full items-center justify-between gap-2xl laptop:flex">
+            <motion.div
+              className="hidden w-full items-center justify-between gap-2xl laptop:flex"
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: -20 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="basis-[40%]">
                 <ControlledInput
                   required
@@ -117,26 +114,46 @@ const BlogList = () => {
                 />
               </div>
               <SortSelector />
-            </div>
-            <div className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3">
-              {currentBlogs.map((blog) => {
-                return (
-                  <div key={blog.id} className="col-span-1">
-                    <BlogPost
-                      title={blog.title}
-                      description={blog.description}
-                      publishDate={blog.publishDate}
-                      coverImage={blog.coverImage}
-                      tags={blog.tags}
-                      slug={blog.slug}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            <div className="self-center">
+            </motion.div>
+            <motion.div
+              className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+              }}
+            >
+              {currentBlogs.map((blog) => (
+                <motion.div
+                  key={blog.id}
+                  className="col-span-1"
+                  initial={{ opacity: 0, y: 20, scale: 0.5 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <BlogPost
+                    title={blog.title}
+                    description={blog.description}
+                    publishDate={blog.publishDate}
+                    coverImage={blog.coverImage}
+                    tags={blog.tags}
+                    slug={blog.slug}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div
+              className="self-center"
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
               <CustomPagination page={page} count={totalPages} onChange={handlePageChange} />
-            </div>
+            </motion.div>
           </div>
         </div>
       </SectionCard>

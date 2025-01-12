@@ -26,7 +26,7 @@ export const MobileMenu = ({ isOpen, handleOpenMenu }: MobileMenuProps) => {
   return (
     <>
       <menu
-        className={`absolute inset-0 z-50 flex h-[calc(100dvh-var(--mobile-header-height))] w-full translate-y-mobile_header flex-col items-center justify-between overflow-x-hidden bg-white p-mobile_container tablet:w-1/2 ${isOpen ? 'mobile-menu--open' : 'mobile-menu--close'}`}
+        className={`absolute laptop:hidden inset-0 z-50 flex h-[calc(100dvh-var(--mobile-header-height))] w-full translate-y-mobile_header flex-col items-center justify-between overflow-x-hidden bg-white p-mobile_container tablet:w-1/2 ${isOpen ? 'mobile-menu--open' : 'mobile-menu--close'}`}
       >
         <div className="flex h-fit flex-col items-center gap-xs">
           {navItems.map(({ title, link, subnav }, i) => (
@@ -48,7 +48,7 @@ export const MobileMenu = ({ isOpen, handleOpenMenu }: MobileMenuProps) => {
       </menu>
       <div
         onClick={handleOpenMenu ? handleOpenMenu : undefined}
-        className={`mobile-menu__backdrop z-[-1] h-[calc(100dvh-var(--mobile-header-height))] translate-y-mobile_header ${isOpen ? 'mobile-menu__backdrop--open' : 'mobile-menu__backdrop--close'}`}
+        className={`laptop:hidden mobile-menu__backdrop z-[-1] h-[calc(100dvh-var(--mobile-header-height))] translate-y-mobile_header ${isOpen ? 'mobile-menu__backdrop--open' : 'mobile-menu__backdrop--close'}`}
       ></div>
     </>
   );
