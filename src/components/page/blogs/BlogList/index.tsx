@@ -98,7 +98,7 @@ const BlogList = () => {
           <div className="h-100px hidden w-full basis-[20%] laptop:block">
             <TagFilter />
           </div>
-          <div className="flex w-full justify-start gap-2xl laptop:hidden">
+          <div className="flex w-full justify-between gap-2xl laptop:hidden">
             <div className="w-full">
               <ControlledInput required icon={<Search />} placeholder="Search" />
             </div>
@@ -152,7 +152,13 @@ const TagFilterMobile = () => {
   };
   return (
     <div className="laptop:hidden">
-      <Button onClick={toggleDrawer(true)} iconPosition="only" color="secondary" icon={<TagFilterIcon />}></Button>
+      <Button
+        onClick={toggleDrawer(true)}
+        iconPosition="only"
+        color="secondary"
+        icon={<TagFilterIcon />}
+        classCustom="mobile:max-laptop:!px-s mobile:max-laptop:!py-xs btn__small--icon tablet:btn__medium--icon laptop:btn__large--icon"
+      ></Button>
       <SwipeableDrawer
         anchor="left"
         open={open}
@@ -166,15 +172,27 @@ const TagFilterMobile = () => {
         }}
       >
         <div className="flex h-full w-full flex-col items-start justify-between p-2xl">
-          <div className="flex w-full flex-col items-start gap-2xl">
+          <div className="flex w-full flex-col items-end gap-2xl">
             <CloseIcon onClick={toggleDrawer(false)} />
             <TagFilter />
+            <div className="flex w-full flex-col items-start gap-2xl laptop:gap-3xl">
+              <p className="text-primary-default body-bold laptop:block laptop:text-black">Filter</p>
+              <SortSelector className="w-full" />
+            </div>
           </div>
           <div className="flex w-full justify-between gap-m">
-            <Button color="secondary" variant="contained" classCustom="w-full">
+            <Button
+              color="secondary"
+              variant="contained"
+              classCustom="w-full btn__small tablet:btn__medium"
+            >
               Xóa bộ lọc
             </Button>
-            <Button color="primary" variant="contained" classCustom="w-full">
+            <Button
+              color="primary"
+              variant="contained"
+              classCustom="w-full btn__small tablet:btn__medium"
+            >
               Áp dụng
             </Button>
           </div>

@@ -1,8 +1,9 @@
-import Selector from '@/components/ui/Selector';
+import Selector, { SelectorProps } from '@/components/ui/Selector';
 import { MenuItem, styled } from '@mui/material';
 import '@/components/ui/layout/LocalSwitcher/index.scss';
 
-const SortSelector = () => {
+interface SortSelectorProps extends Pick<SelectorProps, 'className'> {}
+const SortSelector = ({ className }: SortSelectorProps) => {
   const options = [
     {
       value: 'new',
@@ -23,7 +24,7 @@ const SortSelector = () => {
         defaultOption={options[0]}
         options={options}
         onSelectChange={() => {}}
-        className="w-36"
+        className={`w-36 ${className}`}
       >
         <MenuItem
           key="1"

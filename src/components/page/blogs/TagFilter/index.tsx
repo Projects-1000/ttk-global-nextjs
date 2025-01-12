@@ -17,9 +17,9 @@ const TagFilter = ({}: TagFilterProps) => {
   const totalBlogs = tags.reduce((sum, tag) => sum + tag.blogAmount, 0);
 
   return (
-    <div className="flex w-full flex-col items-start gap-3xl">
-      <p className="hidden body-bold laptop:block">Tag</p>
-      <div className="flex w-full min-w-full flex-col items-start gap-2xl laptop:gap-s">
+    <div className="flex w-full flex-col items-start gap-2xl laptop:gap-3xl">
+      <p className="text-primary-default body-bold laptop:block laptop:text-black">Tag</p>
+      <div className="flex w-full min-w-full flex-col items-start gap-l laptop:gap-s">
         <div className="hidden w-full laptop:block">
           <TagFilterItem key={allTagId} blogAmount={totalBlogs} name="All" id={allTagId} />
         </div>

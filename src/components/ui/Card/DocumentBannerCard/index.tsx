@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Button from '../../Button/Button';
 import DocumnentBannerImage from '@/assets/document-banner-img.png';
 import '@/styles/scss/_helper.scss';
+import paths from '@/utils/paths';
 
 const DocumentBannerCard = () => {
   return (
@@ -16,7 +17,12 @@ const DocumentBannerCard = () => {
               Khám phá cơ hội kinh doanh toàn cầu với Amazon - nền tảng thương mại điện tử hàng đầu thế giới. Tìm hiểu
               cách xây dựng thương hiệu, tối ưu sản phẩm và tiếp cận hàng triệu khách hàng tiềm năng.
             </p>
-            <Button color="primary" variant="contained" classCustom="tablet:btn__medium btn__small w-full tablet:w-fit">
+            <Button
+              color="primary"
+              variant="contained"
+              href={paths.DOCUMENT}
+              classCustom="tablet:btn__medium btn__small w-full tablet:w-fit"
+            >
               Truy cập tài liệu miễn phí
             </Button>
           </div>
