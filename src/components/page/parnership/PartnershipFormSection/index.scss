@@ -1,0 +1,23 @@
+.parnership-container {
+  position: relative;
+}
+.line {
+  @apply hidden laptop:block;
+  content: '';
+  width: 0;
+  height: 105%;
+  position: absolute;
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5) 0%,
+    #5d69d5 40%,
+    #5d69d5 60%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  border-image-slice: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

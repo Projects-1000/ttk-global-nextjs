@@ -6,6 +6,6 @@ export const breadcrumbsConfig: Record<string, string> = {
   [paths.CONTACT]: 'Liên hệ',
   [paths.DEMO]: 'Demo',
   [paths.HOW_IT_WORK]: 'Cách hoạt động',
-  [paths.PARTNERSHIP]: 'Đối tác kinh doanh',
+  [paths.PARTNERSHIP]: 'Cộng tác liên kết',
   [paths.DOCUMENT]: 'Tài Nguyên'
 };

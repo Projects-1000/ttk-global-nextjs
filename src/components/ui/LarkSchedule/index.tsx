@@ -6,8 +6,8 @@ const LarkSchedule = () => {
 <script type="text/javascript" src="https://ttkenable.larksuite.com/scheduler/embed/scheduler-widget.js" async></script>`;
 
   return (
-    <div className="border-gradient-stroke-1 w-full rounded-m bg-blue-50/20 p-xl backdrop-blur-md">
-      <div dangerouslySetInnerHTML={{ __html: larkSchedule }}></div>
+    <div className="border-gradient-stroke-1-mobile-padding w-full rounded-m bg-blue-50/20 p-2xs backdrop-blur-md laptop:p-xl">
+      <div className="min-w-full" dangerouslySetInnerHTML={{ __html: larkSchedule }}></div>
       {/* <iframe
         src="https://ttkenable.larksuite.com/scheduler/embed/24d2aff55ef7aadf"
         className="lark-container h-[626px] w-full bg-blue-10"

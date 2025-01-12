@@ -7,11 +7,13 @@ import TargetPartner from '@/components/page/parnership/TargetPartner';
 import Image from 'next/image';
 import React from 'react';
 import BgBlurCircle from '@/assets/bg-blue-circle.png';
+import ToolSection from '@/components/page/parnership/ToolSection';
 const PartnerShip = () => {
   return (
     <div className="relative flex w-full flex-col items-center justify-center">
-      <PageHeader title="Đối tác kinh doanh" />
+      <PageHeader title="Cộng tác liên kết" />
       <PartnershipFormSection />
+      {/* <ToolSection /> */}
       <TargetPartner />
       <PartnershipBenefit />
       <DocumentSection />

@@ -9,7 +9,7 @@ const BlogDetailsHeader = () => {
   return (
     <SectionCard>
       <div className="container flex w-full flex-col items-center justify-start">
-        <Breadcrumbs />
+        <Breadcrumbs customEndPoint={title} customColor="text-black" />
         <div className="flex w-full flex-col items-center justify-start gap-2xl text-center laptop:gap-3xl">
           <h1 className="text-primary-default headline-bold tablet:body-bold laptop:h1-bold">{title}</h1>
           <div className={`flex flex-wrap gap-s`}>

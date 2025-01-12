@@ -23,4 +23,12 @@
       @include border-gradient(20px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
     }
   }
+  .border-gradient-stroke-1-mobile-padding {
+    @include border-gradient(40px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+
+    // Responsive adjustment for mobile screens
+    @include respond(mobile) {
+      @include border-gradient(4px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    }
+  }
 }

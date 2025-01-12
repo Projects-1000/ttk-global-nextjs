@@ -6,12 +6,10 @@ import { containerVariants } from '../../home/About/AboutAnimationVariants';
 
 const progressBarVariants = {
   hidden: {
-    width: '0%',
-    opacity: 0
+    width: '0%'
   },
   visible: {
     width: '100%',
-    opacity: 1,
     transition: {
       duration: 1.5,
       ease: 'easeInOut'
