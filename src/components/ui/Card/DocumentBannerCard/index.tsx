@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Button from '../../Button/Button';
 import DocumnentBannerImage from '@/assets/document-banner-img.png';
 import '@/styles/scss/_helper.scss';
+import paths from '@/utils/paths';
 
 const DocumentBannerCard = () => {
   // Animation variants
@@ -66,6 +67,7 @@ const DocumentBannerCard = () => {
             <motion.div variants={textVariants}>
               <Button
                 color="primary"
+                href={paths.DOCUMENT}
                 variant="contained"
                 classCustom="tablet:btn__medium btn__small w-full tablet:w-fit"
               >

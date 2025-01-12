@@ -1,5 +1,6 @@
 import { NavBarItemProps } from '@/components/ui/layout/NavBar';
-import { HTMLAttributes, HTMLProps, MouseEventHandler, ReactNode } from 'react';
+import { ButtonProps as MuiButtonProps } from '@mui/material';
+import { HTMLProps, MouseEventHandler, ReactNode } from 'react';
 
 export enum ButtonSizeEnum {
   small = 'small',
@@ -7,7 +8,7 @@ export enum ButtonSizeEnum {
   large = 'large'
 }
 export interface ButtonProps
-  extends Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'type' | 'onClick' | 'variant' | 'color' | 'size'> {
+  extends Omit<MuiButtonProps, 'className' | 'type' | 'onClick' | 'variant' | 'color' | 'size'> {
   text?: string;
   variant?: 'text' | 'outlined' | 'contained';
   isDirty?: boolean;
@@ -20,11 +21,20 @@ export interface ButtonProps
   isSubmitting?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   classCustom?: HTMLProps<HTMLElement>['className'];
-  disabled?:boolean
+  disabled?: boolean;
   children?: ReactNode;
 }
 
 export interface NavButtonProps extends NavBarItemProps {
   isLeafButton: boolean;
   isMobile: boolean;
+}
+
+export interface DialogButtonProps extends Pick<MuiButtonProps, 'className'> {
+  dialogButton?: ReactNode | string;
+  title?: string;
+  variant?: 'text' | 'contained' | 'outlined';
+  description?: string;
+  children: ReactNode | null;
+  isOpen?: boolean;
 }

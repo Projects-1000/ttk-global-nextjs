@@ -8,11 +8,16 @@ const HeroTitle = () => (
     whileInView="visible"
     viewport={{ once: true, amount: 0.8 }}
     variants={titleVariants}
-    className="uppercase h3-bold laptop:h1-bold"
+    className="flex justify-start gap-x-m"
   >
-    Hợp tác kinh doanh
-    <span className="hidden text-primary-label h3-light tablet:inline"> (cùng TTK Global Ventures)</span>
-    <span className="text-secondary-label"> TMĐT quốc tế </span>
+     <p className="uppercase h4-bold tablet:h3-bold laptop:h1-bold desktop:basis-1/2">
+      Hợp tác kinh doanh
+      <br />
+      <span className="text-secondary-label"> TMĐT quốc tế </span>
+    </p>
+    <span className="mt-3 hidden text-primary-label tablet:inline laptop:h4-light desktop:h3-light">
+      (cùng TTK Global Ventures)
+    </span>
   </motion.div>
 );
 const titleVariants: Variants = {

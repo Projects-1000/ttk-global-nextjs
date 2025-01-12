@@ -23,19 +23,27 @@ const faqItems = [
   }
 ];
 const FAQ = () => {
+  const midIndex = Math.ceil(faqItems.length / 2);
+  const groupedFaqItems = [faqItems.slice(0, midIndex), faqItems.slice(midIndex)];
   const description =
     'Giải đáp những câu hỏi thường gặp về công ty, cũng như về quy trình hợp tác. Tìm hiểu ngay để bắt đầu hành trình kinh doanh hiệu quả.';
   return (
-    <SectionCard customClass="container relative " title={<FAQTitle />} description={description}>
+    <SectionCard customClass="relative " title={<FAQTitle />} description={description}>
       <div className="scale-30 absolute right-0 top-0 -z-10 flex w-full translate-x-[50%] translate-y-[-50%] rotate-180 opacity-30 mobile:max-tablet:hidden">
         <Image src={yellowVector} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
       </div>
-      <div className="grid grid-cols-1 gap-x-3xl tablet:grid-cols-2">
-        {faqItems.map((item) => (
-          <Dropdown classCustom="max-w-[560px] h-fit " key={item.title} title={item.title}>
-            {item.content}
-          </Dropdown>
-        ))}
+      <div className="container flex flex-col items-start gap-x-3xl laptop:flex-row">
+        {groupedFaqItems.map((group, index) => {
+          return (
+            <div className="flex w-full basis-1/2 flex-col gap-x-3xl" key={index}>
+              {group.map((item) => (
+                <Dropdown classCustom="w-full" key={item.title} title={item.title}>
+                  {item.content}
+                </Dropdown>
+              ))}
+            </div>
+          );
+        })}
       </div>
     </SectionCard>
   );

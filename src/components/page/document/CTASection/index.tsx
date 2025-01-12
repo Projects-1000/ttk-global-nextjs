@@ -6,10 +6,10 @@ import SectionCard from '@/components/ui/Card/SectionCard';
 
 const CTASection = () => {
   const description = (
-    <p className="text-center">
+    <span className="text-center">
       Chúng tôi luôn tìm kiếm đối tác chia sẻ tầm nhìn phát triển bền vững. Với kinh nghiệm và nguồn lực sẵn có, chúng
       tôi cam kết mang lại giá trị cho mọi dự án hợp tác.
-    </p>
+    </span>
   );
   return (
     <SectionCard title={<CTASectionTitle />} description={description}>
