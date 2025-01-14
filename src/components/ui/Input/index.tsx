@@ -1,7 +1,7 @@
 import { ControlledInputProps } from '@/types/input.type';
 import { InputAdornment, TextField, Typography } from '@mui/material';
 import './index.scss';
-interface InputLabelProps extends Pick<ControlledInputProps, 'required' | 'disabled' | 'label' | 'error' > {
+interface InputLabelProps extends Pick<ControlledInputProps, 'required' | 'disabled' | 'label' | 'error'> {
   inputId?: string;
 }
 
@@ -20,11 +20,13 @@ const ControlledInput = ({
   value,
   required,
   icon,
-  className
+  className,
+  inputColor
 }: ControlledInputProps) => {
   const inputId = label?.toLowerCase().replace(/ /g, '-');
+  console.log(inputColor);
   return (
-    <div className={`controlled-input w-full flex flex-col gap-s ${className}`}>
+    <div className={`controlled-input flex w-full flex-col gap-s ${className}`}>
       {label && <InputLabel required={required} label={label} error={error} inputId={inputId} />}
       <TextField
         id={inputId}
@@ -45,12 +47,12 @@ const ControlledInput = ({
           input: {
             startAdornment: (
               <InputAdornment position="start" className="absolute left-m">
-                {icon && icon }
+                {icon && icon}
               </InputAdornment>
             )
           }
         }}
-        className={`input relative ${icon ? 'controlled-input--icon' : ''} ${error ? 'controlled-input--error' : ''}`}
+        className={`input relative ${icon ? 'controlled-input--icon' : ''} ${error ? 'controlled-input--error' : ''} ${inputColor ? inputColor : 'bg-primary-subtle'}`}
       />
     </div>
   );

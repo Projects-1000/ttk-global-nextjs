@@ -1,7 +1,7 @@
 import SectionCard from '@/components/ui/Card/SectionCard';
 import React from 'react';
 import './index.scss';
-import { Users } from 'lucide-react';
+import { Banknote, File, Search, Settings, Users } from 'lucide-react';
 import PartnershipFormCard from './components/PartnershipFormCard';
 
 const cardData = [
@@ -18,10 +18,10 @@ const cardData = [
         </ul>
         <li>Ký kết hợp đồng</li>
       </ul>
-    ),
+    )
   },
   {
-    icon: <Users className="h-full w-full" />,
+    icon: <File className="h-full w-full" />,
     title: 'Cung cấp thông tin',
     subtitle: (
       <ul>
@@ -30,10 +30,10 @@ const cardData = [
           tác B2B có thể sử dụng trong quá trình tìm kiếm Lead.
         </li>
       </ul>
-    ),
+    )
   },
   {
-    icon: <Users className="h-full w-full" />,
+    icon: <Search className="h-full w-full" />,
     title: 'Tìm kiếm và cung cấp Lead',
     subtitle: (
       <ul>
@@ -43,22 +43,32 @@ const cardData = [
         </li>
         <li> Gửi thông tin Lead: Đối tác B2B gửi thông tin Lead cho TTK theo định kỳ hoặc khi có Lead mới.</li>
       </ul>
-    ),
+    )
   },
   {
-    icon: <Users className="h-full w-full" />,
+    icon: <Settings className="h-full w-full" />,
     title: 'Xử lý Lead & triển khai dự án',
     subtitle: (
       <ul>
+        <li>Xử lý Lead: TTK tiếp nhận thông tin từ Đối tác B2B, tiến hành liên hệ và tư vấn cho các doanh nghiệp.</li>
         <li>
-        Xử lý Lead: TTK tiếp nhận thông tin từ Đối tác B2B, tiến hành liên hệ và tư vấn cho các doanh nghiệp. 
-
+          Triển khai dự án: TTK thực hiện các công đoạn thuộc dự án Hợp tác kinh doanh gian hàng TMĐT Quốc tế cho Nhà
+          đầu tư / Doanh nghiệp và theo dõi quá trình thực hiện.
         </li>
-        <li>Triển khai
-        dự án: TTK thực hiện các công đoạn thuộc dự án Hợp tác kinh doanh gian hàng TMĐT Quốc tế cho Nhà đầu tư / Doanh
-        nghiệp và theo dõi quá trình thực hiện.</li>
       </ul>
-    ),
+    )
+  },
+  {
+    icon: <Banknote className="h-full w-full" />,
+    title: 'Thanh toán hoa hồng',
+    subtitle: (
+      <ul>
+        <li>
+          Tính toán hoa hồng: TTK tính toán hoa hồng dựa theo chính sách đã thống nhất trong hợp đồng với Đối tác B2B.
+        </li>
+        <li>Thanh toán: TTK thực hiện thanh toán hoa hồng cho Đối tác B2B theo thỏa thuận trong hợp đồng.</li>
+      </ul>
+    )
   }
 ];
 const PartnershipFormSection = () => {
