@@ -3,13 +3,13 @@ import graphic from '@/assets/howitwork/hero/Graphic.png';
 import mobileGraphic from '@/assets/howitwork/hero/mobile-graphic.png';
 import combineVector from '@/assets/yellow-blue-vector.png';
 import Button from '@/components/ui/Button/Button';
-import { CirclePlay } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Play } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { buttonVariants, containerVariants, videoVariants } from './animation';
 import HeroList from './components/HeroList';
 import HeroTitle from './components/HeroTitle';
-import { AnimatePresence, motion } from 'framer-motion';
-import { buttonVariants, containerVariants, videoVariants } from './animation';
 
 const HowItWorkHero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -83,13 +83,20 @@ const HowItWorkHero = () => {
           className="relative h-auto w-full laptop:max-w-[50%] laptop:px-3xl"
         >
           {!isPlaying && (
-            <div>
-              <CirclePlay
-                className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white/20 text-white shadow-md backdrop-blur-md"
-                size={40}
-                onClick={handlePlayPause}
-              />
-            </div>
+            // <div>
+            //   <CirclePlay
+            //     className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white/20 text-white shadow-md backdrop-blur-md"
+            //     size={40}
+            //     onClick={handlePlayPause}
+            //   />
+            // </div>
+            <Button
+              onClick={handlePlayPause}
+              iconPosition="only"
+              color="primary"
+              classCustom="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-full p-1 "
+              icon={<Play />}
+            />
           )}
           <div className="relative">
             <AnimatePresence>

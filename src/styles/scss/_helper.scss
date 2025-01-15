@@ -16,11 +16,33 @@
 
   //$distance: 3px, $padding-thickness: 5px, $border-radius: 20px, $angle: 90deg, $color...
   .border-gradient-stroke-1 {
-    @include border-gradient(40px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    @include respond(laptop) {
+      @include border-gradient(40px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    }
 
     // Responsive adjustment for mobile screens
     @include respond(mobile) {
       @include border-gradient(20px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    }
+  }
+  .border-gradient-stroke-1-mobile-padding {
+    @include border-gradient(40px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+
+    // Responsive adjustment for mobile screens
+    @include respond(mobile) {
+      @include border-gradient(4px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    }
+  }
+
+  .border-gradient-stroke-1-p-3xl {
+    @include border-gradient(32px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+  }
+  .border-gradient-stroke-1-p-4xl-xl {
+    @include respond(mobile) {
+      @include border-gradient(20px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
+    }
+    @include respond(laptop) {
+      @include border-gradient(40px, 1px, 12px, 90deg, #3c4bcc, #ebecfa);
     }
   }
 }

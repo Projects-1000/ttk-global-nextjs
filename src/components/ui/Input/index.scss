@@ -31,7 +31,7 @@
     -webkit-animation-duration: 10ms;
     animation-duration: 10ms;
     padding: 16.5px 14px;
-    @apply rounded-2xs bg-primary-subtle p-s subtitle-regular laptop:p-m laptop:body-regular;
+    @apply rounded-2xs p-s subtitle-regular laptop:p-m laptop:body-regular;
   }
 
   input:focus,
@@ -72,5 +72,8 @@
       left: 12px;
       transform: translateY(-50%);
     }
+  }
+  .MuiInputBase-root {
+    padding-left: 0 !important;
   }
 }

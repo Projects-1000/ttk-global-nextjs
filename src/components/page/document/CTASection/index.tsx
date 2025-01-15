@@ -1,6 +1,5 @@
 'use client';
 import GridBackground from '@/assets/GridBackground';
-import { TtkFrame } from '@/assets/TtkFrame';
 import Button from '@/components/ui/Button/Button';
 import SectionCard from '@/components/ui/Card/SectionCard';
 

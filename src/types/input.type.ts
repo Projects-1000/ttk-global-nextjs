@@ -14,8 +14,9 @@ export interface ControlledInputProps
     | 'defaultValue'
     | 'type'
     | 'required'
-    |'className'
+    | 'className'
   > {
+  inputColor?: string;
   error?: string;
   label?: string;
   icon?: React.ReactNode;
