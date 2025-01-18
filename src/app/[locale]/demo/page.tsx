@@ -1,8 +1,10 @@
 'use client';
 
 import SubmitButton from '@/components/ui/Button/Button';
+import SplitText from '@/components/ui/Typography/SplitText';
+import TextHeading from '@/components/ui/Typography/TextHeading';
 import CallMadeIcon from '@mui/icons-material/CallMade';
-
+import '@/styles/scss/_helper.scss';
 interface TypoGroupProps {
   title: string;
 }
@@ -183,7 +185,7 @@ const DemoPage = () => {
           <div className="flex flex-col gap-12">
             <div className="flex gap-[88px]">
               <div className="flex gap-[88px] capitalize">
-                <p className={`h1-bold`}>H1 Bold</p>
+                <p className={`heading h1-bold`}>H1 Bold</p>
                 <p className={`h1-semibold`}>H1 SemiBold</p>
                 <p className={`h1-regular`}>H1 Regular</p>
                 <p className={`-ml-[45px] h1-light`}>H1 Light</p>
@@ -422,6 +424,57 @@ const DemoPage = () => {
                 <div className="rounded-md size-16 bg-error-darker">darker</div>
                 <div className="rounded-md size-16 bg-error-label">label</div>
               </div>
+            </div>
+
+            {/* Text Heading */}
+            <div className="max-w-4xl space-y-8">
+              <TextHeading>Default Heading</TextHeading>
+
+              <TextHeading backgroundColor="from-red-100" borderColor="border-red-400" className="text-red-900">
+                Red Theme
+              </TextHeading>
+
+              <TextHeading
+                backgroundColor="from-emerald-100"
+                borderColor="border-emerald-400"
+                className="text-emerald-900"
+              >
+                Green Theme
+              </TextHeading>
+
+              <TextHeading
+                backgroundColor="from-violet-100"
+                borderColor="border-violet-400"
+                className="text-violet-900"
+              >
+                Purple Theme
+              </TextHeading>
+
+              <TextHeading backgroundColor="from-amber-100" borderColor="border-amber-400" className="text-amber-900">
+                Amber Theme
+              </TextHeading>
+
+              <TextHeading
+                backgroundColor="from-yellow-400"
+                borderColor="border-indigo-600"
+                className="text-2xl font-black text-indigo-900"
+              >
+                <h1 className="h3-bold laptop:h1-bold">H1 Text Heading</h1>
+              </TextHeading>
+
+              <TextHeading
+                backgroundColor="from-yellow-400"
+                borderColor="border-indigo-600"
+                className="text-2xl font-black text-indigo-900"
+              >
+                <SplitText
+                  text="Each letter animates individually"
+                  className="h3-bold laptop:h1-bold"
+                  delay={50}
+                ></SplitText>
+              </TextHeading>
+              <SplitText text="Each letter animates individually" className="h3-bold laptop:h1-bold" delay={50} />
+              <h2 className="heading headline-bold laptop:h3-bold">Ý tưởng kinh doanh tốt là như thế nào?</h2>
             </div>
           </div>
         </div>
