@@ -1,12 +1,14 @@
 // import './index.scss';
 import '@/styles/scss/_helper.scss';
-
-const LarkSchedule = () => {
+import Image from 'next/image';
+import larkLogo from '@/assets/howitwork/larkschedule/lark-logo.png';
+const LarkSchedule: React.FC<{ isHeading?: boolean }> = ({ isHeading = false }) => {
   const larkSchedule = `<div class="scheduler-inline-widget" data-url="https://ttkenable.larksuite.com/scheduler/embed/24d2aff55ef7aadf" style="width:100%;height:626px;"></div>
 <script type="text/javascript" src="https://ttkenable.larksuite.com/scheduler/embed/scheduler-widget.js" async></script>`;
 
   return (
-    <div className="border-gradient-stroke-1-mobile-padding w-full rounded-m bg-blue-50/20 p-2xs backdrop-blur-md laptop:p-xl">
+    <div className="w-full">
+      {isHeading && <LarkScheduleHeading />}
       <div className="min-w-full" dangerouslySetInnerHTML={{ __html: larkSchedule }}></div>
       {/* <iframe
         src="https://ttkenable.larksuite.com/scheduler/embed/24d2aff55ef7aadf"
@@ -20,5 +22,18 @@ const LarkSchedule = () => {
     </div>
   );
 };
-
+const LarkScheduleHeading = () => {
+  return (
+    <div className="py-xl laptop:p-4xl">
+      <Image
+        alt="lark-schedule-logo"
+        src={larkLogo}
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="h-[24px] w-[91px] object-contain object-center laptop:h-4xl laptop:w-[152px]"
+      />
+    </div>
+  );
+};
 export default LarkSchedule;

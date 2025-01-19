@@ -4,6 +4,7 @@ import { LogoCard } from '@/components/ui/Card/LogoCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import LoadMoreIcon from '@/components/ui/icons/LoadMoreIcon';
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const partners = [
   {
@@ -98,6 +99,62 @@ const partners = [
   }
 ];
 
+const itemVariant = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+    height: 0
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    height: 'auto',
+    transition: {
+      height: {
+        duration: 0.3,
+        ease: 'easeOut'
+      },
+      opacity: {
+        duration: 0.2,
+        ease: 'easeOut'
+      }
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    height: 0,
+    transition: {
+      height: {
+        duration: 0.3,
+        ease: 'easeIn'
+      },
+      opacity: {
+        duration: 0.2,
+        ease: 'easeIn'
+      }
+    }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  },
+  exit: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1
+    }
+  }
+};
+
 const Partner = () => {
   const defaultVisibleMobile = 6;
   const defaultVisibleDesktop = 12;
@@ -123,7 +180,14 @@ const Partner = () => {
     };
   }, []);
 
-  const rows = splitIconsIntoChunks(partners.slice(0, visibleItems), chunkSize);
+  const alwaysVisiblePartners = partners.slice(
+    0,
+    window.innerWidth <= 768 ? defaultVisibleMobile : defaultVisibleDesktop
+  );
+  const toggleablePartners = partners.slice(window.innerWidth <= 768 ? defaultVisibleMobile : defaultVisibleDesktop);
+
+  const rows = splitIconsIntoChunks(alwaysVisiblePartners, chunkSize);
+  const toggleableRows = splitIconsIntoChunks(toggleablePartners, chunkSize);
 
   const toggleReadMore = () => {
     setIsExpanded((prev) => !prev);
@@ -153,28 +217,55 @@ const Partner = () => {
       description="Cùng lắng nghe trải nghiệp và phản hồi từ khách hàng gửi đến TTK Global Ventures."
       customClass="relative"
     >
-      <div className="container flex w-full flex-col items-center gap-l tablet:gap-xl laptop:flex laptop:gap-4xl desktop:gap-4xl">
-        {rows.map((row, i) => {
-          return (
-            <div
-              className="z-10 flex w-full flex-row items-center justify-between gap-l tablet:justify-center tablet:gap-xl laptop:gap-4xl desktop:gap-4xl"
-              key={i}
-            >
-              {row.map(({ href, id, name, src }) => {
-                return <LogoCard key={id} name={name} src={src} href={href} />;
-              })}
-            </div>
-          );
-        })}
-      </div>
+      <motion.div
+        className="container flex w-full flex-col items-center gap-l tablet:gap-xl laptop:flex laptop:gap-4xl desktop:gap-4xl"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="show"
+      >
+        {/* Always visible rows */}
+        {rows.map((row, i) => (
+          <motion.div
+            className="z-10 flex w-full flex-row items-center justify-between gap-l tablet:justify-center tablet:gap-xl laptop:gap-4xl desktop:gap-4xl"
+            key={i}
+            variants={itemVariant}
+          >
+            {row.map(({ href, id, name, src }) => (
+              <LogoCard key={id} name={name} src={src} href={href} />
+            ))}
+          </motion.div>
+        ))}
+
+        <AnimatePresence>
+          {isExpanded &&
+            toggleableRows.map((row, i) => (
+              <motion.div
+                className="z-10 flex w-full flex-row items-center justify-between gap-l overflow-hidden tablet:justify-center tablet:gap-xl laptop:gap-4xl desktop:gap-4xl"
+                key={`toggle-${i}`}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                variants={itemVariant}
+              >
+                {row.map(({ href, id, name, src }) => (
+                  <LogoCard key={id} name={name} src={src} href={href} />
+                ))}
+              </motion.div>
+            ))}
+        </AnimatePresence>
+      </motion.div>
+
       {isShowingLoadMore() && (
-        <div
+        <motion.div
           onClick={toggleReadMore}
-          className={`relative z-10 mt-l flex w-full animate-pulse cursor-pointer justify-center pt-xl ${!isExpanded ? '' : 'rotate-180'}`}
+          className={`relative z-10 mt-l flex w-full cursor-pointer justify-center pt-xl`}
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <LoadMoreIcon className={`w-full animate-bounce`} height="18" />
-        </div>
+          <LoadMoreIcon className="w-full" height="18" />
+        </motion.div>
       )}
+
       <div className="absolute left-1/2 top-1/3 z-0 translate-x-[-50%] translate-y-[-40%]">
         <GridBackground className="scale-[1.5] laptop:scale-100" />
       </div>
