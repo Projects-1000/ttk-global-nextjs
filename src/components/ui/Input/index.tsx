@@ -21,10 +21,10 @@ const ControlledInput = ({
   required,
   icon,
   className,
-  inputColor
+  inputColor,
+  name
 }: ControlledInputProps) => {
   const inputId = label?.toLowerCase().replace(/ /g, '-');
-  console.log(inputColor);
   return (
     <div className={`controlled-input flex w-full flex-col gap-s ${className}`}>
       {label && <InputLabel required={required} label={label} error={error} inputId={inputId} />}
@@ -43,6 +43,7 @@ const ControlledInput = ({
         variant={variant}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        name={name}
         slotProps={{
           input: {
             startAdornment: (

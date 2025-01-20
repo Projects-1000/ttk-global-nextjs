@@ -33,7 +33,6 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ customEndPoint, customColor = 
     return [{ label: breadcrumbsConfig['/'] || 'Home', path: '/' }, ...crumbs];
   }, [currentPath]);
 
-  console.log(breadcrumbs);
   return (
     <MUIBreadcrumbs
       aria-label="breadcrumb"

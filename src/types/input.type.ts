@@ -15,6 +15,7 @@ export interface ControlledInputProps
     | 'type'
     | 'required'
     | 'className'
+    | 'name'
   > {
   inputColor?: string;
   error?: string;
