@@ -10,6 +10,7 @@ interface SectionCardProps
   description?: string | ReactNode;
   customClass?: DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>['className'];
   isPaddingContent?: boolean;
+  isFluidContainer?: boolean;
 }
 
 const SectionCard = ({
@@ -18,33 +19,33 @@ const SectionCard = ({
   description,
   customClass,
   isPaddingContent = false,
+  isFluidContainer = false,
   ...props
 }: SectionCardProps) => {
   return (
     <section
-      className={`relative w-full max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
+      className={`${isFluidContainer ? '' : 'container'} relative w-full max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
       {...props}
     >
-      <motion.div
-        className="flex flex-col justify-start gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.8 }}
-        variants={containerVariants}
-      >
-        <motion.div className="container z-50 w-full h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
-          {title}
-        </motion.div>
+      {!!title && !!description && (
+        <motion.div
+          className="flex flex-col justify-start gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.8 }}
+          variants={containerVariants}
+        >
+          <motion.div className="z-50 w-full h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+            {title}
+          </motion.div>
 
-        {description && (
-          <motion.p
-            className="container z-50 w-full body-regular mobile:w-full laptop:w-1/2"
-            variants={descriptionVariants}
-          >
-            {description}
-          </motion.p>
-        )}
-      </motion.div>
+          {description && (
+            <motion.div className="z-50 w-full body-regular mobile:w-full laptop:w-1/2" variants={descriptionVariants}>
+              {description}
+            </motion.div>
+          )}
+        </motion.div>
+      )}
       <div
         className={`mx-auto mt-xl ${!title && !description && 'tablet:mt-2xl laptop:mt-3xl'} ${isPaddingContent ? 'laptop:px-4xl' : ''}`}
       >
