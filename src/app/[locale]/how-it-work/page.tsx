@@ -1,7 +1,7 @@
-import LarkScheduleSection from '@/components/page/contact/LarkScheduleSection';
 import Benefit from '@/components/page/howitwork/Benefit';
 import FAQ from '@/components/page/howitwork/FAQ';
 import HowItWorkHero from '@/components/page/howitwork/Hero';
+import LarkScheduleSection from '@/components/page/howitwork/LarkScheduleSection';
 import ProcessSection from '@/components/page/howitwork/ProcessSection';
 import ProjectCounting from '@/components/page/howitwork/ProjectCounting';
 
