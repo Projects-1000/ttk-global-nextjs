@@ -1,6 +1,12 @@
-export const TtkFrame = ({ fillOpacity = 0.6 }) => {
+interface TtkFrameProps {
+  fillOpacity?: number;
+  width?: number | string;
+  height?: number | string;
+}
+
+export const TtkFrame = ({ fillOpacity = 0.6, width = 717, height = 752 }: TtkFrameProps) => {
   return (
-    <svg width="717" height="752" viewBox="0 0 717 752" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 717 752" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_237_532)">
         <path
           d="M0.406365 459.959C-0.541958 457.748 0.0676778 455.192 1.89659 453.604L114.002 360.286C114.002 360.286 174.085 306.478 254.422 340.393C332.252 373.272 340.245 453.397 340.651 457.61C340.651 457.748 340.651 457.817 340.719 457.955L387.864 745.645C388.474 749.237 385.493 752.345 381.971 751.931L272.033 738.393C269.662 738.116 267.833 736.251 267.427 733.903L224.211 470.181C223.195 463.965 220.959 454.985 208.36 449.805C195.761 444.693 185.262 454.64 185.262 454.64L52.3609 566.262C49.6514 568.542 45.5195 567.506 44.097 564.19L0.406365 459.959Z"

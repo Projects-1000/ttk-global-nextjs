@@ -62,13 +62,13 @@ export const Header = () => {
           <div className="hidden items-center gap-m tablet:flex">
             <LocaleSwitcher />
             <Button text="Đăng ký" size="medium" color="secondary" classCustom="!w-fit" />
-            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!w-fit" />
+            <Button text="Đăng nhập" href={paths.LOGIN} size="medium" color="primary" classCustom="!w-fit" />
           </div>
           <div className="laptop:hidden" onClick={handleOpenMenu}>
             <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />
             <CloseIcon className={`menu-icon ${isOpenMenu ? '' : 'translate-x-[50px]'}`} />
           </div>
-          <MobileMenu isOpen={isOpenMenu} handleOpenMenu={handleOpenMenu}/>
+          <MobileMenu isOpen={isOpenMenu} handleOpenMenu={handleOpenMenu} />
         </div>
       </div>
     </header>

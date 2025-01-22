@@ -5,6 +5,7 @@ const paths = {
   DEMO: '/demo',
   HOW_IT_WORK: '/how-it-work',
   PARTNERSHIP: '/partnership',
-  DOCUMENT: '/document'
+  DOCUMENT: '/document',
+  LOGIN:'/login'
 };
 export default paths;
