@@ -6,7 +6,7 @@ import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { getTranslations } from 'next-intl/server';
 
-const Blogs = () => {
+const Blogs = async ({ params }: LocaleRouteParams) => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <PageHeader title="BLOG" />
@@ -16,6 +16,7 @@ const Blogs = () => {
     </div>
   );
 };
+
 export async function generateMetadata({ params }: LocaleRouteParams) {
   const { locale } = await params;
   const t = (await getTranslations({ locale })) as TFunction;

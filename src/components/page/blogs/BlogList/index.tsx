@@ -25,6 +25,11 @@ interface BlogListContextProps {
 
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
+const getBlogs = async () => {
+  
+  return 
+}
+
 const BlogList = () => {
   const [page, setPage] = useState(1);
   const [pageSize] = useState(3);
@@ -79,7 +84,7 @@ const BlogList = () => {
   return (
     <BlogListContext.Provider value={{ selectedTags, setSelectedTags, allTagId }}>
       <SectionCard title={SectionTitle}>
-        <div className="container flex flex-col items-start gap-4xl laptop:flex-row">
+        <div className="flex flex-col items-start gap-4xl laptop:flex-row">
           <motion.div
             className="h-100px hidden w-full basis-[20%] laptop:block"
             whileInView={{ opacity: 1, x: 0 }}
@@ -198,18 +203,10 @@ const TagFilterMobile = () => {
             </div>
           </div>
           <div className="flex w-full justify-between gap-m">
-            <Button
-              color="secondary"
-              variant="contained"
-              classCustom="w-full btn__small tablet:btn__medium"
-            >
+            <Button color="secondary" variant="contained" classCustom="w-full btn__small tablet:btn__medium">
               Xóa bộ lọc
             </Button>
-            <Button
-              color="primary"
-              variant="contained"
-              classCustom="w-full btn__small tablet:btn__medium"
-            >
+            <Button color="primary" variant="contained" classCustom="w-full btn__small tablet:btn__medium">
               Áp dụng
             </Button>
           </div>
