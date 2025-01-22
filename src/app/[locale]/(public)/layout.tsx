@@ -73,7 +73,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <AppRouterCacheProvider options={{ enableCssLayer: true, key: 'css' }}>
               <ThemeProvider theme={theme}>
                 <Header />
-                <main className="flex w-full items-center justify-center scroll-smooth pt-desktop_header">
+                <main className="flex w-full items-center justify-center overflow-hidden scroll-smooth pt-desktop_header">
                   {/* <Transition>{children}</Transition> */}
                   {children}
                   <FloatButton />
