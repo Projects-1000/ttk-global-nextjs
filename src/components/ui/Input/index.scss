@@ -31,7 +31,7 @@
     -webkit-animation-duration: 10ms;
     animation-duration: 10ms;
     padding: 16.5px 14px;
-    @apply rounded-2xs p-s subtitle-regular laptop:p-m laptop:body-regular;
+    @apply rounded-2xs bg-primary-subtle p-s subtitle-regular laptop:p-m laptop:body-regular;
   }
 
   input:focus,
@@ -47,7 +47,7 @@
   &--error {
     input,
     textarea {
-      @apply border-2 border-solid border-error-default bg-error-subtle outline-error-default;
+      @apply border border-solid border-error-default bg-error-subtle outline-error-default;
       &:focus {
         @apply outline-error-default;
       }
@@ -75,5 +75,9 @@
   }
   .MuiInputBase-root {
     padding-left: 0 !important;
+  }
+
+  .MuiFormHelperText-root {
+    @apply subtitle-regular;
   }
 }
