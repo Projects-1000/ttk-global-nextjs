@@ -76,7 +76,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, data }) => {
                   {Object.keys(row).map((col) => (
                     <td
                       key={col}
-                      className={`w-[${colWidth}%] py-s text-center footnote-regular laptop:py-l laptop:body-regular`}
+                      className={`w-[${colWidth}%] p-s text-center footnote-regular laptop:py-l laptop:body-regular`}
                     >
                       {row[col]}
                     </td>

@@ -26,9 +26,8 @@ interface BlogListContextProps {
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
 const getBlogs = async () => {
-  
-  return 
-}
+  return;
+};
 
 const BlogList = () => {
   const [page, setPage] = useState(1);
@@ -217,7 +216,7 @@ const TagFilterMobile = () => {
 };
 
 const SectionTitle = (
-  <h3>
+  <h3 className="text-left">
     <span className="text-secondary-default">TẤT CẢ</span> BÀI VIẾT
   </h3>
 );

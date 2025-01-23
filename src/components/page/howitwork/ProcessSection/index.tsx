@@ -7,7 +7,7 @@ const ProcessSection = () => {
   const description =
     'Quy trình hợp tác rõ ràng, minh bạch từ đăng ký đến chia sẻ lợi nhuận. Chúng tôi đồng hành cùng bạn trong từng bước triển khai, đảm bảo hiệu quả tối ưu cho mọi dự án.';
   return (
-    <SectionCard customClass="relative" title={<ProcessSectionTitle />} description={description}>
+    <SectionCard isPaddingContent customClass="relative" title={<ProcessSectionTitle />} description={description}>
       <div className="absolute top-[0] -z-10 translate-x-[40%] translate-y-[-45%] scale-[0.4] mobile:max-tablet:right-0 tablet:left-0 tablet:translate-x-[-50%] tablet:translate-y-[-5%] tablet:scale-[0.6]">
         <TtkFrame />
       </div>

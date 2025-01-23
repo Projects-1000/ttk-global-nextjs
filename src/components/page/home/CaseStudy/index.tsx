@@ -9,6 +9,8 @@ import CustomSwiper from '@/components/ui/CustomSwiper';
 import { motion } from 'framer-motion';
 import { logosVariants } from '../Hero/HeroAnimationVariants';
 import casestudyImage from '@/assets/casestudy/carousel-so-lieu.png';
+import casestudyImage2 from '@/assets/casestudy/carousel-so-lieu-2.png';
+import casestudyImage1 from '@/assets/casestudy/carousel-so-lieu-1.png';
 import Image from 'next/image';
 const caseStudyData = [
   {
@@ -39,10 +41,10 @@ const caseStudyData = [
         thị trường cạnh tranh.
       </>
     ),
-    tags: ['Finance', 'Innovation'],
+    tags: ['Brand B'],
     previousRevenue: '200 triệu VND',
     postRevenue: '567,722.65 USD',
-    image: casestudyImage
+    image: casestudyImage1
   },
   {
     id: 2,
@@ -56,17 +58,23 @@ const caseStudyData = [
         trường của đội ngũ chuyên gia.
       </>
     ),
-    tags: ['E-commerce', 'Growth'],
+    tags: ['Brand C'],
     previousRevenue: '300 triệu VND',
     postRevenue: '259,723.50 USD',
-    image: casestudyImage
+    image: casestudyImage2
   }
 ];
 const CaseStudy = () => {
   const description =
     'TTK Global Ventures đã và đang vận hành các gian hàng thuộc nhiều ngách sản phẩm khác nhau, mang về cho đối tác doanh thu ấn tượng.';
   return (
-    <SectionCard isPaddingContent title={<CaseStudyTitle />} description={description} customClass="">
+    <SectionCard
+      isFluidContainer
+      isPaddingContent
+      title={<CaseStudyTitle />}
+      description={description}
+      customClass="mobile:max-tablet:px-mobile_container"
+    >
       <motion.div
         initial="hidden"
         animate="visible"
@@ -99,7 +107,7 @@ const CaseStudy = () => {
             }
           }}
           spaceBetween={30}
-          wrapperClass="desktop:w-[calc(100%-160px)] laptop:w-[calc(100%-60px)] desktop:max-w-[1440px] container"
+          wrapperClass="desktop:w-[calc(100%-160px)] laptop:w-[calc(100%-60px)] desktop:max-w-[1440px] "
         >
           {caseStudyData.map((caseStudy) => (
             <SwiperSlide className="min-h-full w-full" key={caseStudy.id}>

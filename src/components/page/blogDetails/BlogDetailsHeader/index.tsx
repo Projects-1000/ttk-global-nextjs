@@ -89,7 +89,7 @@ const BlogDetailsHeader = () => {
   //     const headings = Array.from(document.querySelectorAll('h2'));
   //     let lastActiveId = '';
   //     headings.forEach((heading) => {
-  //       const offsetTop = heading.offsetTop - 75; 
+  //       const offsetTop = heading.offsetTop - 75;
   //       if (scrollTop >= offsetTop) {
   //         lastActiveId = heading.getAttribute('id') || '';
   //         console.log(lastActiveId);
@@ -141,10 +141,10 @@ const BlogDetailsHeader = () => {
   };
 
   return (
-    <div className="container flex w-full flex-col items-start justify-start laptop:flex-row">
+    <div className="flex w-full flex-col items-start justify-start px-2xl laptop:flex-row laptop:px-[60px]">
       <ContentTable
         nestedHeadings={nestedHeadings}
-        className="laptop:max-w-1/6 relative w-full laptop:sticky laptop:top-[120px] laptop:col-span-2"
+        className="relative w-full laptop:sticky laptop:top-[120px] laptop:col-span-2 laptop:max-w-[17%]"
       />
 
       <section className="grid grid-cols-1 py-mobile_section_padding laptop:grid-cols-12 laptop:gap-x-3xl laptop:!px-[60px] desktop:gap-x-3xl">
@@ -176,7 +176,7 @@ const BlogDetailsHeader = () => {
           </div>
         </div>
       </section>
-      <div className="laptop:max-w-1/6 sticky top-[120px] hidden w-full laptop:col-span-2 laptop:block">
+      <div className="sticky top-[120px] hidden w-full laptop:col-span-2 laptop:block laptop:max-w-[17%]">
         <PromoteBannerCard />
       </div>
     </div>
