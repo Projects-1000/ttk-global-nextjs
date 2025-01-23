@@ -1,7 +1,12 @@
 'use client';
+import { formatNumberWithDots, removeDotsFromString } from '@/utils/format';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { FormEvent, useState } from 'react';
+import * as yup from 'yup';
 import Button from '../../Button/Button';
 import ControlledInput from '../../Input';
+import { FormSchemaProps } from './ToolSectionForm.type';
+import { schema } from './schema';
 
 const ToolSectionForm = () => {
   const [result, setResult] = useState({
@@ -11,6 +16,7 @@ const ToolSectionForm = () => {
     commissionPhase1: '',
     commissionPhase2: ''
   });
+  const [errors, setErrors] = useState<{ contractCount?: string; investmentCapital?: string }>({});
 
   const resetForm = () => {
     setResult({
@@ -20,26 +26,64 @@ const ToolSectionForm = () => {
       commissionPhase1: '',
       commissionPhase2: ''
     });
+    setErrors({});
   };
-  console.log('rerender');
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const contractCount = formData.get('contractCount');
-    const investmentCapital = formData.get('investmentCapital');
+    const contractCount: FormSchemaProps['contractCount'] = Number(
+      removeDotsFromString(formData.get('contractCount') as string)
+    );
+    const investmentCapital: FormSchemaProps['investmentCapital'] = Number(
+      removeDotsFromString(formData.get('investmentCapital') as string)
+    );
 
-    const totalRate = 0.025 * Number(contractCount) * Number(investmentCapital);
-    const commissionPhase1 = totalRate / 2;
-    const commissionPhase2 = totalRate / 2;
+    try {
+      await schema.validate({ contractCount, investmentCapital }, { abortEarly: false });
 
-    setResult({
-      contractCount: contractCount?.toString() || '',
-      investmentCapital: investmentCapital?.toString() || '',
-      totalRate: totalRate.toString(),
-      commissionPhase1: commissionPhase1.toString(),
-      commissionPhase2: commissionPhase2.toString()
-    });
+      const totalRate = 0.025 * Number(contractCount) * Number(investmentCapital);
+      const commissionPhase1 = totalRate / 2;
+      const commissionPhase2 = totalRate / 2;
+
+      setResult({
+        contractCount: contractCount?.toString() || '',
+        investmentCapital: investmentCapital?.toString() || '',
+        totalRate: totalRate.toString(),
+        commissionPhase1: commissionPhase1.toString(),
+        commissionPhase2: commissionPhase2.toString()
+      });
+
+      setErrors({});
+    } catch (err) {
+      if (err instanceof yup.ValidationError) {
+        const newErrors: { contractCount?: string; investmentCapital?: string } = {};
+        err.inner.forEach((error) => {
+          if (error.path) {
+            newErrors[error.path as keyof FormSchemaProps] = error.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+    }
   }
+
+  const onNumberInput = (e: FormEvent<HTMLInputElement>) => {
+    const input = e.currentTarget.querySelector('input');
+    if (input) {
+      input.value = formatNumberWithDots(input.value);
+    }
+  };
+
+  const outputStyle = [
+    {
+      '& input': {
+        backgroundColor: '#FAFAFF !important',
+        color: 'black !important',
+        WebkitTextFillColor: 'black !important'
+      }
+    }
+  ];
 
   return (
     <div className="flex flex-col gap-m">
@@ -53,8 +97,11 @@ const ToolSectionForm = () => {
               <ControlledInput
                 name="contractCount"
                 label="Số lượng hợp đồng"
+                required
                 value={result.contractCount}
                 onChange={(e) => setResult({ ...result, contractCount: e.target.value })}
+                error={errors.contractCount}
+                onInput={onNumberInput}
               />
               <p className="footnote-light">
                 *Số lượng hợp đồng EBO-C mà Đơn vị cộng tác dự kiến giới thiệu thành công
@@ -64,8 +111,12 @@ const ToolSectionForm = () => {
               <ControlledInput
                 name="investmentCapital"
                 label="Vốn đầu tư"
+                required
                 value={result.investmentCapital}
                 onChange={(e) => setResult({ ...result, investmentCapital: e.target.value })}
+                error={errors.investmentCapital}
+                onInput={onNumberInput}
+                icon={<AttachMoneyIcon />}
               />
               <p className="footnote-light">{` *Vốn đầu tư trung bình của mỗi hợp đồng EBO-C (>= 10.000 USD)`}</p>
             </div>
@@ -73,31 +124,34 @@ const ToolSectionForm = () => {
           <div className="grid grid-cols-1 gap-x-3xl gap-y-2xl laptop:grid-cols-3">
             <div className="flex flex-col gap-s">
               <ControlledInput
-                inputColor="bg-blue-10"
                 label="Tổng hoa hồng"
                 name="totalRate"
                 disabled
-                value={result.totalRate}
+                value={formatNumberWithDots(result.totalRate)}
+                sx={outputStyle}
+                icon={<AttachMoneyIcon />}
               />
               <p className="footnote-light">*Tổng hoa hồng dự kiến mà Đơn vị cộng tác nhận được</p>
             </div>
             <div className="flex flex-col gap-s">
               <ControlledInput
                 name="commissionPhase1"
-                inputColor="bg-blue-10"
                 label="Hoa hồng đợt 1"
                 disabled
-                value={result.commissionPhase1}
+                value={formatNumberWithDots(result.commissionPhase1)}
+                sx={outputStyle}
+                icon={<AttachMoneyIcon />}
               />
               <p className="footnote-light">*Số tiền Đơn vị cộng tác nhận được ngay sau Khách hàng khi ký hợp đồng</p>
             </div>
             <div className="flex flex-col gap-s">
               <ControlledInput
                 name="commissionPhase2"
-                inputColor="bg-blue-10"
                 label="Hoa hồng đợt 2"
                 disabled
-                value={result.commissionPhase2}
+                value={formatNumberWithDots(result.commissionPhase2)}
+                sx={outputStyle}
+                icon={<AttachMoneyIcon />}
               />
               <p className="footnote-light">
                 *Số tiền Đơn vị cộng tác nhận được sau khi dự án của Khách hàng vận hành 6 tháng

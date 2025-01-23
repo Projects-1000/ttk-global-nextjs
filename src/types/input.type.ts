@@ -16,6 +16,9 @@ export interface ControlledInputProps
     | 'required'
     | 'className'
     | 'name'
+    | 'onInput'
+    | 'sx'
+    | 'slotProps'
   > {
   inputColor?: string;
   error?: string;
