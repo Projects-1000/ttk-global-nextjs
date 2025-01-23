@@ -3,16 +3,11 @@ import { ArrowDropDownIcon } from '@/components/ui/icons/ArrowDropDownIcon';
 import Link from 'next/link';
 import { DetailedHTMLProps, Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 import './index.scss';
+import { Heading } from '../BlogDetailsHeader';
 
-interface Heading {
-  id: string;
-  text: string;
-  tag: 'H2' | 'H3';
-  children?: Heading[];
-}
 interface ContentTableProps
   extends Pick<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'className'> {
-  content: string;
+  nestedHeadings: Heading[];
 }
 interface ContentTableHeadingProps extends Heading {
   activeId: string | null;
@@ -21,51 +16,9 @@ interface ContentTableHeadingProps extends Heading {
   isExpanded?: boolean;
 }
 
-const ContentTable = ({ content, className }: ContentTableProps) => {
-  const [nestedHeadings, setNestedHeadings] = useState<Heading[]>([]);
+const ContentTable = ({ className, nestedHeadings }: ContentTableProps) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
-
-  useEffect(() => {
-    if (content) {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(content, 'text/html');
-
-      const headings: Heading[] = [];
-      let currentH2: Heading | null = null;
-
-      doc.querySelectorAll('h2, h3').forEach((heading) => {
-        const text = heading.textContent?.trim() || '';
-
-        if (text) {
-          const id = removeVietnameseTones(text);
-          const tag = heading.tagName as 'H2' | 'H3';
-
-          if (tag === 'H2') {
-            currentH2 = { id, text, tag, children: [] };
-            headings.push(currentH2);
-          } else if (tag === 'H3' && currentH2) {
-            currentH2.children?.push({ id, text, tag });
-          }
-
-          heading.id = id;
-        }
-      });
-
-      setNestedHeadings(headings);
-    }
-  }, [content]);
-
-  const removeVietnameseTones = (str: string): string => {
-    return str
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/đ/g, 'd')
-      .replace(/Đ/g, 'D')
-      .replace(/[^a-zA-Z0-9\s]/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase();
-  };
 
   const toggleExpand = (id: string) => {
     setExpandedSections((prev) => ({
@@ -123,8 +76,9 @@ const ContentTableHeading = ({
   isExpanded,
   children
 }: ContentTableHeadingProps) => {
+
   const handleClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
+    // event.stopPropagation();
     setActiveId(id);
   };
   return (
@@ -136,7 +90,7 @@ const ContentTableHeading = ({
       <>
         <Link
           onClick={handleClick}
-          className={`table-content-heading__link no-underline hover:text-primary-label hover:underline ${activeId === id ? 'text-primary-label subtitle-bold' : 'text-black'}`}
+          className={`table-content-heading__link no-underline hover:text-primary-label hover:underline ${activeId === id ? 'table-content-heading__link--active' : 'table-content-heading__link--inactive'}`}
           href={`#${id}`}
         >
           {text}
