@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { DetailedHTMLProps, Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 import './index.scss';
 import { Heading } from '../BlogDetailsHeader';
+import { Skeleton } from '@mui/material';
 
 interface ContentTableProps
   extends Pick<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'className'> {
@@ -34,32 +35,51 @@ const ContentTable = ({ className, nestedHeadings }: ContentTableProps) => {
           <span className="uppercase text-primary-default body-bold">Mục lục</span>
         </h2>
         <ul className="table-content__list">
-          {nestedHeadings.map((heading, index) => {
-            return (
-              <>
-                <ContentTableHeading
-                  key={heading.id}
-                  activeId={activeId}
-                  setActiveId={setActiveId}
-                  toggleExpand={() => toggleExpand(heading.id)}
-                  isExpanded={!!expandedSections[heading.id]}
-                  {...heading}
-                />
+          {nestedHeadings.length > 0 ? (
+            nestedHeadings.map((heading, index) => {
+              return (
+                <>
+                  <ContentTableHeading
+                    key={heading.id}
+                    activeId={activeId}
+                    setActiveId={setActiveId}
+                    toggleExpand={() => toggleExpand(heading.id)}
+                    isExpanded={!!expandedSections[heading.id]}
+                    {...heading}
+                  />
 
-                {heading.children && (
-                  <ul
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      !!expandedSections[heading.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    {heading.children.map((child, index) => (
-                      <ContentTableHeading key={child.id} {...child} activeId={activeId} setActiveId={setActiveId} />
-                    ))}
-                  </ul>
-                )}
-              </>
-            );
-          })}
+                  {heading.children && (
+                    <ul
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        !!expandedSections[heading.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      {heading.children.map((child, index) => (
+                        <ContentTableHeading key={child.id} {...child} activeId={activeId} setActiveId={setActiveId} />
+                      ))}
+                    </ul>
+                  )}
+                </>
+              );
+            })
+          ) : (
+            <>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <div className="flex w-full flex-col" key={index}>
+                  <Skeleton animation="wave" key={index} height={30} />
+                  <div className="w-[80%] self-end">
+                    <Skeleton animation="wave" key={index} className="pl-xl" />
+                  </div>
+                  <div className="w-[80%] self-end">
+                    <Skeleton animation="wave" key={index} className="pl-xl" />
+                  </div>
+                  <div className="w-[80%] self-end">
+                    <Skeleton animation="wave" key={index} className="pl-xl" />
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </ul>
       </nav>
     </div>
@@ -76,7 +96,6 @@ const ContentTableHeading = ({
   isExpanded,
   children
 }: ContentTableHeadingProps) => {
-
   const handleClick = (event: React.MouseEvent) => {
     // event.stopPropagation();
     setActiveId(id);

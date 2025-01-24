@@ -21,8 +21,7 @@ export interface BlogModelProps {
 
 export interface DocumentModelProps {
   title: string;
-  label: string;
-  attachment: string;
+    attachment: string;
   tags: string[];
   creaatedAt: string;
   updatedAt: string;

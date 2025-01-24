@@ -36,22 +36,21 @@ const HowItWorkHero = () => {
   };
 
   return (
-    <SectionCard>
+    <SectionCard title={<HeroTitle />} customClass="mobile:max-tablet:py-2xl">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
-        className="flex w-full flex-col gap-4xl laptop:pt-10"
+        className="flex w-full flex-col gap-4xl"
       >
-        <HeroTitle />
         <motion.div className="relative flex flex-col gap-y-[60px] laptop:flex-row laptop:gap-x-3xl laptop:py-3xl">
           <div className="absolute bottom-0 left-0 w-full translate-x-[3.5%] translate-y-[8%] scale-110 mobile:max-tablet:hidden">
             <Image src={graphic} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
           </div>
           <div className="flex flex-col gap-2xl laptop:gap-3xl">
             <HeroList />
-            <div className="flex items-center gap-l">
+            <div className="flex items-center gap-l mobile:max-tablet:justify-between">
               <motion.div
                 variants={buttonVariants}
                 initial="hidden"
@@ -60,7 +59,7 @@ const HowItWorkHero = () => {
               >
                 <Button
                   text="Đặt lịch meeting"
-                  classCustom="w-full tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+                  classCustom="w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
                 />
               </motion.div>
               <motion.div
@@ -72,7 +71,7 @@ const HowItWorkHero = () => {
                 <Button
                   text="Tính lợi nhuận"
                   color="secondary"
-                  classCustom="w-full tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+                  classCustom="w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
                 />
               </motion.div>
             </div>

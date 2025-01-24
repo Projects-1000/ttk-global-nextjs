@@ -16,8 +16,10 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import SortSelector from '../../../ui/Selector/SortSelector';
 import TagFilter from '../TagFilter';
-import BlogItemSkeleton from '@/components/ui/Skeleton/BlogSkeleton';
 
+import Empty from '@/components/ui/Empty';
+import BlogItemSkeleton from '@/components/ui/Skeleton/BlogSkeleton';
+import { current } from '@reduxjs/toolkit';
 interface BlogListContextProps {
   selectedTags: BlogModelProps['tags'];
   setSelectedTags: Dispatch<SetStateAction<BlogModelProps['tags']>>;
@@ -30,7 +32,6 @@ interface BlogListContextProps {
 
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
-
 const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
   const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
@@ -42,7 +43,6 @@ const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
       url.searchParams.append(key, String(value));
     }
   });
-
   const posts = await fetch(url.href, {
     method: 'GET',
     headers: {
@@ -60,9 +60,9 @@ const BlogList = () => {
   const [blogData, setBlogData] = useState<BlogModelProps[]>([]);
   const [selectedTags, setSelectedTags] = useState<BlogModelProps['tags']>(defaultTags);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(false);
   const debounceSearch = useDebounce(searchQuery);
   const [totalBlog, setTotalBlog] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [queryParam, setQueryParam] = useState<GetBlogsRequest>({
     isHighlight: null,
     searchTitle: debounceSearch.trim(),
@@ -71,19 +71,16 @@ const BlogList = () => {
     limit: 4,
     page: 1
   });
-
   const fetchData = async (queryParam: GetBlogsRequest) => {
-
-    const { data, limit, page, total } = await getBlogs(queryParam);
+    setIsLoading(true);
+    const { data, limit, page, total } = await getBlogs(queryParam, allTagId);
     setBlogData(data);
     setTotalBlog(total);
+    setIsLoading(false);
   };
   useEffect(() => {
-    console.log('queryParaXm', queryParam);
-    setIsLoading(true);
     fetchData(queryParam);
     handleParamChange();
-    setIsLoading(false);
   }, [queryParam]);
 
   useEffect(() => {
@@ -94,6 +91,7 @@ const BlogList = () => {
 
   const totalPages = Math.ceil(totalBlog / queryParam.limit);
   const currentBlogs = blogData;
+  console.log(currentBlogs);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setQueryParam((prev) => ({ ...prev, page: value }));
@@ -172,28 +170,13 @@ const BlogList = () => {
                 visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
               }}
             >
-              {!isLoading
-                ? Array.from({ length: 6 }).map((_, index) => <BlogItemSkeleton key={index} />)
-                : currentBlogs.map((blog) => (
-                    <motion.div
-                      key={blog.id}
-                      className="col-span-1"
-                      initial={{ opacity: 0, y: 20, scale: 0.5 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <BlogPost
-                        key={blog.id}
-                        title={blog.title}
-                        description={blog.description}
-                        coverImage={blog.coverImage}
-                        tags={blog.tags}
-                        slug={blog.slug}
-                        createdAtIsoFormat={blog.createdAtIsoFormat}
-                      />
-                    </motion.div>
-                  ))}
+              {isLoading ? (
+                Array.from({ length: 6 }).map((_, index) => <BlogItemSkeleton key={index} />)
+              ) : currentBlogs?.length > 0 ? (
+                currentBlogs.map((blog) => <BlogPost key={blog.id} {...blog} />)
+              ) : (
+                <Empty />
+              )}
             </motion.div>
             <motion.div
               className="self-center"

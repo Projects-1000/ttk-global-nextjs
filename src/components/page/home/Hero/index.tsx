@@ -17,7 +17,7 @@ import SectionCard from '@/components/ui/Card/SectionCard';
 
 const Hero = () => {
   return (
-    <SectionCard>
+    <SectionCard customClass="!pt-4xl">
       <motion.div
         className="relative flex flex-col items-center justify-between mobile:gap-3xl laptop:flex-row"
         initial="hidden"
