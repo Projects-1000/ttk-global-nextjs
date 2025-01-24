@@ -1,0 +1,13 @@
+services:
+    dev:
+        container_name: ttk-global
+        image: ttk-global:1.0.0
+        build:
+            context: .
+        ports:
+            - 3000:3000
+        networks:
+            - ttk
+networks:
+    ttk: 
+        driver: bridge
