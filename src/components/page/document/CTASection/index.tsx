@@ -1,6 +1,5 @@
 'use client';
 import GridBackground from '@/assets/GridBackground';
-import { TtkFrame } from '@/assets/TtkFrame';
 import Button from '@/components/ui/Button/Button';
 import SectionCard from '@/components/ui/Card/SectionCard';
 
@@ -25,7 +24,7 @@ const CTASection = () => {
   );
 };
 const CTASectionTitle = () => (
-  <span className="inline-block w-full text-center">
+  <span className="inline-block w-full text-center uppercase">
     Bạn muốn
     <span className="text-secondary-label"> hợp tác </span>
     với chúng tôi?

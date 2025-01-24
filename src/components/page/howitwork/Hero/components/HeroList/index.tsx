@@ -1,18 +1,21 @@
 'use client';
+import CheckIcon from '@/components/ui/icons/CheckIcon';
 import { motion } from 'framer-motion';
-import { CheckIcon } from 'lucide-react';
 import React, { PropsWithChildren } from 'react';
 
 const HeroList = () => {
   const HERO_ITEMS = [
     <span key={1} className="text-black subtitle-regular laptop:headline-regular">
-      Vận hành gian hàng <span className="subtitle-bold laptop:headline-bold">miễn phí</span> cho đến khi hòa vốn
+      Vận hành gian hàng <span className="text-primary-label subtitle-bold laptop:headline-bold">miễn phí</span> cho đến
+      khi hòa vốn
     </span>,
     <span key={2} className="text-black subtitle-regular laptop:headline-regular">
-      Cam kết <span className="subtitle-bold laptop:headline-bold">hoàn 100% vốn & lãi</span> nếu không hài lòng
+      Cam kết <span className="text-primary-label subtitle-bold laptop:headline-bold">hoàn 100% vốn & lãi</span> nếu
+      không hài lòng
     </span>,
     <span key={3} className="text-black subtitle-regular laptop:headline-regular">
-      Hệ thống quảng cáo độc quyền <span className="subtitle-bold laptop:headline-bold">ACOS trung bình dưới 20%</span>
+      Hệ thống quảng cáo độc quyền{' '}
+      <span className="text-primary-label subtitle-bold laptop:headline-bold">ACOS trung bình dưới 20%</span>
     </span>
   ];
   const containerVariants = {

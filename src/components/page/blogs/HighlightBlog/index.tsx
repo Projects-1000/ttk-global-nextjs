@@ -1,13 +1,13 @@
 'use client';
-import { motion } from 'framer-motion';
 import Blog from '@/components/ui/Card/BlogCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { blogList } from '@/utils/mockDB';
+import { GetBlogsResponse } from '@/types/api.type';
+import { motion } from 'framer-motion';
 
-export const HighlightBlog = () => {
-  const highLightBlog = blogList.filter((blog) => blog.isHighlight).slice(0, 4);
-
-  // Animation variants
+interface HighlightBlogProps {
+  highLightBlog: GetBlogsResponse['data'];
+}
+const HighlightBlog = ({ highLightBlog }: HighlightBlogProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,7 +26,7 @@ export const HighlightBlog = () => {
   return (
     <SectionCard title={SectionTitle}>
       <motion.div
-        className="container grid grid-flow-row auto-rows-min grid-cols-1 gap-y-3xl laptop:grid-flow-col laptop:grid-cols-2 laptop:gap-x-16 laptop:gap-y-xl desktop:gap-x-24"
+        className="grid grid-flow-row auto-rows-min grid-cols-1 gap-y-3xl laptop:grid-flow-col laptop:grid-cols-2 laptop:gap-x-16 laptop:gap-y-xl desktop:gap-x-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -42,11 +42,11 @@ export const HighlightBlog = () => {
               <Blog
                 title={blog.title}
                 description={blog.description}
-                publishDate={blog.publishDate}
+                createdAtIsoFormat={blog.createdAtIsoFormat}
                 coverImage={blog.coverImage}
                 direction={index === 0 ? 'column' : 'row'}
                 isShowContentMobile={index === 0}
-                author={blog.author}
+                createdBy={blog.createdBy}
                 tags={blog.tags}
                 slug={blog.slug}
               />
@@ -63,3 +63,5 @@ const SectionTitle = (
     BÀI VIẾT <span className="text-secondary-default">NỔI BẬT</span>
   </p>
 );
+
+export default HighlightBlog;

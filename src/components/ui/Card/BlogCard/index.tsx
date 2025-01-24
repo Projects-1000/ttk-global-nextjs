@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { BlogModelProps } from '@/types/model.type';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,8 +6,11 @@ import CustomTag from '../../CustomTag';
 import BlogInfo from '../../CustomTag/BlogInfoTag';
 import './index.scss';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import TooltipButton from '../../Button/TooltipButton';
+import { Tooltip } from '@mui/material';
 
-interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
+interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isMainBlog' | 'createdAtReadableFormat' | 'content'> {
   direction?: 'row' | 'column';
   isShowContentMobile?: boolean;
 }
@@ -15,15 +18,47 @@ interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
 const BlogCard = ({
   coverImage,
   description,
-  publishDate,
+  createdAtIsoFormat: publishDate,
   title,
   direction = 'column',
   tags,
-  author,
+  createdBy: author,
   isShowContentMobile = false,
   slug
 }: BlogCardProps) => {
   const pathname = usePathname();
+  const tagContainerRef = useRef<HTMLDivElement>(null);
+  const moreTagRef = useRef<HTMLDivElement>(null);
+  const [visibleTags, setVisibleTags] = useState(tags);
+  const [hiddenCount, setHiddenCount] = useState(0);
+
+  useEffect(() => {
+    if (tagContainerRef.current && tags) {
+      const container = tagContainerRef.current;
+      const containerWidth = container.offsetWidth;
+      const estimatedMoreTagWidth = 70; // Width estimation for `+X`
+      let usedWidth = estimatedMoreTagWidth;
+      const visibleTagsTemp: BlogModelProps['tags'] = [];
+      let hiddenTagsTemp = 0;
+
+      tags.forEach((tag, index) => {
+        const tagElement = container.children[index] as HTMLElement;
+        const tagWidth = tagElement?.offsetWidth;
+
+        // Check if adding the current tag and `+X more` exceeds the container width
+        console.log(usedWidth + tagWidth <= containerWidth);
+        if (usedWidth + tagWidth <= containerWidth) {
+          visibleTagsTemp.push(tag);
+          usedWidth += tagWidth;
+        } else {
+          hiddenTagsTemp++;
+        }
+      });
+
+      setVisibleTags(visibleTagsTemp);
+      setHiddenCount(hiddenTagsTemp);
+    }
+  }, [tags]);
 
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
@@ -31,7 +66,7 @@ const BlogCard = ({
         <div className={`w-full overflow-hidden rounded-m`}>
           <Image
             title={title}
-            src={coverImage || ''}
+            src={coverImage|| ''}
             alt=""
             width={0}
             height={0}
@@ -41,8 +76,11 @@ const BlogCard = ({
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
-        <BlogInfo author={author} publishDate={publishDate} />
-        <Link href="/" className="smooth-transition text-black no-underline hover:text-secondary-default">
+        <BlogInfo createdBy={author} createdAtIsoFormat={publishDate} />
+        <Link
+          href={`${pathname}/${slug}` || '#'}
+          className="smooth-transition text-black no-underline hover:text-secondary-default"
+        >
           <header>
             <h2
               title={title}
@@ -58,10 +96,24 @@ const BlogCard = ({
           {description}
         </p>
         {tags?.length && (
-          <div className={`flex flex-wrap gap-s ${isShowContentMobile ? '' : 'mobile:max-tablet:hidden'}`}>
-            {tags?.map((tag) => {
-              return <CustomTag key={tag.id} tagName={tag.name} type="outline" />;
+          <div
+            ref={tagContainerRef}
+            className={`flex w-full flex-wrap gap-s ${isShowContentMobile ? '' : 'mobile:max-tablet:hidden'}`}
+          >
+            {visibleTags?.map((tag, index) => {
+              return <CustomTag key={index} tagName={tag} type="outline" />;
             })}
+            {hiddenCount > 0 && (
+              <Tooltip
+                title={tags?.map((tag, index) => (
+                  <CustomTag key={index} tagName={tag} type="outline" className="w-fit" />
+                ))}
+              >
+                <div ref={moreTagRef} className="inline-block">
+                  <CustomTag tagName={`+${hiddenCount}`} type="outline" />
+                </div>
+              </Tooltip>
+            )}
           </div>
         )}
       </div>

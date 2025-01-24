@@ -15,9 +15,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
 
   // Handle flip on smaller screens
   const handleClick = () => {
-    if (window.innerWidth < 1024) {
-      setIsFlipped((state) => !state);
-    }
+    setIsFlipped((state) => !state);
   };
 
   return (
@@ -83,14 +81,14 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
         </motion.div>
 
         <motion.div
-          className="absolute inset-0 flex flex-col justify-between p-2xl text-white active:text-primary-label tablet:p-3xl laptop:p-4xl"
+          className="absolute inset-0 flex flex-col justify-between p-2xl text-white tablet:p-3xl laptop:p-4xl"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'
           }}
         >
           <p className="subtitle-regular laptop:body-regular">{description}</p>
-          <span className="inline self-end subtitle-bold laptop:hidden" onClick={handleClick}>
+          <span className="inline self-end subtitle-bold active:text-primary-label laptop:hidden" onClick={handleClick}>
             Trở về
           </span>
         </motion.div>

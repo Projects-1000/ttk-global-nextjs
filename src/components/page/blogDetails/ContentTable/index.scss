@@ -1,0 +1,26 @@
+.table-content {
+  // position: sticky;
+  // top: 0;
+  .table-content__list {
+    @apply transition-all duration-300 ease-in-out;
+    .table-content-heading {
+      @apply flex cursor-pointer items-start justify-between gap-2xs;
+      &--h2 {
+        @apply py-s text-black subtitle-medium tablet:py-m;
+      }
+
+      &--h3 {
+        @apply border-l border-primary-default p-s text-black subtitle-regular tablet:p-m;
+      }
+
+      &__link {
+        &--active {
+          @apply text-primary-label subtitle-bold;
+        }
+        &--inactive {
+          @apply text-black;
+        }
+      }
+    }
+  }
+}

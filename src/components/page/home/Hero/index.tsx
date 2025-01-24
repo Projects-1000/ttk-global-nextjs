@@ -13,10 +13,11 @@ import heroImage from '../../../../../public/assets/demo/hero/HeroImage.png';
 import blueVector from '@/assets/blue-vector.png';
 import listLogos from './fakeData';
 import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
+import SectionCard from '@/components/ui/Card/SectionCard';
 
 const Hero = () => {
   return (
-    <section className="container flex w-full max-w-[1440px] flex-col gap-4xl py-mobile_section_padding laptop:py-desktop_section_padding laptop:pt-10">
+    <SectionCard customClass="!pt-4xl">
       <motion.div
         className="relative flex flex-col items-center justify-between mobile:gap-3xl laptop:flex-row"
         initial="hidden"
@@ -57,8 +58,15 @@ const Hero = () => {
             className="flex w-full items-center justify-center gap-l tablet:justify-start"
             variants={itemVariants}
           >
-            <Button text="Đăng ký hợp tác" classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large" />
-            <Button text="Tìm hiểu thêm" color="secondary" classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large" />
+            <Button
+              text="Đăng ký hợp tác"
+              classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large"
+            />
+            <Button
+              text="Tìm hiểu thêm"
+              color="secondary"
+              classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large"
+            />
           </motion.div>
         </div>
 
@@ -134,7 +142,7 @@ const Hero = () => {
           </CustomSwiper>
         </div>
       </motion.div>
-    </section>
+    </SectionCard>
   );
 };
 

@@ -1,36 +1,87 @@
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { Users } from 'lucide-react';
 import React from 'react';
+import './index.scss';
+import { Banknote, File, Search, Settings, Users } from 'lucide-react';
+import PartnershipFormCard from './components/PartnershipFormCard';
+
 const cardData = [
   {
-    icon: <Users size={75} className="text-primary-label" />,
-    title: 'Referral Partner',
-    subtitle: 'Giới thiệu khách hàng, nhận hoa hồng',
-    number: '01'
+    icon: <Users className="h-full w-full" />,
+    title: 'Tiếp cận & thỏa thuận hợp tác',
+    subtitle: (
+      <ul>
+        <li>Hai bên thảo luận về các điều khoản hợp tác, bao gồm:</li>
+        <ul>
+          <li>Quy định về thông tin của khách hàng (Lead).</li>
+          <li>Tỷ lệ hoa hồng cho Đối tác B2B.</li>
+          <li>Cách thức thanh toán hoa hồng.</li>
+        </ul>
+        <li>Ký kết hợp đồng</li>
+      </ul>
+    )
   },
   {
-    icon: <Users size={75} className="text-primary-label" />,
-    title: 'Revenue Sharing',
-    subtitle: 'Đồng vận hành và chia sẻ lợi nhuận',
-    number: '02'
+    icon: <File className="h-full w-full" />,
+    title: 'Cung cấp thông tin',
+    subtitle: (
+      <ul>
+        <li>
+          Cung cấp tài liệu marketing: TTK cung cấp tài liệu marketing, brochure hoặc các tài liệu hỗ trợ khác để Đối
+          tác B2B có thể sử dụng trong quá trình tìm kiếm Lead.
+        </li>
+      </ul>
+    )
   },
   {
-    icon: <Users size={75} className="text-primary-label" />,
-    title: 'Co-Branding',
-    subtitle: 'Phân phối dịch vụ dưới thương hiệu Agency',
-    number: '03'
+    icon: <Search className="h-full w-full" />,
+    title: 'Tìm kiếm và cung cấp Lead',
+    subtitle: (
+      <ul>
+        <li>
+          Tìm kiếm Lead: Đối tác B2B tiến hành tìm kiếm và cung cấp thông tin về các Nhà đầu tư / Doanh nghiệp tiềm năng
+          cần Hợp tác kinh doanh gian hàng TMĐT EBO-C.
+        </li>
+        <li> Gửi thông tin Lead: Đối tác B2B gửi thông tin Lead cho TTK theo định kỳ hoặc khi có Lead mới.</li>
+      </ul>
+    )
+  },
+  {
+    icon: <Settings className="h-full w-full" />,
+    title: 'Xử lý Lead & triển khai dự án',
+    subtitle: (
+      <ul>
+        <li>Xử lý Lead: TTK tiếp nhận thông tin từ Đối tác B2B, tiến hành liên hệ và tư vấn cho các doanh nghiệp.</li>
+        <li>
+          Triển khai dự án: TTK thực hiện các công đoạn thuộc dự án Hợp tác kinh doanh gian hàng TMĐT Quốc tế cho Nhà
+          đầu tư / Doanh nghiệp và theo dõi quá trình thực hiện.
+        </li>
+      </ul>
+    )
+  },
+  {
+    icon: <Banknote className="h-full w-full" />,
+    title: 'Thanh toán hoa hồng',
+    subtitle: (
+      <ul>
+        <li>
+          Tính toán hoa hồng: TTK tính toán hoa hồng dựa theo chính sách đã thống nhất trong hợp đồng với Đối tác B2B.
+        </li>
+        <li>Thanh toán: TTK thực hiện thanh toán hoa hồng cho Đối tác B2B theo thỏa thuận trong hợp đồng.</li>
+      </ul>
+    )
   }
 ];
 const PartnershipFormSection = () => {
   const description =
-    'Khám phá các hình thức hợp tác đa dạng của chúng tôi, từ cơ hội kiếm hoa hồng hấp dẫn đến việc xây dựng thương hiệu chung. Chọn mô hình phù hợp nhất với định hướng của bạn.';
+    'Khám phá chi tiết hình thức cộng tác theo mô hình B2B và nhận hoa hồng hấp dẫn từ việc liên kết giới thiệu Khách hàng tiềm năng với chúng tôi. Tìm hiểu cách thức và dự tính mức hoa hồng bạn có thể nhận ngay!';
 
   return (
-    <SectionCard title={<ParnershipFormSectionTitle />} description={description} isPaddingContent>
-      <div className="container">
-        <div className="flex w-full flex-col items-center justify-between gap-2xl laptop:px-xl laptop:flex-row">
+    <SectionCard title={<ParnershipFormSectionTitle />} description={description}>
+      <div className="w-full laptop:mt-3xl">
+        <div className="parnership-container relative grid w-full grid-cols-1 gap-3xl laptop:grid-cols-1 laptop:gap-0">
+          <div className="line"></div>
           {cardData.map((card, index) => (
-            <PartnershipFormCard key={index} {...card} />
+            <PartnershipFormCard key={index} index={index} {...card} />
           ))}
         </div>
       </div>
@@ -38,32 +89,10 @@ const PartnershipFormSection = () => {
   );
 };
 
-interface CardProps {
-  icon: React.ReactNode;
-  title: string; // Main title
-  subtitle: string; // Subtitle text
-  number: string; // Large number text
-}
-
-const PartnershipFormCard: React.FC<CardProps> = ({ icon, title, subtitle, number }) => {
-  return (
-    <div className="group flex min-h-full w-full flex-col gap-2xl rounded-m bg-blue-10 p-xl text-center transition-shadow duration-300 hover:bg-primary-subtle tablet:max-laptop:w-[70%] laptop:w-[320px] laptop:gap-3xl">
-      <div className="flex w-full items-center justify-between tablet:max-laptop:justify-center tablet:max-laptop:gap-xl">
-        <div className="w-[56px] overflow-hidden text-primary-label">{icon}</div>
-        <div className="text-[96px] font-extrabold leading-none text-[#3C4BCC]/15 text-blue-100 duration-300 group-hover:text-blue-500">
-          {number}
-        </div>
-      </div>
-      <div className="flex flex-col gap-l">
-        <div className="text-primary-label h4-bold laptop:h3-bold">{title}</div>
-        <div className="text-black subtitle-regular laptop:headline-regular">{subtitle}</div>
-      </div>
-    </div>
-  );
-};
 const ParnershipFormSectionTitle = () => (
   <p className="uppercase">
-    HÌNH THỨC<span className="text-secondary-label"> HỢP TÁC</span>
+    <span className="text-secondary-label">HÌNH THỨC </span> CỘNG TÁC
   </p>
 );
+
 export default PartnershipFormSection;

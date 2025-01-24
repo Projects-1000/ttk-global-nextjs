@@ -14,8 +14,13 @@ export interface ControlledInputProps
     | 'defaultValue'
     | 'type'
     | 'required'
-    |'className'
+    | 'className'
+    | 'name'
+    | 'onInput'
+    | 'sx'
+    | 'slotProps'
   > {
+  inputColor?: string;
   error?: string;
   label?: string;
   icon?: React.ReactNode;

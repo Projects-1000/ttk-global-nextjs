@@ -10,11 +10,11 @@ const HeroTitle = () => (
     variants={titleVariants}
     className="flex justify-start gap-x-m"
   >
-     <p className="uppercase h4-bold tablet:h3-bold laptop:h1-bold desktop:basis-1/2">
+    <div className="w-fit text-start uppercase h4-bold tablet:h3-bold laptop:h1-bold">
       Hợp tác kinh doanh
       <br />
       <span className="text-secondary-label"> TMĐT quốc tế </span>
-    </p>
+    </div>
     <span className="mt-3 hidden text-primary-label tablet:inline laptop:h4-light desktop:h3-light">
       (cùng TTK Global Ventures)
     </span>

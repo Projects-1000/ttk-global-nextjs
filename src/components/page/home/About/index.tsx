@@ -12,14 +12,16 @@ const INFO_CARDS = [
     afterTitle: '+',
     subtitle: 'Đối tác thành công'
   },
+
   {
-    titleValue: 50000,
-    subtitle: 'Doanh thu trung bình của mỗi gian hàng tính theo USD'
+    titleValue: 150,
+    afterTitle: '+',
+    subtitle: 'Đối tác trong và ngoài nước'
   },
   {
-    titleValue: 24,
-    afterTitle: '/7',
-    subtitle: 'Hệ thống vận hành không ngừng trên Amazon'
+    titleValue: 50000,
+    preTitle: '$',
+    subtitle: 'Doanh số trung bình hàng tháng của các gian hàng'
   }
 ];
 
@@ -30,7 +32,7 @@ const About = () => {
   return (
     <SectionCard isPaddingContent title={SectionTitle} description={description}>
       <motion.div
-        className="container relative"
+        className="relative"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants
@@ -51,9 +53,12 @@ const About = () => {
                 <InfoCard
                   title={
                     <span>
+                      <motion.span variants={textVariants} className="w-fit">
+                        {card?.preTitle}
+                      </motion.span>
                       <NumberCounter value={card.titleValue} direction="up" />
                       <motion.span variants={textVariants} className="w-fit">
-                        {card.afterTitle}
+                        {card?.afterTitle}
                       </motion.span>
                     </span>
                   }

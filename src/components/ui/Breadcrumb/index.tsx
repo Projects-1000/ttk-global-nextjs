@@ -4,8 +4,11 @@ import { NavigateNext } from '@mui/icons-material';
 import { Link, Breadcrumbs as MUIBreadcrumbs } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
-
-const Breadcrumbs = () => {
+type BreadcrumbProps = {
+  customEndPoint?: string;
+  customColor?: string;
+};
+const Breadcrumbs: React.FC<BreadcrumbProps> = ({ customEndPoint, customColor = 'text-greyscale-negative' }) => {
   const pathname = usePathname();
   const currentPath = useMemo(() => {
     const pathSegments = pathname.split('/').filter(Boolean);
@@ -23,27 +26,26 @@ const Breadcrumbs = () => {
         path: index === segments.length - 1 ? null : accumulatedPath
       };
     });
-
+    if (customEndPoint) {
+      crumbs.pop();
+      crumbs.push({ label: customEndPoint, path: null });
+    }
     return [{ label: breadcrumbsConfig['/'] || 'Home', path: '/' }, ...crumbs];
   }, [currentPath]);
-  console.log(breadcrumbs);
+
   return (
     <MUIBreadcrumbs
       aria-label="breadcrumb"
-      separator={<NavigateNext fontSize="medium" className="text-greyscale-negative" />}
+      separator={<NavigateNext fontSize="medium" className={`${customColor} mx-xs laptop:mx-m`} />}
+      className={`${customColor} `}
     >
       {breadcrumbs.map((breadcrumb, index) =>
         breadcrumb.path ? (
-          <Link
-            key={index}
-            href={breadcrumb.path}
-            className="text-greyscale-negative subtitle-regular laptop:headline-regular"
-            underline="hover"
-          >
+          <Link key={index} href={breadcrumb.path} className={`${customColor}`} underline="hover">
             {breadcrumb.label}
           </Link>
         ) : (
-          <p key={index} className="text-greyscale-negative subtitle-bold laptop:headline-bold">
+          <p key={index} className="subtitle-bold laptop:headline-bold">
             {breadcrumb.label}
           </p>
         )

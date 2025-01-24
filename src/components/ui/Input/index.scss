@@ -47,7 +47,7 @@
   &--error {
     input,
     textarea {
-      @apply border-2 border-solid border-error-default bg-error-subtle outline-error-default;
+      @apply border border-solid border-error-default bg-error-subtle outline-error-default;
       &:focus {
         @apply outline-error-default;
       }
@@ -72,5 +72,12 @@
       left: 12px;
       transform: translateY(-50%);
     }
+  }
+  .MuiInputBase-root {
+    padding-left: 0 !important;
+  }
+
+  .MuiFormHelperText-root {
+    @apply subtitle-regular;
   }
 }
