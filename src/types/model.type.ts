@@ -18,3 +18,12 @@ export interface BlogModelProps {
   createdAtIsoFormat: string;
   createdAtReadableFormat: string;
 }
+
+export interface DocumentModelProps {
+  title: string;
+  label: string;
+  attachment: string;
+  tags: string[];
+  creaatedAt: string;
+  updatedAt: string;
+}

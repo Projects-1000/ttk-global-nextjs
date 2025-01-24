@@ -1,4 +1,9 @@
-import { BlogModelProps } from './model.type';
+import { BlogModelProps, DocumentModelProps } from './model.type';
+
+export interface PaginationRequest {
+  limit: number;
+  page: number;
+}
 
 export interface PaginationResponse<T> {
   data: T[];
@@ -7,13 +12,17 @@ export interface PaginationResponse<T> {
   page: number;
 }
 
-export interface GetBlogsRequest {
+export interface GetBlogsRequest extends PaginationRequest {
   isHighlight?: boolean | null;
   searchTitle?: string | null;
   sortedDate?: boolean | null;
   filterTags: string[] | null;
-  limit: number;
-  page: number;
+}
+
+export interface GetDocumentRequest extends PaginationRequest {
+  title?: string;
+  tags?: string;
 }
 
 export interface GetBlogsResponse extends PaginationResponse<BlogModelProps> {}
+export interface GetDocumentResponse extends PaginationResponse<DocumentModelProps> {}
