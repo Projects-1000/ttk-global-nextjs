@@ -11,7 +11,7 @@ export interface BlogModelProps {
   content?: string;
   // publishDate: string;
   coverImage?: string;
-  tags?: TagModelProps['tag'][];
+  tags?: TagModelProps['tag'][] | null;
   isMainBlog: boolean;
   createdBy?: string;
   slug: string;

@@ -6,20 +6,20 @@ import { TagFilterProps } from '..';
 interface TagFilterItemProps extends TagModelProps, TagFilterProps {}
 
 const TagFilterItem = ({ tag, blogAmount, isMobile = false }: TagFilterItemProps) => {
-  const { setSelectedTags, selectedTags, allTagId, setQueryParam } = useContext(BlogListContext);
-  const [isActive, setIsActive] = useState<boolean>(selectedTags.includes(tag));
+  const { setSelectedTags, selectedTags, defaultTags, allTagId, setQueryParam } = useContext(BlogListContext);
+  const [isActive, setIsActive] = useState<boolean>((selectedTags ?? []).includes(tag));
 
   useEffect(() => {
-    setIsActive(selectedTags.includes(tag));
+    setIsActive((selectedTags ?? ['']).includes(tag));
   }, [selectedTags]);
 
   const handleTagClick = (e: MouseEvent<HTMLDivElement>, currentTag: string) => {
     setSelectedTags((prev) => {
-      return getSelectedTags(prev, currentTag);
+      return getSelectedTags(prev ?? [], currentTag);
     });
     if (!isMobile) {
-      const updatedTags = getSelectedTags(selectedTags, tag);
-      setQueryParam((prev) => ({ ...prev, filterTags: updatedTags, page: 1 }));
+      const updatedTags = getSelectedTags(selectedTags ?? [], tag);
+      setQueryParam((prev) => ({ ...prev, filterTags: updatedTags ?? null, page: 1 }));
     }
 
     setIsActive(!isActive);
@@ -47,13 +47,13 @@ const TagFilterItem = ({ tag, blogAmount, isMobile = false }: TagFilterItemProps
     }
   };
 
-  if (!tag) return null;
+  // if (!tag) return null;
   return (
     <div
       onClick={(e) => handleTagClick(e, tag)}
       className={`${isActive ? 'bg-primary-default laptop:hover:bg-primary-darker' : 'bg-white laptop:hover:bg-primary-subtle'} smooth-transition group flex w-full cursor-pointer flex-row items-center justify-between overflow-hidden rounded-xs px-m py-xs`}
     >
-      <p className={`${isActive ? 'text-greyscale-negative' : 'text-black'} body-bold`}>{tag}</p>
+      <p className={`${isActive ? 'text-greyscale-negative' : 'text-black'} body-bold`}>{tag === allTagId ? "All" :tag}</p>
       <div
         className={`flex items-center rounded-full px-xs py-3xs pt-[3px] leading-[12px] footnote-bold ${isActive ? 'bg-white text-black' : 'bg-primary-default text-white'}`}
       >

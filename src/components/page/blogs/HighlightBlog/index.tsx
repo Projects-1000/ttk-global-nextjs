@@ -1,12 +1,13 @@
-import { motion } from 'framer-motion';
+'use client';
 import Blog from '@/components/ui/Card/BlogCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
-import { blogList } from '@/utils/mockDB';
+import { GetBlogsResponse } from '@/types/api.type';
+import { motion } from 'framer-motion';
 
-const HighlightBlog = async () => {
-  const highLightBlog = blogList.filter((blog) => blog.isMainBlog).slice(0, 4);
-
-  // Animation variants
+interface HighlightBlogProps {
+  highLightBlog: GetBlogsResponse['data'];
+}
+const HighlightBlog = ({ highLightBlog }: HighlightBlogProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

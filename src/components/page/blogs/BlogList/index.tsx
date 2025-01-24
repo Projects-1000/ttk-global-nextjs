@@ -18,24 +18,28 @@ import SortSelector from '../../../ui/Selector/SortSelector';
 import TagFilter from '../TagFilter';
 
 interface BlogListContextProps {
-  selectedTags: string[];
-  setSelectedTags: Dispatch<SetStateAction<string[]>>;
+  selectedTags: BlogModelProps['tags'];
+  setSelectedTags: Dispatch<SetStateAction<BlogModelProps['tags']>>;
   allTagId: string;
   fetchData: (queryParam: GetBlogsRequest) => Promise<void>;
   queryParam: GetBlogsRequest;
   setQueryParam: Dispatch<SetStateAction<GetBlogsRequest>>;
-  // sortDate: string;
-  // setSortDate: Dispatch<SetStateAction<string>>;
+  defaultTags: BlogModelProps['tags'];
 }
 
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
-const getBlogs = async (params: GetBlogsRequest) => {
+const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
   const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
-  (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) =>
-    url.searchParams.append(key, params[key] as string)
-  );
-  console.log('url', url);
+  (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
+    const value = params[key];
+    if (Array.isArray(value)) {
+      if (!value?.includes(allTagId)) url.searchParams.append(key, JSON.stringify(value));
+      else url.searchParams.append(key, String(null));
+    } else {
+      url.searchParams.append(key, String(value));
+    }
+  });
   const posts = await fetch(url.href, {
     method: 'GET',
     headers: {
@@ -47,14 +51,12 @@ const getBlogs = async (params: GetBlogsRequest) => {
 };
 
 const BlogList = () => {
-  const allTagId = 'All';
-  const defaultTags = [allTagId];
+  const allTagId = '';
+  const defaultTags: BlogModelProps['tags'] = null;
   const router = useRouter();
   const [blogData, setBlogData] = useState<BlogModelProps[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>(defaultTags);
+  const [selectedTags, setSelectedTags] = useState<BlogModelProps['tags']>(defaultTags);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  // const [sortDate, setSortDate] = useState('');
-  // const [pagination, setPagination] = useState({ page: 1, total: 0, limit: 4 });
   const debounceSearch = useDebounce(searchQuery);
   const [totalBlog, setTotalBlog] = useState(0);
   const [queryParam, setQueryParam] = useState<GetBlogsRequest>({
@@ -67,19 +69,16 @@ const BlogList = () => {
   });
 
   const fetchData = async (queryParam: GetBlogsRequest) => {
-    const { data, limit, page, total } = await getBlogs(queryParam);
+    const { data, limit, page, total } = await getBlogs(queryParam, allTagId);
     setBlogData(data);
     setTotalBlog(total);
-    // setPagination({ page, total, limit });
   };
   useEffect(() => {
-    console.log('queryParaXm', queryParam);
     fetchData(queryParam);
     handleParamChange();
   }, [queryParam]);
 
   useEffect(() => {
-    // setPagination((prev) => ({ ...prev, page: 1 }));
     //TODO: Fix: avoid call when first render
     setQueryParam((prev) => ({ ...prev, searchTitle: debounceSearch.trim(), page: 1 }));
     handleParamChange();
@@ -89,7 +88,6 @@ const BlogList = () => {
   const currentBlogs = blogData;
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    // setPagination((prev) => ({ ...prev, page: value }));
     setQueryParam((prev) => ({ ...prev, page: value }));
   };
 
@@ -109,9 +107,11 @@ const BlogList = () => {
   };
 
   // TODO: Add skeleton loading + not found
-  if (!blogData?.length) return null;
+  // if (!blogData?.length) return null;
   return (
-    <BlogListContext.Provider value={{ selectedTags, setSelectedTags, allTagId, fetchData, queryParam, setQueryParam }}>
+    <BlogListContext.Provider
+      value={{ selectedTags, setSelectedTags, defaultTags, allTagId, fetchData, queryParam, setQueryParam }}
+    >
       <SectionCard title={SectionTitle}>
         <div className="flex flex-col items-start gap-4xl laptop:flex-row">
           <motion.div
