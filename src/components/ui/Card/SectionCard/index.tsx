@@ -27,7 +27,7 @@ const SectionCard = ({
       className={`${isFluidContainer ? '' : 'container'} relative w-full max-w-[1440px] mobile:py-mobile_section_padding desktop:py-desktop_section_padding ${customClass}`}
       {...props}
     >
-      {!!title && !!description && (
+      {(title || description) && (
         <motion.div
           className="flex flex-col justify-start gap-l text-start tablet:gap-2xl laptop:items-center laptop:gap-3xl laptop:text-center"
           initial="hidden"
@@ -35,9 +35,11 @@ const SectionCard = ({
           viewport={{ once: true, amount: 0.8 }}
           variants={containerVariants}
         >
-          <motion.div className="z-50 w-full h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
-            {title}
-          </motion.div>
+          {title && (
+            <motion.div className="z-50 w-full h4-bold tablet:h2-bold laptop:h1-bold" variants={titleVariants}>
+              {title}
+            </motion.div>
+          )}
 
           {description && (
             <motion.div className="z-50 w-full body-regular mobile:w-full laptop:w-1/2" variants={descriptionVariants}>

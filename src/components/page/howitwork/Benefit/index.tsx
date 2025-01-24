@@ -52,7 +52,7 @@ const Benefit = () => {
   const description =
     'So sánh rõ ràng giữa mô hình tự kinh doanh truyền thống và hợp tác EBO-C với TTK GV, giúp bạn thấy được những lợi thế vượt trội về chi phí, rủi ro và tiềm năng lợi nhuận.';
   return (
-    <SectionCard customClass="container" title={<BenefitTitle />} description={description}>
+    <SectionCard isPaddingContent title={<BenefitTitle />} description={description}>
       <ComparisonTable columns={header} data={tableData} />
     </SectionCard>
   );

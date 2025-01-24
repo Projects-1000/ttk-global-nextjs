@@ -13,7 +13,7 @@ const LarkSchedule: React.FC<LarkSchedule> = ({ isHeading = false, isBorder = fa
   return (
     <div className="w-full">
       {isHeading && <LarkScheduleHeading />}
-      <div className="container max-w-[1440px]">
+      <div className="taplet:container taplet:max-w-[1440px]">
         <div
           className={`mobile:max-tablet:border-gradient-stroke-1 w-full rounded-m bg-blue-50/20 mobile:max-tablet:p-xl mobile:max-tablet:backdrop-blur-md ${isBorder && 'border-gradient-stroke-1 rounded-m bg-blue-50/20 p-xl backdrop-blur-md'}`}
           dangerouslySetInnerHTML={{ __html: larkSchedule }}
@@ -24,7 +24,7 @@ const LarkSchedule: React.FC<LarkSchedule> = ({ isHeading = false, isBorder = fa
 };
 const LarkScheduleHeading = () => {
   return (
-    <div className="w-[100vw] p-2xl laptop:p-4xl">
+    <div className="w-[100vw] p-2xl mobile:max-tablet:px-0 laptop:p-4xl">
       <Image
         alt="lark-schedule-logo"
         src={larkLogo}

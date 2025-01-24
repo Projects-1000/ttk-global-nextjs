@@ -45,8 +45,8 @@ const TargetPartner = () => {
   ];
   return (
     <SectionCard customClass="laptop:px-[102px]">
-      <div className="container relative grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
-        <div className="absolute top-0 w-full translate-y-[-80%]">
+      <div className="laptop:container relative grid w-full grid-cols-1 gap-2xl tablet:grid-cols-2 tablet:gap-3xl">
+        <div className="absolute top-0 w-full translate-y-[-80%] mobile:max-tablet:hidden">
           <Image src={targetBg} alt="" width={0} height={0} sizes="100vw" className="h-full w-full object-contain" />
         </div>
         <TargetPartnerHeadingCard />

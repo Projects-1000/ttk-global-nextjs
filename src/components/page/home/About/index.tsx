@@ -21,7 +21,7 @@ const INFO_CARDS = [
   {
     titleValue: 50000,
     preTitle: '$',
-    subtitle: 'Doanh thu trung bình của mỗi gian hàng tính theo USD'
+    subtitle: 'Doanh số trung bình hàng tháng của các gian hàng'
   }
 ];
 
@@ -32,7 +32,7 @@ const About = () => {
   return (
     <SectionCard isPaddingContent title={SectionTitle} description={description}>
       <motion.div
-        className="container relative"
+        className="relative"
         initial="hidden"
         animate="visible"
         variants={containerVariants} // Apply container variants

@@ -6,16 +6,6 @@ import Button from '../../Button/Button';
 import CustomPagination from '../../CustomPagination';
 import { motion } from 'framer-motion';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } }
-};
-
 interface Document {
   name: string;
   label: string;
@@ -28,16 +18,13 @@ interface DocumentCardProps {
 }
 
 const DocumentItem: React.FC<{ doc: Document }> = ({ doc }) => (
-  <motion.div
-    variants={itemVariants}
-    className="flex items-center justify-between gap-l border border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-blue-200 p-l laptop:gap-2xl laptop:px-3xl laptop:py-2xl"
-  >
+  <div className="flex items-center justify-between gap-l border border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-blue-200 p-l duration-200 hover:bg-greyscale-negative laptop:gap-2xl laptop:px-3xl laptop:py-2xl">
     <span className="subtitle-bold laptop:body-bold">{doc.name}</span>
     <Button classCustom="mobile:max-tablet:btn--pill mobile:btn__small tablet:btn__medium laptop:rounded-none">
       <span className="hidden laptop:inline">Download</span>
       <ArrowDownToLine />
     </Button>
-  </motion.div>
+  </div>
 );
 
 const DocumentCard: React.FC<DocumentCardProps> = ({ title, documents }) => {
@@ -62,28 +49,18 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ title, documents }) => {
         visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.3 } }
       }}
     >
-      <motion.span variants={cardVariants} className="uppercase h3-bold laptop:h1-bold">
-        {title}
-      </motion.span>
-      <motion.div
-        variants={cardVariants}
-        className="border-gradient-stroke-1 flex flex-col gap-l rounded-m border-[1px] bg-[#FAFAFE] p-xl laptop:gap-3xl laptop:!p-4xl"
-      >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.3 } } }}
-        >
+      <span className="uppercase h3-bold laptop:h1-bold">{title}</span>
+      <div className="border-gradient-stroke-1 flex flex-col gap-l rounded-m border-[1px] bg-[#FAFAFE] p-xl laptop:gap-3xl laptop:!p-4xl">
+        <div>
           {currentDocuments.map((doc, index) => (
             <DocumentItem key={index} doc={doc} />
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div variants={cardVariants} className="flex justify-center">
+        <div className="flex justify-center">
           <CustomPagination page={page} count={totalPages} onChange={handlePageChange} />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };
