@@ -21,6 +21,7 @@ const fetchBlogDetail = async ({ slug }: FetchBlogDetailProps) => {
 const BlogDetails = async ({ params }: BlogDetailPageProps) => {
   const { slug, locale } = await params;
   const details = await fetchBlogDetail({ locale, slug });
+  console.log(details);
   return (
     <div className="flex w-full flex-col items-center justify-start">
       <BlogDetailsHeader {...details} />

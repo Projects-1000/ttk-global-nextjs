@@ -152,7 +152,7 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
       <section className="grid grid-cols-1 py-mobile_section_padding laptop:grid-cols-12 laptop:gap-x-3xl laptop:!px-[60px] desktop:gap-x-3xl">
         <div className="col-span-1 laptop:col-span-12">
           <div className="blog-post mx-auto flex w-full flex-col items-center justify-start">
-            <Breadcrumbs customColor="text-black" />
+            {/* <Breadcrumbs customColor="text-black" /> */}
             <div className="flex w-full flex-col items-center justify-start gap-2xl text-center laptop:gap-3xl">
               <h1 className="text-primary-default headline-bold tablet:body-bold laptop:h1-bold">{title}</h1>
               <div className={`flex flex-wrap gap-s`}>
