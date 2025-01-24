@@ -4,7 +4,7 @@ import PromoteBannerCard from '@/components/ui/Card/PromoteBannerCard';
 import CustomTag from '@/components/ui/CustomTag';
 import BlogInfoTag from '@/components/ui/CustomTag/BlogInfoTag';
 import '@/styles/scss/_typography.scss';
-import { blogList } from '@/utils/mockDB';
+import { BlogModelProps } from '@/types/model.type';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import ContentTable from '../ContentTable';
@@ -17,8 +17,10 @@ export interface Heading {
   children?: Heading[];
 }
 
-const BlogDetailsHeader = () => {
-  const { title, author, tags, publishDate, coverImage, description, content } = blogList[0];
+interface BlogDetailsHeaderProps extends BlogModelProps {}
+
+const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
+  const { title, createdBy: author, tags, createdAtIsoFormat: publishDate, coverImage, content } = blogDetails;
   const [nestedHeadings, setNestedHeadings] = useState<Heading[]>([]);
   const [convertedContent, setConvertedContent] = useState<string>(content || '');
   useEffect(() => {
@@ -154,11 +156,11 @@ const BlogDetailsHeader = () => {
             <div className="flex w-full flex-col items-center justify-start gap-2xl text-center laptop:gap-3xl">
               <h1 className="text-primary-default headline-bold tablet:body-bold laptop:h1-bold">{title}</h1>
               <div className={`flex flex-wrap gap-s`}>
-                {tags?.map((tag) => {
-                  return <CustomTag key={tag.id} tagName={tag.name} type="outline" />;
+                {tags?.map((tag, index) => {
+                  return <CustomTag key={index} tagName={tag} type="outline" />;
                 })}
               </div>
-              <BlogInfoTag publishDate={publishDate} author={author} className="!w-fit" />
+              <BlogInfoTag createdAtIsoFormat={publishDate} createdBy={author} className="!w-fit" />
               <div className={`w-full overflow-hidden rounded-m`}>
                 <Image
                   title={title}

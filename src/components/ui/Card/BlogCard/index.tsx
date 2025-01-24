@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import TooltipButton from '../../Button/TooltipButton';
 import { Tooltip } from '@mui/material';
 
-interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
+interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isMainBlog' | 'createdAtReadableFormat' | 'content'> {
   direction?: 'row' | 'column';
   isShowContentMobile?: boolean;
 }
@@ -18,11 +18,11 @@ interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isHighlight'> {
 const BlogCard = ({
   coverImage,
   description,
-  publishDate,
+  createdAtIsoFormat: publishDate,
   title,
   direction = 'column',
   tags,
-  author,
+  createdBy: author,
   isShowContentMobile = false,
   slug
 }: BlogCardProps) => {
@@ -43,7 +43,7 @@ const BlogCard = ({
 
       tags.forEach((tag, index) => {
         const tagElement = container.children[index] as HTMLElement;
-        const tagWidth = tagElement.offsetWidth;
+        const tagWidth = tagElement?.offsetWidth;
 
         // Check if adding the current tag and `+X more` exceeds the container width
         console.log(usedWidth + tagWidth <= containerWidth);
@@ -59,12 +59,12 @@ const BlogCard = ({
       setHiddenCount(hiddenTagsTemp);
     }
   }, [tags]);
-
+  console.log('>>>', tags);
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
       <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
         <div className={`w-full overflow-hidden rounded-m`}>
-          <Image
+          {/* <Image
             title={title}
             src={coverImage || ''}
             alt=""
@@ -72,12 +72,15 @@ const BlogCard = ({
             height={0}
             sizes="100vw"
             className="smooth-transition h-auto w-full object-contain hover:scale-105"
-          />
+          /> */}
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
-        <BlogInfo author={author} publishDate={publishDate} />
-        <Link href="/" className="smooth-transition text-black no-underline hover:text-secondary-default">
+        <BlogInfo createdBy={author} createdAtIsoFormat={publishDate} />
+        <Link
+          href={`${pathname}/${slug}` || '#'}
+          className="smooth-transition text-black no-underline hover:text-secondary-default"
+        >
           <header>
             <h2
               title={title}
@@ -97,13 +100,13 @@ const BlogCard = ({
             ref={tagContainerRef}
             className={`flex w-full flex-wrap gap-s ${isShowContentMobile ? '' : 'mobile:max-tablet:hidden'}`}
           >
-            {visibleTags?.map((tag) => {
-              return <CustomTag key={tag.id} tagName={tag.name} type="outline" />;
+            {visibleTags?.map((tag, index) => {
+              return <CustomTag key={index} tagName={tag} type="outline" />;
             })}
             {hiddenCount > 0 && (
               <Tooltip
-                title={tags?.map((tag) => (
-                  <CustomTag key={tag.id} tagName={tag.name} type="outline" className="w-fit" />
+                title={tags?.map((tag, index) => (
+                  <CustomTag key={index} tagName={tag} type="outline" className="w-fit" />
                 ))}
               >
                 <div ref={moreTagRef} className="inline-block">

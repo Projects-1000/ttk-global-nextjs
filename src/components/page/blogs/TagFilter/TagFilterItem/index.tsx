@@ -1,40 +1,59 @@
 import { TagModelProps } from '@/types/model.type';
-import { useContext, useEffect, useState } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, MouseEvent, useContext, useEffect, useState } from 'react';
 import { BlogListContext } from '../../BlogList';
+import { TagFilterProps } from '..';
 
-interface TagFilterItemProps extends TagModelProps {}
-const TagFilterItem = ({ id, name, blogAmount }: TagFilterItemProps) => {
-  const { setSelectedTags, selectedTags, allTagId } = useContext(BlogListContext);
-  const [isActive, setIsActive] = useState<boolean>(selectedTags.includes(id));
+interface TagFilterItemProps extends TagModelProps, TagFilterProps {}
+
+const TagFilterItem = ({ tag, blogAmount, isMobile = false }: TagFilterItemProps) => {
+  const { setSelectedTags, selectedTags, allTagId, setQueryParam } = useContext(BlogListContext);
+  const [isActive, setIsActive] = useState<boolean>(selectedTags.includes(tag));
 
   useEffect(() => {
-    setIsActive(selectedTags.includes(id));
+    setIsActive(selectedTags.includes(tag));
   }, [selectedTags]);
 
-  const handleTagClick = () => {
+  const handleTagClick = (e: MouseEvent<HTMLDivElement>, currentTag: string) => {
     setSelectedTags((prev) => {
-      if (id === allTagId) {
-        return prev.includes(allTagId) ? [] : [allTagId];
-      } else {
-        const updatedTags = prev.filter((tag) => tag !== allTagId);
-        if (updatedTags.includes(id)) {
-          return updatedTags.filter((tag) => tag !== id);
-        } else {
-          return [...updatedTags, id];
-        }
-      }
+      return getSelectedTags(prev, currentTag);
     });
+    if (!isMobile) {
+      const updatedTags = getSelectedTags(selectedTags, tag);
+      setQueryParam((prev) => ({ ...prev, filterTags: updatedTags, page: 1 }));
+    }
 
     setIsActive(!isActive);
   };
 
-  if (!id) return null;
+  const getSelectedTags = (prevTags: string[], currentTag: string) => {
+    if (currentTag === allTagId) {
+      //select all
+      return prevTags.includes(allTagId) ? [] : [allTagId];
+    } else {
+      const currentTags = prevTags.filter((tag) => tag !== allTagId);
+      const isTagSelected = currentTags.includes(currentTag);
+
+      if (isTagSelected) {
+        //select new tags
+        const updatedTags = currentTags.filter((tag) => tag !== currentTag);
+        if (updatedTags.length === 0) {
+          return [allTagId];
+        }
+        return updatedTags;
+      } else {
+        //unselect tags
+        return [...currentTags, currentTag];
+      }
+    }
+  };
+
+  if (!tag) return null;
   return (
     <div
-      onClick={handleTagClick}
+      onClick={(e) => handleTagClick(e, tag)}
       className={`${isActive ? 'bg-primary-default laptop:hover:bg-primary-darker' : 'bg-white laptop:hover:bg-primary-subtle'} smooth-transition group flex w-full cursor-pointer flex-row items-center justify-between overflow-hidden rounded-xs px-m py-xs`}
     >
-      <p className={`${isActive ? 'text-greyscale-negative' : 'text-black'} body-bold`}>{name}</p>
+      <p className={`${isActive ? 'text-greyscale-negative' : 'text-black'} body-bold`}>{tag}</p>
       <div
         className={`flex items-center rounded-full px-xs py-3xs pt-[3px] leading-[12px] footnote-bold ${isActive ? 'bg-white text-black' : 'bg-primary-default text-white'}`}
       >
