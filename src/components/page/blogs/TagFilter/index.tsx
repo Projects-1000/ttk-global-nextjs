@@ -39,7 +39,7 @@ const TagFilter = ({ isMobile }: TagFilterProps) => {
       <p className="text-primary-default body-bold laptop:block laptop:text-black">Tag</p>
       <div className="flex w-full min-w-full flex-col items-start gap-l laptop:gap-s">
         <div className="hidden w-full laptop:block">
-          <TagFilterItem key={allTagId} blogAmount={totalBlogs} tag="All" />
+          <TagFilterItem key={allTagId} blogAmount={totalBlogs} tag={allTagId} />
         </div>
         {tags.map((tag, index) => {
           return <TagFilterItem key={index} {...tag} isMobile={isMobile} />;

@@ -59,7 +59,7 @@ const BlogCard = ({
       setHiddenCount(hiddenTagsTemp);
     }
   }, [tags]);
-  console.log('>>>', tags);
+
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
       <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>

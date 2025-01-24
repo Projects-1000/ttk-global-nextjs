@@ -12,7 +12,9 @@ interface BlogDetailPageProps {
 }
 
 const fetchBlogDetail = async ({ slug }: FetchBlogDetailProps) => {
-  const blogDetails = await fetch(`http://localhost:5000/api/v1/blog/get-blog/${slug}`).then((res) => res.json());
+  const blogDetails: BlogModelProps = await fetch(`http://localhost:5000/api/v1/blog/get-blog/${slug}`).then((res) =>
+    res.json()
+  );
   return blogDetails;
 };
 
@@ -22,7 +24,7 @@ const BlogDetails = async ({ params }: BlogDetailPageProps) => {
   return (
     <div className="flex w-full flex-col items-center justify-start">
       <BlogDetailsHeader {...details} />
-      <RelatedBlog />
+      <RelatedBlog tags={details.tags} slug={slug} />
     </div>
   );
 };
