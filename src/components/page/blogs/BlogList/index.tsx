@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import SortSelector from '../../../ui/Selector/SortSelector';
 import TagFilter from '../TagFilter';
+import BlogItemSkeleton from '@/components/ui/Skeleton/BlogSkeleton';
 
 interface BlogListContextProps {
   selectedTags: string[];
@@ -53,6 +54,7 @@ const BlogList = () => {
   const [blogData, setBlogData] = useState<BlogModelProps[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>(defaultTags);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
   // const [sortDate, setSortDate] = useState('');
   // const [pagination, setPagination] = useState({ page: 1, total: 0, limit: 4 });
   const debounceSearch = useDebounce(searchQuery);
@@ -74,8 +76,10 @@ const BlogList = () => {
   };
   useEffect(() => {
     console.log('queryParaXm', queryParam);
+    setIsLoading(true);
     fetchData(queryParam);
     handleParamChange();
+    setIsLoading(false);
   }, [queryParam]);
 
   useEffect(() => {
@@ -164,26 +168,28 @@ const BlogList = () => {
                 visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
               }}
             >
-              {currentBlogs.map((blog) => (
-                <motion.div
-                  key={blog.id}
-                  className="col-span-1"
-                  initial={{ opacity: 0, y: 20, scale: 0.5 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <BlogPost
-                    key={blog.id}
-                    title={blog.title}
-                    description={blog.description}
-                    coverImage={blog.coverImage}
-                    tags={blog.tags}
-                    slug={blog.slug}
-                    createdAtIsoFormat={blog.createdAtIsoFormat}
-                  />
-                </motion.div>
-              ))}
+              {!isLoading
+                ? Array.from({ length: 6 }).map((_, index) => <BlogItemSkeleton key={index} />)
+                : currentBlogs.map((blog) => (
+                    <motion.div
+                      key={blog.id}
+                      className="col-span-1"
+                      initial={{ opacity: 0, y: 20, scale: 0.5 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <BlogPost
+                        key={blog.id}
+                        title={blog.title}
+                        description={blog.description}
+                        coverImage={blog.coverImage}
+                        tags={blog.tags}
+                        slug={blog.slug}
+                        createdAtIsoFormat={blog.createdAtIsoFormat}
+                      />
+                    </motion.div>
+                  ))}
             </motion.div>
             <motion.div
               className="self-center"

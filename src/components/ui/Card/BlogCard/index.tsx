@@ -59,12 +59,12 @@ const BlogCard = ({
       setHiddenCount(hiddenTagsTemp);
     }
   }, [tags]);
-console.log('>>>', tags);
+  console.log('>>>', tags);
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
       <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
         <div className={`w-full overflow-hidden rounded-m`}>
-          <Image
+          {/* <Image
             title={title}
             src={coverImage || ''}
             alt=""
@@ -72,7 +72,7 @@ console.log('>>>', tags);
             height={0}
             sizes="100vw"
             className="smooth-transition h-auto w-full object-contain hover:scale-105"
-          />
+          /> */}
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
