@@ -73,11 +73,11 @@ const cardData = [
 ];
 const PartnershipFormSection = () => {
   const description =
-    'Khám phá các hình thức hợp tác đa dạng của chúng tôi, từ cơ hội kiếm hoa hồng hấp dẫn đến việc xây dựng thương hiệu chung. Chọn mô hình phù hợp nhất với định hướng của bạn.';
+    'Khám phá chi tiết hình thức cộng tác theo mô hình B2B và nhận hoa hồng hấp dẫn từ việc liên kết giới thiệu Khách hàng tiềm năng với chúng tôi. Tìm hiểu cách thức và dự tính mức hoa hồng bạn có thể nhận ngay!';
 
   return (
-    <SectionCard title={<ParnershipFormSectionTitle />} description={description} isPaddingContent>
-      <div className="container w-full laptop:mt-3xl">
+    <SectionCard title={<ParnershipFormSectionTitle />} description={description}>
+      <div className="w-full laptop:mt-3xl">
         <div className="parnership-container relative grid w-full grid-cols-1 gap-3xl laptop:grid-cols-1 laptop:gap-0">
           <div className="line"></div>
           {cardData.map((card, index) => (
@@ -91,7 +91,7 @@ const PartnershipFormSection = () => {
 
 const ParnershipFormSectionTitle = () => (
   <p className="uppercase">
-    HÌNH THỨC<span className="text-secondary-label"> HỢP TÁC</span>
+    <span className="text-secondary-label">HÌNH THỨC </span> CỘNG TÁC
   </p>
 );
 

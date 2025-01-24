@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { MoveLeft, MoveRight } from 'lucide-react';
 import { containerVariants } from '@/components/page/home/Hero/HeroAnimationVariants';
-
+import './index.scss';  
 interface CardProps {
   index: number;
   icon: React.ReactNode;
@@ -17,7 +17,7 @@ const PartnershipFormCard: React.FC<CardProps> = ({ index, icon, title, subtitle
       initial="hidden"
       whileInView="visible"
       variants={containerVariants}
-      className={`flex w-full items-center laptop:w-[50%] ${index % 2 === 0 ? 'mr-auto' : 'ml-auto'}`}
+      className={`flex form-section-card-container w-full items-center laptop:w-[50%] ${index % 2 === 0 ? 'mr-auto' : 'ml-auto'}`}
     >
       <motion.div
         initial={{ width: 0 }}

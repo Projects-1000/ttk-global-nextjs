@@ -266,7 +266,7 @@ const TagFilterMobile = ({}: TagFilterMobileProps) => {
 };
 
 const SectionTitle = (
-  <h3>
+  <h3 className="text-left">
     <span className="text-secondary-default">TẤT CẢ</span> BÀI VIẾT
   </h3>
 );
