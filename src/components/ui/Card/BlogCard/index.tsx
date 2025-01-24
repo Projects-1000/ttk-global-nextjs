@@ -38,7 +38,7 @@ const BlogCard = ({
       const containerWidth = container.offsetWidth;
       const estimatedMoreTagWidth = 70; // Width estimation for `+X`
       let usedWidth = estimatedMoreTagWidth;
-      let visibleTagsTemp: BlogModelProps['tags'] = [];
+      const visibleTagsTemp: BlogModelProps['tags'] = [];
       let hiddenTagsTemp = 0;
 
       tags.forEach((tag, index) => {
@@ -64,15 +64,15 @@ const BlogCard = ({
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
       <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
         <div className={`w-full overflow-hidden rounded-m`}>
-          {/* <Image
+          <Image
             title={title}
-            src={coverImage || ''}
+            src={coverImage|| ''}
             alt=""
             width={0}
             height={0}
             sizes="100vw"
             className="smooth-transition h-auto w-full object-contain hover:scale-105"
-          /> */}
+          />
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>

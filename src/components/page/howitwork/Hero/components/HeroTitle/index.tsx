@@ -10,7 +10,7 @@ const HeroTitle = () => (
     variants={titleVariants}
     className="flex justify-start gap-x-m"
   >
-    <div className="w-fit uppercase h4-bold tablet:h3-bold laptop:h1-bold">
+    <div className="w-fit text-start uppercase h4-bold tablet:h3-bold laptop:h1-bold">
       Hợp tác kinh doanh
       <br />
       <span className="text-secondary-label"> TMĐT quốc tế </span>

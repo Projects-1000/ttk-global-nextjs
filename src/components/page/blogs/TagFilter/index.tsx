@@ -2,6 +2,7 @@ import { TagModelProps } from '@/types/model.type';
 import { useContext, useEffect, useState } from 'react';
 import { BlogListContext } from '../BlogList';
 import TagFilterItem from './TagFilterItem';
+import { Skeleton } from '@mui/material';
 
 export interface TagFilterProps {
   isMobile?: boolean;
@@ -21,13 +22,15 @@ const fetchTags = async () => {
 const TagFilter = ({ isMobile }: TagFilterProps) => {
   const [tags, setTags] = useState<TagModelProps[]>([]);
   const { allTagId } = useContext(BlogListContext);
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const getTags = async () => {
+      setIsLoading(true);
       const res = await fetchTags();
       if (res?.length) {
         setTags(res);
       }
+      setIsLoading(false);
     };
     getTags();
   }, []);
@@ -41,9 +44,17 @@ const TagFilter = ({ isMobile }: TagFilterProps) => {
         <div className="hidden w-full laptop:block">
           <TagFilterItem key={allTagId} blogAmount={totalBlogs} tag={allTagId} />
         </div>
-        {tags.map((tag, index) => {
-          return <TagFilterItem key={index} {...tag} isMobile={isMobile} />;
-        })}
+        {isLoading ? (
+          <div className="w-full">
+            {Array.from({ length: 5}).map((_, index) => (
+              <Skeleton key={index} height={40} />
+            ))}
+          </div>
+        ) : (
+          tags.map((tag, index) => {
+            return <TagFilterItem key={index} {...tag} isMobile={isMobile} />;
+          })
+        )}
       </div>
     </div>
   );

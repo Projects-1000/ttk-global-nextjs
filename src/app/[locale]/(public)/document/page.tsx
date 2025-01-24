@@ -1,7 +1,6 @@
 import PageHeader from '@/components/layout/PageHeader';
 import CTASection from '@/components/page/document/CTASection';
-import DocumentCard from '@/components/ui/Card/DocumentCard';
-import SectionCard from '@/components/ui/Card/SectionCard';
+import DocumentSection from '@/components/page/document/DocumentSection';
 
 const Document = () => {
   // const documents = [
@@ -13,23 +12,11 @@ const Document = () => {
 
   //   { name: 'Nghiên cứu sản phẩm tiềm năng 6', label: 'Label', downloadLink: '#' }
   // ];
-  const EbookTitle = () => <h1 className="text-secondary-label">E-BOOK</h1>;
-  const ServiceDocumentTitle = () => (
-    <span>
-      Tài liệu
-      <span className="text-secondary-label"> dịch vụ</span>
-    </span>
-  );
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <PageHeader title="Tài Nguyên " />
-      <SectionCard customClass="w-full container max-w-[1440px] ">
-        <div className="flex w-full flex-col gap-2xl laptop:gap-[120px]">
-          <DocumentCard title={<EbookTitle />} tag="ebook" />
-          <DocumentCard title={<ServiceDocumentTitle />} tag="service" />
-        </div>
-      </SectionCard>
+      <DocumentSection />
       <CTASection />
       {/* <div dangerouslySetInnerHTML={{ __html: larkContent }}></div>; */}
     </div>
