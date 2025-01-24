@@ -1,7 +1,7 @@
 import PageHeader from '@/components/layout/PageHeader';
 import BlogList from '@/components/page/blogs/BlogList';
 import DocumentSection from '@/components/page/blogs/Document';
-import { HighlightBlog } from '@/components/page/blogs/HighlightBlog';
+import HighlightBlog from '@/components/page/blogs/HighlightBlog';
 import { TFunction } from '@/i18n/types';
 import { LocaleRouteParams } from '@/types/routeParams';
 import { getTranslations } from 'next-intl/server';

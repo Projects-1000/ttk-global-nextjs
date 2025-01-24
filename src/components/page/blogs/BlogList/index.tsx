@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button/Button';
 import BlogPost from '@/components/ui/Card/BlogCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
@@ -7,82 +6,112 @@ import CustomPagination from '@/components/ui/CustomPagination';
 import { TagFilterIcon } from '@/components/ui/icons/TagFilterIcon';
 import ControlledInput from '@/components/ui/Input';
 import { useDebounce } from '@/hooks/useDebounce';
-import { BlogModelProps, TagModelProps } from '@/types/model.type';
-import { blogList } from '@/utils/mockDB';
+import { GetBlogsRequest, GetBlogsResponse } from '@/types/api.type';
+import { BlogModelProps } from '@/types/model.type';
 import { Search } from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
 import { SwipeableDrawer } from '@mui/material';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { ChangeEvent, createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
 import SortSelector from '../../../ui/Selector/SortSelector';
 import TagFilter from '../TagFilter';
 
 interface BlogListContextProps {
-  selectedTags: TagModelProps['id'][];
+  selectedTags: string[];
   setSelectedTags: Dispatch<SetStateAction<string[]>>;
-  allTagId: TagModelProps['id'];
+  allTagId: string;
+  fetchData: (queryParam: GetBlogsRequest) => Promise<void>;
+  queryParam: GetBlogsRequest;
+  setQueryParam: Dispatch<SetStateAction<GetBlogsRequest>>;
+  // sortDate: string;
+  // setSortDate: Dispatch<SetStateAction<string>>;
 }
 
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
-const getBlogs = async () => {
-  
-  return 
-}
+const getBlogs = async (params: GetBlogsRequest) => {
+  const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
+  (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) =>
+    url.searchParams.append(key, params[key] as string)
+  );
+  console.log('url', url);
+  const posts = await fetch(url.href, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const res = (await posts.json()) as GetBlogsResponse;
+  return res;
+};
 
 const BlogList = () => {
-  const [page, setPage] = useState(1);
-  const [pageSize] = useState(3);
-  const allTagId = 'tags-all';
+  const allTagId = 'All';
   const defaultTags = [allTagId];
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [blogData, setBlogData] = useState<BlogModelProps[]>([]);
-  const [selectedTags, setSelectedTags] = useState<TagModelProps['id'][]>(defaultTags);
+  const [selectedTags, setSelectedTags] = useState<string[]>(defaultTags);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  // const [sortDate, setSortDate] = useState('');
+  // const [pagination, setPagination] = useState({ page: 1, total: 0, limit: 4 });
   const debounceSearch = useDebounce(searchQuery);
+  const [totalBlog, setTotalBlog] = useState(0);
+  const [queryParam, setQueryParam] = useState<GetBlogsRequest>({
+    isHighlight: null,
+    searchTitle: debounceSearch.trim(),
+    sortedDate: true,
+    filterTags: null,
+    limit: 4,
+    page: 1
+  });
 
+  const fetchData = async (queryParam: GetBlogsRequest) => {
+    const { data, limit, page, total } = await getBlogs(queryParam);
+    setBlogData(data);
+    setTotalBlog(total);
+    // setPagination({ page, total, limit });
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await new Promise((resolve) => setTimeout(() => resolve(blogList), 3000));
-      setBlogData(res as BlogModelProps[]);
-    };
-    fetchData();
+    console.log('queryParaXm', queryParam);
+    fetchData(queryParam);
     handleParamChange();
-  }, [page]);
+  }, [queryParam]);
 
   useEffect(() => {
-    setPage(1);
+    // setPagination((prev) => ({ ...prev, page: 1 }));
+    //TODO: Fix: avoid call when first render
+    setQueryParam((prev) => ({ ...prev, searchTitle: debounceSearch.trim(), page: 1 }));
     handleParamChange();
   }, [debounceSearch]);
 
-  useEffect(() => {
-    handleParamChange();
-  }, [selectedTags]);
-
-  const totalPages = Math.ceil(blogList.length / pageSize);
-  const currentBlogs = blogList.slice((page - 1) * pageSize, page * pageSize);
+  const totalPages = Math.ceil(totalBlog / queryParam.limit);
+  const currentBlogs = blogData;
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    // setPagination((prev) => ({ ...prev, page: value }));
+    setQueryParam((prev) => ({ ...prev, page: value }));
   };
 
   const handleParamChange = () => {
     const urlParams = new URLSearchParams();
-    urlParams.set('page', page.toString());
-    urlParams.set('tags', selectedTags.join(','));
+    urlParams.set('page', queryParam.page.toString().trim());
     urlParams.set('search', searchQuery);
     router.push(`?${urlParams.toString()}`, { scroll: false });
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
-  if (!blogList?.length) return null;
+  const handleSortChange = (value: string) => {
+    setQueryParam((prev) => ({ ...prev, sortedDate: value === 'new' ? true : false, page: 1 }));
+  };
 
+  // TODO: Add skeleton loading + not found
+  if (!blogData?.length) return null;
   return (
-    <BlogListContext.Provider value={{ selectedTags, setSelectedTags, allTagId }}>
+    <BlogListContext.Provider value={{ selectedTags, setSelectedTags, allTagId, fetchData, queryParam, setQueryParam }}>
       <SectionCard title={SectionTitle}>
         <div className="flex flex-col items-start gap-4xl laptop:flex-row">
           <motion.div
@@ -96,7 +125,13 @@ const BlogList = () => {
           </motion.div>
           <div className="flex w-full justify-start gap-2xl laptop:hidden">
             <div className="w-full">
-              <ControlledInput required icon={<Search />} placeholder="Search" />
+              <ControlledInput
+                required
+                icon={<Search />}
+                placeholder="Search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
             </div>
             <TagFilterMobile />
           </div>
@@ -113,12 +148,11 @@ const BlogList = () => {
                   required
                   icon={<Search />}
                   placeholder="Search"
-                  defaultValue={searchQuery}
                   value={searchQuery}
                   onChange={handleSearchChange}
                 />
               </div>
-              <SortSelector />
+              <SortSelector onSelectChange={(e) => handleSortChange(e.target.value as string)} />
             </motion.div>
             <motion.div
               className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
@@ -140,12 +174,13 @@ const BlogList = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <BlogPost
+                    key={blog.id}
                     title={blog.title}
                     description={blog.description}
-                    publishDate={blog.publishDate}
                     coverImage={blog.coverImage}
                     tags={blog.tags}
                     slug={blog.slug}
+                    createdAtIsoFormat={blog.createdAtIsoFormat}
                   />
                 </motion.div>
               ))}
@@ -157,7 +192,7 @@ const BlogList = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              <CustomPagination page={page} count={totalPages} onChange={handlePageChange} />
+              <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
             </motion.div>
           </div>
         </div>
@@ -166,8 +201,17 @@ const BlogList = () => {
   );
 };
 
-const TagFilterMobile = () => {
+interface TagFilterMobileProps {}
+
+const TagFilterMobile = ({}: TagFilterMobileProps) => {
   const [open, setOpen] = useState(false);
+  const [sortDate, setSortDate] = useState('');
+  const { fetchData, queryParam } = useContext(BlogListContext);
+
+  const handleApply = () => {
+    const param = { ...queryParam, sortedDate: sortDate === 'new' ? true : false };
+    fetchData(param);
+  };
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -196,17 +240,22 @@ const TagFilterMobile = () => {
         <div className="flex h-full w-full flex-col items-start justify-between p-2xl">
           <div className="flex w-full flex-col items-end gap-2xl">
             <CloseIcon onClick={toggleDrawer(false)} />
-            <TagFilter />
+            <TagFilter isMobile={true} />
             <div className="flex w-full flex-col items-start gap-2xl laptop:gap-3xl">
               <p className="text-primary-default body-bold laptop:block laptop:text-black">Filter</p>
-              <SortSelector className="w-full" />
+              <SortSelector className="w-full" onSelectChange={(e) => setSortDate(e.target.value as string)} />
             </div>
           </div>
           <div className="flex w-full justify-between gap-m">
             <Button color="secondary" variant="contained" classCustom="w-full btn__small tablet:btn__medium">
               Xóa bộ lọc
             </Button>
-            <Button color="primary" variant="contained" classCustom="w-full btn__small tablet:btn__medium">
+            <Button
+              onClick={handleApply}
+              color="primary"
+              variant="contained"
+              classCustom="w-full btn__small tablet:btn__medium"
+            >
               Áp dụng
             </Button>
           </div>

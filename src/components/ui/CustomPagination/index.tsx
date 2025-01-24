@@ -19,6 +19,7 @@ interface CustomPaginationProps {
 }
 
 const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChange }) => {
+  // console.log(count, page);
   const { items } = usePagination({
     count,
     page,

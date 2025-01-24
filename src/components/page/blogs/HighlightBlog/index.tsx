@@ -1,11 +1,10 @@
-'use client';
 import { motion } from 'framer-motion';
 import Blog from '@/components/ui/Card/BlogCard';
 import SectionCard from '@/components/ui/Card/SectionCard';
 import { blogList } from '@/utils/mockDB';
 
-export const HighlightBlog = () => {
-  const highLightBlog = blogList.filter((blog) => blog.isHighlight).slice(0, 4);
+const HighlightBlog = async () => {
+  const highLightBlog = blogList.filter((blog) => blog.isMainBlog).slice(0, 4);
 
   // Animation variants
   const containerVariants = {
@@ -42,11 +41,11 @@ export const HighlightBlog = () => {
               <Blog
                 title={blog.title}
                 description={blog.description}
-                publishDate={blog.publishDate}
+                createdAtIsoFormat={blog.createdAtIsoFormat}
                 coverImage={blog.coverImage}
                 direction={index === 0 ? 'column' : 'row'}
                 isShowContentMobile={index === 0}
-                author={blog.author}
+                createdBy={blog.createdBy}
                 tags={blog.tags}
                 slug={blog.slug}
               />
@@ -63,3 +62,5 @@ const SectionTitle = (
     BÀI VIẾT <span className="text-secondary-default">NỔI BẬT</span>
   </p>
 );
+
+export default HighlightBlog;

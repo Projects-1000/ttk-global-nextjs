@@ -3,10 +3,10 @@ import { Divider } from '@mui/material';
 import { DetailedHTMLProps } from 'react';
 
 interface BlogInfoProps
-  extends Pick<BlogModelProps, 'author' | 'publishDate'>,
+  extends Pick<BlogModelProps, 'createdBy' | 'createdAtIsoFormat'>,
     Pick<DetailedHTMLProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement>, 'className'> {}
 
-const BlogInfoTag = ({ author, publishDate, className }: BlogInfoProps) => {
+const BlogInfoTag = ({ createdBy: author, createdAtIsoFormat: publishDate, className }: BlogInfoProps) => {
   return (
     <ul
       className={`flex w-full list-none flex-row items-center gap-s footnote-bold tablet:subtitle-regular ${className}`}

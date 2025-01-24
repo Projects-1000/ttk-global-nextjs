@@ -6,29 +6,14 @@ export const blogList: BlogModelProps[] = [
     id: '0',
     title: '0 - Non-GMO: Lợi Ích Và Tầm Quan Trọng Trong Thực Phẩm Hiện Đại',
     slug: 'blog-slug',
+    createdAtReadableFormat: '',
     description:
       'Bạn có để ý thấy trên bao bì một số sản phẩm thực phẩm hiện nay thường xuất hiện dòng chữ “Non-GMO”? Chắc hẳn bạn đang thắc mắc Non-GMO là gì mà lại được nhiều người quan tâm đến vậy? Liệu nó có thực sự tốt cho sức khỏe và môi trường như lời đồn?',
-    publishDate: '27/12/2024',
-    coverImage: BLogImage,
-    author: 'Admin',
-    tags: [
-      {
-        id: '0',
-        name: 'Nền tảng dịch vụ',
-        blogAmount: 50
-      },
-      {
-        id: '1',
-        name: 'Dịch vụ',
-        blogAmount: 50
-      },
-      {
-        id: '2',
-        name: 'Nền tảng đa dịch vụ',
-        blogAmount: 50
-      }
-    ],
-    isHighlight: true,
+    createdAtIsoFormat: '27/12/2024',
+    coverImage: 'BLogImage',
+    createdBy: 'Admin',
+    tags: ['Nền tảng dịch vụ', 'Dịch vụ', 'Nền tảng đa dịch vụ'],
+    isMainBlog: true,
     content: `
 <p style="margin-left:0px;">
     <i><strong><u>Trong thế giới thương mại điện tử</u></strong></i> ngày càng cạnh tranh khốc liệt, việc tối ưu hóa PPC (Pay-Per-Click) trên Amazon đã trở thành một kỹ năng không thể thiếu đối với các nhà bán hàng. Theo thống kê của Marketplace Pulse, hơn 60% sản phẩm bán chạy trên Amazon đều sử dụng chiến dịch PPC để tăng khả năng hiển thị và doanh số.
@@ -440,83 +425,28 @@ export const blogList: BlogModelProps[] = [
     id: '1',
     title: '1- Non-GMO: Lợi Ích Và Tầm Quan Trọng Trong Thực Phẩm Hiện Đại',
     slug: 'blog-slug',
+    createdAtReadableFormat: '',
     description:
       'Bạn có để ý thấy trên bao bì một số sản phẩm thực phẩm hiện nay thường xuất hiện dòng chữ “Non-GMO”? Chắc hẳn bạn đang thắc mắc Non-GMO là gì mà lại được nhiều người quan tâm đến vậy? Liệu nó có thực sự tốt cho sức khỏe và môi trường như lời đồn?',
-    publishDate: '27/12/2024',
-    coverImage: BLogImage,
-    author: 'Admin',
-    isHighlight: true,
-    tags: [
-      {
-        id: '0',
-        name: 'Nền tảng dịch vụ',
-        blogAmount: 50
-      },
-      {
-        id: '1',
-        name: 'Nền tảng',
-        blogAmount: 50
-      },
-      {
-        id: '2',
-        name: 'Nền tảng dịch vụ',
-        blogAmount: 50
-      },
-      {
-        id: '3',
-        name: 'Nền tảng',
-        blogAmount: 50
-      },
-      {
-        id: '4',
-        name: 'Nền tảng',
-        blogAmount: 50
-      },
-      {
-        id: '5',
-        name: 'Nền tảng dịch vụ',
-        blogAmount: 50
-      }
-    ]
-  },
-  {
-    id: '2',
-    title: '2- Non-GMO: Lợi Ích Và Tầm Quan Trọng Trong Thực Phẩm Hiện Đại',
-    slug: 'blog-slug',
-    description:
-      'Bạn có để ý thấy trên bao bì một số sản phẩm thực phẩm hiện nay thường xuất hiện dòng chữ “Non-GMO”? Chắc hẳn bạn đang thắc mắc Non-GMO là gì mà lại được nhiều người quan tâm đến vậy? Liệu nó có thực sự tốt cho sức khỏe và môi trường như lời đồn?',
-    publishDate: '27/12/2024',
-    coverImage: BLogImage,
-    author: 'Admin',
-    isHighlight: true
-  },
-  {
-    id: '3',
-    title: '3- Non-GMO: Lợi Ích Và Tầm Quan Trọng Trong Thực Phẩm Hiện Đại',
-    slug: 'blog-slug',
-    description:
-      'Bạn có để ý thấy trên bao bì một số sản phẩm thực phẩm hiện nay thường xuất hiện dòng chữ “Non-GMO”? Chắc hẳn bạn đang thắc mắc Non-GMO là gì mà lại được nhiều người quan tâm đến vậy? Liệu nó có thực sự tốt cho sức khỏe và môi trường như lời đồn?',
-    publishDate: '27/12/2024',
-    coverImage: BLogImage,
-    author: 'Admin',
-    isHighlight: true
+    createdAtIsoFormat: '27/12/2024',
+    coverImage: 'BLogImage',
+    createdBy: 'Admin',
+    isMainBlog: true,
+    tags: ['Nền tảng dịch vụ', 'Nền tảng', 'Nền tảng dịch vụ', 'Nền tảng', 'Nền tảng', 'Nền tảng dịch vụ']
   }
 ];
 
 export const tagList: TagModelProps[] = [
   {
-    id: '0',
-    name: 'Nền tảng đa dịch vụ',
-    blogAmount: 50
+    blogAmount: 0,
+    tag: 'Nền tảng đa dịch vụ'
   },
   {
-    id: '1',
-    name: 'Báo chí',
-    blogAmount: 50
+    blogAmount: 1,
+    tag: 'Báo chí'
   },
   {
-    id: '2',
-    name: 'Nền tảng đa dịch vụ',
-    blogAmount: 50
+    blogAmount: 2,
+    tag: 'Nền tảng đa dịch vụ'
   }
 ];

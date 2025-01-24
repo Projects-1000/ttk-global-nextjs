@@ -1,9 +1,9 @@
-import Selector, { SelectorProps } from '@/components/ui/Selector';
-import { MenuItem, styled } from '@mui/material';
 import '@/components/ui/layout/LocalSwitcher/index.scss';
+import Selector, { SelectorProps } from '@/components/ui/Selector';
+import { MenuItem } from '@mui/material';
 
-interface SortSelectorProps extends Pick<SelectorProps, 'className'> {}
-const SortSelector = ({ className }: SortSelectorProps) => {
+interface SortSelectorProps extends Pick<SelectorProps, 'className' | 'onSelectChange'> {}
+const SortSelector = ({ className, onSelectChange }: SortSelectorProps) => {
   const options = [
     {
       value: 'new',
@@ -23,7 +23,7 @@ const SortSelector = ({ className }: SortSelectorProps) => {
         label="Sắp xếp theo"
         defaultOption={options[0]}
         options={options}
-        onSelectChange={() => {}}
+        onSelectChange={onSelectChange}
         className={`w-36 ${className}`}
       >
         <MenuItem
