@@ -47,7 +47,6 @@ const TagFilterItem = ({ tag, blogAmount, isMobile = false }: TagFilterItemProps
     }
   };
 
-  // if (!tag) return null;
   return (
     <div
       onClick={(e) => handleTagClick(e, tag)}
