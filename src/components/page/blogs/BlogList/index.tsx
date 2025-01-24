@@ -33,7 +33,7 @@ interface BlogListContextProps {
 export const BlogListContext = createContext<BlogListContextProps>({} as BlogListContextProps);
 
 const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
-  const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
     const value = params[key];
     if (Array.isArray(value)) {

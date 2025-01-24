@@ -9,7 +9,7 @@ export interface TagFilterProps {
 }
 
 const fetchTags = async () => {
-  const response = await fetch('http://localhost:5000/api/v1/blog/get-full-tags', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-full-tags`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const TagFilter = ({ isMobile }: TagFilterProps) => {
         </div>
         {isLoading ? (
           <div className="w-full">
-            {Array.from({ length: 5}).map((_, index) => (
+            {Array.from({ length: 5 }).map((_, index) => (
               <Skeleton key={index} height={40} />
             ))}
           </div>

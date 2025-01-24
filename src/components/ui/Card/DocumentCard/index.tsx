@@ -21,8 +21,8 @@ interface DocumentCardProps {
 const fetchDocuments = async (params: GetDocumentRequest) => {
   const { title, tags } = params;
   const url = title
-    ? new URL(`http://localhost:5000/api/v1/document/get-document-by-title-partials/${title}/${tags}`)
-    : new URL(`http://localhost:5000/api/v1/document/get-document-by-title-partials`);
+    ? new URL(`${process.env.NEXT_PUBLIC_API_URL}/document/get-document-by-title-partials/${title}/${tags}`)
+    : new URL(`${process.env.NEXT_PUBLIC_API_URL}/document/get-document-by-title-partials`);
   (Object.keys(params) as (keyof GetDocumentRequest)[]).forEach((key) => {
     const value = params[key];
     if (Array.isArray(value)) {

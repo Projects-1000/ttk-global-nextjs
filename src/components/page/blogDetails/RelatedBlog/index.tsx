@@ -33,7 +33,7 @@ const RelatedBlog = async ({ tags, slug }: RelatedBlogProps) => {
 };
 
 export async function fetchRelatedBlogs(params: GetBlogsRequest, slug: BlogModelProps['slug']) {
-  const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
     const value = params[key];
     if (Array.isArray(value)) {
