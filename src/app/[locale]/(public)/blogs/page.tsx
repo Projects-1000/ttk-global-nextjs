@@ -16,7 +16,7 @@ const fetchMainBlogs = async () => {
     isHighlight: true,
     searchTitle: ''
   };
-  const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) =>
     url.searchParams.append(key, params[key] as string)
   );
@@ -52,7 +52,7 @@ const Blogs = async ({ params }: LocaleRouteParams) => {
 //     isHighlight: null,
 //     searchTitle: ''
 //   };
-//   const url = new URL(`http://localhost:5000/api/v1/blog/get-blogs`);
+//   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
 //   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) =>
 //     url.searchParams.append(key, params[key] as string)
 //   );
