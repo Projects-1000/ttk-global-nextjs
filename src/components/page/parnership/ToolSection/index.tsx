@@ -55,15 +55,11 @@ const ToolSection = () => {
   const description =
     'Tích hợp công cụ tính toán lợi nhuận tiềm năng - Công cụ ước tính hoa hồng mà Đơn vị của bạn có thể nhận được khi cộng tác cùng TTK Global Ventures thông qua giới thiệu mô hình EBO-C đến Khách hàng.';
   return (
-    <SectionCard description={description} title={<ToolSectionTitle />}>
-      <div className="container w-full">
-        <Button
-          classCustom="mx-auto w-full laptop:w-fit"
-          size="large"
-          isPill
-          color="primary"
-          text="Mức hoa hồng: 2.5% trên Vốn đầu tư"
-        />
+    <SectionCard isPaddingContent description={description} title={<ToolSectionTitle />}>
+      <div className="w-full">
+        <div className="mx-auto w-fit rounded-full bg-primary-default px-l py-m text-greyscale-negative body-bold laptop:px-3xl laptop:py-xl laptop:h4-bold">
+          Mức hoa hồng: 2.5% trên Vốn đầu tư
+        </div>
         <div className="mt-2xl flex flex-col gap-2xl laptop:mt-3xl laptop:gap-[60px]">
           {ITEMS.map((item, index) => (
             <ToolSectionItem key={index} {...item} isLast={index === ITEMS.length - 1} />

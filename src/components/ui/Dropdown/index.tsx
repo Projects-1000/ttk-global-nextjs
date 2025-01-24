@@ -18,13 +18,13 @@ const Dropdown: React.FC<PropsWithChildren<DropdownProps>> = ({ children, isOpen
       className={`block flex-col overflow-hidden border-b-[1px] border-l-0 border-r-0 border-t-0 border-solid border-primary-default ${classCustom}`}
     >
       <div
-        className={`flex w-full cursor-pointer items-center justify-between laptop:p-3xl ${
+        className={`flex w-full cursor-pointer items-center justify-between gap-s laptop:p-3xl ${
           isOpenState ? 'bg-primary-subtle' : ''
         } p-xl text-left font-bold text-black duration-300 laptop:bg-transparent ${isOpenState ? 'laptop:pb-2xl' : 'hover:laptop:bg-primary-subtle'}`}
         onClick={toggleDropdown}
       >
         <span className="subtitle-bold laptop:body-bold">{title}</span>
-        <ArrowDown className={`${isOpenState ? '-rotate-180' : ''} size-5 laptop:size-6 smooth-transition`} />
+        <ArrowDown className={`${isOpenState ? '-rotate-180' : ''} smooth-transition size-5 flex-none laptop:size-6`} />
       </div>
 
       <motion.div

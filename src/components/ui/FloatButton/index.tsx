@@ -7,23 +7,38 @@ import { motion } from 'framer-motion';
 
 const FloatButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [show, setShow] = useState(true);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   const handleScroll = () => {
-    const scrollY = window.scrollY;
-    setIsVisible(scrollY > 100);
+    const currentScrollPos = window.scrollY;
+
+    // Show/hide based on scroll position and direction
+    setShow(prevScrollPos > currentScrollPos || currentScrollPos < 100);
+    setIsVisible(currentScrollPos > 100);
+
+    setPrevScrollPos(currentScrollPos);
   };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prevScrollPos]); // Add prevScrollPos as dependency
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
+      animate={{
+        opacity: isVisible && show ? 1 : 0,
+        x: isVisible && show ? 0 : 20,
+        y: show ? 0 : 20
+      }}
       transition={{ duration: 0.2 }}
       className="fixed -right-4 bottom-4 z-10 laptop:bottom-8 laptop:right-0"
     >

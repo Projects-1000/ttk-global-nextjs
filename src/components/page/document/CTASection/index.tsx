@@ -24,7 +24,7 @@ const CTASection = () => {
   );
 };
 const CTASectionTitle = () => (
-  <span className="inline-block w-full text-center">
+  <span className="inline-block w-full text-center uppercase">
     Bạn muốn
     <span className="text-secondary-label"> hợp tác </span>
     với chúng tôi?
