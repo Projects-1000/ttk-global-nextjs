@@ -5,10 +5,12 @@ import { DetailedHTMLProps, Dispatch, HTMLAttributes, SetStateAction, useEffect,
 import './index.scss';
 import { Heading } from '../BlogDetailsHeader';
 import { Skeleton } from '@mui/material';
+import Empty from '@/components/ui/Empty';
 
 interface ContentTableProps
   extends Pick<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'className'> {
   nestedHeadings: Heading[];
+  loadingHeadings: boolean;
 }
 interface ContentTableHeadingProps extends Heading {
   activeId: string | null;
@@ -17,7 +19,7 @@ interface ContentTableHeadingProps extends Heading {
   isExpanded?: boolean;
 }
 
-const ContentTable = ({ className, nestedHeadings }: ContentTableProps) => {
+const ContentTable = ({ className, nestedHeadings, loadingHeadings }: ContentTableProps) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
 
@@ -27,7 +29,6 @@ const ContentTable = ({ className, nestedHeadings }: ContentTableProps) => {
       [id]: !prev[id]
     }));
   };
-
   return (
     <div className={`table-content ${className}`}>
       <nav className="table-content__nav">
@@ -35,33 +36,42 @@ const ContentTable = ({ className, nestedHeadings }: ContentTableProps) => {
           <span className="uppercase text-primary-default body-bold">Mục lục</span>
         </h2>
         <ul className="table-content__list">
-          {nestedHeadings.length > 0 ? (
-            nestedHeadings.map((heading, index) => {
-              return (
-                <>
-                  <ContentTableHeading
-                    key={heading.id}
-                    activeId={activeId}
-                    setActiveId={setActiveId}
-                    toggleExpand={() => toggleExpand(heading.id)}
-                    isExpanded={!!expandedSections[heading.id]}
-                    {...heading}
-                  />
-
-                  {heading.children && (
-                    <ul
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        !!expandedSections[heading.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      {heading.children.map((child, index) => (
-                        <ContentTableHeading key={child.id} {...child} activeId={activeId} setActiveId={setActiveId} />
-                      ))}
-                    </ul>
-                  )}
-                </>
-              );
-            })
+          {!loadingHeadings ? (
+            nestedHeadings.length > 0 ? (
+              nestedHeadings.map((heading) => {
+                return (
+                  <div key={heading.id}>
+                    <ContentTableHeading
+                      activeId={activeId}
+                      setActiveId={setActiveId}
+                      toggleExpand={() => toggleExpand(heading.id)}
+                      isExpanded={!!expandedSections[heading.id]}
+                      {...heading}
+                    />
+                    {heading.children && (
+                      <ul
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                          !!expandedSections[heading.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        {heading.children.map((child, index) => (
+                          <ContentTableHeading
+                            key={child.id}
+                            {...child}
+                            activeId={activeId}
+                            setActiveId={setActiveId}
+                          />
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="mt-10 flex items-center justify-center">
+                <Empty />
+              </div>
+            )
           ) : (
             <>
               {Array.from({ length: 5 }).map((_, index) => (

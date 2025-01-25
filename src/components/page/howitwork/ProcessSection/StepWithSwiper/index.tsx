@@ -1,5 +1,14 @@
 'use client';
 import carouselImage from '@/assets/howitwork/carousel-so-lieu.png';
+
+import step2process from '@/assets/howitwork/process/Step2-QuyTrinhHopTac.png';
+import step2method1 from '@/assets/howitwork/process/Step2-PhuongAnHopTac1.png';
+import step2method2 from '@/assets/howitwork/process/Step2-PhuongAnHopTac2.png';
+import step3launching from '@/assets/howitwork/process/Step3-QuyTrinhCacBuocLauching.png';
+import step4profit from '@/assets/howitwork/process/Step4-ChiaSeTaiSan&LoiNhuan.png';
+import step4shutdown from '@/assets/howitwork/process/Step4-QuyTrinhChamDutHopDong.png';
+import step4payment from '@/assets/howitwork/process/Step4-QuyTrinhThanhToanLoiNhuan.png';
+
 import DialogButton from '@/components/ui/Button/DiaglogButton';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import '@/styles/scss/_helper.scss';
@@ -28,8 +37,9 @@ const stepSlides = [
   {
     description: (
       <>
-        TTK Global Ventures sẽ triển khai theo <DialogImageText image={carouselImage} title="quy trình hợp tác" /> đã
-        xây dựng và đề xuất <DialogImageText image={carouselImage} title="phương án hợp tác" /> phù hợp với DN/NĐT.
+        TTK Global Ventures sẽ triển khai theo <DialogImageText image={[step2process]} title="quy trình hợp tác" /> đã
+        xây dựng và đề xuất <DialogImageText image={[step2method1, step2method2]} title="phương án hợp tác" /> phù hợp
+        với DN/NĐT.
       </>
     ),
     image: carouselImage
@@ -37,9 +47,9 @@ const stepSlides = [
   {
     description: (
       <>
-        TTK Global Ventures sẽ đảm nhiệm toàn bộ quá trình vận hành gian hàng Amazon theo quy trình các bước Launching;
-        từ tạo tài khoản; quản lý hoạt động tiếp thị, hàng hóa, thanh toán, chuỗi cung ứng, nghiên cứu và phát triển sản
-        phẩm...
+        TTK Global Ventures sẽ đảm nhiệm toàn bộ quá trình vận hành gian hàng Amazon theo{' '}
+        <DialogImageText image={[step3launching]} title="quy trình các bước Launching" /> ; từ tạo tài khoản; quản lý
+        hoạt động tiếp thị, hàng hóa, thanh toán, chuỗi cung ứng, nghiên cứu và phát triển sản phẩm...
       </>
     ),
     image: carouselImage
@@ -48,9 +58,9 @@ const stepSlides = [
     description: (
       <>
         DN/NĐT sẽ được cập nhật thường xuyên về đơn hàng, P&L (Báo cáo kết quả kinh doanh), được{' '}
-        <DialogImageText image={carouselImage} title="chia sẻ tài sản dự án & lợi nhuận" /> theo thỏa thuận. Xem thêm về{' '}
-        <DialogImageText image={carouselImage} title="Quy trình thanh toán lợi nhuận" /> và{' '}
-        <DialogImageText image={carouselImage} title="Quy trình chấm dứt hợp tác" />
+        <DialogImageText image={[step4profit]} title="chia sẻ tài sản dự án & lợi nhuận" /> theo thỏa thuận. Xem thêm về{' '}
+        <DialogImageText image={[step4payment]} title="Quy trình thanh toán lợi nhuận" /> và{' '}
+        <DialogImageText image={[step4shutdown]} title="Quy trình chấm dứt hợp tác" />
       </>
     ),
     image: carouselImage
@@ -140,7 +150,7 @@ const SwiperWithStepper = () => {
 const StepContent: React.FC<StepContentProps> = ({ description, image }) => {
   return (
     <div className="rounded-lg flex w-full flex-col gap-2xl text-center laptop:gap-l">
-      <h3 className="subtitle-regular laptop:body-regular">{description}</h3>
+      <h3 className="text-center subtitle-regular laptop:body-regular">{description}</h3>
       <Image
         src={image}
         alt="carouselImage"

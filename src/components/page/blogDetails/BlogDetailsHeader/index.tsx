@@ -6,7 +6,7 @@ import BlogInfoTag from '@/components/ui/CustomTag/BlogInfoTag';
 import '@/styles/scss/_typography.scss';
 import { BlogModelProps } from '@/types/model.type';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ContentTable from '../ContentTable';
 import '../ContentTable/index.scss';
 
@@ -22,9 +22,12 @@ interface BlogDetailsHeaderProps extends BlogModelProps {}
 const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
   const { title, createdBy: author, tags, createdAtIsoFormat: publishDate, coverImage, content } = blogDetails;
   const [nestedHeadings, setNestedHeadings] = useState<Heading[]>([]);
+  const [loadingHeadings, setLoadingHeadings] = useState(false);
   const [convertedContent, setConvertedContent] = useState<string>(content || '');
+ 
   useEffect(() => {
     if (content) {
+      setLoadingHeadings(true);
       const parser = new DOMParser();
       const doc = parser.parseFromString(content, 'text/html');
 
@@ -51,85 +54,10 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
       });
 
       setNestedHeadings(headings);
+      setLoadingHeadings(false);
       setConvertedContent(doc.body.innerHTML);
     }
-
-    // window.addEventListener('DOMContentLoaded', () => {
-    //   const observer = new IntersectionObserver((entries) => {
-    //     entries.forEach((entry) => {
-    //       const id = entry.target.getAttribute('id');
-    //       console.log('id>>>', id);
-    //       if (entry.intersectionRatio > 0) {
-    //         const parentElement = document.querySelector(`nav li a[href="#${id}"]`)?.parentElement;
-    //         if (parentElement) {
-    //           const parentElement = document.querySelector(`nav li a[href="#${id}"]`)?.parentElement;
-    //           if (parentElement) {
-    //             parentElement.classList.add('table-content-heading__link--active');
-    //             parentElement.classList.remove('table-content-heading__link--inactive');
-    //           }
-    //         }
-    //       } else {
-    //         const parentElement = document.querySelector(`nav li a[href="#${id}"]`)?.parentElement;
-    //         if (parentElement) {
-    //           parentElement.classList.remove('table-content-heading__link--active');
-    //           parentElement.classList.add('table-content-heading__link--inactive');
-    //         }
-    //       }
-    //     });
-    //   });
-
-    //   // Track all sections that have an `id` applied
-    //   document.querySelectorAll('h2[id]').forEach((section) => {
-    //     observer.observe(section);
-    //   });
-    // });
   }, [content]);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     const headings = Array.from(document.querySelectorAll('h2'));
-  //     let lastActiveId = '';
-  //     headings.forEach((heading) => {
-  //       const offsetTop = heading.offsetTop - 75;
-  //       if (scrollTop >= offsetTop) {
-  //         lastActiveId = heading.getAttribute('id') || '';
-  //         console.log(lastActiveId);
-  //         heading.classList.add('active');
-  //       }
-  //     });
-
-  //     // setActiveId(lastActiveId);
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
-
-  // const observer = new IntersectionObserver(
-  //   (entries) => {
-  //     entries.forEach((entry) => {
-  //       const id = entry.target.getAttribute('id');
-  //       if (!id) return;
-  //       console.log('id>>>', id);
-  //       const linkElement = document.querySelector(`nav li a[href="#${id}"]`)?.parentElement;
-  //       if (linkElement) {
-  //         if (entry.isIntersecting) {
-  //           linkElement.classList.add('active');
-  //           // linkElement.classList.remove('inactive');
-  //         } else {
-  //           linkElement.classList.remove('active');
-  //           // linkElement.classList.add('inactive');
-  //         }
-  //       }
-  //     });
-  //   },
-  //   { rootMargin: '-50% 0px -50% 0px', threshold: 0.1 } // Cải thiện phát hiện entry active
-  // );
-
-  // document.querySelectorAll('h2[id], h3[id]').forEach((section) => {
-  //   observer.observe(section);
-  // });
 
   const removeVietnameseTones = (str: string): string => {
     return str
@@ -141,18 +69,48 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
       .replace(/\s+/g, '-')
       .toLowerCase();
   };
+  useEffect(() => {
+    if (convertedContent) {
+      const headings = document.querySelectorAll('h2[id], h3[id]');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.id;
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+              window.history.replaceState(null, '', `#${id}`);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          rootMargin: '0px 0px -50% 0px'
+        }
+      );
 
+      headings.forEach((heading) => {
+        observer.observe(heading);
+      });
+
+      return () => {
+        headings.forEach((heading) => {
+          observer.unobserve(heading);
+        });
+        observer.disconnect();
+      };
+    }
+  }, [convertedContent]);
   return (
     <div className="flex w-full flex-col items-start justify-start px-2xl laptop:flex-row laptop:px-[60px]">
       <ContentTable
+        loadingHeadings={loadingHeadings}
         nestedHeadings={nestedHeadings}
         className="relative w-full laptop:sticky laptop:top-[120px] laptop:col-span-2 laptop:max-w-[17%]"
       />
 
       <section className="grid grid-cols-1 py-mobile_section_padding laptop:grid-cols-12 laptop:gap-x-3xl laptop:!px-[60px] desktop:gap-x-3xl">
         <div className="col-span-1 laptop:col-span-12">
-          <div className="blog-post mx-auto flex w-full flex-col items-center justify-start">
-            {/* <Breadcrumbs customColor="text-black" /> */}
+          <div className="blog-post mx-auto flex w-full flex-col items-center justify-start laptop:gap-3xl">
+            <Breadcrumbs customColor="text-black" customEndPoint={title} textCenter />
             <div className="flex w-full flex-col items-center justify-start gap-2xl text-center laptop:gap-3xl">
               <h1 className="text-primary-default headline-bold tablet:body-bold laptop:h1-bold">{title}</h1>
               <div className={`flex flex-wrap gap-s`}>
