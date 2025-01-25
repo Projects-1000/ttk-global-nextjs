@@ -3,7 +3,7 @@ import { DialogButtonProps } from '@/types/button.type';
 import Image, { ImageProps } from 'next/image';
 
 interface DialogImageTextProps extends Pick<DialogButtonProps, 'title' | 'className'> {
-  image: ImageProps['src'];
+  image: ImageProps['src'][];
 }
 
 const DialogImageText = ({ image, title, className }: DialogImageTextProps) => {
@@ -25,14 +25,17 @@ const ProcessImage = ({ image }: DialogImageTextProps) => {
   return (
     <div className="flex flex-col items-center bg-blue-10 p-4xl">
       <div className="w-full">
-        <Image
-          src={image}
-          alt="carouselImage"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-auto w-full object-contain"
-        />
+        {image.map((img, index) => (
+          <Image
+            key={index}
+            src={img}
+            alt="carouselImage"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full object-contain"
+          />
+        ))}
       </div>
     </div>
   );
