@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'www.shutterstock.com',
         pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'ttkglobalventures.com',
+        pathname: '**'
       }
 
       // internal-api-drive-stream-sg.larksuite.com

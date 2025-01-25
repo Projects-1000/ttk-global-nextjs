@@ -218,7 +218,7 @@ const Partner = () => {
       customClass="relative"
     >
       <motion.div
-        className="container flex w-full flex-col items-center gap-l tablet:gap-xl laptop:flex laptop:gap-4xl desktop:gap-4xl"
+        className="laptop:container flex w-full flex-col items-center gap-l tablet:gap-xl laptop:flex laptop:gap-4xl desktop:gap-4xl"
         variants={staggerContainer}
         initial="hidden"
         animate="show"
