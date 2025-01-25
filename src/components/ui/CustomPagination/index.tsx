@@ -27,7 +27,7 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChan
   });
   if (count > 1)
     return (
-      <nav>
+      <nav className="container">
         <List>
           {items.map(({ page: itemPage, type, selected, ...item }, index) => {
             let children = null;
@@ -37,7 +37,7 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChan
               children = (
                 <Button
                   text={itemPage?.toString()}
-                  classCustom="btn__small laptop:btn__medium h-full"
+                  classCustom="btn__small laptop:btn__medium h-full mobile:max-tablet:!p-0"
                   type="button"
                   color={selected ? 'primary' : 'secondary'}
                   {...item}
@@ -45,7 +45,7 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChan
               );
             } else if (type === 'previous') {
               children = (
-                <Button {...item} color="secondary" classCustom="btn__small laptop:btn__medium" disabled={page === 1}>
+                <Button {...item} color="secondary" classCustom="btn__small laptop:btn__medium " disabled={page === 1}>
                   <ArrowLeft />
                   <span className="hidden laptop:inline">Trước</span>
                 </Button>

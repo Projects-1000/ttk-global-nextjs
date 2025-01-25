@@ -2,6 +2,7 @@
 import GridBackground from '@/assets/GridBackground';
 import Button from '@/components/ui/Button/Button';
 import SectionCard from '@/components/ui/Card/SectionCard';
+import paths from '@/utils/paths';
 
 const CTASection = () => {
   const description = (
@@ -14,7 +15,7 @@ const CTASection = () => {
     <SectionCard title={<CTASectionTitle />} description={description}>
       <div className="flex flex-col gap-2xl laptop:gap-3xl">
         <div className="flex w-full justify-center">
-          <Button size="medium" text="Cộng tác ngay" />
+          <Button size="medium" text="Cộng tác ngay" href={paths.CONTACT} />
         </div>
       </div>
       <div className="absolute left-1/2 top-1/3 z-[-1] translate-x-[-50%] translate-y-[-40%] tablet:translate-y-[-30%] laptop:translate-y-[-28%]">

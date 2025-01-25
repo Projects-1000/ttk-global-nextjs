@@ -10,9 +10,10 @@ import { useEffect, useRef, useState } from 'react';
 import TooltipButton from '../../Button/TooltipButton';
 import { Tooltip } from '@mui/material';
 
-interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'isMainBlog' | 'createdAtReadableFormat' | 'content'> {
+interface BlogCardProps extends Omit<BlogModelProps, 'id' | 'createdAtReadableFormat' | 'content'> {
   direction?: 'row' | 'column';
   isShowContentMobile?: boolean;
+  isCustomLink?: boolean;
 }
 
 const BlogCard = ({
@@ -22,15 +23,18 @@ const BlogCard = ({
   title,
   direction = 'column',
   tags,
+  isMainBlog = false,
   createdBy: author,
   isShowContentMobile = false,
-  slug
+  slug,
+  isCustomLink = false
 }: BlogCardProps) => {
   const pathname = usePathname();
   const tagContainerRef = useRef<HTMLDivElement>(null);
   const moreTagRef = useRef<HTMLDivElement>(null);
   const [visibleTags, setVisibleTags] = useState(tags);
   const [hiddenCount, setHiddenCount] = useState(0);
+  const link = isCustomLink ? `${slug}` : `${pathname}/${slug}` || '#';
 
   useEffect(() => {
     if (tagContainerRef.current && tags) {
@@ -59,10 +63,9 @@ const BlogCard = ({
       setHiddenCount(hiddenTagsTemp);
     }
   }, [tags]);
-
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
-      <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
+      <Link href={link} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
         <div className={`relative w-full overflow-hidden rounded-m`}>
           <Image
             title={title}
@@ -71,20 +74,17 @@ const BlogCard = ({
             width={0}
             height={0}
             sizes="100vw"
-            className="smooth-transition h-auto w-full object-contain hover:scale-105"
+            className={`smooth-transition w-full object-contain hover:scale-105 ${isMainBlog ? 'h-auto' : 'h-[120px] object-cover tablet:h-[250px] laptop:h-[250px] laptop:w-full'}`}
           />
         </div>
       </Link>
       <div className={`blog-body ${direction === 'row' ? 'basis-3/5' : ''}`}>
         <BlogInfo createdBy={author} createdAtIsoFormat={publishDate} />
-        <Link
-          href={`${pathname}/${slug}` || '#'}
-          className="smooth-transition text-black no-underline hover:text-secondary-default"
-        >
+        <Link href={link} className="smooth-transition text-black no-underline hover:text-secondary-default">
           <header>
             <h2
               title={title}
-              className={`${isShowContentMobile && direction === 'column' ? 'mobile:max-tablet:body-bold' : ''} ${direction === 'column' ? 'subtitle-bold tablet:line-clamp-3 tablet:headline-bold' : 'line-clamp-4 subtitle-bold tablet:line-clamp-3 tablet:headline-bold'}`}
+              className={`${isShowContentMobile && direction === 'column' ? 'mobile:max-tablet:body-bold' : ''} ${direction === 'column' ? 'line-clamp-4 subtitle-bold tablet:line-clamp-3 tablet:headline-bold' : 'line-clamp-4 subtitle-bold tablet:line-clamp-3 tablet:headline-bold'}`}
             >
               {title}
             </h2>
@@ -95,7 +95,7 @@ const BlogCard = ({
         >
           {description}
         </p>
-        {tags?.length && (
+        {!!tags?.length && (
           <div
             ref={tagContainerRef}
             className={`flex w-full flex-wrap gap-s ${isShowContentMobile ? '' : 'mobile:max-tablet:hidden'}`}

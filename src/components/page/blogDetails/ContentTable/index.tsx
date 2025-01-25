@@ -29,6 +29,7 @@ const ContentTable = ({ className, nestedHeadings, loadingHeadings }: ContentTab
       [id]: !prev[id]
     }));
   };
+  if (nestedHeadings.length === 0) return null;
   return (
     <div className={`table-content ${className}`}>
       <nav className="table-content__nav">

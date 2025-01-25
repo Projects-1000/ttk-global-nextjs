@@ -141,7 +141,7 @@ const BlogList = () => {
             </div>
             <TagFilterMobile />
           </div>
-          <div className="flex basis-[80%] flex-col gap-4xl">
+          <div className="flex w-full flex-col gap-4xl laptop:basis-[80%]">
             <motion.div
               className="hidden w-full items-center justify-between gap-2xl laptop:flex"
               whileInView={{ opacity: 1, y: 0 }}
@@ -160,33 +160,44 @@ const BlogList = () => {
               </div>
               <SortSelector onSelectChange={(e) => handleSortChange(e.target.value as string)} />
             </motion.div>
-            <motion.div
-              className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
-              }}
-            >
-              {isLoading ? (
-                Array.from({ length: 6 }).map((_, index) => <BlogItemSkeleton key={index} />)
-              ) : currentBlogs?.length > 0 ? (
-                currentBlogs.map((blog) => <BlogPost key={blog.id} {...blog} />)
-              ) : (
+            {isLoading ? (
+              <div className="relative grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <BlogItemSkeleton key={index} />
+                ))}
+              </div>
+            ) : currentBlogs?.length > 0 ? (
+              <motion.div
+                className="relative grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+                }}
+              >
+                {currentBlogs.map((blog) => (
+                  <BlogPost key={blog.id} {...blog} />
+                ))}
+              </motion.div>
+            ) : (
+              <div className="">
                 <Empty />
-              )}
-            </motion.div>
-            <motion.div
-              className="self-center"
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 20 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-            >
-              <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
-            </motion.div>
+              </div>
+            )}
+
+            {currentBlogs?.length > 0 && (
+              <motion.div
+                className="self-center"
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+              >
+                <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
+              </motion.div>
+            )}
           </div>
         </div>
       </SectionCard>

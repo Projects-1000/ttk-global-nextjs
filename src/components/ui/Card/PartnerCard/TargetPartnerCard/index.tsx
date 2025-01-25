@@ -32,7 +32,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
       <motion.div
         className="absolute h-full w-full"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         style={{
           transformStyle: 'preserve-3d'
         }}
@@ -49,7 +49,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
 
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         style={{
           transformStyle: 'preserve-3d'
         }}
@@ -60,7 +60,7 @@ const TargetPartnerCard: React.FC<TargetPartnerCardProps> = ({ icon, title, desc
         className="relative h-full w-full"
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         style={{
           transformStyle: 'preserve-3d'
         }}

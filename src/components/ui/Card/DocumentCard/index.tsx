@@ -58,7 +58,7 @@ const DocumentItem: React.FC<{ doc: DocumentModelProps }> = ({ doc }) => {
       <span className="subtitle-bold laptop:body-bold">{doc.title}</span>
       {doc.attachment && (
         <Button
-          classCustom="mobile:max-tablet:btn--pill mobile:btn__small tablet:btn__medium laptop:rounded-none"
+          classCustom="mobile:max-tablet:btn--pill mobile:btn__small mobile:max-tablet:p-xs tablet:btn__medium laptop:rounded-none"
           onClick={handleDownload}
           aria-label="Download document"
         >
