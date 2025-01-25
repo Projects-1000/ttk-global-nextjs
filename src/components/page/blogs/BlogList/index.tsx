@@ -68,7 +68,7 @@ const BlogList = () => {
     searchTitle: debounceSearch.trim(),
     sortedDate: true,
     filterTags: null,
-    limit: 4,
+    limit: 6,
     page: 1
   });
   const fetchData = async (queryParam: GetBlogsRequest) => {

@@ -1,3 +1,4 @@
+@use './helper' as *;
 .spacing {
   @apply mb-s mt-l tablet:mb-m tablet:mt-2xl desktop:mb-2xl desktop:mt-3xl;
 }
@@ -7,7 +8,7 @@
     @apply font-sans !important;
   }
   h2 {
-    @apply spacing h4-bold tablet:h3-bold laptop:h2-bold !important;
+    @apply spacing heading w-fit text-primary-label h4-bold tablet:h3-bold laptop:h2-bold !important;
   }
   h3 {
     @apply spacing headline-bold tablet:h4-bold laptop:h3-bold !important;

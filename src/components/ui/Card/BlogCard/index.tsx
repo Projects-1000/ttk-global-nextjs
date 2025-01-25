@@ -63,10 +63,10 @@ const BlogCard = ({
   return (
     <article className={`blog ${direction === 'column' ? 'blog__column gap-l' : 'blog__row gap-xl'}`}>
       <Link href={`${pathname}/${slug}` || '#'} className={`w-full ${direction === 'row' ? 'basis-2/5' : ''}`}>
-        <div className={`w-full overflow-hidden rounded-m`}>
+        <div className={`relative w-full overflow-hidden rounded-m`}>
           <Image
             title={title}
-            src={coverImage|| ''}
+            src={coverImage || ''}
             alt=""
             width={0}
             height={0}
