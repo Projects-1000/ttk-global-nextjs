@@ -19,7 +19,6 @@ import TagFilter from '../TagFilter';
 
 import Empty from '@/components/ui/Empty';
 import BlogItemSkeleton from '@/components/ui/Skeleton/BlogSkeleton';
-import { current } from '@reduxjs/toolkit';
 interface BlogListContextProps {
   selectedTags: BlogModelProps['tags'];
   setSelectedTags: Dispatch<SetStateAction<BlogModelProps['tags']>>;
@@ -34,6 +33,7 @@ export const BlogListContext = createContext<BlogListContextProps>({} as BlogLis
 
 const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
+  console.log('>>>>', params);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
     const value = params[key];
     if (Array.isArray(value)) {
@@ -79,7 +79,7 @@ const BlogList = () => {
     setIsLoading(false);
   };
   useEffect(() => {
-    fetchData(queryParam);
+    fetchData({...queryParam, filterTags: selectedTags});
     handleParamChange();
   }, [queryParam]);
 
@@ -91,7 +91,6 @@ const BlogList = () => {
 
   const totalPages = Math.ceil(totalBlog / queryParam.limit);
   const currentBlogs = blogData;
-  console.log(currentBlogs);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setQueryParam((prev) => ({ ...prev, page: value }));
@@ -113,7 +112,6 @@ const BlogList = () => {
   };
 
   // TODO: Add skeleton loading + not found
-  // if (!blogData?.length) return null;
   return (
     <BlogListContext.Provider
       value={{ selectedTags, setSelectedTags, defaultTags, allTagId, fetchData, queryParam, setQueryParam }}
@@ -178,7 +176,16 @@ const BlogList = () => {
                 }}
               >
                 {currentBlogs.map((blog) => (
-                  <BlogPost key={blog.id} {...blog} />
+                  <BlogPost key={blog.id} 
+                    title={blog.title}
+                    description={blog.description}
+                    coverImage={blog.coverImage}
+                    tags={blog.tags}
+                    createdAtIsoFormat={blog.createdAtIsoFormat}
+                    createdBy={blog.createdBy}
+                    slug={blog.slug}
+                    direction='column'
+                   isMainBlog={false}/>
                 ))}
               </motion.div>
             ) : (
@@ -189,7 +196,7 @@ const BlogList = () => {
 
             {currentBlogs?.length > 0 && (
               <motion.div
-                className="self-center"
+                className="self-center w-full flex justify-center"
                 whileInView={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: 20 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -210,10 +217,10 @@ interface TagFilterMobileProps {}
 const TagFilterMobile = ({}: TagFilterMobileProps) => {
   const [open, setOpen] = useState(false);
   const [sortDate, setSortDate] = useState('');
-  const { fetchData, queryParam } = useContext(BlogListContext);
+  const { fetchData, queryParam, selectedTags } = useContext(BlogListContext);
 
   const handleApply = () => {
-    const param = { ...queryParam, sortedDate: sortDate === 'new' ? true : false };
+    const param: GetBlogsRequest = { ...queryParam, filterTags: selectedTags, sortedDate: sortDate === 'new' ? true : false };
     fetchData(param);
   };
 

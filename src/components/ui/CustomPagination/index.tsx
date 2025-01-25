@@ -19,20 +19,20 @@ interface CustomPaginationProps {
 }
 
 const CustomPagination: React.FC<CustomPaginationProps> = ({ count, page, onChange }) => {
-  // console.log(count, page);
   const { items } = usePagination({
     count,
     page,
-    onChange: (_, value) => onChange(null as unknown as React.ChangeEvent<unknown>, value)
+    onChange: (_, value) => onChange(null as unknown as React.ChangeEvent<unknown>, value),
   });
+  console.log(items, count, page);
   if (count > 1)
     return (
-      <nav className="container">
+      <nav className="">
         <List>
           {items.map(({ page: itemPage, type, selected, ...item }, index) => {
             let children = null;
-            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-              children = '…';
+            if (type === 'start-ellipsis' || type === 'end-ellipsis' ) {
+              children = '...';
             } else if (type === 'page') {
               children = (
                 <Button

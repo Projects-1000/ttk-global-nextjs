@@ -44,7 +44,7 @@ const ProjectCounting = () => {
       >
         <div className="relative flex h-full w-3/5 items-center justify-center rounded-full px-l text-center">
           <motion.span className="z-20" variants={textVariants}>
-            Đã tiếp nhận <br className="taplet:hidden" /> 44 dự án
+            Đã tiếp nhận <br className="taplet:hidden" /> 12 dự án
           </motion.span>
           <motion.div
             className="absolute left-0 top-0 flex h-full w-full items-center justify-center rounded-full bg-blue-500 px-l text-center"
