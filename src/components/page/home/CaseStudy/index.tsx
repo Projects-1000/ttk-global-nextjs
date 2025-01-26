@@ -8,9 +8,6 @@ import { TtkFrame } from '@/assets/TtkFrame';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import { motion } from 'framer-motion';
 import { logosVariants } from '../Hero/HeroAnimationVariants';
-import casestudyImage from '@/assets/casestudy/carousel-so-lieu.png';
-import casestudyImage2 from '@/assets/casestudy/carousel-so-lieu-2.png';
-import casestudyImage1 from '@/assets/casestudy/carousel-so-lieu-1.png';
 import Image from 'next/image';
 const caseStudyData = [
   {
@@ -28,7 +25,7 @@ const caseStudyData = [
     tags: ['Brand A'],
     previousRevenue: '1,110,006.83 USD',
     postRevenue: '1,110,006.83 USD',
-    image: casestudyImage
+    image: '/assets/demo/home/casestudy/casestudy1.webp'
   },
   {
     id: 1,
@@ -44,7 +41,7 @@ const caseStudyData = [
     tags: ['Brand B'],
     previousRevenue: '200 triệu VND',
     postRevenue: '567,722.65 USD',
-    image: casestudyImage1
+    image: '/assets/demo/home/casestudy/casestudy2.webp'
   },
   {
     id: 2,
@@ -61,7 +58,7 @@ const caseStudyData = [
     tags: ['Brand C'],
     previousRevenue: '300 triệu VND',
     postRevenue: '259,723.50 USD',
-    image: casestudyImage2
+    image: '/assets/demo/home/casestudy/casestudy3.webp'
   }
 ];
 const CaseStudy = () => {
