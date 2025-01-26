@@ -1,24 +1,21 @@
 'use client';
-import carouselImage from '@/assets/howitwork/carousel-so-lieu.png';
 
-import step2process from '@/assets/howitwork/process/Step2-QuyTrinhHopTac.png';
 import step2method1 from '@/assets/howitwork/process/Step2-PhuongAnHopTac1.png';
 import step2method2 from '@/assets/howitwork/process/Step2-PhuongAnHopTac2.png';
+import step2process from '@/assets/howitwork/process/Step2-QuyTrinhHopTac.png';
 import step3launching from '@/assets/howitwork/process/Step3-QuyTrinhCacBuocLauching.png';
 import step4profit from '@/assets/howitwork/process/Step4-ChiaSeTaiSan&LoiNhuan.png';
 import step4shutdown from '@/assets/howitwork/process/Step4-QuyTrinhChamDutHopDong.png';
 import step4payment from '@/assets/howitwork/process/Step4-QuyTrinhThanhToanLoiNhuan.png';
 
-import DialogButton from '@/components/ui/Button/DiaglogButton';
 import CustomSwiper from '@/components/ui/CustomSwiper';
 import '@/styles/scss/_helper.scss';
 import { Step, StepLabel, Stepper } from '@mui/material';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 import { SwiperSlide } from 'swiper/react';
-import './index.scss';
 import DialogImageText from '../DialogImageText';
-import { motion } from 'framer-motion';
 import './index.scss';
 
 const steps = [
@@ -32,7 +29,7 @@ const stepSlides = [
   {
     description:
       'Doanh nghiệp (DN) / Nhà đầu tư (NĐT) đăng ký tư vấn và cung cấp thông tin về doanh nghiệp và sản phẩm của mình (nếu có).',
-    image: carouselImage
+    image: '/assets/demo/howitwork/process/step1.webp'
   },
   {
     description: (
@@ -42,7 +39,7 @@ const stepSlides = [
         với DN/NĐT.
       </>
     ),
-    image: carouselImage
+    image: '/assets/demo/howitwork/process/step2.webp'
   },
   {
     description: (
@@ -52,7 +49,7 @@ const stepSlides = [
         hoạt động tiếp thị, hàng hóa, thanh toán, chuỗi cung ứng, nghiên cứu và phát triển sản phẩm...
       </>
     ),
-    image: carouselImage
+    image: '/assets/demo/howitwork/process/step3.webp'
   },
   {
     description: (
@@ -63,14 +60,14 @@ const stepSlides = [
         <DialogImageText image={[step4shutdown]} title="Quy trình chấm dứt hợp tác" />
       </>
     ),
-    image: carouselImage
+    image: '/assets/demo/howitwork/process/step4.webp'
   }
 ];
 
 interface StepContentProps {
   description: string | ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any;
+  image: string;
 }
 // Animation variants
 const stepVariants = {
@@ -157,7 +154,7 @@ const StepContent: React.FC<StepContentProps> = ({ description, image }) => {
         width={0}
         height={0}
         sizes="100vw"
-        className="auto mx-auto w-full object-contain laptop:max-w-[580px]"
+        className="h-full w-full object-contain object-center laptop:max-w-[580px]"
       />
     </div>
   );
