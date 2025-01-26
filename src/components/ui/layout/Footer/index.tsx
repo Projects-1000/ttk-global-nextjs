@@ -48,7 +48,7 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-start gap-4xl">
             <div className="w-[50%] self-start tablet:w-[40%] laptop:w-[25%]">
               <Image
-                src="https://res.cloudinary.com/dh6bfx865/image/upload/v1735060367/ttk-global/Logo_gsse3o.png"
+                src={'/assets/demo/white-logo.png'}
                 alt="logo"
                 sizes="100vw"
                 className="h-auto w-full object-cover object-center"
@@ -134,10 +134,10 @@ const Footer = () => {
 
 const FooterNavList = ({ title, link, subnav, direction = 'column' }: FooterNavListProps) => {
   return (
-    <div className={`flex ${direction == 'column' ? 'flex-col' : 'flex-row'} gap-s`}>
+    <div className={`flex flex-wrap ${direction == 'column' ? 'flex-col' : 'flex-row'} gap-s`}>
       <Link
         href={link || ''}
-        className={`flex-wrap gap-s text-greyscale-negative no-underline footnote-bold tablet:body-bold ${link ? '' : 'pointer-events-none cursor-default'}`}
+        className={`gap-s text-greyscale-negative no-underline footnote-bold tablet:body-bold ${link ? '' : 'pointer-events-none cursor-default'}`}
       >
         {title}
       </Link>

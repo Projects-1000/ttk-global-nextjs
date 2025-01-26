@@ -1,4 +1,5 @@
 // import './index.scss';
+'use client'
 import '@/styles/scss/_helper.scss';
 import Image from 'next/image';
 import larkLogo from '@/assets/howitwork/larkschedule/lark-logo.png';

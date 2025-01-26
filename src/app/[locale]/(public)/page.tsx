@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 const HomePage = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
+    <div className="flex w-full flex-col items-center justify-center">
       <Hero />
       <About />
       <Benefit />

@@ -2,12 +2,13 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export interface AddressProps {
   city: string;
   address: string;
-  phone: string;
-  email: string;
+  phone: { title: string; link: string };
+  email: { title: string; link: string };
 }
 
 const Address: React.FC<{ address: AddressProps }> = ({ address }) => {
@@ -38,11 +39,15 @@ const Address: React.FC<{ address: AddressProps }> = ({ address }) => {
       </motion.div>
       <motion.div variants={itemVariants} className="flex gap-m subtitle-regular laptop:gap-l laptop:body-regular">
         <Phone />
-        <span>{address.phone}</span>
+        <Link className="text-black no-underline duration-200 hover:text-secondary-label" href={address.phone.link}>
+          {address.phone.title}
+        </Link>
       </motion.div>
       <motion.div variants={itemVariants} className="flex gap-m subtitle-regular laptop:gap-l laptop:body-regular">
         <Mail />
-        <span>{address.email}</span>
+        <Link className="text-black no-underline duration-200 hover:text-secondary-label" href={address.email.link}>
+          {address.email.title}
+        </Link>
       </motion.div>
     </motion.div>
   );

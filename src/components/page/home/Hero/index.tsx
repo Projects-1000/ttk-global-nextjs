@@ -14,6 +14,7 @@ import blueVector from '@/assets/blue-vector.png';
 import listLogos from './fakeData';
 import { containerVariants, imageVariants, itemVariants, logosVariants } from './HeroAnimationVariants';
 import SectionCard from '@/components/ui/Card/SectionCard';
+import paths from '@/utils/paths';
 
 const Hero = () => {
   return (
@@ -59,12 +60,14 @@ const Hero = () => {
             variants={itemVariants}
           >
             <Button
-              text="Đăng ký hợp tác"
+              text="Đặt lịch tư vấn"
+              href={paths.CONTACT}
               classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large"
             />
             <Button
               text="Tìm hiểu thêm"
               color="secondary"
+              href={paths.HOW_IT_WORK}
               classCustom="flex-1 tablet:flex-none btn__small tablet:btn__medium laptop:btn__large"
             />
           </motion.div>

@@ -24,7 +24,7 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
   const [nestedHeadings, setNestedHeadings] = useState<Heading[]>([]);
   const [loadingHeadings, setLoadingHeadings] = useState(false);
   const [convertedContent, setConvertedContent] = useState<string>(content || '');
- 
+
   useEffect(() => {
     if (content) {
       setLoadingHeadings(true);
@@ -119,7 +119,7 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
                 })}
               </div>
               <BlogInfoTag createdAtIsoFormat={publishDate} createdBy={author} className="!w-fit" />
-              <div className={`w-full overflow-hidden rounded-m`}>
+              {/* <div className={`w-full overflow-hidden rounded-m`}>
                 <Image
                   title={title}
                   src={coverImage || ''}
@@ -129,10 +129,10 @@ const BlogDetailsHeader = (blogDetails: BlogDetailsHeaderProps) => {
                   sizes="100vw"
                   className="h-auto w-full object-contain"
                 />
-              </div>
+              </div> */}
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: convertedContent as string }} className="blog-content mt-[120px]" />
+            <div dangerouslySetInnerHTML={{ __html: convertedContent as string }} className="blog-content" />
           </div>
         </div>
       </section>

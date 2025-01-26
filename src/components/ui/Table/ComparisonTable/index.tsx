@@ -70,7 +70,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ columns, data }) => {
               {data[key].map((row, rowIndex) => (
                 <motion.tr
                   key={rowIndex}
-                  className={`cursor-pointer border border-l-0 border-r-0 border-t-0 border-solid border-primary-lighter duration-200 hover:bg-blue-10`}
+                  className={`border border-l-0 border-r-0 border-t-0 border-solid border-primary-lighter duration-200 hover:bg-blue-10`}
                   variants={rowVariants}
                 >
                   {Object.keys(row).map((col) => (

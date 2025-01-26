@@ -1,10 +1,12 @@
 'use client';
-import { Instagram } from '@mui/icons-material';
-import { ArrowUp } from 'lucide-react';
+import { Facebook, Instagram } from '@mui/icons-material';
+import { ArrowUp, Phone } from 'lucide-react';
 import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
+import ZaloIcon from '@/assets/logo/zalo';
+import Link from 'next/link';
+import FaceBookIcon from '@/assets/logo/facebook';
 const FloatButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -48,16 +50,25 @@ const FloatButton = () => {
             color="secondary"
             classCustom="rotate-90 subtitle-bold laptop:body-bold btn__small laptop:btn__medium"
             text="Liên hệ"
+            href="/contact"
             isPill
           />
           <div className="mt-2xl h-[12px] w-[4px] rounded-full bg-primary-default laptop:mt-3xl"></div>
           <Button
-            color="secondary"
+            onClick={scrollToTop}
             classCustom="rounded-full laptop:!p-s !p-xs btn__small laptop:btn__medium"
             isPill
-            icon={<Instagram />}
+            color="secondary"
+            href="tel:0559075545"
+            icon={<Phone />}
             iconPosition="only"
           />
+          <Link href="https://www.facebook.com/ttkglobalventuresllc/" target="_blank">
+            <FaceBookIcon />
+          </Link>
+          <Link href="https://zalo.me/0559075545" target="_blank">
+            <ZaloIcon />
+          </Link>
         </div>
         <div className="">
           <Button

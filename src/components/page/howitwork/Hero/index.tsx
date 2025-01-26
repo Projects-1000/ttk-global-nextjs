@@ -11,6 +11,7 @@ import { buttonVariants, containerVariants, videoVariants } from './animation';
 import HeroList from './components/HeroList';
 import HeroTitle from './components/HeroTitle';
 import SectionCard from '@/components/ui/Card/SectionCard';
+import paths from '@/utils/paths';
 
 const HowItWorkHero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -50,16 +51,18 @@ const HowItWorkHero = () => {
           </div>
           <div className="flex flex-col gap-2xl laptop:gap-3xl">
             <HeroList />
-            <div className="flex items-center gap-l mobile:max-tablet:justify-between">
+            <div className="flex items-center gap-l">
               <motion.div
                 variants={buttonVariants}
                 initial="hidden"
                 whileInView="visible"
+                className="w-full tablet:w-fit"
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <Button
                   text="Đặt lịch meeting"
-                  classCustom="w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+                  href={paths.CONTACT}
+                  classCustom="!w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
                 />
               </motion.div>
               <motion.div
@@ -67,11 +70,13 @@ const HowItWorkHero = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
+                className="w-full tablet:w-fit"
               >
                 <Button
                   text="Tính lợi nhuận"
+                  href={paths.PARTNERSHIP + '#tool-section'}
                   color="secondary"
-                  classCustom="w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
+                  classCustom="!w-full mobile:max-tablet:flex-1 tablet:w-fit btn__small tablet:btn__medium laptop:btn__large"
                 />
               </motion.div>
             </div>

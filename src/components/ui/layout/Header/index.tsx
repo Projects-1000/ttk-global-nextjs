@@ -51,7 +51,7 @@ export const Header = () => {
             <Link href={paths.HOME} className="relative h-full w-[136px] tablet:w-[152px]">
               <Image
                 alt="TTK Global Venture"
-                src={'/assets/demo/header-logo.png'}
+                src={'/assets/demo/black-logo.png'}
                 fill
                 className="object-contain object-center"
                 loading="eager"
@@ -62,7 +62,7 @@ export const Header = () => {
           <div className="hidden items-center gap-m tablet:flex">
             <LocaleSwitcher />
             <Button text="Đăng ký" size="medium" color="secondary" classCustom="!w-fit" />
-            <Button text="Đăng nhập" href={paths.LOGIN} size="medium" color="primary" classCustom="!w-fit" />
+            <Button text="Đăng nhập" size="medium" color="primary" classCustom="!w-fit" />
           </div>
           <div className="laptop:hidden" onClick={handleOpenMenu}>
             <MenuIcon className={`menu-icon ${isOpenMenu ? 'translate-x-[50px]' : ''}`} />

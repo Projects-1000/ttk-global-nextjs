@@ -11,7 +11,7 @@
     @apply spacing heading w-fit text-primary-label h4-bold tablet:h3-bold laptop:h2-bold !important;
   }
   h3 {
-    @apply spacing headline-bold tablet:h4-bold laptop:h3-bold !important;
+    @apply spacing text-secondary-label headline-bold tablet:h4-bold laptop:h3-bold !important;
   }
   h4 {
     @apply spacing body-bold tablet:headline-bold laptop:h4-bold !important;
