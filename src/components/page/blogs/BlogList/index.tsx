@@ -19,7 +19,6 @@ import TagFilter from '../TagFilter';
 
 import Empty from '@/components/ui/Empty';
 import BlogItemSkeleton from '@/components/ui/Skeleton/BlogSkeleton';
-import { current } from '@reduxjs/toolkit';
 interface BlogListContextProps {
   selectedTags: BlogModelProps['tags'];
   setSelectedTags: Dispatch<SetStateAction<BlogModelProps['tags']>>;
@@ -34,6 +33,7 @@ export const BlogListContext = createContext<BlogListContextProps>({} as BlogLis
 
 const getBlogs = async (params: GetBlogsRequest, allTagId: string) => {
   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/blog/get-blogs`);
+  console.log('>>>>', params);
   (Object.keys(params) as (keyof GetBlogsRequest)[]).forEach((key) => {
     const value = params[key];
     if (Array.isArray(value)) {
@@ -79,7 +79,7 @@ const BlogList = () => {
     setIsLoading(false);
   };
   useEffect(() => {
-    fetchData(queryParam);
+    fetchData({ ...queryParam, filterTags: selectedTags });
     handleParamChange();
   }, [queryParam]);
 
@@ -91,7 +91,6 @@ const BlogList = () => {
 
   const totalPages = Math.ceil(totalBlog / queryParam.limit);
   const currentBlogs = blogData;
-  console.log(currentBlogs);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setQueryParam((prev) => ({ ...prev, page: value }));
@@ -113,7 +112,6 @@ const BlogList = () => {
   };
 
   // TODO: Add skeleton loading + not found
-  // if (!blogData?.length) return null;
   return (
     <BlogListContext.Provider
       value={{ selectedTags, setSelectedTags, defaultTags, allTagId, fetchData, queryParam, setQueryParam }}
@@ -141,7 +139,7 @@ const BlogList = () => {
             </div>
             <TagFilterMobile />
           </div>
-          <div className="flex basis-[80%] flex-col gap-4xl">
+          <div className="flex w-full flex-col gap-4xl laptop:basis-[80%]">
             <motion.div
               className="hidden w-full items-center justify-between gap-2xl laptop:flex"
               whileInView={{ opacity: 1, y: 0 }}
@@ -160,33 +158,72 @@ const BlogList = () => {
               </div>
               <SortSelector onSelectChange={(e) => handleSortChange(e.target.value as string)} />
             </motion.div>
-            <motion.div
-              className="grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
-              }}
-            >
-              {isLoading ? (
-                Array.from({ length: 6 }).map((_, index) => <BlogItemSkeleton key={index} />)
-              ) : currentBlogs?.length > 0 ? (
-                currentBlogs.map((blog) => <BlogPost key={blog.id} {...blog} />)
-              ) : (
+            {isLoading ? (
+              <div className="relative grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <BlogItemSkeleton key={index} />
+                ))}
+              </div>
+            ) : currentBlogs?.length > 0 ? (
+              <motion.div
+                className="relative grid w-full grid-flow-row auto-rows-min grid-cols-2 gap-x-2xl gap-y-3xl tablet:grid-cols-2 laptop:grid-cols-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+                }}
+              >
+                {currentBlogs.map((blog) => (
+                  <BlogPost
+                    key={blog.id}
+                    title={blog.title}
+                    description={blog.description}
+                    coverImage={blog.coverImage}
+                    tags={blog.tags}
+                    createdAtIsoFormat={blog.createdAtIsoFormat}
+                    createdBy={blog.createdBy}
+                    slug={blog.slug}
+                    direction="column"
+                    isMainBlog={false}
+                  />
+                ))}
+              </motion.div>
+            ) : (
+              <div className="">
                 <Empty />
-              )}
-            </motion.div>
-            <motion.div
-              className="self-center"
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: 20 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-            >
-              <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
-            </motion.div>
+              </div>
+            )}
+
+            {currentBlogs?.length > 0 && (
+              <motion.div
+                className="flex w-full justify-center self-center"
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mobile:max-tablet:hidden">
+                  <CustomPagination
+                    page={queryParam.page}
+                    count={totalPages}
+                    onChange={handlePageChange}
+                    siblingCount={1}
+                    boundaryCount={1}
+                  />
+                </div>
+                <div className="hidden mobile:max-tablet:block">
+                  <CustomPagination
+                    page={queryParam.page}
+                    count={totalPages}
+                    onChange={handlePageChange}
+                    siblingCount={0}
+                    boundaryCount={1}
+                  />
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
       </SectionCard>
@@ -199,10 +236,14 @@ interface TagFilterMobileProps {}
 const TagFilterMobile = ({}: TagFilterMobileProps) => {
   const [open, setOpen] = useState(false);
   const [sortDate, setSortDate] = useState('');
-  const { fetchData, queryParam } = useContext(BlogListContext);
+  const { fetchData, queryParam, selectedTags } = useContext(BlogListContext);
 
   const handleApply = () => {
-    const param = { ...queryParam, sortedDate: sortDate === 'new' ? true : false };
+    const param: GetBlogsRequest = {
+      ...queryParam,
+      filterTags: selectedTags,
+      sortedDate: sortDate === 'new' ? true : false
+    };
     fetchData(param);
   };
 

@@ -56,7 +56,7 @@ const ToolSection = () => {
     'Tích hợp công cụ tính toán lợi nhuận tiềm năng - Công cụ ước tính hoa hồng mà Đơn vị của bạn có thể nhận được khi cộng tác cùng TTK Global Ventures thông qua giới thiệu mô hình EBO-C đến Khách hàng.';
   return (
     <SectionCard isPaddingContent description={description} title={<ToolSectionTitle />}>
-      <div className="w-full">
+      <div id="tool-section" className="w-full">
         <div className="mx-auto w-fit rounded-full bg-primary-default px-l py-m text-greyscale-negative body-bold laptop:px-3xl laptop:py-xl laptop:h4-bold">
           Mức hoa hồng: 2.5% trên Vốn đầu tư
         </div>

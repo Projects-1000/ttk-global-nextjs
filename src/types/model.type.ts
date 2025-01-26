@@ -12,7 +12,7 @@ export interface BlogModelProps {
   // publishDate: string;
   coverImage?: string;
   tags?: TagModelProps['tag'][] | null;
-  isMainBlog: boolean;
+  isMainBlog?: boolean;
   createdBy?: string;
   slug: string;
   createdAtIsoFormat: string;
@@ -21,7 +21,7 @@ export interface BlogModelProps {
 
 export interface DocumentModelProps {
   title: string;
-    attachment: string;
+  attachment: string;
   tags: string[];
   creaatedAt: string;
   updatedAt: string;

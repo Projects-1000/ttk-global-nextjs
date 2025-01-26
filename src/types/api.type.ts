@@ -16,7 +16,7 @@ export interface GetBlogsRequest extends PaginationRequest {
   isHighlight?: boolean | null;
   searchTitle?: string | null;
   sortedDate?: boolean | null;
-  filterTags: string[] | null;
+  filterTags?: string[] | null;
 }
 
 export interface GetDocumentRequest extends PaginationRequest {

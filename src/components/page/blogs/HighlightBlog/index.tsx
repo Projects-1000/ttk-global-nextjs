@@ -42,6 +42,7 @@ const HighlightBlog = ({ highLightBlog }: HighlightBlogProps) => {
               <Blog
                 title={blog.title}
                 description={blog.description}
+                isMainBlog
                 createdAtIsoFormat={blog.createdAtIsoFormat}
                 coverImage={blog.coverImage}
                 direction={index === 0 ? 'column' : 'row'}

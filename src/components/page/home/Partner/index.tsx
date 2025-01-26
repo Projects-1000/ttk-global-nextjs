@@ -157,7 +157,7 @@ const staggerContainer = {
 
 const Partner = () => {
   const defaultVisibleMobile = 6;
-  const defaultVisibleDesktop = 12;
+  const defaultVisibleDesktop = 16;
   const [isExpanded, setIsExpanded] = useState(false);
   const [chunkSize, setChunkSize] = useState(window.innerWidth <= 768 ? 3 : 4);
   const [visibleItems, setVisibleItems] = useState(
@@ -214,7 +214,8 @@ const Partner = () => {
     <SectionCard
       isPaddingContent
       title={SectionTitle}
-      description="Cùng lắng nghe trải nghiệp và phản hồi từ khách hàng gửi đến TTK Global Ventures."
+      description="TTK Global Ventures hợp tác với trên 10 đơn vị quốc tế, 
+hỗ trợ đa dạng kênh bán hàng và phương thức thanh toán."
       customClass="relative"
     >
       <motion.div
@@ -258,11 +259,11 @@ const Partner = () => {
       {isShowingLoadMore() && (
         <motion.div
           onClick={toggleReadMore}
-          className={`relative z-10 mt-l flex w-full cursor-pointer justify-center pt-xl`}
+          className={`relative z-10 mt-l flex cursor-pointer justify-center pt-xl`}
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <LoadMoreIcon className="w-full" height="18" />
+          <LoadMoreIcon height="18" />
         </motion.div>
       )}
 

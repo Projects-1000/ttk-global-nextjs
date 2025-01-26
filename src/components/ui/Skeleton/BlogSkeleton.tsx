@@ -3,7 +3,7 @@ import React from 'react';
 
 const BlogItemSkeleton = () => (
   <div className="flex flex-col gap-l">
-    <Skeleton variant="rectangular" height={210} animation="wave" />
+    <Skeleton variant="rectangular" height={210} animation="wave" className="rounded-m" />
     <div className="flex flex-col gap-s">
       <Skeleton animation="wave" width={100} height={20} />
       <div>

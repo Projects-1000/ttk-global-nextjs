@@ -98,7 +98,7 @@ const SwiperWithStepper = () => {
       className="tablet:border-gradient-stroke-1 tablet:border-gradient-stroke-1 laptop:pb-4x rounded-m border-[1px] tablet:bg-white/30 tablet:backdrop-blur-md"
     >
       <motion.div
-        className="mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:border mobile:max-tablet:bg-white/30 mobile:max-tablet:backdrop-blur-md laptop:mb-l laptop:px-xl laptop:py-2xl"
+        className="mobile:max-tablet:border-gradient-stroke-1 mb-2xl rounded-m p-l mobile:max-tablet:flex mobile:max-tablet:h-[120px] mobile:max-tablet:items-center mobile:max-tablet:justify-center mobile:max-tablet:border mobile:max-tablet:bg-white/30 mobile:max-tablet:backdrop-blur-md laptop:mb-l laptop:px-xl laptop:py-2xl"
         variants={stepVariants}
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}

@@ -11,8 +11,11 @@ const AddressSection = () => {
       address: {
         city: 'Hồ Chí Minh',
         address: '26 Đường 51-BTT, Bình Trưng Tây, Quận 2, Thủ Đức',
-        phone: '055 907 5545',
-        email: 'contact@ttkglobalventures.com'
+        phone: { title: '055 907 5545', link: 'tel:055 907 5545' },
+        email: {
+          title: `contact@ttkglobalventures.com`,
+          link: `mailto:contact@ttkglobalventures.com?subject=${encodeURIComponent(`[TTK Global Ventures] Could you help me?`)}`
+        }
       }
     },
     {
@@ -21,8 +24,11 @@ const AddressSection = () => {
       address: {
         city: 'United States',
         address: '30 N Gould St Ste R Sheridan, Wyoming 82801',
-        phone: '+(84) 123 456 7890',
-        email: 'contact@ttkglobalventures.com'
+        phone: { title: '+(84) 123 456 7890', link: 'tel:+(84) 123 456 7890' },
+        email: {
+          title: `contact@ttkglobalventures.com`,
+          link: `mailto:contact@ttkglobalventures.com?subject=${encodeURIComponent(`[TTK Global Ventures] Could you help me?`)}`
+        }
       }
     }
   ];

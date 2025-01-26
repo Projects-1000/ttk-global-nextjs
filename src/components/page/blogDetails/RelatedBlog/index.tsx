@@ -23,7 +23,7 @@ const RelatedBlog = async ({ tags, slug }: RelatedBlogProps) => {
         {blogList.map((blog) => {
           return (
             <div key={blog.slug} className="col-span-1 row-span-1">
-              <BlogCard {...blog} />
+              <BlogCard {...blog} isMainBlog={false} isCustomLink />
             </div>
           );
         })}

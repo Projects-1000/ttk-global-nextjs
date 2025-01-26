@@ -10,11 +10,11 @@ const DialogImageText = ({ image, title, className }: DialogImageTextProps) => {
   return (
     <DialogButton
       dialogButton={
-        <p className="inline text-secondary-label underline subtitle-bold hover:text-yellow-600 laptop:body-bold">
+        <p className="inline  text-secondary-label underline subtitle-bold hover:text-yellow-600 laptop:body-bold">
           {title}
         </p>
       }
-      className={`normal-case hover:bg-transparent ${className}`}
+      className={`normal-case hover:bg-transparent   ${className}`}
     >
       <ProcessImage image={image} />
     </DialogButton>
@@ -23,7 +23,7 @@ const DialogImageText = ({ image, title, className }: DialogImageTextProps) => {
 
 const ProcessImage = ({ image }: DialogImageTextProps) => {
   return (
-    <div className="flex flex-col items-center bg-blue-10 p-4xl">
+    <div className="flex flex-col items-center bg-blue-10 p-4xl ">
       <div className="w-full">
         {image.map((img, index) => (
           <Image
