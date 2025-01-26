@@ -142,7 +142,24 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ title, tag, searchQuery }) 
         </div>
 
         <div className="flex justify-center">
-          <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
+          <div className="mobile:max-tablet:hidden">
+            <CustomPagination
+              page={queryParam.page}
+              count={totalPages}
+              onChange={handlePageChange}
+              siblingCount={1}
+              boundaryCount={1}
+            />
+          </div>
+          <div className="hidden mobile:max-tablet:block">
+            <CustomPagination
+              page={queryParam.page}
+              count={totalPages}
+              onChange={handlePageChange}
+              siblingCount={0}
+              boundaryCount={1}
+            />
+          </div>
         </div>
       </div>
     </motion.div>

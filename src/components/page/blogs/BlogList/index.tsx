@@ -79,7 +79,7 @@ const BlogList = () => {
     setIsLoading(false);
   };
   useEffect(() => {
-    fetchData({...queryParam, filterTags: selectedTags});
+    fetchData({ ...queryParam, filterTags: selectedTags });
     handleParamChange();
   }, [queryParam]);
 
@@ -176,7 +176,8 @@ const BlogList = () => {
                 }}
               >
                 {currentBlogs.map((blog) => (
-                  <BlogPost key={blog.id} 
+                  <BlogPost
+                    key={blog.id}
                     title={blog.title}
                     description={blog.description}
                     coverImage={blog.coverImage}
@@ -184,8 +185,9 @@ const BlogList = () => {
                     createdAtIsoFormat={blog.createdAtIsoFormat}
                     createdBy={blog.createdBy}
                     slug={blog.slug}
-                    direction='column'
-                   isMainBlog={false}/>
+                    direction="column"
+                    isMainBlog={false}
+                  />
                 ))}
               </motion.div>
             ) : (
@@ -196,13 +198,30 @@ const BlogList = () => {
 
             {currentBlogs?.length > 0 && (
               <motion.div
-                className="self-center w-full flex justify-center"
+                className="flex w-full justify-center self-center"
                 whileInView={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: 20 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5 }}
               >
-                <CustomPagination page={queryParam.page} count={totalPages} onChange={handlePageChange} />
+                <div className="mobile:max-tablet:hidden">
+                  <CustomPagination
+                    page={queryParam.page}
+                    count={totalPages}
+                    onChange={handlePageChange}
+                    siblingCount={1}
+                    boundaryCount={1}
+                  />
+                </div>
+                <div className="hidden mobile:max-tablet:block">
+                  <CustomPagination
+                    page={queryParam.page}
+                    count={totalPages}
+                    onChange={handlePageChange}
+                    siblingCount={0}
+                    boundaryCount={1}
+                  />
+                </div>
               </motion.div>
             )}
           </div>
@@ -220,7 +239,11 @@ const TagFilterMobile = ({}: TagFilterMobileProps) => {
   const { fetchData, queryParam, selectedTags } = useContext(BlogListContext);
 
   const handleApply = () => {
-    const param: GetBlogsRequest = { ...queryParam, filterTags: selectedTags, sortedDate: sortDate === 'new' ? true : false };
+    const param: GetBlogsRequest = {
+      ...queryParam,
+      filterTags: selectedTags,
+      sortedDate: sortDate === 'new' ? true : false
+    };
     fetchData(param);
   };
 

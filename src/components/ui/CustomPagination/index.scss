@@ -1,0 +1,18 @@
+@tailwind components;
+
+.pagination-container {
+  .custom-button {
+    @apply hidden h-full cursor-pointer rounded-2xs border-2 border-solid border-primary-default bg-gray-50 px-m py-2xs text-black subtitle-bold mobile:max-tablet:block;
+
+    &.active {
+      @apply border-primary-default bg-primary-default text-white;
+    }
+
+    &.disabled {
+      @apply border-greyscale-surface-subtle text-greyscale-disable;
+    }
+    &:hover {
+      @apply border-primary-darker;
+    }
+  }
+}
