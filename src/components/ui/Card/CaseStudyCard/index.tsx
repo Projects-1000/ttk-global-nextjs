@@ -1,14 +1,14 @@
 import CustomTag from '@/components/ui/CustomTag';
-import Image, { StaticImageData } from 'next/image';
-import React, { ReactNode } from 'react';
 import '@/styles/scss/_helper.scss';
+import Image from 'next/image';
+import React, { ReactNode } from 'react';
 
 export interface CaseStudyCardProps {
   projectName: string;
   description: string | ReactNode;
   tags: string[];
   postRevenue: string;
-  image?: StaticImageData;
+  image?: string;
 }
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ projectName, description, tags, postRevenue, image }) => {

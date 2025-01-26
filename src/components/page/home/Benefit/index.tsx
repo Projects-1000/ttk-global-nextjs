@@ -11,21 +11,21 @@ const Benefit = () => {
       title: 'Không cần mặt bằng',
       description:
         'Dự án vận hành hoàn toàn trực tuyến trên nền tảng Amazon, giúp bạn tiết kiệm chi phí và linh hoạt kinh doanh ở bất kỳ đâu.',
-      image: '/assets/demo/benefit-no-field.png'
+      image: '/assets/demo/home/benefit/benefit-no-field.webp'
     },
     {
       id: 1,
       title: 'Không nhân sự',
       description:
         'TTK GV đảm nhận toàn bộ quy trình vận hành với đội ngũ chuyên gia có 10+ năm kinh nghiệm trong lĩnh vực TMĐT Quốc tế.',
-      image: '/assets/demo/benefit-no-employee.png'
+      image: '/assets/demo/home/benefit/benefit-no-employee.webp'
     },
     {
       id: 2,
       title: 'Doanh thu ổn định',
       description:
         'Áp dụng phương pháp vận hành đã được chứng minh về hiệu quả qua hơn 200+ dự án (doanh số trung bình hằng tháng ~ 50.000 USD).',
-      image: '/assets/demo/benefit-stable-revenue.png'
+      image: '/assets/demo/home/benefit/benefit-stable-revenue.webp'
     }
   ];
   return (
