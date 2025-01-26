@@ -146,7 +146,7 @@ const SwiperWithStepper = () => {
 
 const StepContent: React.FC<StepContentProps> = ({ description, image }) => {
   return (
-    <div className="rounded-lg flex w-full flex-col gap-2xl text-center laptop:gap-l">
+    <div className="rounded-lg flex w-full flex-col items-center justify-center gap-2xl text-center laptop:gap-l">
       <h3 className="text-center subtitle-regular laptop:body-regular">{description}</h3>
       <Image
         src={image}
